@@ -83,11 +83,19 @@
   .influence-content{padding:0 1px 9px}.influence-content p{margin:0 0 6px}.influence-content p:last-child{margin:7px 0 0}
   .influence-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin:0 0 6px}.influence-pair>div{background:#f0f6f1;padding:6px 8px;border-radius:4px}
   .influence-pair dd{margin:2px 0 0;color:var(--ink);font-size:.93rem;font-variant-numeric:tabular-nums;font-weight:740}
-  .influence-list{margin:0;padding:0;list-style:none}.influence-row{display:grid;grid-template-columns:minmax(90px,1.1fr) minmax(40px,1fr) minmax(50px,auto);align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid var(--line)}
-  .influence-row strong{display:block;color:var(--ink)}.influence-row small{display:block;font-size:.65rem;line-height:1.27}
+  .influence-list{margin:0;padding:0;list-style:none}.influence-row{border-bottom:1px solid var(--line)}
+  .influence-trigger{display:grid;grid-template-columns:minmax(90px,1.1fr) minmax(40px,1fr) minmax(50px,auto);align-items:center;gap:6px;width:100%;padding:5px 4px;min-height:44px;text-align:left;border:0;border-radius:3px;background:white;color:var(--muted);font-size:inherit}
+  .influence-trigger:hover{background:#f4f8f5}.influence-trigger[aria-pressed=true]{background:#e8f3ec;box-shadow:inset 3px 0 var(--accent)}
+  .influence-trigger:focus-visible{position:relative;z-index:1;outline-offset:1px}
+  .influence-row strong{display:block;color:var(--ink);text-decoration:underline;text-decoration-color:#82a99f;text-underline-offset:2px}.influence-row small{display:block;font-size:.65rem;line-height:1.27}
   .influence-plot{height:11px;position:relative;background:#f0f4f2;border-radius:2px}.influence-plot::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;border-left:1px solid #63847b}
   .influence-bar{position:absolute;top:2px;bottom:2px;border-radius:1px;background:#176859}.influence-bar.negative{background:#a35d1b}
   .influence-signed{color:var(--ink);text-align:right;font-weight:750;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .removal-preview{background:#f0f6f1;border-radius:6px;padding:8px 9px;margin-top:8px;border-left:2px solid var(--accent)}
+  .removal-preview h3{margin:0;font-size:.79rem;color:var(--ink)}.removal-preview p{margin:2px 0 0}.removal-preview p:last-child{margin:2px 0 0}
+  .removal-head{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap}.removal-preview strong{color:var(--ink);font-variant-numeric:tabular-nums}
+  .removal-preview .outline{padding:4px 8px;min-height:35px}.removal-preview .value{display:inline-block;margin-left:4px;font-size:.88rem}
+  @media(max-width:660px){.removal-preview .outline{min-height:42px}}
   .callout{margin-top:11px;padding:8px 9px;border-radius:5px;background:#f0f6f1;border-left:2px solid var(--accent);font-size:.77rem;color:#36525b}
   .hint{margin-top:7px}.status:empty{display:none}.source-line{margin-top:9px}.status{color:#204b46}.comparison--miss{color:#8c3739}
   .bench-grid{display:grid;grid-template-columns:minmax(340px,1.03fr) minmax(280px,.97fr);align-items:start;gap:19px;margin-top:11px}
@@ -339,6 +347,7 @@ const engine=typeof MarkRouteEngine==='undefined'?null:MarkRouteEngine;
 const reviewEvidence=payload?.review;
 const examples={eventId:'325',seed:7162,worked:'32828',miss:'3131'};
 const opening={location:null,update:null};
+let removalPreview=null;
 const clear=id=>node(id).replaceChildren();
 function add(parent,tag,value,cls){
   const el=document.createElement(tag);
@@ -496,7 +505,8 @@ function explainOpening(){
 function drawInfluence(scenario){
   const panel=node('influence');
   if(panel.hidden||!panel.open)return;
-  const result=engine.explainSurveyInfluence(scenario.sites,payload.estimator,state.site);
+  const targetIndex=state.site;
+  const result=engine.explainSurveyInfluence(scenario.sites,payload.estimator,targetIndex);
   const contents=node('influence-content');
   contents.replaceChildren();
   if(!result.available){
@@ -514,26 +524,89 @@ function drawInfluence(scenario){
   }
   const max=Math.max(...contributions.map(row=>Math.abs(row.contributionFt)),.001);
   const list=add(contents,'ul',undefined,'influence-list');
-  list.setAttribute('aria-label','Changes to the estimate from nearby readings');
+  list.setAttribute('aria-label','Shapley averages for nearby readings');
+  const controls=[];
+  if(removalPreview&&(removalPreview.scenario!==scenario||removalPreview.targetIndex!==targetIndex))removalPreview=null;
   for(const row of contributions){
     const item=add(list,'li',undefined,'influence-row');
-    const label=add(item,'div');
+    const button=add(item,'button',undefined,'influence-trigger');
+    button.type='button';
+    button.dataset.withholdIndex=String(row.index);
+    button.setAttribute('aria-controls','removal-result');
+    controls.push(button);
+    const label=add(button,'span');
     add(label,'strong',`Mark ${row.id}`);
     const distance=row.distanceKm<1?`${Math.round(row.distanceKm*1000)} m`:`${row.distanceKm.toFixed(2)} km`;
     add(label,'small',`${ft(row.observedFt)} recorded · ${distance} away`);
-    const plot=add(item,'div',undefined,'influence-plot');
+    const plot=add(button,'span',undefined,'influence-plot');
     plot.setAttribute('aria-hidden','true');
     const effect=row.contributionFt;
     const span=49*Math.abs(effect)/max;
-    const bar=add(plot,'div',undefined,`influence-bar${effect<0?' negative':''}`);
+    const bar=add(plot,'span',undefined,`influence-bar${effect<0?' negative':''}`);
     bar.style.left=`${effect<0?50-span:50}%`;
     bar.style.width=`${span}%`;
-    const direction=effect<0?'Lowered':effect>0?'Raised':'Changed';
     const sign=Math.abs(effect)<.005?'':effect<0?'−':'+';
-    const numeral=add(item,'span',`${sign}${ft(Math.abs(effect))}`,'influence-signed');
-    numeral.setAttribute('aria-label',`${direction} estimate by ${ft(Math.abs(effect))}`);
+    add(button,'span',`${sign}${ft(Math.abs(effect))}`,'influence-signed');
+    button.setAttribute('aria-label',`Preview without mark ${row.id}, recorded ${ft(row.observedFt)}, ${distance} away. Shapley average ${sign}${ft(Math.abs(effect))}.`);
+    button.addEventListener('click',()=>{
+      if(removalPreview?.index===row.index){
+        removalPreview=null;
+        renderPreview();
+        return;
+      }
+      const estimate=estimateWithoutReading(scenario,targetIndex,row.index);
+      if(!Number.isFinite(estimate)){
+        removalPreview=null;
+        renderPreview();
+        previewStatus.textContent='Could not compute this preview. All readings are still in the survey.';
+        return;
+      }
+      removalPreview={scenario,targetIndex,index:row.index,id:row.id,estimate};
+      renderPreview();
+    });
   }
-  add(contents,'p',`The Shapley values average how much each reading changes this estimate when added in every possible order. The changes sum to the difference between the two estimates before rounding.`);
+  const preview=add(contents,'section',undefined,'removal-preview');
+  const previewHead=add(preview,'div',undefined,'removal-head');
+  add(previewHead,'h3','Preview one missing reading').id='removal-title';
+  preview.setAttribute('aria-labelledby','removal-title');
+  const restore=add(previewHead,'button','Restore all readings','outline');
+  restore.id='restore-reading';
+  restore.type='button';
+  const previewStatus=add(preview,'p');
+  previewStatus.id='removal-result';
+  previewStatus.setAttribute('role','status');
+  previewStatus.setAttribute('aria-atomic','true');
+  function renderPreview(){
+    const selected=removalPreview;
+    for(const button of controls)button.setAttribute('aria-pressed',String(selected!==null&&Number(button.dataset.withholdIndex)===selected.index));
+    restore.hidden=selected===null;
+    previewStatus.replaceChildren();
+    if(!selected){
+      previewStatus.textContent=`Choose a mark above to see the estimate without just that one reading. With all readings, ${ft(result.modelFt)}.`;
+      return;
+    }
+    add(previewStatus,'strong',`Without mark ${selected.id}`);
+    previewStatus.append(' ');
+    add(previewStatus,'strong',ft(selected.estimate),'value');
+    const change=selected.estimate-result.modelFt;
+    const signed=Math.abs(change)<.005?'0.00 ft':`${change<0?'−':'+'}${ft(Math.abs(change))}`;
+    previewStatus.append(` (${signed} from ${ft(result.modelFt)} with all readings).`);
+  }
+  restore.addEventListener('click',()=>{
+    const last=removalPreview?.index;
+    removalPreview=null;
+    renderPreview();
+    controls.find(button=>Number(button.dataset.withholdIndex)===last)?.focus();
+  });
+  renderPreview();
+  add(contents,'p','The preview leaves the survey intact. The bars show Shapley averages across all orders of adding those readings. They sum to the shift from the fixed survey to the full survey before rounding.');
+}
+function estimateWithoutReading(scenario,targetIndex,anchorIndex){
+  const previewSites=scenario.sites.map((site,index)=>{
+    const surveyed=site.surveyed&&index!==anchorIndex;
+    return {...site,surveyed,actualFt:surveyed?site.actualFt:null};
+  });
+  return engine.recompute(previewSites,payload.estimator)[targetIndex]?.modelFt;
 }
 function nearestWithheld(scenario,point){
   const scale=Math.cos(point.lat*Math.PI/180);
@@ -772,7 +845,10 @@ function setup(){
   node('mark-select').addEventListener('change',e=>chooseSite(Number(e.target.value),false));
   Object.keys(METHODS).forEach(key=>node(key).addEventListener('click',()=>{state.method=key;draw();}));
   node('reveal').addEventListener('click',()=>{state.revealed=!state.revealed;drawDetails(active());});
-  node('influence').addEventListener('toggle',()=>drawInfluence(active()));
+  node('influence').addEventListener('toggle',()=>{
+    if(node('influence').open)drawInfluence(active());
+    else removalPreview=null;
+  });
   node('add-survey').addEventListener('click',()=>addMeasurement());
   node('reset-survey').addEventListener('click',()=>{
     selectScenario(state.scenario,active().sites[state.site].id);

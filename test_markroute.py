@@ -55,6 +55,42 @@ def replay_with_added_survey(frame, sites, index, model):
     return rows
 
 
+def reading_counterfactuals(frame, sites, added_index, model):
+    """Compute counterfactuals from independent Python masks over the same panel."""
+    surveyed = np.array([site['surveyed'] for site in sites], dtype=bool)
+    environments = frame.environment.to_numpy()
+    xy = xy_km(frame)
+    distances = cdist(xy, xy)
+    cases = []
+    for step in ('initial', 'afterAdd'):
+        if step == 'afterAdd':
+            surveyed[added_index] = True
+        for target in np.flatnonzero(~surveyed):
+            local = np.flatnonzero(surveyed & (environments == environments[target]))
+            if len(local) >= 2:
+                break
+        else:
+            raise AssertionError('No unmeasured target with two same-environment readings')
+
+        closest = local[np.argsort(distances[target, local], kind='stable')][:min(4, len(local) - 1)]
+
+        def estimate(available):
+            # Blank unknown archive values before computing any feature, retaining
+            # the full coordinate panel and original environment membership.
+            copy = frame.copy()
+            copy.loc[~copy.index.isin(available), 'elev_ft'] = np.nan
+            features = observation_features(copy, xy, distances, available, np.array([target]))
+            assert np.isnan(features['actual']).all()
+            return float(features['default'][0] + model.predict(features['features'])[0])
+
+        all_readings = estimate(local)
+        for removed in closest:
+            without = estimate(local[local != removed])
+            cases.append({'step': step, 'target': int(target), 'removed': int(removed),
+                          'fullFt': all_readings, 'withoutFt': without})
+    return cases
+
+
 class MarkRouteRegression(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -176,6 +212,7 @@ class MarkRouteRegression(unittest.TestCase):
                 index = next(i for i, site in enumerate(scenario['sites']) if not site['surveyed'])
                 scenario['addedSurvey'] = index
                 scenario['afterSurvey'] = replay_with_added_survey(frame, scenario['sites'], index, self.model)
+                scenario['readingCounterfactuals'] = reading_counterfactuals(frame, scenario['sites'], index, self.model)
 
         runtime = os.environ.get('MARKROUTE_JS_RUNTIME') or shutil.which('node') or shutil.which('jsc')
         if not runtime:

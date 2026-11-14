@@ -9,6 +9,9 @@
   let updatedScenarios = 0;
   let attributions = 0;
   let changedAttributions = 0;
+  let counterfactuals = 0;
+  let changedCounterfactuals = 0;
+  let maximumRemovalDifference = 0;
 
   function assertEstimates(estimate, expected, context) {
     for (const [key, field] of fields.entries()) {
@@ -30,6 +33,38 @@
     if (!Number.isFinite(actual) || !Number.isFinite(expected) || Math.abs(actual - expected) > tolerance) {
       throw new Error(`${context}: ${actual} does not match ${expected}`);
     }
+  }
+
+  function checkReadingCounterfactual(sites, result, details, context) {
+    const {target, removed, fullFt, withoutFt} = details;
+    const model = MARKROUTE_DATA.estimator;
+    const frozen = Object.freeze(sites.map(site => Object.freeze({...site})));
+    const before = JSON.stringify(frozen);
+    if (frozen[target].surveyed || !frozen[removed].surveyed) throw new Error(`${context}: infeasible removal`);
+    const explanation = MarkRouteEngine.explainSurveyInfluence(frozen, model, target);
+    if (!explanation.available || !explanation.contributions.some(entry => entry.index === removed)) {
+      throw new Error(`${context}: remove only a listed survey reading`);
+    }
+    close(explanation.modelFt, fullFt, `${context} full estimate against Python`);
+    close(result[target].modelFt, fullFt, `${context} replay estimate against Python`);
+
+    const omitted = Object.freeze(frozen.map((site, i) => Object.freeze({...site, surveyed: site.surveyed && i !== removed})));
+    const blind = Object.freeze(omitted.map(site => site.surveyed ? site : Object.freeze({...site, actualFt: null})));
+    const blindedBefore = JSON.stringify(blind);
+    const preview = MarkRouteEngine.recompute(blind, model);
+    const withArchiveValues = MarkRouteEngine.recompute(omitted, model);
+    close(preview[target].modelFt, withoutFt, `${context} without reading against Python`);
+    close(preview[target].modelFt - result[target].modelFt, withoutFt - fullFt, `${context} displayed signed change`);
+    if (preview[target].modelFt !== withArchiveValues[target].modelFt) {
+      throw new Error(`${context}: hidden elevations, including the simulated removal, changed the estimate`);
+    }
+    if (JSON.stringify(frozen) !== before || JSON.stringify(blind) !== blindedBefore) {
+      throw new Error(`${context}: preview mutated the replay, or its masked copy`);
+    }
+    close(MarkRouteEngine.recompute(frozen, model)[target].modelFt, fullFt, `${context} restore full estimate`);
+    maximumRemovalDifference = Math.max(maximumRemovalDifference, Math.abs(preview[target].modelFt - withoutFt));
+    if (Math.abs(withoutFt - fullFt) > tolerance) changedCounterfactuals++;
+    counterfactuals++;
   }
 
   function checkSyntheticAttribution() {
@@ -121,11 +156,18 @@
       const newContributions = afterInfluence.contributions.map(item => [item.id, item.contributionFt]);
       if (JSON.stringify(oldContributions) !== JSON.stringify(newContributions)) changedAttributions++;
       attributions++;
+      for (const details of replay.readingCounterfactuals) {
+        const added = details.step === 'afterAdd';
+        checkReadingCounterfactual(added ? reveal : replay.sites, added ? next : baseline,
+          details, `${context} ${details.step} removing ${details.removed}`);
+      }
     }
   }
   if (!updatedScenarios) throw new Error('The new measurements never changed an estimate');
   if (!changedAttributions) throw new Error('The new measurements never changed an attribution');
+  if (!changedCounterfactuals) throw new Error('Withholding a reading never changed the estimate');
   const summary = JSON.stringify({initial, afterReveal, blinded, updatedScenarios, attributions, changedAttributions,
+    counterfactuals, changedCounterfactuals, maximumRemovalDifferenceFt: maximumRemovalDifference,
     maximumDifferenceFt: maximumDifference});
   if (typeof print === 'function') print(summary);
   else console.log(summary);

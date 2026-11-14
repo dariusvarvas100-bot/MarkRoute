@@ -10,7 +10,7 @@ After a flood, a survey coordinator can have a list of places where crews found 
 
 The opening replay shows the recalculation at the closest remaining mark in the same environment. Average error across the same 249 remaining marks falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In the map, choose **Measured miss** to inspect a separate site where bounded regression is closer. Each point shows the starting estimate and the model’s signed correction.
 
-**What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. The crew’s measurement at the target remains hidden during the explanation.
+**What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout.
 
 ## Held-out results
 
@@ -73,7 +73,7 @@ The replay can also highlight the approximately 20% of withheld marks where the 
 
 ## Which readings moved the estimate?
 
-The offline browser recomputes the live estimator for each of up to 16 subsets of the four closest surveyed readings in the same environment. All other surveyed readings are held fixed, including at least one from that environment. A reading's [Shapley value](https://doi.org/10.1515/9781400881970-018) is its average marginal change across all possible orders of adding those readings. For a subset of size `s` and `m` varied readings, the weight is `s! (m - s - 1)! / m!`. The signed values sum to the difference between the fixed-survey estimate and the full estimate. These values describe how the deployed model responds, given the chosen four nearby readings. They do not represent physical causation or an error bound.
+The offline browser recomputes the live estimator for each of up to 16 subsets of the four closest surveyed readings in the same environment. All other surveyed readings are held fixed, including at least one from that environment. A reading's [Shapley value](https://doi.org/10.1515/9781400881970-018) is its average marginal change across all possible orders of adding those readings. For a subset of size `s` and `m` varied readings, the weight is `s! (m - s - 1)! / m!`. The signed values sum to the difference between the fixed-survey estimate and the full estimate. In the separate removal preview, the browser recalculates with one reading omitted and all the others available. For Ian mark 32828, removal of mark 26290 lowers the full estimate from 12.51 to 12.37 ft, a change of −0.14 ft. Its Shapley value is +0.59 ft because it averages the change across all subsets. The preview leaves the active survey and archived labels untouched. Both numbers describe the model’s response to survey inputs.
 
 The browser test confirms that the attributions sum correctly in 32 archived replays, are unchanged if hidden answers are erased, and agree with an independent enumeration of all 24 orders in a four-reading example. [Related research on model attribution](https://proceedings.neurips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html)
 
@@ -82,6 +82,20 @@ The browser test confirms that the attributions sum correctly in 32 archived rep
 We tested two hypotheses with otherwise identical booster fits and the same revealed marks. First, terrain should improve transfer to riverine sites located more than 100 km from the earlier study sites. Removing terrain from both the starting estimate and learned features raised MAE from **4.58 to 85.00 ft** across **1,365 riverine sites** in eight geographic holdout floods. The complete model had lower mean error in every flood. This is a data-removal experiment. Practical comparators retain terrain and score about **5.46 ft** in the larger geographic benchmark above. [Terrain experiment protocol](TERRAIN_ABLATION_PROTOCOL.md) · [Terrain results](terrain_ablation_results.json)
 
 Second, a named-waterbody match might help beyond terrain and distance. Blanking names at training and test changed riverine MAE from **4.8149 to 4.8153 ft** across 13 archived floods. The paired 95% interval for the benefit was **−0.034 to +0.034 ft**. The study found no measurable improvement from those tags. A shared name is only a proxy for connectivity between channel reaches. [Waterbody experiment protocol](WATERBODY_PROTOCOL.md) · [Waterbody results](waterbody_ablation_results.json) · [USGS stream-network data](https://www.usgs.gov/national-hydrography/nhdplus-high-resolution)
+
+### Does the terrain-based starting estimate help when both models have terrain?
+
+We trained four identical boosters with the same terrain, survey features and three absolute starting estimates as inputs. The only change was what each booster learned to predict. We chose the strongest alternative on the development floods.
+
+| Learned target | Average error at 1,365 distant riverine sites |
+| --- | ---: |
+| Correction to MarkRoute’s terrain-based start | **4.54 ft** |
+| Correction to bounded terrain regression | 4.86 ft |
+| Correction to distance-weighted interpolation | 29.68 ft |
+| Absolute elevation | 996.41 ft |
+| Current MarkRoute release, original feature set | 4.58 ft |
+
+The terrain-based starting estimate gave **6.6% lower mean error** than the strongest learned alternative, a booster using the same data to correct bounded terrain regression. It led in **seven of eight floods**, with a paired 95% interval of **0.11 to 1.01 ft**. Training elevations reached 445 ft, while the remote riverine surface elevations reached 6,114 ft. The direct booster struggled in that range. Across leave-one-flood-out checks, the residual strategy retained a pooled advantage of 4.9% to 7.8%. The controlled comparison adds three features to every experimental strategy. The separately reported released model uses its original feature set. These are replays on previously evaluated floods. [Protocol](RESIDUAL_PROTOCOL.md) · [Development lock](residual_selection.json) · [Per-event results](residual_formulation_results.json) · [Related streamflow transfer research](https://ijcai.org/proceedings/2024/793)
 
 ## What to measure next
 
@@ -129,6 +143,8 @@ python survey_decision.py validation
 python survey_decision.py test
 python waterbody_ablation.py
 python terrain_ablation.py
+python residual_formulation.py validation
+python residual_formulation.py test
 python demo_export.py
 ```
 
@@ -136,7 +152,7 @@ These commands use the supplied processed [survey panel](panel.csv) and regenera
 
 ## Regression tests
 
-With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 13 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders.
+With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 13 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
 
 ## Scope and data
 

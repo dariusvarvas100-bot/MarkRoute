@@ -1,0 +1,33 @@
+{
+  "freeze": {
+    "RESIDUAL_PROTOCOL.md": "cef9ada1f3e54ebce058fbac24bfcd3733333a28bebfe0e83b9be86b11eba068",
+    "residual_formulation.py": "7390ad25e3eb8578ae5bd6f2f0067ff0b4e2c701a63ab490000d816773762c5c",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "waterbody_ablation.py": "0aa0743787606cb87f8c0a934129d61dacc42d32056ce9cde08d6c588298d451",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9"
+  },
+  "selectedAlternative": "bounded-terrain residual",
+  "developmentRiverine": {
+    "complete": {
+      "maeFt": 2.4539162432867783,
+      "shareOverFiveFt": 0.10795454545454546
+    },
+    "direct elevation": {
+      "maeFt": 7.31112917581313,
+      "shareOverFiveFt": 0.1534090909090909
+    },
+    "distance-weighted residual": {
+      "maeFt": 7.635509776384663,
+      "shareOverFiveFt": 0.125
+    },
+    "bounded-terrain residual": {
+      "maeFt": 2.4014009791260866,
+      "shareOverFiveFt": 0.09974747474747475
+    },
+    "released MarkRoute": {
+      "maeFt": 2.3893061342871693,
+      "shareOverFiveFt": 0.10258838383838384
+    }
+  }
+}

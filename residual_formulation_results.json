@@ -1,0 +1,425 @@
+{
+  "frozenAlternative": "bounded-terrain residual",
+  "primaryRiverine": {
+    "sites": 1365,
+    "scoredMaskSitePairs": 18560,
+    "methods": {
+      "complete": {
+        "maeFt": 4.536994220134485,
+        "shareOverFiveFt": 0.2913254310344828
+      },
+      "direct elevation": {
+        "maeFt": 996.4107578337583,
+        "shareOverFiveFt": 0.8960129310344828
+      },
+      "distance-weighted residual": {
+        "maeFt": 29.681629510979686,
+        "shareOverFiveFt": 0.4049568965517241
+      },
+      "bounded-terrain residual": {
+        "maeFt": 4.8567100246666275,
+        "shareOverFiveFt": 0.29768318965517243
+      },
+      "released MarkRoute": {
+        "maeFt": 4.575636470520016,
+        "shareOverFiveFt": 0.29407327586206894
+      }
+    },
+    "eventResults": {
+      "2015-16 Winter MO Flood": {
+        "complete": {
+          "maeFt": 3.4614396417963302,
+          "shareOverFiveFt": 0.2080965909090909
+        },
+        "direct elevation": {
+          "maeFt": 61.64818577103465,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 3.559435290894284,
+          "shareOverFiveFt": 0.21803977272727273
+        },
+        "bounded-terrain residual": {
+          "maeFt": 3.472726912060742,
+          "shareOverFiveFt": 0.19957386363636365
+        },
+        "released MarkRoute": {
+          "maeFt": 3.234897203337532,
+          "shareOverFiveFt": 0.18892045454545456
+        }
+      },
+      "2016 Jul WI Flood": {
+        "complete": {
+          "maeFt": 4.512428192090728,
+          "shareOverFiveFt": 0.3277439024390244
+        },
+        "direct elevation": {
+          "maeFt": 237.4604615422675,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 4.196939811054476,
+          "shareOverFiveFt": 0.29573170731707316
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.349569052684503,
+          "shareOverFiveFt": 0.3567073170731707
+        },
+        "released MarkRoute": {
+          "maeFt": 4.72682433630351,
+          "shareOverFiveFt": 0.35060975609756095
+        }
+      },
+      "2022 December - 2023 January CA Flood": {
+        "complete": {
+          "maeFt": 10.450911836490855,
+          "shareOverFiveFt": 0.5241935483870968
+        },
+        "direct elevation": {
+          "maeFt": 108.61812429512942,
+          "shareOverFiveFt": 0.6935483870967742
+        },
+        "distance-weighted residual": {
+          "maeFt": 146.2439848370671,
+          "shareOverFiveFt": 0.6512096774193549
+        },
+        "bounded-terrain residual": {
+          "maeFt": 11.374285693752293,
+          "shareOverFiveFt": 0.5201612903225806
+        },
+        "released MarkRoute": {
+          "maeFt": 10.79615603201224,
+          "shareOverFiveFt": 0.5403225806451613
+        }
+      },
+      "2022 June MT Flood": {
+        "complete": {
+          "maeFt": 5.448418180806917,
+          "shareOverFiveFt": 0.3460195530726257
+        },
+        "direct elevation": {
+          "maeFt": 4249.662524603382,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 71.63311497229678,
+          "shareOverFiveFt": 0.4622905027932961
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.8090046497945345,
+          "shareOverFiveFt": 0.3571927374301676
+        },
+        "released MarkRoute": {
+          "maeFt": 5.473512266285147,
+          "shareOverFiveFt": 0.3463687150837989
+        }
+      },
+      "2023 December East Coast Cyclone": {
+        "complete": {
+          "maeFt": 5.103907095107076,
+          "shareOverFiveFt": 0.3885135135135135
+        },
+        "direct elevation": {
+          "maeFt": 95.7269646813114,
+          "shareOverFiveFt": 0.7519707207207207
+        },
+        "distance-weighted residual": {
+          "maeFt": 30.751513174563417,
+          "shareOverFiveFt": 0.5199887387387387
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.267675877935241,
+          "shareOverFiveFt": 0.38963963963963966
+        },
+        "released MarkRoute": {
+          "maeFt": 5.311979740243906,
+          "shareOverFiveFt": 0.4073761261261261
+        }
+      },
+      "2024 Jan CA Flood": {
+        "complete": {
+          "maeFt": 4.191562916854942,
+          "shareOverFiveFt": 0.30288461538461536
+        },
+        "direct elevation": {
+          "maeFt": 4.8880738347460655,
+          "shareOverFiveFt": 0.3485576923076923
+        },
+        "distance-weighted residual": {
+          "maeFt": 27.178672962516405,
+          "shareOverFiveFt": 0.4423076923076923
+        },
+        "bounded-terrain residual": {
+          "maeFt": 8.32288266040383,
+          "shareOverFiveFt": 0.3269230769230769
+        },
+        "released MarkRoute": {
+          "maeFt": 4.53012340837927,
+          "shareOverFiveFt": 0.3076923076923077
+        }
+      },
+      "2024 June IA Flood": {
+        "complete": {
+          "maeFt": 3.135205450078534,
+          "shareOverFiveFt": 0.19240196078431374
+        },
+        "direct elevation": {
+          "maeFt": 861.361543546392,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 9.899843817344571,
+          "shareOverFiveFt": 0.3480392156862745
+        },
+        "bounded-terrain residual": {
+          "maeFt": 3.1187270420448607,
+          "shareOverFiveFt": 0.17892156862745098
+        },
+        "released MarkRoute": {
+          "maeFt": 3.067584987255726,
+          "shareOverFiveFt": 0.16911764705882354
+        }
+      },
+      "Central US Spring 2019": {
+        "complete": {
+          "maeFt": 3.969556400001045,
+          "shareOverFiveFt": 0.2376676245210728
+        },
+        "direct elevation": {
+          "maeFt": 596.3810177377409,
+          "shareOverFiveFt": 0.9250478927203065
+        },
+        "distance-weighted residual": {
+          "maeFt": 16.381457525730312,
+          "shareOverFiveFt": 0.3655411877394636
+        },
+        "bounded-terrain residual": {
+          "maeFt": 4.160081546275718,
+          "shareOverFiveFt": 0.2470067049808429
+        },
+        "released MarkRoute": {
+          "maeFt": 3.9489242838344842,
+          "shareOverFiveFt": 0.23814655172413793
+        }
+      }
+    },
+    "eventWins": 7,
+    "relativeGain": 0.06582970836396362,
+    "paired95IntervalFt": [
+      0.10837550043015401,
+      1.0108253852040996
+    ],
+    "meetsThreshold": true
+  },
+  "secondaryAll": {
+    "sites": 1370,
+    "scoredMaskSitePairs": 18608,
+    "methods": {
+      "complete": {
+        "maeFt": 4.531114163972276,
+        "shareOverFiveFt": 0.2907889079965606
+      },
+      "direct elevation": {
+        "maeFt": 993.8508059762661,
+        "shareOverFiveFt": 0.8943465176268272
+      },
+      "distance-weighted residual": {
+        "maeFt": 29.61108706069277,
+        "shareOverFiveFt": 0.40407351676698194
+      },
+      "bounded-terrain residual": {
+        "maeFt": 4.851000512770729,
+        "shareOverFiveFt": 0.2972914875322442
+      },
+      "released MarkRoute": {
+        "maeFt": 4.569880201498541,
+        "shareOverFiveFt": 0.29342218400687875
+      }
+    },
+    "eventResults": {
+      "2015-16 Winter MO Flood": {
+        "complete": {
+          "maeFt": 3.4614396417963302,
+          "shareOverFiveFt": 0.2080965909090909
+        },
+        "direct elevation": {
+          "maeFt": 61.64818577103465,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 3.559435290894284,
+          "shareOverFiveFt": 0.21803977272727273
+        },
+        "bounded-terrain residual": {
+          "maeFt": 3.472726912060742,
+          "shareOverFiveFt": 0.19957386363636365
+        },
+        "released MarkRoute": {
+          "maeFt": 3.234897203337532,
+          "shareOverFiveFt": 0.18892045454545456
+        }
+      },
+      "2016 Jul WI Flood": {
+        "complete": {
+          "maeFt": 4.512428192090728,
+          "shareOverFiveFt": 0.3277439024390244
+        },
+        "direct elevation": {
+          "maeFt": 237.4604615422675,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 4.196939811054476,
+          "shareOverFiveFt": 0.29573170731707316
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.349569052684503,
+          "shareOverFiveFt": 0.3567073170731707
+        },
+        "released MarkRoute": {
+          "maeFt": 4.72682433630351,
+          "shareOverFiveFt": 0.35060975609756095
+        }
+      },
+      "2022 December - 2023 January CA Flood": {
+        "complete": {
+          "maeFt": 9.72796306691094,
+          "shareOverFiveFt": 0.4852941176470588
+        },
+        "direct elevation": {
+          "maeFt": 99.38735636432264,
+          "shareOverFiveFt": 0.6544117647058824
+        },
+        "distance-weighted residual": {
+          "maeFt": 133.54610437642162,
+          "shareOverFiveFt": 0.5992647058823529
+        },
+        "bounded-terrain residual": {
+          "maeFt": 10.603906595452665,
+          "shareOverFiveFt": 0.48713235294117646
+        },
+        "released MarkRoute": {
+          "maeFt": 10.050388397998944,
+          "shareOverFiveFt": 0.4963235294117647
+        }
+      },
+      "2022 June MT Flood": {
+        "complete": {
+          "maeFt": 5.448418180806917,
+          "shareOverFiveFt": 0.3460195530726257
+        },
+        "direct elevation": {
+          "maeFt": 4249.662524603382,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 71.63311497229678,
+          "shareOverFiveFt": 0.4622905027932961
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.8090046497945345,
+          "shareOverFiveFt": 0.3571927374301676
+        },
+        "released MarkRoute": {
+          "maeFt": 5.473512266285147,
+          "shareOverFiveFt": 0.3463687150837989
+        }
+      },
+      "2023 December East Coast Cyclone": {
+        "complete": {
+          "maeFt": 5.103907095107076,
+          "shareOverFiveFt": 0.3885135135135135
+        },
+        "direct elevation": {
+          "maeFt": 95.7269646813114,
+          "shareOverFiveFt": 0.7519707207207207
+        },
+        "distance-weighted residual": {
+          "maeFt": 30.751513174563417,
+          "shareOverFiveFt": 0.5199887387387387
+        },
+        "bounded-terrain residual": {
+          "maeFt": 5.267675877935241,
+          "shareOverFiveFt": 0.38963963963963966
+        },
+        "released MarkRoute": {
+          "maeFt": 5.311979740243906,
+          "shareOverFiveFt": 0.4073761261261261
+        }
+      },
+      "2024 Jan CA Flood": {
+        "complete": {
+          "maeFt": 4.191562916854942,
+          "shareOverFiveFt": 0.30288461538461536
+        },
+        "direct elevation": {
+          "maeFt": 4.8880738347460655,
+          "shareOverFiveFt": 0.3485576923076923
+        },
+        "distance-weighted residual": {
+          "maeFt": 27.178672962516405,
+          "shareOverFiveFt": 0.4423076923076923
+        },
+        "bounded-terrain residual": {
+          "maeFt": 8.32288266040383,
+          "shareOverFiveFt": 0.3269230769230769
+        },
+        "released MarkRoute": {
+          "maeFt": 4.53012340837927,
+          "shareOverFiveFt": 0.3076923076923077
+        }
+      },
+      "2024 June IA Flood": {
+        "complete": {
+          "maeFt": 3.135205450078534,
+          "shareOverFiveFt": 0.19240196078431374
+        },
+        "direct elevation": {
+          "maeFt": 861.361543546392,
+          "shareOverFiveFt": 1.0
+        },
+        "distance-weighted residual": {
+          "maeFt": 9.899843817344571,
+          "shareOverFiveFt": 0.3480392156862745
+        },
+        "bounded-terrain residual": {
+          "maeFt": 3.1187270420448607,
+          "shareOverFiveFt": 0.17892156862745098
+        },
+        "released MarkRoute": {
+          "maeFt": 3.067584987255726,
+          "shareOverFiveFt": 0.16911764705882354
+        }
+      },
+      "Central US Spring 2019": {
+        "complete": {
+          "maeFt": 3.969556400001045,
+          "shareOverFiveFt": 0.2376676245210728
+        },
+        "direct elevation": {
+          "maeFt": 596.3810177377409,
+          "shareOverFiveFt": 0.9250478927203065
+        },
+        "distance-weighted residual": {
+          "maeFt": 16.381457525730312,
+          "shareOverFiveFt": 0.3655411877394636
+        },
+        "bounded-terrain residual": {
+          "maeFt": 4.160081546275718,
+          "shareOverFiveFt": 0.2470067049808429
+        },
+        "released MarkRoute": {
+          "maeFt": 3.9489242838344842,
+          "shareOverFiveFt": 0.23814655172413793
+        }
+      }
+    },
+    "eventWins": 7,
+    "relativeGain": 0.06594234487428333,
+    "paired95IntervalFt": [
+      0.1106684458151662,
+      0.9724206124553616
+    ],
+    "meetsThreshold": true
+  }
+}
