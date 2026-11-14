@@ -53,7 +53,7 @@ const MarkRouteEngine = (() => {
       Math.log1p(peers.length), Math.asinh(site.groundFt / 50)];
     const quantized = features.map(value => Math.round(value * 1e6));
     const residual = model.intercept + sum(model.trees.map(tree => treeValue(tree, quantized)));
-    return {modelFt: base + residual, baselineFt: baseline};
+    return {modelFt: base + residual, baselineFt: baseline, startingFt: base, correctionFt: residual};
   }
 
   function recompute(sites, model = MARKROUTE_DATA.estimator) {
@@ -66,7 +66,7 @@ const MarkRouteEngine = (() => {
     const known = points.filter(point => point.surveyed);
     if (known.length === 0) return sites;
     return sites.map((site, i) => site.surveyed ?
-      {...site, modelFt: null, baselineFt: null} : {...site, ...prediction(points[i], known, model)});
+      {...site, modelFt: null, baselineFt: null, startingFt: null, correctionFt: null} : {...site, ...prediction(points[i], known, model)});
   }
 
   return {recompute};

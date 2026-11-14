@@ -27,9 +27,13 @@ def xy_km(points):
     return np.c_[111.2*np.cos(np.deg2rad(lat.mean()))*(lon-lon.mean()),111.2*(lat-lat.mean())]
 
 
-def observation_features(frame, xy, distances, seen, queries):
-    ranking=np.argsort(distances[np.ix_(queries,seen)],axis=1)
+def observation_features(frame, xy, distances, seen, queries, *, exclude_self=False):
+    available=distances[np.ix_(queries,seen)]
     count=min(PEERS,len(seen))
+    if exclude_self:
+        available[queries[:,None]==seen]=np.inf
+        count=min(PEERS,len(seen)-1)
+    ranking=np.argsort(available,axis=1)
     neighbors=seen[ranking[:,:count]]
     mask=np.ones(neighbors.shape,bool)
     if count<PEERS:

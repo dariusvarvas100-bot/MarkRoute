@@ -1,0 +1,337 @@
+{
+  "selectedSetting": [
+    "bounded",
+    0.75,
+    45.0,
+    0.25
+  ],
+  "originalIndependentReplay": {
+    "pooled": {
+      "bounded local regression": {
+        "maeFt": 2.475685710364183,
+        "missOver5FtRate": 0.12084717607973422
+      },
+      "gradient boost": {
+        "maeFt": 2.0788407210709257,
+        "missOver5FtRate": 0.10091362126245847
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 2.6714153987740765,
+        "missOver5FtRate": 0.13434385382059802
+      }
+    },
+    "events": {
+      "2022 Ian": {
+        "bounded local regression": {
+          "maeFt": 1.3210674701229357,
+          "missOver5FtRate": 0.045
+        },
+        "gradient boost": {
+          "maeFt": 1.1456035459656828,
+          "missOver5FtRate": 0.02125
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 1.3464371664284231,
+          "missOver5FtRate": 0.05375
+        }
+      },
+      "2024 Helene": {
+        "bounded local regression": {
+          "maeFt": 8.1355790448801,
+          "missOver5FtRate": 0.49264705882352944
+        },
+        "gradient boost": {
+          "maeFt": 6.653532755900549,
+          "missOver5FtRate": 0.49142156862745096
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 9.166406733801791,
+          "missOver5FtRate": 0.5294117647058824
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "bounded local regression": {
+          "maeFt": 1.035091390748783,
+          "missOver5FtRate": 0.018604651162790697
+        },
+        "gradient boost": {
+          "maeFt": 0.9669285125853291,
+          "missOver5FtRate": 0.006686046511627907
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 0.9350174742528339,
+          "missOver5FtRate": 0.01627906976744186
+        }
+      },
+      "Riverine": {
+        "bounded local regression": {
+          "maeFt": 6.077171509402682,
+          "missOver5FtRate": 0.376453488372093
+        },
+        "gradient boost": {
+          "maeFt": 4.858621242284917,
+          "missOver5FtRate": 0.33648255813953487
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 7.012410210077183,
+          "missOver5FtRate": 0.42950581395348836
+        }
+      }
+    },
+    "distinctSites": 355,
+    "predictivePairs": 4816,
+    "macroAverageMaeFt": {
+      "bounded local regression": 4.7283232575015175,
+      "gradient boost": 3.8995681509331157,
+      "terrain-aware local kriging": 5.256421950115107
+    },
+    "markRouteGainOverKriging95Ft": [
+      0.1794388894303407,
+      1.228277616004939
+    ],
+    "krigingGainOverBounded95Ft": [
+      -0.5788054141075416,
+      0.06393632876605118
+    ]
+  },
+  "additionalEventReplay": {
+    "pooled": {
+      "bounded local regression": {
+        "maeFt": 6.165942489436177,
+        "missOver5FtRate": 0.4166294642857143
+      },
+      "gradient boost": {
+        "maeFt": 5.297502437958197,
+        "missOver5FtRate": 0.36964285714285716
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 6.077943538422879,
+        "missOver5FtRate": 0.40669642857142857
+      }
+    },
+    "events": {
+      "2021 Ida": {
+        "bounded local regression": {
+          "maeFt": 5.579560535196511,
+          "missOver5FtRate": 0.33745733788395904
+        },
+        "gradient boost": {
+          "maeFt": 4.79163805034862,
+          "missOver5FtRate": 0.29244880546075086
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 5.437345653643086,
+          "missOver5FtRate": 0.32380546075085326
+        }
+      },
+      "2025 December (WA, ID, OR, MT) Flood": {
+        "bounded local regression": {
+          "maeFt": 4.870477735844561,
+          "missOver5FtRate": 0.3081896551724138
+        },
+        "gradient boost": {
+          "maeFt": 4.084545273903564,
+          "missOver5FtRate": 0.30387931034482757
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 4.659288743974347,
+          "missOver5FtRate": 0.29094827586206895
+        }
+      },
+      "2025 July TX Flood": {
+        "bounded local regression": {
+          "maeFt": 7.0456836257655,
+          "missOver5FtRate": 0.5273109243697479
+        },
+        "gradient boost": {
+          "maeFt": 6.068065561181687,
+          "missOver5FtRate": 0.4726890756302521
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 7.0394400480005554,
+          "missOver5FtRate": 0.5228466386554622
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "bounded local regression": {
+          "maeFt": 1.54,
+          "missOver5FtRate": 0.0
+        },
+        "gradient boost": {
+          "maeFt": 1.2110357634485132,
+          "missOver5FtRate": 0.0
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 1.54,
+          "missOver5FtRate": 0.0
+        }
+      },
+      "Riverine": {
+        "bounded local regression": {
+          "maeFt": 6.174217878504936,
+          "missOver5FtRate": 0.4173747763864043
+        },
+        "gradient boost": {
+          "maeFt": 5.304812754012777,
+          "missOver5FtRate": 0.370304114490161
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 6.086061505396802,
+          "missOver5FtRate": 0.4074239713774597
+        }
+      }
+    },
+    "distinctSites": 659,
+    "predictivePairs": 8960,
+    "macroAverageMaeFt": {
+      "bounded local regression": 5.831907298935524,
+      "gradient boost": 4.981416295144624,
+      "terrain-aware local kriging": 5.712024815205996
+    },
+    "markRouteGainOverKriging95Ft": [
+      0.5431304542487746,
+      1.0458516082328337
+    ],
+    "krigingGainOverBounded95Ft": [
+      -0.05833479180816132,
+      0.22255765338916034
+    ]
+  },
+  "combinedReplay": {
+    "pooled": {
+      "bounded local regression": {
+        "maeFt": 4.875852721142716,
+        "missOver5FtRate": 0.31322590011614404
+      },
+      "gradient boost": {
+        "maeFt": 4.172279236119557,
+        "missOver5FtRate": 0.27569686411149824
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 4.887043457082242,
+        "missOver5FtRate": 0.31148373983739835
+      }
+    },
+    "events": {
+      "2021 Ida": {
+        "bounded local regression": {
+          "maeFt": 5.579560535196511,
+          "missOver5FtRate": 0.33745733788395904
+        },
+        "gradient boost": {
+          "maeFt": 4.79163805034862,
+          "missOver5FtRate": 0.29244880546075086
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 5.437345653643086,
+          "missOver5FtRate": 0.32380546075085326
+        }
+      },
+      "2022 Ian": {
+        "bounded local regression": {
+          "maeFt": 1.3210674701229357,
+          "missOver5FtRate": 0.045
+        },
+        "gradient boost": {
+          "maeFt": 1.1456035459656828,
+          "missOver5FtRate": 0.02125
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 1.3464371664284231,
+          "missOver5FtRate": 0.05375
+        }
+      },
+      "2024 Helene": {
+        "bounded local regression": {
+          "maeFt": 8.1355790448801,
+          "missOver5FtRate": 0.49264705882352944
+        },
+        "gradient boost": {
+          "maeFt": 6.653532755900549,
+          "missOver5FtRate": 0.49142156862745096
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 9.166406733801791,
+          "missOver5FtRate": 0.5294117647058824
+        }
+      },
+      "2025 December (WA, ID, OR, MT) Flood": {
+        "bounded local regression": {
+          "maeFt": 4.870477735844561,
+          "missOver5FtRate": 0.3081896551724138
+        },
+        "gradient boost": {
+          "maeFt": 4.084545273903564,
+          "missOver5FtRate": 0.30387931034482757
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 4.659288743974347,
+          "missOver5FtRate": 0.29094827586206895
+        }
+      },
+      "2025 July TX Flood": {
+        "bounded local regression": {
+          "maeFt": 7.0456836257655,
+          "missOver5FtRate": 0.5273109243697479
+        },
+        "gradient boost": {
+          "maeFt": 6.068065561181687,
+          "missOver5FtRate": 0.4726890756302521
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 7.0394400480005554,
+          "missOver5FtRate": 0.5228466386554622
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "bounded local regression": {
+          "maeFt": 1.0374289306064275,
+          "missOver5FtRate": 0.018518518518518517
+        },
+        "gradient boost": {
+          "maeFt": 0.9680586387467328,
+          "missOver5FtRate": 0.006655092592592593
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 0.937818319279441,
+          "missOver5FtRate": 0.016203703703703703
+        }
+      },
+      "Riverine": {
+        "bounded local regression": {
+          "maeFt": 6.1612783626246355,
+          "missOver5FtRate": 0.4119186046511628
+        },
+        "gradient boost": {
+          "maeFt": 5.245320552449061,
+          "missOver5FtRate": 0.36579457364341084
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 6.209574666020853,
+          "missOver5FtRate": 0.4103682170542636
+        }
+      }
+    },
+    "distinctSites": 1014,
+    "predictivePairs": 13776,
+    "macroAverageMaeFt": {
+      "bounded local regression": 5.390473682361922,
+      "gradient boost": 4.5486770374600205,
+      "terrain-aware local kriging": 5.529783669169641
+    },
+    "markRouteGainOverKriging95Ft": [
+      0.49297135500549916,
+      0.990445070335541
+    ],
+    "krigingGainOverBounded95Ft": [
+      -0.1719206197836329,
+      0.11931784763053199
+    ]
+  }
+}

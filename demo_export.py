@@ -41,13 +41,15 @@ def replay(frame,seed,model):
         inputs=observation_features(frame,xy,distances,neighbors if len(neighbors) else seen,wanted)
         baseline=inputs['baseline'][:,3]
         predicted=inputs['default']+model.predict(inputs['features'])
-        estimates.update(zip(wanted,zip(predicted,baseline,strict=True),strict=True))
+        estimates.update(zip(wanted,zip(predicted,baseline,inputs['default'],strict=True),strict=True))
     for idx,row in enumerate(frame.itertuples(index=False)):
-        model_ft,base_ft=estimates.get(idx,(None,None))
+        model_ft,base_ft,start_ft=estimates.get(idx,(None,None,None))
         points.append({'id':str(row.site_id),'lat':row.latitude,'lon':row.longitude,
                        'environment':row.environment,'waterbody':row.waterbody,
                        'surveyed':idx in reviewed,'actualFt':row.elev_ft,
-                       'modelFt':model_ft,'baselineFt':base_ft,'groundFt':row.terrain_median_ft,
+                       'modelFt':model_ft,'baselineFt':base_ft,'startingFt':start_ft,
+                       'correctionFt':None if start_ft is None else model_ft-start_ft,
+                       'groundFt':row.terrain_median_ft,
                        'pointFt':row.terrain_ft,'reliefFt':row.relief_ft})
     def error(key):
         return float(np.mean([abs(point[key]-point['actualFt']) for point in points if not point['surveyed']]))
@@ -63,8 +65,34 @@ def build():
         points=frame[frame.event_id.eq(id_)].reset_index(drop=True)
         events.append({'id':id_,'name':points.event_name.iat[0],
                        'scenarios':[replay(points,seed,model) for seed in range(SEED,SEED+16)]})
-    return {'summary':json.loads((ROOT/'holdout.json').read_text()),'events':events,
-            'estimator':pack_trees(model)}
+    payload = {'summary': json.loads((ROOT/'holdout.json').read_text()), 'events': events,
+               'estimator': pack_trees(model)}
+    external = ROOT/'external_results.json'
+    if external.is_file():
+        payload['external'] = json.loads(external.read_text())
+    review = ROOT/'review_results.json'
+    if review.is_file():
+        report = json.loads(review.read_text())
+        stats = report['results']['all test']['methods']['model disagreement']
+        pooled = stats['pooled']
+        payload['review'] = {'budget': report['budgetFraction'], 'caught': pooled['largeErrorsFlagged'],
+                             'totalLargeErrors': pooled['largeErrorPairs'], 'eventCount': len(stats['events'])}
+    robustness = ROOT/'robustness_results.json'
+    if robustness.is_file():
+        report = json.loads(robustness.read_text())
+        def paired_metrics(phase):
+            return {'model': phase['pooled']['gradient boost']['maeFt'],
+                    'baseline': phase['pooled']['bounded local regression']['maeFt']}
+        budgets = report['nominalBudgetsPercent']
+        gaps = report['geographicGap']
+        dispersed = paired_metrics(gaps['dispersed'])
+        missing = paired_metrics(gaps['missingCluster'])
+        payload['robustness'] = {'budgets': budgets,
+                                 'points': [{'percent': budget, **paired_metrics(report['commonTargets'][str(budget)])}
+                                            for budget in budgets],
+                                 'gap': {'modelDispersed': dispersed['model'], 'modelMissing': missing['model'],
+                                         'baselineDispersed': dispersed['baseline'], 'baselineMissing': missing['baseline']}}
+    return payload
 
 
 def main():

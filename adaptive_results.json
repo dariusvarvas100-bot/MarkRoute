@@ -1,0 +1,138 @@
+{
+  "primary": {
+    "scores": {
+      "pooled": {
+        "MarkRoute": {
+          "maeFt": 2.0788407210709257,
+          "missOver5FtRate": 0.10091362126245847
+        },
+        "adaptive blend": {
+          "maeFt": 2.1016539216933987,
+          "missOver5FtRate": 0.09966777408637874
+        }
+      },
+      "events": {
+        "2022 Ian": {
+          "MarkRoute": {
+            "maeFt": 1.1456035459656828,
+            "missOver5FtRate": 0.02125
+          },
+          "adaptive blend": {
+            "maeFt": 1.1493236732107575,
+            "missOver5FtRate": 0.022
+          }
+        },
+        "2024 Helene": {
+          "MarkRoute": {
+            "maeFt": 6.653532755900549,
+            "missOver5FtRate": 0.49142156862745096
+          },
+          "adaptive blend": {
+            "maeFt": 6.769939453471051,
+            "missOver5FtRate": 0.4803921568627451
+          }
+        }
+      },
+      "environments": {
+        "Coastal": {
+          "MarkRoute": {
+            "maeFt": 0.9669285125853291,
+            "missOver5FtRate": 0.006686046511627907
+          },
+          "adaptive blend": {
+            "maeFt": 0.971034117290095,
+            "missOver5FtRate": 0.007267441860465116
+          }
+        },
+        "Riverine": {
+          "MarkRoute": {
+            "maeFt": 4.858621242284917,
+            "missOver5FtRate": 0.33648255813953487
+          },
+          "adaptive blend": {
+            "maeFt": 4.928203432701657,
+            "missOver5FtRate": 0.33066860465116277
+          }
+        }
+      }
+    },
+    "absoluteGainPaired95Ft": [
+      -0.05661789750925198,
+      0.008247316179533856
+    ],
+    "changedPredictions": 1069
+  },
+  "external": {
+    "scores": {
+      "pooled": {
+        "MarkRoute": {
+          "maeFt": 5.297502437958197,
+          "missOver5FtRate": 0.36964285714285716
+        },
+        "adaptive blend": {
+          "maeFt": 5.300184864243015,
+          "missOver5FtRate": 0.36674107142857143
+        }
+      },
+      "events": {
+        "2021 Ida": {
+          "MarkRoute": {
+            "maeFt": 4.79163805034862,
+            "missOver5FtRate": 0.29244880546075086
+          },
+          "adaptive blend": {
+            "maeFt": 4.734036511887316,
+            "missOver5FtRate": 0.2805034129692833
+          }
+        },
+        "2025 December (WA, ID, OR, MT) Flood": {
+          "MarkRoute": {
+            "maeFt": 4.084545273903564,
+            "missOver5FtRate": 0.30387931034482757
+          },
+          "adaptive blend": {
+            "maeFt": 4.238690390568658,
+            "missOver5FtRate": 0.3081896551724138
+          }
+        },
+        "2025 July TX Flood": {
+          "MarkRoute": {
+            "maeFt": 6.068065561181687,
+            "missOver5FtRate": 0.4726890756302521
+          },
+          "adaptive blend": {
+            "maeFt": 6.12650758263283,
+            "missOver5FtRate": 0.4800420168067227
+          }
+        }
+      },
+      "environments": {
+        "Coastal": {
+          "MarkRoute": {
+            "maeFt": 1.2110357634485132,
+            "missOver5FtRate": 0.0
+          },
+          "adaptive blend": {
+            "maeFt": 1.2110357634485132,
+            "missOver5FtRate": 0.0
+          }
+        },
+        "Riverine": {
+          "MarkRoute": {
+            "maeFt": 5.304812754012777,
+            "missOver5FtRate": 0.370304114490161
+          },
+          "adaptive blend": {
+            "maeFt": 5.307499978913488,
+            "missOver5FtRate": 0.36739713774597493
+          }
+        }
+      }
+    },
+    "absoluteGainPaired95Ft": [
+      -0.07087638235266491,
+      0.05912099855009401
+    ],
+    "changedPredictions": 3300
+  }
+}

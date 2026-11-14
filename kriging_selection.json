@@ -1,0 +1,158 @@
+{
+  "selected": [
+    "bounded",
+    0.75,
+    45.0,
+    0.25
+  ],
+  "selectionMaeFt": 2.233598636338801,
+  "choices": [
+    {
+      "setting": [
+        "physics",
+        0.75,
+        null,
+        0.03
+      ],
+      "validationMaeFt": 2.636761059681257
+    },
+    {
+      "setting": [
+        "physics",
+        0.75,
+        null,
+        0.25
+      ],
+      "validationMaeFt": 2.5681929240742436
+    },
+    {
+      "setting": [
+        "physics",
+        0.75,
+        45.0,
+        0.03
+      ],
+      "validationMaeFt": 2.528261659820626
+    },
+    {
+      "setting": [
+        "physics",
+        0.75,
+        45.0,
+        0.25
+      ],
+      "validationMaeFt": 2.522624919637616
+    },
+    {
+      "setting": [
+        "physics",
+        2.5,
+        null,
+        0.03
+      ],
+      "validationMaeFt": 2.7215229569709933
+    },
+    {
+      "setting": [
+        "physics",
+        2.5,
+        null,
+        0.25
+      ],
+      "validationMaeFt": 2.686404321992266
+    },
+    {
+      "setting": [
+        "physics",
+        2.5,
+        45.0,
+        0.03
+      ],
+      "validationMaeFt": 2.538959312996526
+    },
+    {
+      "setting": [
+        "physics",
+        2.5,
+        45.0,
+        0.25
+      ],
+      "validationMaeFt": 2.591155575997426
+    },
+    {
+      "setting": [
+        "bounded",
+        0.75,
+        null,
+        0.03
+      ],
+      "validationMaeFt": 2.261181175768864
+    },
+    {
+      "setting": [
+        "bounded",
+        0.75,
+        null,
+        0.25
+      ],
+      "validationMaeFt": 2.241856857900276
+    },
+    {
+      "setting": [
+        "bounded",
+        0.75,
+        45.0,
+        0.03
+      ],
+      "validationMaeFt": 2.234829638080444
+    },
+    {
+      "setting": [
+        "bounded",
+        0.75,
+        45.0,
+        0.25
+      ],
+      "validationMaeFt": 2.233598636338801
+    },
+    {
+      "setting": [
+        "bounded",
+        2.5,
+        null,
+        0.03
+      ],
+      "validationMaeFt": 2.335285961490966
+    },
+    {
+      "setting": [
+        "bounded",
+        2.5,
+        null,
+        0.25
+      ],
+      "validationMaeFt": 2.3428872587385543
+    },
+    {
+      "setting": [
+        "bounded",
+        2.5,
+        45.0,
+        0.03
+      ],
+      "validationMaeFt": 2.3060293852505858
+    },
+    {
+      "setting": [
+        "bounded",
+        2.5,
+        45.0,
+        0.25
+      ],
+      "validationMaeFt": 2.3229429200312017
+    }
+  ],
+  "originalPanelSha256": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+  "scriptSha256": "d9ee82af284fab37348d7584af76c2eea6db2c2f2506c2745ae27b79edc30a5d",
+  "modelFileSha256": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb"
+}

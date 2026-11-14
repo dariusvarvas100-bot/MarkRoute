@@ -1,0 +1,784 @@
+{
+  "budgetFraction": 0.2,
+  "thresholdFt": 5.0,
+  "developmentBestBaseline": "model disagreement",
+  "developmentSelectedNewMethod": "learned review ranker",
+  "results": {
+    "development": {
+      "methods": {
+        "nearest survey distance": {
+          "pooled": {
+            "withheldPairs": 10160,
+            "reviewedPairs": 2016,
+            "largeErrorPairs": 742,
+            "largeErrorsFlagged": 236,
+            "largeErrorRecall": 0.31805929919137466,
+            "unflaggedLargeErrorRate": 0.062131630648330056
+          },
+          "events": {
+            "2018 Florence": {
+              "withheldPairs": 6768,
+              "reviewedPairs": 1344,
+              "largeErrorPairs": 626,
+              "largeErrorsFlagged": 157,
+              "largeErrorRecall": 0.2507987220447284,
+              "unflaggedLargeErrorRate": 0.08646755162241888
+            },
+            "2018 Michael": {
+              "withheldPairs": 3392,
+              "reviewedPairs": 672,
+              "largeErrorPairs": 116,
+              "largeErrorsFlagged": 79,
+              "largeErrorRecall": 0.6810344827586207,
+              "unflaggedLargeErrorRate": 0.013602941176470588
+            }
+          }
+        },
+        "terrain relief": {
+          "pooled": {
+            "withheldPairs": 10160,
+            "reviewedPairs": 2016,
+            "largeErrorPairs": 742,
+            "largeErrorsFlagged": 251,
+            "largeErrorRecall": 0.33827493261455527,
+            "unflaggedLargeErrorRate": 0.06028978388998035
+          },
+          "events": {
+            "2018 Florence": {
+              "withheldPairs": 6768,
+              "reviewedPairs": 1344,
+              "largeErrorPairs": 626,
+              "largeErrorsFlagged": 194,
+              "largeErrorRecall": 0.30990415335463256,
+              "unflaggedLargeErrorRate": 0.07964601769911504
+            },
+            "2018 Michael": {
+              "withheldPairs": 3392,
+              "reviewedPairs": 672,
+              "largeErrorPairs": 116,
+              "largeErrorsFlagged": 57,
+              "largeErrorRecall": 0.49137931034482757,
+              "unflaggedLargeErrorRate": 0.021691176470588235
+            }
+          }
+        },
+        "model disagreement": {
+          "pooled": {
+            "withheldPairs": 10160,
+            "reviewedPairs": 2016,
+            "largeErrorPairs": 742,
+            "largeErrorsFlagged": 257,
+            "largeErrorRecall": 0.3463611859838275,
+            "unflaggedLargeErrorRate": 0.05955304518664047
+          },
+          "events": {
+            "2018 Florence": {
+              "withheldPairs": 6768,
+              "reviewedPairs": 1344,
+              "largeErrorPairs": 626,
+              "largeErrorsFlagged": 179,
+              "largeErrorRecall": 0.28594249201277955,
+              "unflaggedLargeErrorRate": 0.08241150442477876
+            },
+            "2018 Michael": {
+              "withheldPairs": 3392,
+              "reviewedPairs": 672,
+              "largeErrorPairs": 116,
+              "largeErrorsFlagged": 78,
+              "largeErrorRecall": 0.6724137931034483,
+              "unflaggedLargeErrorRate": 0.013970588235294118
+            }
+          }
+        },
+        "local recheck": {
+          "pooled": {
+            "withheldPairs": 10160,
+            "reviewedPairs": 2016,
+            "largeErrorPairs": 742,
+            "largeErrorsFlagged": 211,
+            "largeErrorRecall": 0.284366576819407,
+            "unflaggedLargeErrorRate": 0.06520137524557956
+          },
+          "events": {
+            "2018 Florence": {
+              "withheldPairs": 6768,
+              "reviewedPairs": 1344,
+              "largeErrorPairs": 626,
+              "largeErrorsFlagged": 141,
+              "largeErrorRecall": 0.22523961661341854,
+              "unflaggedLargeErrorRate": 0.08941740412979352
+            },
+            "2018 Michael": {
+              "withheldPairs": 3392,
+              "reviewedPairs": 672,
+              "largeErrorPairs": 116,
+              "largeErrorsFlagged": 70,
+              "largeErrorRecall": 0.603448275862069,
+              "unflaggedLargeErrorRate": 0.016911764705882352
+            }
+          }
+        },
+        "learned review ranker": {
+          "pooled": {
+            "withheldPairs": 10160,
+            "reviewedPairs": 2016,
+            "largeErrorPairs": 742,
+            "largeErrorsFlagged": 332,
+            "largeErrorRecall": 0.4474393530997305,
+            "unflaggedLargeErrorRate": 0.05034381139489195
+          },
+          "events": {
+            "2018 Florence": {
+              "withheldPairs": 6768,
+              "reviewedPairs": 1344,
+              "largeErrorPairs": 626,
+              "largeErrorsFlagged": 237,
+              "largeErrorRecall": 0.37859424920127793,
+              "unflaggedLargeErrorRate": 0.07171828908554573
+            },
+            "2018 Michael": {
+              "withheldPairs": 3392,
+              "reviewedPairs": 672,
+              "largeErrorPairs": 116,
+              "largeErrorsFlagged": 95,
+              "largeErrorRecall": 0.8189655172413793,
+              "unflaggedLargeErrorRate": 0.007720588235294118
+            }
+          }
+        }
+      },
+      "pairedRecallGainPoints": {
+        "learned review ranker": [
+          3.3953114796917854,
+          17.584177999960637
+        ],
+        "local recheck": [
+          -15.474665104512276,
+          2.202721904942994
+        ]
+      }
+    },
+    "primary": {
+      "methods": {
+        "nearest survey distance": {
+          "pooled": {
+            "withheldPairs": 4816,
+            "reviewedPairs": 960,
+            "largeErrorPairs": 486,
+            "largeErrorsFlagged": 109,
+            "largeErrorRecall": 0.2242798353909465,
+            "unflaggedLargeErrorRate": 0.09776970954356846
+          },
+          "events": {
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 61,
+              "largeErrorRecall": 0.7176470588235294,
+              "unflaggedLargeErrorRate": 0.0075
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 48,
+              "largeErrorRecall": 0.11970074812967581,
+              "unflaggedLargeErrorRate": 0.538109756097561
+            }
+          }
+        },
+        "terrain relief": {
+          "pooled": {
+            "withheldPairs": 4816,
+            "reviewedPairs": 960,
+            "largeErrorPairs": 486,
+            "largeErrorsFlagged": 170,
+            "largeErrorRecall": 0.3497942386831276,
+            "unflaggedLargeErrorRate": 0.08195020746887967
+          },
+          "events": {
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 69,
+              "largeErrorRecall": 0.8117647058823529,
+              "unflaggedLargeErrorRate": 0.005
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 101,
+              "largeErrorRecall": 0.2518703241895262,
+              "unflaggedLargeErrorRate": 0.4573170731707317
+            }
+          }
+        },
+        "model disagreement": {
+          "pooled": {
+            "withheldPairs": 4816,
+            "reviewedPairs": 960,
+            "largeErrorPairs": 486,
+            "largeErrorsFlagged": 180,
+            "largeErrorRecall": 0.37037037037037035,
+            "unflaggedLargeErrorRate": 0.07935684647302904
+          },
+          "events": {
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 73,
+              "largeErrorRecall": 0.8588235294117647,
+              "unflaggedLargeErrorRate": 0.00375
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 107,
+              "largeErrorRecall": 0.26683291770573564,
+              "unflaggedLargeErrorRate": 0.4481707317073171
+            }
+          }
+        },
+        "local recheck": {
+          "pooled": {
+            "withheldPairs": 4816,
+            "reviewedPairs": 960,
+            "largeErrorPairs": 486,
+            "largeErrorsFlagged": 163,
+            "largeErrorRecall": 0.33539094650205764,
+            "unflaggedLargeErrorRate": 0.0837655601659751
+          },
+          "events": {
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 53,
+              "largeErrorRecall": 0.6235294117647059,
+              "unflaggedLargeErrorRate": 0.01
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 110,
+              "largeErrorRecall": 0.2743142144638404,
+              "unflaggedLargeErrorRate": 0.44359756097560976
+            }
+          }
+        },
+        "learned review ranker": {
+          "pooled": {
+            "withheldPairs": 4816,
+            "reviewedPairs": 960,
+            "largeErrorPairs": 486,
+            "largeErrorsFlagged": 172,
+            "largeErrorRecall": 0.35390946502057613,
+            "unflaggedLargeErrorRate": 0.08143153526970955
+          },
+          "events": {
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 79,
+              "largeErrorRecall": 0.9294117647058824,
+              "unflaggedLargeErrorRate": 0.001875
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 93,
+              "largeErrorRecall": 0.23192019950124687,
+              "unflaggedLargeErrorRate": 0.4695121951219512
+            }
+          }
+        }
+      },
+      "pairedRecallGainPoints": {
+        "learned review ranker": [
+          -14.894516032364399,
+          16.031005560267648
+        ],
+        "local recheck": [
+          -18.32784348171618,
+          6.683396338170482
+        ]
+      }
+    },
+    "external": {
+      "methods": {
+        "nearest survey distance": {
+          "pooled": {
+            "withheldPairs": 8960,
+            "reviewedPairs": 1760,
+            "largeErrorPairs": 3312,
+            "largeErrorsFlagged": 831,
+            "largeErrorRecall": 0.2509057971014493,
+            "unflaggedLargeErrorRate": 0.34458333333333335
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 358,
+              "largeErrorRecall": 0.2611232676878191,
+              "unflaggedLargeErrorRate": 0.26941489361702126
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 34,
+              "largeErrorRecall": 0.24113475177304963,
+              "unflaggedLargeErrorRate": 0.2786458333333333
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 439,
+              "largeErrorRecall": 0.24388888888888888,
+              "unflaggedLargeErrorRate": 0.44535340314136124
+            }
+          }
+        },
+        "terrain relief": {
+          "pooled": {
+            "withheldPairs": 8960,
+            "reviewedPairs": 1760,
+            "largeErrorPairs": 3312,
+            "largeErrorsFlagged": 818,
+            "largeErrorRecall": 0.2469806763285024,
+            "unflaggedLargeErrorRate": 0.3463888888888889
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 366,
+              "largeErrorRecall": 0.26695842450765866,
+              "unflaggedLargeErrorRate": 0.26728723404255317
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 39,
+              "largeErrorRecall": 0.2765957446808511,
+              "unflaggedLargeErrorRate": 0.265625
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 413,
+              "largeErrorRecall": 0.22944444444444445,
+              "unflaggedLargeErrorRate": 0.4538612565445026
+            }
+          }
+        },
+        "model disagreement": {
+          "pooled": {
+            "withheldPairs": 8960,
+            "reviewedPairs": 1760,
+            "largeErrorPairs": 3312,
+            "largeErrorsFlagged": 968,
+            "largeErrorRecall": 0.2922705314009662,
+            "unflaggedLargeErrorRate": 0.32555555555555554
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 475,
+              "largeErrorRecall": 0.3464624361779723,
+              "unflaggedLargeErrorRate": 0.23829787234042554
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 48,
+              "largeErrorRecall": 0.3404255319148936,
+              "unflaggedLargeErrorRate": 0.2421875
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 445,
+              "largeErrorRecall": 0.24722222222222223,
+              "unflaggedLargeErrorRate": 0.44339005235602097
+            }
+          }
+        },
+        "local recheck": {
+          "pooled": {
+            "withheldPairs": 8960,
+            "reviewedPairs": 1760,
+            "largeErrorPairs": 3312,
+            "largeErrorsFlagged": 849,
+            "largeErrorRecall": 0.2563405797101449,
+            "unflaggedLargeErrorRate": 0.34208333333333335
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 406,
+              "largeErrorRecall": 0.2961342086068563,
+              "unflaggedLargeErrorRate": 0.2566489361702128
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 26,
+              "largeErrorRecall": 0.18439716312056736,
+              "unflaggedLargeErrorRate": 0.2994791666666667
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 417,
+              "largeErrorRecall": 0.23166666666666666,
+              "unflaggedLargeErrorRate": 0.4525523560209424
+            }
+          }
+        },
+        "learned review ranker": {
+          "pooled": {
+            "withheldPairs": 8960,
+            "reviewedPairs": 1760,
+            "largeErrorPairs": 3312,
+            "largeErrorsFlagged": 907,
+            "largeErrorRecall": 0.2738526570048309,
+            "unflaggedLargeErrorRate": 0.33402777777777776
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 430,
+              "largeErrorRecall": 0.3136396790663749,
+              "unflaggedLargeErrorRate": 0.2502659574468085
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 26,
+              "largeErrorRecall": 0.18439716312056736,
+              "unflaggedLargeErrorRate": 0.2994791666666667
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 451,
+              "largeErrorRecall": 0.25055555555555553,
+              "unflaggedLargeErrorRate": 0.44142670157068065
+            }
+          }
+        }
+      },
+      "pairedRecallGainPoints": {
+        "learned review ranker": [
+          -6.924117696516065,
+          3.3668889336655967
+        ],
+        "local recheck": [
+          -8.952051969012084,
+          1.4026564344746166
+        ]
+      }
+    },
+    "all test": {
+      "methods": {
+        "nearest survey distance": {
+          "pooled": {
+            "withheldPairs": 13776,
+            "reviewedPairs": 2720,
+            "largeErrorPairs": 3798,
+            "largeErrorsFlagged": 940,
+            "largeErrorRecall": 0.24749868351764087,
+            "unflaggedLargeErrorRate": 0.2585021707670043
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 358,
+              "largeErrorRecall": 0.2611232676878191,
+              "unflaggedLargeErrorRate": 0.26941489361702126
+            },
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 61,
+              "largeErrorRecall": 0.7176470588235294,
+              "unflaggedLargeErrorRate": 0.0075
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 48,
+              "largeErrorRecall": 0.11970074812967581,
+              "unflaggedLargeErrorRate": 0.538109756097561
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 34,
+              "largeErrorRecall": 0.24113475177304963,
+              "unflaggedLargeErrorRate": 0.2786458333333333
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 439,
+              "largeErrorRecall": 0.24388888888888888,
+              "unflaggedLargeErrorRate": 0.44535340314136124
+            }
+          }
+        },
+        "terrain relief": {
+          "pooled": {
+            "withheldPairs": 13776,
+            "reviewedPairs": 2720,
+            "largeErrorPairs": 3798,
+            "largeErrorsFlagged": 988,
+            "largeErrorRecall": 0.2601369141653502,
+            "unflaggedLargeErrorRate": 0.2541606367583213
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 366,
+              "largeErrorRecall": 0.26695842450765866,
+              "unflaggedLargeErrorRate": 0.26728723404255317
+            },
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 69,
+              "largeErrorRecall": 0.8117647058823529,
+              "unflaggedLargeErrorRate": 0.005
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 101,
+              "largeErrorRecall": 0.2518703241895262,
+              "unflaggedLargeErrorRate": 0.4573170731707317
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 39,
+              "largeErrorRecall": 0.2765957446808511,
+              "unflaggedLargeErrorRate": 0.265625
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 413,
+              "largeErrorRecall": 0.22944444444444445,
+              "unflaggedLargeErrorRate": 0.4538612565445026
+            }
+          }
+        },
+        "model disagreement": {
+          "pooled": {
+            "withheldPairs": 13776,
+            "reviewedPairs": 2720,
+            "largeErrorPairs": 3798,
+            "largeErrorsFlagged": 1148,
+            "largeErrorRecall": 0.3022643496577146,
+            "unflaggedLargeErrorRate": 0.2396888567293777
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 475,
+              "largeErrorRecall": 0.3464624361779723,
+              "unflaggedLargeErrorRate": 0.23829787234042554
+            },
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 73,
+              "largeErrorRecall": 0.8588235294117647,
+              "unflaggedLargeErrorRate": 0.00375
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 107,
+              "largeErrorRecall": 0.26683291770573564,
+              "unflaggedLargeErrorRate": 0.4481707317073171
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 48,
+              "largeErrorRecall": 0.3404255319148936,
+              "unflaggedLargeErrorRate": 0.2421875
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 445,
+              "largeErrorRecall": 0.24722222222222223,
+              "unflaggedLargeErrorRate": 0.44339005235602097
+            }
+          }
+        },
+        "local recheck": {
+          "pooled": {
+            "withheldPairs": 13776,
+            "reviewedPairs": 2720,
+            "largeErrorPairs": 3798,
+            "largeErrorsFlagged": 1012,
+            "largeErrorRecall": 0.2664560294892048,
+            "unflaggedLargeErrorRate": 0.25198986975397974
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 406,
+              "largeErrorRecall": 0.2961342086068563,
+              "unflaggedLargeErrorRate": 0.2566489361702128
+            },
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 53,
+              "largeErrorRecall": 0.6235294117647059,
+              "unflaggedLargeErrorRate": 0.01
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 110,
+              "largeErrorRecall": 0.2743142144638404,
+              "unflaggedLargeErrorRate": 0.44359756097560976
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 26,
+              "largeErrorRecall": 0.18439716312056736,
+              "unflaggedLargeErrorRate": 0.2994791666666667
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 417,
+              "largeErrorRecall": 0.23166666666666666,
+              "unflaggedLargeErrorRate": 0.4525523560209424
+            }
+          }
+        },
+        "learned review ranker": {
+          "pooled": {
+            "withheldPairs": 13776,
+            "reviewedPairs": 2720,
+            "largeErrorPairs": 3798,
+            "largeErrorsFlagged": 1079,
+            "largeErrorRecall": 0.28409689310163244,
+            "unflaggedLargeErrorRate": 0.2459298118668596
+          },
+          "events": {
+            "2021 Ida": {
+              "withheldPairs": 4688,
+              "reviewedPairs": 928,
+              "largeErrorPairs": 1371,
+              "largeErrorsFlagged": 430,
+              "largeErrorRecall": 0.3136396790663749,
+              "unflaggedLargeErrorRate": 0.2502659574468085
+            },
+            "2022 Ian": {
+              "withheldPairs": 4000,
+              "reviewedPairs": 800,
+              "largeErrorPairs": 85,
+              "largeErrorsFlagged": 79,
+              "largeErrorRecall": 0.9294117647058824,
+              "unflaggedLargeErrorRate": 0.001875
+            },
+            "2024 Helene": {
+              "withheldPairs": 816,
+              "reviewedPairs": 160,
+              "largeErrorPairs": 401,
+              "largeErrorsFlagged": 93,
+              "largeErrorRecall": 0.23192019950124687,
+              "unflaggedLargeErrorRate": 0.4695121951219512
+            },
+            "2025 December (WA, ID, OR, MT) Flood": {
+              "withheldPairs": 464,
+              "reviewedPairs": 80,
+              "largeErrorPairs": 141,
+              "largeErrorsFlagged": 26,
+              "largeErrorRecall": 0.18439716312056736,
+              "unflaggedLargeErrorRate": 0.2994791666666667
+            },
+            "2025 July TX Flood": {
+              "withheldPairs": 3808,
+              "reviewedPairs": 752,
+              "largeErrorPairs": 1800,
+              "largeErrorsFlagged": 451,
+              "largeErrorRecall": 0.25055555555555553,
+              "unflaggedLargeErrorRate": 0.44142670157068065
+            }
+          }
+        }
+      },
+      "pairedRecallGainPoints": {
+        "learned review ranker": [
+          -6.686986976553686,
+          3.3875734841077736
+        ],
+        "local recheck": [
+          -8.62460681627653,
+          0.8665437831101842
+        ]
+      }
+    }
+  }
+}
