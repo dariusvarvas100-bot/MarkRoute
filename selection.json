@@ -1,0 +1,140 @@
+{
+  "comparator": "gradient boost",
+  "chosenEpoch": 2,
+  "validation": {
+    "pooled": {
+      "nearest": {
+        "maeFt": 11.552740157480313,
+        "missOver5FtRate": 0.3
+      },
+      "geographic interpolation": {
+        "maeFt": 11.692077914385115,
+        "missOver5FtRate": 0.31622047244094487
+      },
+      "terrain plus local depth": {
+        "maeFt": 3.805755386139642,
+        "missOver5FtRate": 0.19354330708661419
+      },
+      "bounded local regression": {
+        "maeFt": 2.2023121531792813,
+        "missOver5FtRate": 0.10236220472440945
+      },
+      "gradient boost": {
+        "maeFt": 1.9716602026937076,
+        "missOver5FtRate": 0.08078740157480314
+      },
+      "terrain attention": {
+        "maeFt": 2.17179096722325,
+        "missOver5FtRate": 0.10409448818897638
+      }
+    },
+    "events": {
+      "2018 Florence": {
+        "nearest": {
+          "maeFt": 16.713371158392434,
+          "missOver5FtRate": 0.4340425531914894
+        },
+        "geographic interpolation": {
+          "maeFt": 16.9672928121294,
+          "missOver5FtRate": 0.4628841607565012
+        },
+        "terrain plus local depth": {
+          "maeFt": 3.138788136395777,
+          "missOver5FtRate": 0.17777777777777778
+        },
+        "bounded local regression": {
+          "maeFt": 2.7260023194081375,
+          "missOver5FtRate": 0.1425531914893617
+        },
+        "gradient boost": {
+          "maeFt": 2.3095944893422713,
+          "missOver5FtRate": 0.1016548463356974
+        },
+        "terrain attention": {
+          "maeFt": 2.5998841031333795,
+          "missOver5FtRate": 0.13853427895981088
+        }
+      },
+      "2018 Michael": {
+        "nearest": {
+          "maeFt": 1.2558207547169813,
+          "missOver5FtRate": 0.032547169811320754
+        },
+        "geographic interpolation": {
+          "maeFt": 1.1665312080368389,
+          "missOver5FtRate": 0.02358490566037736
+        },
+        "terrain plus local depth": {
+          "maeFt": 5.136543813694621,
+          "missOver5FtRate": 0.225
+        },
+        "bounded local regression": {
+          "maeFt": 1.1574020573547235,
+          "missOver5FtRate": 0.022169811320754716
+        },
+        "gradient boost": {
+          "maeFt": 1.2973856590505828,
+          "missOver5FtRate": 0.03915094339622641
+        },
+        "terrain attention": {
+          "maeFt": 1.3176240026478498,
+          "missOver5FtRate": 0.03537735849056604
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "nearest": {
+          "maeFt": 1.4065774058577407,
+          "missOver5FtRate": 0.04100418410041841
+        },
+        "geographic interpolation": {
+          "maeFt": 1.3117026613818303,
+          "missOver5FtRate": 0.032635983263598324
+        },
+        "terrain plus local depth": {
+          "maeFt": 4.2939028012417095,
+          "missOver5FtRate": 0.19246861924686193
+        },
+        "bounded local regression": {
+          "maeFt": 1.2511647016583851,
+          "missOver5FtRate": 0.02594142259414226
+        },
+        "gradient boost": {
+          "maeFt": 1.171092559262062,
+          "missOver5FtRate": 0.02510460251046025
+        },
+        "terrain attention": {
+          "maeFt": 1.2949837967521474,
+          "missOver5FtRate": 0.029707112970711297
+        }
+      },
+      "Riverine": {
+        "nearest": {
+          "maeFt": 17.67630808080808,
+          "missOver5FtRate": 0.45631313131313134
+        },
+        "geographic interpolation": {
+          "maeFt": 17.957001362536083,
+          "missOver5FtRate": 0.48737373737373735
+        },
+        "terrain plus local depth": {
+          "maeFt": 3.511141163388647,
+          "missOver5FtRate": 0.1941919191919192
+        },
+        "bounded local regression": {
+          "maeFt": 2.7763632665971962,
+          "missOver5FtRate": 0.1484848484848485
+        },
+        "gradient boost": {
+          "maeFt": 2.4548310784011904,
+          "missOver5FtRate": 0.1143939393939394
+        },
+        "terrain attention": {
+          "maeFt": 2.7009750928358596,
+          "missOver5FtRate": 0.14898989898989898
+        }
+      }
+    }
+  }
+}

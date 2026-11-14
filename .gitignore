@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+terrain_cache/
+event[0-9]*.json
+events_new.json
+raw_[0-9]*.json
+*.partial
+*.pth
+*.log

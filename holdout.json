@@ -1,0 +1,167 @@
+{
+  "nLocations": 355,
+  "evaluatedMaskLocationPairs": 4816,
+  "results": {
+    "pooled": {
+      "nearest": {
+        "maeFt": 37.19690614617941,
+        "missOver5FtRate": 0.18646179401993354
+      },
+      "geographic interpolation": {
+        "maeFt": 46.62677711475925,
+        "missOver5FtRate": 0.21075581395348839
+      },
+      "terrain plus local depth": {
+        "maeFt": 4.182580093195896,
+        "missOver5FtRate": 0.24750830564784054
+      },
+      "bounded local regression": {
+        "maeFt": 2.475685710364183,
+        "missOver5FtRate": 0.12084717607973422
+      },
+      "gradient boost": {
+        "maeFt": 2.0788407210709257,
+        "missOver5FtRate": 0.10091362126245847
+      },
+      "terrain attention": {
+        "maeFt": 6.2302428126529215,
+        "missOver5FtRate": 0.15386212624584716
+      }
+    },
+    "events": {
+      "2022 Ian": {
+        "nearest": {
+          "maeFt": 2.9619475000000004,
+          "missOver5FtRate": 0.06425
+        },
+        "geographic interpolation": {
+          "maeFt": 3.26961623341361,
+          "missOver5FtRate": 0.08775
+        },
+        "terrain plus local depth": {
+          "maeFt": 3.6659506796738506,
+          "missOver5FtRate": 0.20525
+        },
+        "bounded local regression": {
+          "maeFt": 1.3210674701229357,
+          "missOver5FtRate": 0.045
+        },
+        "gradient boost": {
+          "maeFt": 1.1456035459656828,
+          "missOver5FtRate": 0.02125
+        },
+        "terrain attention": {
+          "maeFt": 1.4771904098773003,
+          "missOver5FtRate": 0.0425
+        }
+      },
+      "2024 Helene": {
+        "nearest": {
+          "maeFt": 205.01533088235294,
+          "missOver5FtRate": 0.7855392156862745
+        },
+        "geographic interpolation": {
+          "maeFt": 259.1618794742967,
+          "missOver5FtRate": 0.8137254901960784
+        },
+        "terrain plus local depth": {
+          "maeFt": 6.715077218303967,
+          "missOver5FtRate": 0.45465686274509803
+        },
+        "bounded local regression": {
+          "maeFt": 8.1355790448801,
+          "missOver5FtRate": 0.49264705882352944
+        },
+        "gradient boost": {
+          "maeFt": 6.653532755900549,
+          "missOver5FtRate": 0.49142156862745096
+        },
+        "terrain attention": {
+          "maeFt": 29.529519296847145,
+          "missOver5FtRate": 0.6997549019607843
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "nearest": {
+          "maeFt": 0.9494011627906976,
+          "missOver5FtRate": 0.010174418604651164
+        },
+        "geographic interpolation": {
+          "maeFt": 1.0307576306128927,
+          "missOver5FtRate": 0.016569767441860464
+        },
+        "terrain plus local depth": {
+          "maeFt": 3.927867597404088,
+          "missOver5FtRate": 0.22529069767441862
+        },
+        "bounded local regression": {
+          "maeFt": 1.035091390748783,
+          "missOver5FtRate": 0.018604651162790697
+        },
+        "gradient boost": {
+          "maeFt": 0.9669285125853291,
+          "missOver5FtRate": 0.006686046511627907
+        },
+        "terrain attention": {
+          "maeFt": 1.1213445948417797,
+          "missOver5FtRate": 0.015116279069767442
+        }
+      },
+      "Riverine": {
+        "nearest": {
+          "maeFt": 127.81566860465115,
+          "missOver5FtRate": 0.6271802325581395
+        },
+        "geographic interpolation": {
+          "maeFt": 160.61682582512518,
+          "missOver5FtRate": 0.6962209302325582
+        },
+        "terrain plus local depth": {
+          "maeFt": 4.819361332675419,
+          "missOver5FtRate": 0.30305232558139533
+        },
+        "bounded local regression": {
+          "maeFt": 6.077171509402682,
+          "missOver5FtRate": 0.376453488372093
+        },
+        "gradient boost": {
+          "maeFt": 4.858621242284917,
+          "missOver5FtRate": 0.33648255813953487
+        },
+        "terrain attention": {
+          "maeFt": 19.002488357180777,
+          "missOver5FtRate": 0.5007267441860465
+        }
+      }
+    }
+  },
+  "gate": {
+    "comparator": "gradient boost",
+    "relativeErrorReduction": -1.9969793979422241,
+    "pairedSpatial95IntervalFt": [
+      -8.020123172496389,
+      -1.3388789393594993
+    ],
+    "eventReductions": {
+      "2022 Ian": -0.2894429447947522,
+      "2024 Helene": -3.4381714767481224
+    },
+    "passed": false
+  },
+  "practicalComparison": {
+    "frozenWinner": "gradient boost",
+    "frozenHeuristic": "bounded local regression",
+    "eventRelativeGains": {
+      "2022 Ian": 0.1328198052904327,
+      "2024 Helene": 0.18216850709750465
+    },
+    "relativeErrorReduction": 0.16029699877973602,
+    "pairedSpatial95IntervalFt": [
+      0.170129560365523,
+      0.7158842125942589
+    ],
+    "passed": true
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "originalIndependentReplay": {
+    "distinctSites": 355,
+    "maskSitePairs": 4816,
+    "events": {
+      "2022 Ian": {
+        "bounded local regression": {
+          "maeFt": 1.3210674701229357,
+          "missOver5FtRate": 0.045
+        },
+        "gradient boost": {
+          "maeFt": 1.1456035459656828,
+          "missOver5FtRate": 0.02125
+        }
+      },
+      "2024 Helene": {
+        "bounded local regression": {
+          "maeFt": 8.1355790448801,
+          "missOver5FtRate": 0.49264705882352944
+        },
+        "gradient boost": {
+          "maeFt": 6.653532755900549,
+          "missOver5FtRate": 0.49142156862745096
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "bounded local regression": {
+          "maeFt": 1.035091390748783,
+          "missOver5FtRate": 0.018604651162790697
+        },
+        "gradient boost": {
+          "maeFt": 0.9669285125853291,
+          "missOver5FtRate": 0.006686046511627907
+        }
+      },
+      "Riverine": {
+        "bounded local regression": {
+          "maeFt": 6.077171509402682,
+          "missOver5FtRate": 0.376453488372093
+        },
+        "gradient boost": {
+          "maeFt": 4.858621242284917,
+          "missOver5FtRate": 0.33648255813953487
+        }
+      }
+    },
+    "pooled": {
+      "bounded local regression": {
+        "maeFt": 2.475685710364183,
+        "missOver5FtRate": 0.12084717607973422
+      },
+      "gradient boost": {
+        "maeFt": 2.0788407210709257,
+        "missOver5FtRate": 0.10091362126245847
+      }
+    },
+    "eventPairCounts": {
+      "2022 Ian": 4000,
+      "2024 Helene": 816
+    },
+    "testEvents": 2,
+    "relativeGainByEvent": {
+      "2022 Ian": 0.1328198052904327,
+      "2024 Helene": 0.18216850709750465
+    },
+    "pooledRelativeGain": 0.16029699877973602,
+    "macroRelativeGain": 0.17527462938443894,
+    "eventResampledMacroAbsolute95Ft": [
+      0.17546392415725287,
+      1.482046288979551
+    ],
+    "spatialPairedAbsolute95Ft": [
+      0.170129560365523,
+      0.7158842125942589
+    ],
+    "pooledAbsoluteError90and99Ft": {
+      "bounded local regression": [
+        5.986605638807113,
+        24.831848171034107
+      ],
+      "gradient boost": [
+        5.0387316657918655,
+        17.99338947950507
+      ]
+    },
+    "passed": true
+  },
+  "additionalEventReplay": {
+    "distinctSites": 659,
+    "maskSitePairs": 8960,
+    "events": {
+      "2021 Ida": {
+        "bounded local regression": {
+          "maeFt": 5.579560535196511,
+          "missOver5FtRate": 0.33745733788395904
+        },
+        "gradient boost": {
+          "maeFt": 4.79163805034862,
+          "missOver5FtRate": 0.29244880546075086
+        }
+      },
+      "2025 December (WA, ID, OR, MT) Flood": {
+        "bounded local regression": {
+          "maeFt": 4.870477735844561,
+          "missOver5FtRate": 0.3081896551724138
+        },
+        "gradient boost": {
+          "maeFt": 4.084545273903564,
+          "missOver5FtRate": 0.30387931034482757
+        }
+      },
+      "2025 July TX Flood": {
+        "bounded local regression": {
+          "maeFt": 7.0456836257655,
+          "missOver5FtRate": 0.5273109243697479
+        },
+        "gradient boost": {
+          "maeFt": 6.068065561181687,
+          "missOver5FtRate": 0.4726890756302521
+        }
+      }
+    },
+    "environments": {
+      "Coastal": {
+        "bounded local regression": {
+          "maeFt": 1.54,
+          "missOver5FtRate": 0.0
+        },
+        "gradient boost": {
+          "maeFt": 1.2110357634485132,
+          "missOver5FtRate": 0.0
+        }
+      },
+      "Riverine": {
+        "bounded local regression": {
+          "maeFt": 6.174217878504936,
+          "missOver5FtRate": 0.4173747763864043
+        },
+        "gradient boost": {
+          "maeFt": 5.304812754012777,
+          "missOver5FtRate": 0.370304114490161
+        }
+      }
+    },
+    "pooled": {
+      "bounded local regression": {
+        "maeFt": 6.165942489436177,
+        "missOver5FtRate": 0.4166294642857143
+      },
+      "gradient boost": {
+        "maeFt": 5.297502437958197,
+        "missOver5FtRate": 0.36964285714285716
+      }
+    },
+    "eventPairCounts": {
+      "2021 Ida": 4688,
+      "2025 December (WA, ID, OR, MT) Flood": 464,
+      "2025 July TX Flood": 3808
+    },
+    "testEvents": 3,
+    "relativeGainByEvent": {
+      "2021 Ida": 0.14121586814545428,
+      "2025 December (WA, ID, OR, MT) Flood": 0.1613666060224198,
+      "2025 July TX Flood": 0.13875418149755447
+    },
+    "pooledRelativeGain": 0.14084465642776234,
+    "macroRelativeGain": 0.14583410884225423,
+    "eventResampledMacroAbsolute95Ft": [
+      0.7859324619409964,
+      0.9776180645838144
+    ],
+    "spatialPairedAbsolute95Ft": [
+      0.6123565880231083,
+      1.1453780259086335
+    ],
+    "pooledAbsoluteError90and99Ft": {
+      "bounded local regression": [
+        13.620114125613624,
+        33.95544826827891
+      ],
+      "gradient boost": [
+        11.338034092846526,
+        28.110837880135907
+      ]
+    },
+    "passed": true
+  }
+}

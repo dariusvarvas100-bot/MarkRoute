@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Revisit surveyed USGS high-water marks and compare post-flood elevation estimates">
+<title>MarkRoute · Post-flood survey replay</title>
+<style>
+  :root{color-scheme:light;--ink:#152c35;--muted:#4e6871;--mist:#edf4f3;--paper:#f3f7f5;--line:#d6e3e1;
+    --night:#092b36;--dark:#08232d;--accent:#16786f;--mint:#a9f1da;--tint:#e5f3ed;--gold:#ae630d;--red:#a1383d;
+    --font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.48}
+  a{color:#12665e}button,select{font:inherit;color:var(--ink)}button{cursor:pointer}
+  button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #066b9a;outline-offset:3px}
+  .wrap{max-width:1240px;margin:auto;padding:0 28px}
+  .skip{position:absolute;z-index:4;top:-5em;left:17px;padding:8px 13px;border-radius:5px;background:white;color:var(--ink)}
+  .skip:focus{top:10px}
+  header{background:var(--dark);border-bottom:1px solid #2a5262;color:#f2fcf9}
+  .head{display:flex;justify-content:space-between;align-items:center;height:61px;font-size:.84rem;gap:14px}.head>span{color:#b1d1d6}
+  .brand{font-size:1.25rem;font-weight:750;letter-spacing:-.045em;display:flex;align-items:center;gap:11px}
+  .mark{display:block;width:22px;height:22px;position:relative;border:1.5px solid #a4e9db;border-radius:50%}
+  .mark::before,.mark::after{content:"";position:absolute;top:50%;left:50%;width:14px;height:1.5px;background:#a4e9db;transform:translate(-50%,-50%)}
+  .mark::after{transform:translate(-50%,-50%) rotate(90deg)}
+  .hero{color:#f1fcf8;background:radial-gradient(ellipse at 85% 15%,#1c5261 0%,#0a2e3a 55%,#092632 100%);padding:43px 0 47px}
+  .hero-grid{display:grid;grid-template-columns:1fr 266px;gap:35px;align-items:center}.hero h1{font-size:clamp(2.14rem,5.95vw,4rem);letter-spacing:-.068em;line-height:1.04;margin:0;max-width:850px;font-weight:760}
+  .hero p{margin:14px 0 0;max-width:660px;color:#c0d9de;font-size:1rem}.proof{border:1px solid #477984;background:#133d48;border-radius:13px;padding:17px 20px;min-width:0}
+  .proof strong{display:block;font-size:2.6rem;font-weight:780;line-height:1;letter-spacing:-.075em;color:var(--mint)}
+  .proof span{font-size:.94rem;color:#effbf8;display:block;margin-top:7px;font-weight:650}.proof small{color:#bdd8dc;display:block;font-size:.79rem;margin-top:6px}
+  main.wrap{padding-top:24px;padding-bottom:19px}.card{background:white;border:1px solid var(--line);border-radius:13px;box-shadow:0 2px 4px #08293409;min-width:0}
+  .controls{display:grid;grid-template-columns:1.02fr .74fr auto;gap:15px;align-items:end;padding:14px 17px}
+  .controls>div{min-width:0}
+  label,.switch-label{font-size:.77rem;font-weight:740;display:block;margin-bottom:5px;color:var(--muted)}
+  select{width:100%;background:#f6faf8;padding:10px 32px 10px 12px;border:1px solid var(--line);border-radius:7px;min-height:44px;font-size:.88rem}
+  .segmented{display:flex;gap:3px;padding:3px;background:#eef5f2;border:1px solid var(--line);border-radius:8px;min-height:44px}
+  .segmented button{min-height:35px;background:transparent;border:0;border-radius:5px;white-space:nowrap;font-size:.85rem;font-weight:720;padding:6px 13px}
+  .segmented button[aria-pressed=true]{background:var(--night);color:#f1fffa}
+  .layout{display:grid;grid-template-columns:minmax(0,1.68fr) minmax(288px,.92fr);gap:17px;margin-top:17px;align-items:start}
+  .map-card,.inspect{padding:16px}.bench{margin-top:16px;padding:16px 18px}
+  .section-head{display:flex;align-items:start;justify-content:space-between;gap:8px}.section-head h2{margin:0}
+  h2{font-size:1.22rem;letter-spacing:-.035em;line-height:1.18;margin:0 0 7px}h3{font-size:.94rem;margin:0 0 4px}
+  .quiet{margin:4px 0 0;color:var(--muted);font-size:.82rem}.micro{font-size:.75rem;color:var(--muted);margin:5px 0 0}
+  .outline{background:#f7faf8;border:1px solid #cadbd6;border-radius:7px;padding:7px 10px;min-height:36px;font-size:.79rem;font-weight:710;white-space:nowrap}
+  .outline[aria-pressed=true]{background:var(--tint);border-color:#7db9ad;color:#16675b}
+  .chart{margin-top:12px;background:#f3f8f6;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  svg{width:100%;height:auto;display:block;touch-action:manipulation}.grid{stroke:#d3e4e0;stroke-width:1;vector-effect:non-scaling-stroke}.axis{fill:#516d76;font-size:11px}
+  .point{cursor:pointer;vector-effect:non-scaling-stroke;transition:fill .16s}.point:hover{stroke-width:3.5px}.hit{cursor:pointer;fill:transparent}
+  .legend{display:flex;align-items:center;gap:9px 17px;flex-wrap:wrap;margin-top:9px;font-size:.74rem;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:5px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.7px solid #4d6471;background:white}
+  .dot.anchor{background:var(--accent);border-color:var(--accent)}.dot.low{background:#8daea8;border-color:#4b7169}.dot.mid{background:#edbf69;border-color:#895d24}.dot.high{background:#e58a87;border-color:#9d3437}
+  .kbd-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}.kbd-strip p{margin:0}
+  .strip-actions{display:flex;gap:6px}.readings{display:grid;gap:7px;margin:13px 0}.reading{border:1px solid var(--line);border-radius:8px;padding:9px 10px;display:flex;justify-content:space-between;align-items:center;gap:7px;min-height:55px}
+  .reading.active{border-color:#73b8a6;background:#ebf7f2}.reading>.value{font-size:1.1rem;font-weight:760;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .reading strong{font-size:.84rem}.error{display:block;font-size:.75rem;color:var(--muted)}.flag{font-size:.78rem;padding:3px 8px;border:1px solid;border-radius:50px;white-space:nowrap;min-width:0}
+  .flag--held{color:#785717;border-color:#e3c89b;background:#faf1df}.flag--shown{color:#216052;border-color:#b4d5ca;background:#eff8f3}
+  .geo{margin:8px 0;color:var(--muted);font-size:.78rem;overflow-wrap:anywhere}.meta{font-size:.82rem;color:var(--muted)}.survey-actions{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .truth{font-size:.86rem;border-top:1px solid var(--line);margin-top:11px;padding-top:10px}.truth>strong{float:right;font-variant-numeric:tabular-nums}
+  .callout{margin-top:14px;padding:10px 11px;border-radius:6px;background:#f0f6f4;border-left:3px solid var(--accent);font-size:.79rem;color:#36525b}
+  .bench-grid{display:grid;grid-template-columns:minmax(340px,1.03fr) minmax(280px,.97fr);align-items:start;gap:19px;margin-top:11px}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}caption{text-align:left;font-weight:650;margin-bottom:6px}
+  th,td{text-align:left;padding:8px 7px;border-bottom:1px solid var(--line)}th{font-size:.74rem;color:var(--muted)}td:nth-child(n+2),th:nth-child(n+2){text-align:right;white-space:nowrap}
+  .bench-text p{font-size:.83rem;color:var(--muted);margin:0 0 7px}.bench-text strong{color:var(--ink)}
+  footer{font-size:.79rem;color:var(--muted);padding-bottom:24px}footer p{margin:0 0 4px}[hidden]{display:none!important}
+  @media(max-width:900px){.wrap{padding:0 18px}.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.methods{grid-column:1/-1}.segmented{width:max-content;max-width:100%}.layout{grid-template-columns:minmax(0,1.36fr) minmax(236px,.82fr)}.bench-grid{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr 225px}}
+  @media(max-width:640px){.wrap{padding:0 12px}.head>span{font-size:.74rem}.hero{padding:29px 0}.hero-grid,.layout,.bench-grid{display:block}.proof{margin-top:18px;padding:12px 13px;max-width:270px}.proof strong{font-size:2rem}.proof span{margin-top:3px}.map-card,.inspect,.bench{padding:12px}.inspect{margin-top:12px}.controls{gap:8px;padding:10px}.switch-label,label{margin-bottom:3px}.segmented button{padding:5px 7px;font-size:.77rem}.bench-text{margin-top:13px}.kbd-strip{display:block}.strip-actions{margin-top:6px}.section-head{gap:4px}.outline{padding:6px 7px}.legend{gap:5px 10px}}
+  @media(prefers-reduced-motion:reduce){.point{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#replay">Skip to replay</a>
+<header><div class="wrap head"><div class="brand"><span class="mark" aria-hidden="true"></span>MarkRoute</div><span>Post-flood survey replay</span></div></header>
+<section class="hero" aria-labelledby="hero-title"><div class="wrap hero-grid"><div><h1 id="hero-title">A few surveyed marks can inform the next estimate.</h1><p>Explore how a flood survey coordinator could estimate peak water-surface elevations at flagged sites using a partial survey.</p></div><div class="proof"><strong id="headline">—</strong><span>lower mean absolute error</span><small id="headline-detail">Compared on two held-out storms</small></div></div></section>
+<main id="replay" class="wrap">
+  <noscript><p>This replay needs JavaScript.</p></noscript>
+  <p id="no-data" hidden>Replay data are unavailable.</p>
+  <div id="pages" hidden>
+  <section class="card controls" aria-label="Replay controls">
+    <div><label for="event">Held-out storm</label><select id="event"></select></div>
+    <div><label for="scenario">Starting survey</label><select id="scenario"></select></div>
+    <div class="methods"><span class="switch-label" id="method-label">Estimate shown on map</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">Gradient boosting</button><button id="baseline" type="button">Bounded regression</button></div></div>
+  </section>
+  <section class="layout" aria-label="Archive replay">
+    <section class="card map-card" aria-labelledby="map-heading">
+      <div class="section-head"><div><h2 id="map-heading">Flagged high-water marks</h2><p class="quiet" id="map-counts" aria-live="polite"></p></div><button class="outline" type="button" id="errors" aria-pressed="false">Reveal map errors</button></div>
+      <div class="chart"><svg id="map" viewBox="0 0 760 412" role="img" aria-label="Geographic scatterplot of flagged high-water marks"><title>High-water mark coordinates</title></svg></div>
+      <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> Starting measurement</span><span><i class="dot" aria-hidden="true"></i> Withheld mark</span><span data-error hidden><i class="dot low" aria-hidden="true"></i> Error ≤1 ft</span><span data-error hidden><i class="dot mid" aria-hidden="true"></i> Error &gt;1 to 5 ft</span><span data-error hidden><i class="dot high" aria-hidden="true"></i> Error &gt;5 ft</span></div>
+      <div class="kbd-strip"><p class="micro" id="map-note">Points show recorded coordinates. Select a point to inspect its mark.</p><div class="strip-actions"><button type="button" class="outline" id="zoom" aria-pressed="false">Zoom near mark</button></div></div>
+    </section>
+    <section class="card inspect" aria-labelledby="inspect-heading">
+      <div class="section-head"><h2 id="inspect-heading">Inspect a mark</h2><span id="flag" class="flag"></span></div>
+      <label for="mark-select">Map point</label><select id="mark-select"></select>
+      <p class="geo" id="geo"></p>
+      <p class="meta" id="mark-meta"></p>
+      <div id="predictions" class="readings"></div>
+      <p class="truth" id="truth">Archived measurement <strong id="actual">Withheld</strong></p>
+      <div class="survey-actions"><button class="outline" id="reveal" type="button" aria-expanded="false" aria-controls="actual">Reveal this mark</button><button class="outline" id="add-survey" type="button" hidden>Add measurement</button><button class="outline" id="reset-survey" type="button" hidden>Reset survey</button></div>
+      <p class="micro" id="recompute-status" role="status"></p>
+      <div class="callout" id="scenario-mae"></div>
+      <p class="micro">Elevations are in feet relative to NAVD88.</p>
+    </section>
+  </section>
+  <section class="card bench" aria-labelledby="benchmark-heading">
+    <h2 id="benchmark-heading">Held-out benchmark</h2><p id="bench-size" class="quiet"></p>
+    <div class="bench-grid"><div><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Cohort</th><th scope="col">Regression</th><th scope="col">Boosting</th></tr></thead><tbody id="benchmark"></tbody></table></div><div class="bench-text"><p id="interval"></p><p id="miss"></p><p id="exploratory" hidden></p><p>Estimates apply to locations already flagged for physical evidence of high water. The scatterplot shows survey marks after each flood.</p></div></div>
+  </section>
+  </div>
+</main>
+<footer class="wrap"><p>Experimental post-flood research prototype. Use trained survey crews to verify estimates.</p><p>Observations from the <a href="https://stn.wim.usgs.gov/fev/">USGS Flood Event Viewer</a>. Elevation features from Mapzen terrain tiles.</p></footer>
+<script>
+/*__MARKROUTE_DATA__*/
+</script>
+<script>
+/*__MARKROUTE_ENGINE__*/
+</script>
+<script>
+'use strict';
+const node=id=>document.getElementById(id);
+const pct=(v,dp=1)=>`${(100*v).toFixed(dp)}%`;
+const ft=(v,dp=2)=>v===null||v===undefined||!Number.isFinite(Number(v))?'—':`${Number(v).toFixed(dp)} ft`;
+const METHODS={model:'Gradient boosting',baseline:'Bounded local regression'};
+const REF='bounded local regression';
+const CANDIDATE='gradient boost';
+const SVG_NS='http://www.w3.org/2000/svg';
+const state={event:0,scenario:0,site:0,method:'model',revealed:false,revealMap:false,zoom:false,edited:null};
+const payload=typeof MARKROUTE_DATA==='undefined'?null:MARKROUTE_DATA;
+const engine=typeof MarkRouteEngine==='undefined'?null:MarkRouteEngine;
+const clear=id=>node(id).replaceChildren();
+function add(parent,tag,value,cls){
+  const el=document.createElement(tag);
+  if(value!==undefined) el.textContent=value;
+  if(cls) el.className=cls;
+  parent.append(el);
+  return el;
+}
+function svg(parent,tag,attrs,value){
+  const el=document.createElementNS(SVG_NS,tag);
+  for(const [name,v] of Object.entries(attrs))el.setAttribute(name,v);
+  if(value!==undefined)el.textContent=value;
+  parent.append(el);
+  return el;
+}
+function option(parent,index,label){const el=add(parent,'option',label);el.value=String(index);}
+function original(){return payload.events[state.event].scenarios[state.scenario];}
+function active(){return state.edited||original();}
+function siteOptions(){
+  clear('mark-select');
+  active().sites.forEach((site,i)=>option(node('mark-select'),i,`Mark ${site.id} · ${site.surveyed?'surveyed':'withheld'}`));
+}
+function selectScenario(pick){
+  state.scenario=pick;
+  state.edited=null;
+  node('recompute-status').textContent='';
+  state.site=Math.max(0,active().sites.findIndex(site=>!site.surveyed));
+  state.revealed=false;
+  state.zoom=true;
+  state.revealMap=false;
+  siteOptions();
+  draw();
+}
+function selectEvent(pick){
+  state.event=pick;
+  clear('scenario');
+  payload.events[pick].scenarios.forEach((scenario,i)=>option(node('scenario'),i,`Survey ${i+1}`));
+  selectScenario(0);
+}
+function chooseSite(index,showActual){
+  state.site=index;
+  state.revealed=showActual;
+  draw();
+}
+function addMeasurement(){
+  const source=active();
+  if(!engine||source.sites[state.site].surveyed) return;
+  const sites=source.sites.map((site,i)=>i===state.site?{...site,surveyed:true}: {...site});
+  try{
+    const scored=engine.recompute(sites);
+    const withheld=scored.filter(site=>!site.surveyed);
+    const mae={};
+    for(const method of Object.keys(METHODS)){
+      mae[method]=withheld.length?withheld.reduce((sum,site)=>sum+Math.abs(site[`${method}Ft`]-site.actualFt),0)/withheld.length:null;
+    }
+    state.edited={...source,sites:scored,mae,counts:{sites:scored.length,initial:scored.length-withheld.length,unseen:withheld.length}};
+    state.revealed=true;
+    node('recompute-status').textContent='Both methods now include this archived measurement.';
+    siteOptions();
+    draw();
+  }catch(e){
+    node('recompute-status').textContent='The replay could not recompute these estimates.';
+  }
+}
+function addRow(name,pair){
+  const line=add(node('benchmark'),'tr');
+  add(line,'td',name);
+  add(line,'td',ft(pair[REF].maeFt));
+  add(line,'td',ft(pair[CANDIDATE].maeFt));
+}
+function benchmark(){
+  const s=payload.summary;
+  node('headline').textContent=pct(s.practicalComparison.relativeErrorReduction);
+  node('headline-detail').textContent=`${ft(s.results.pooled[REF].maeFt)} → ${ft(s.results.pooled[CANDIDATE].maeFt)} across both storms`;
+  node('bench-size').textContent=`${s.nLocations.toLocaleString()} unique sites · ${s.evaluatedMaskLocationPairs.toLocaleString()} withheld-site predictions across repeated survey splits`;
+  Object.entries(s.results.events).forEach(([name,pair])=>addRow(name,pair));
+  addRow('Pooled',s.results.pooled);
+  const [lo,hi]=s.practicalComparison.pairedSpatial95IntervalFt;
+  node('interval').textContent=`The mean absolute error fell by ${ft(s.results.pooled[REF].maeFt-s.results.pooled[CANDIDATE].maeFt)}. The paired spatial 95% interval for that improvement was ${lo.toFixed(2)}–${hi.toFixed(2)} ft for these archived events.`;
+  node('miss').textContent=`Errors over 5 ft fell from ${pct(s.results.pooled[REF].missOver5FtRate)} to ${pct(s.results.pooled[CANDIDATE].missOver5FtRate)} across repeated splits. Terrain attention averaged ${ft(s.results.pooled['terrain attention'].maeFt)} of error.`;
+  if(s.surveyExploratory?.relativeGain!==undefined){
+    node('exploratory').hidden=false;
+    node('exploratory').textContent=`An exploratory extra-survey replay found ${pct(s.surveyExploratory.relativeGain)} lower error than terrain coverage.`;
+  }
+}
+function extent(sites){
+  const selected=sites[state.site];
+  const inView=state.zoom?sites.map(site=>({site,d:Math.hypot(site.lat-selected.lat,(site.lon-selected.lon)*Math.cos(selected.lat*Math.PI/180))})).sort((a,b)=>a.d-b.d).slice(0,24).map(x=>x.site):sites;
+  const lons=inView.map(x=>x.lon),lats=inView.map(x=>x.lat);
+  const latitude=(Math.max(...lats)+Math.min(...lats))/2;
+  const longitude=(Math.max(...lons)+Math.min(...lons))/2;
+  const cos=Math.cos(latitude*Math.PI/180);
+  const factor=Math.min(650/Math.max((Math.max(...lons)-Math.min(...lons))*cos,.001),316/Math.max(Math.max(...lats)-Math.min(...lats),.001));
+  return {x:lon=>380+(lon-longitude)*cos*factor,y:lat=>196-(lat-latitude)*factor,
+    lon:x=>longitude+(x-380)/(cos*factor),lat:y=>latitude+(196-y)/factor};
+}
+function degree(value,positive,negative){return `${Math.abs(value).toFixed(2)}°${value<0?negative:positive}`;}
+function drawMap(scenario){
+  const root=node('map');
+  root.replaceChildren();
+  svg(root,'title',{},`High-water survey marks for ${payload.events[state.event].name}`);
+  const frame=extent(scenario.sites);
+  const grid=svg(root,'g',{'aria-hidden':'true'});
+  const left=51,right=709,top=26,bottom=368;
+  for(let i=0;i<=4;i++){
+    const x=left+(right-left)*i/4;
+    svg(grid,'line',{x1:x,y1:top,x2:x,y2:bottom,class:'grid'});
+    svg(grid,'text',{x,y:389,class:'axis','text-anchor':'middle'},degree(frame.lon(x),'E','W'));
+  }
+  for(let i=0;i<=4;i++){
+    const y=top+(bottom-top)*i/4;
+    svg(grid,'line',{x1:left,y1:y,x2:right,y2:y,class:'grid'});
+    svg(grid,'text',{x:47,y:y+4,class:'axis','text-anchor':'end'},degree(frame.lat(y),'N','S'));
+  }
+  svg(grid,'text',{x:730,y:47,class:'axis','text-anchor':'middle'},'N');
+  svg(grid,'path',{d:'M730 52v30 M725 59l5-7 5 7',fill:'none',stroke:'#4f6f79'});
+  const points=svg(root,'g',{});
+  const layer=i=>i===state.site?2:Number(scenario.sites[i].surveyed);
+  const indices=scenario.sites.map((_,i)=>i).sort((a,b)=>layer(a)-layer(b));
+  for(const i of indices){
+    const spot=scenario.sites[i];
+    const x=frame.x(spot.lon),y=frame.y(spot.lat);
+    if(x<left-8||x>right+8||y<top-8||y>bottom+8) continue;
+    const value=spot[`${state.method}Ft`];
+    const e=value===null?null:Math.abs(value-spot.actualFt);
+    const color=spot.surveyed?['#14766c','#14564f']:
+      !state.revealMap||e===null?['#fff','#537381']:e<=1?['#a2bbb5','#4b7169']:e<=5?['#edbf69','#895d24']:['#e58a87','#9d3437'];
+    const radius=spot.surveyed?5.8:4.7;
+    if(i===state.site) svg(points,'circle',{cx:x,cy:y,r:10.5,stroke:'#164d7a','stroke-width':2.5,fill:'#a8d8f077','pointer-events':'none'});
+    svg(points,'circle',{cx:x,cy:y,r:radius,fill:color[0],stroke:color[1],'stroke-width':1.4,class:'point','pointer-events':'none'});
+    const hit=svg(points,'circle',{cx:x,cy:y,r:9,class:'hit'});
+    svg(hit,'title',{},`Mark ${spot.id} · ${spot.surveyed?'surveyed':'click to reveal'}`);
+    hit.addEventListener('click',()=>chooseSite(i,true));
+  }
+}
+function drawDetails(scenario){
+  const s=scenario.sites[state.site];
+  const shown=s.surveyed||state.revealed||state.revealMap;
+  node('mark-select').value=String(state.site);
+  node('flag').textContent=original().sites[state.site].surveyed?'Starting measurement':s.surveyed?'Added measurement':'Withheld mark';
+  node('flag').className=`flag flag--${s.surveyed?'shown':'held'}`;
+  node('geo').textContent=`${degree(s.lat,'N','S')} · ${degree(s.lon,'E','W')}`;
+  node('mark-meta').textContent=[s.environment,s.waterbody].filter(Boolean).join(' · ');
+  clear('predictions');
+  if(!s.surveyed){
+    Object.entries(METHODS).forEach(([key,label])=>{
+      const row=add(node('predictions'),'div',undefined,`reading${state.method===key?' active':''}`);
+      const title=add(row,'div');
+      add(title,'strong',label);
+      const result=s[`${key}Ft`];
+      if(shown&&result!==null) add(title,'span',`Absolute error ${ft(Math.abs(result-s.actualFt))}`,'error');
+      else add(title,'span','Estimated peak elevation','error');
+      add(row,'span',ft(result),'value');
+    });
+  }else{
+    add(node('predictions'),'p','Both methods receive this measurement before estimating the withheld sites.','quiet');
+  }
+  node('actual').textContent=shown?ft(s.actualFt):'Withheld';
+  node('reveal').hidden=s.surveyed||state.revealMap;
+  node('add-survey').hidden=!engine||s.surveyed;
+  node('reset-survey').hidden=!state.edited;
+  node('reveal').textContent=state.revealed?'Hide this measurement':'Reveal this mark';
+  node('reveal').setAttribute('aria-expanded',String(shown));
+  node('scenario-mae').textContent=scenario.counts.unseen?`${state.edited?'Updated survey':'This starting survey'} · ${ft(scenario.mae.baseline)} regression error and ${ft(scenario.mae.model)} boosting error over ${scenario.counts.unseen} ${state.edited?'remaining ':''}withheld marks. Seed ${scenario.seed}.`:'All archived marks are visible to both methods.';
+}
+function draw(){
+  const scenario=active();
+  const {initial,unseen,sites}=scenario.counts;
+  node('map-counts').textContent=`${sites} sites · ${initial} ${state.edited?'available':'starting'} measurements · ${unseen} withheld`;
+  Object.keys(METHODS).forEach(key=>node(key).setAttribute('aria-pressed',String(state.method===key)));
+  node('errors').textContent=state.revealMap?'Hide map errors':'Reveal map errors';
+  node('errors').setAttribute('aria-pressed',String(state.revealMap));
+  document.querySelectorAll('[data-error]').forEach(x=>{x.hidden=!state.revealMap;});
+  node('zoom').textContent=state.zoom?'Fit all marks':'Zoom near mark';
+  node('zoom').setAttribute('aria-pressed',String(state.zoom));
+  node('map-note').textContent=state.zoom?'Zoomed near the selected mark. Select a point to inspect it.':'Points show recorded coordinates. Select a point to inspect its mark.';
+  drawMap(scenario);
+  drawDetails(scenario);
+}
+function setup(){
+  if(!payload?.events?.length){node('no-data').hidden=false;return;}
+  node('pages').hidden=false;
+  payload.events.forEach((event,i)=>option(node('event'),i,event.name));
+  node('event').addEventListener('change',e=>selectEvent(Number(e.target.value)));
+  node('scenario').addEventListener('change',e=>selectScenario(Number(e.target.value)));
+  node('mark-select').addEventListener('change',e=>chooseSite(Number(e.target.value),false));
+  Object.keys(METHODS).forEach(key=>node(key).addEventListener('click',()=>{state.method=key;draw();}));
+  node('reveal').addEventListener('click',()=>{state.revealed=!state.revealed;drawDetails(active());});
+  node('add-survey').addEventListener('click',addMeasurement);
+  node('reset-survey').addEventListener('click',()=>selectScenario(state.scenario));
+  node('errors').addEventListener('click',()=>{state.revealMap=!state.revealMap;draw();});
+  node('zoom').addEventListener('click',()=>{state.zoom=!state.zoom;draw();});
+  benchmark();
+  selectEvent(0);
+}
+setup();
+</script>
+</body>
+</html>
