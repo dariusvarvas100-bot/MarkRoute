@@ -6,7 +6,7 @@ After a flood, a survey coordinator has a list of locations where crews flagged 
 
 The method cut average error from **2.48 to 2.08 feet (16.0%)** against a terrain-aware baseline across two held-out storms, with the same surveyed marks supplied to each method. A separate catalog-selected test found **14.1% lower average error** on three more floods. All five events improved. More surveyed events and a prospective study would be needed to establish field performance.
 
-[One-page write-up](MarkRoute_Writeup.pdf) · [Demo and judging notes](MarkRoute_Judging_Notes.md)
+[One-page write-up](MarkRoute_Writeup.pdf) · [106-second walkthrough](MarkRoute_Demo.mp4) · [Demo and judging notes](MarkRoute_Judging_Notes.md)
 
 ## Try a survey replay
 
