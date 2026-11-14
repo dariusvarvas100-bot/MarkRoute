@@ -1,0 +1,316 @@
+{
+  "freeze": {
+    "EXPANDED_TRAINING_PROTOCOL.md": "8923d674b9e76e8197c84adc9257c888e72ce8d4b6c5b0a686d5d13bb1821a3a",
+    "expanded_training.py": "0778c83bb55cc7e0700be520e995b5e04bf9955c2b18fa4d723a8668b22523c6",
+    "steep_repair.py": "797d0f75e549fa0dd65684f3bfbb79ea8525e694736e4f60e74d4f1c55c7c1f2",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "archival_replay.py": "a7c91bc236db0bd45ecdce71a10c9ed1ed583b5d9e6629e5f7e3cde28052e1ca",
+    "waterbody_ablation.py": "0aa0743787606cb87f8c0a934129d61dacc42d32056ce9cde08d6c588298d451",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9",
+    "archival_panel.csv": "13fc2da835425fe48db8ab21d30d332dc57619f543b2f84849d0979eaf5d876e"
+  },
+  "selected": null,
+  "trainingEvents": 9,
+  "originalSteepSites": 96,
+  "expandedSteepEventSites": 1062,
+  "results": {
+    "pooled \u00d7 0.5": {
+      "published": {
+        "maeFt": 8.017329164332264,
+        "largeMissRate": 0.38557906458797325,
+        "largeMisses": 1385,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "pooled \u00d7 0.5": {
+        "maeFt": 7.932925919320945,
+        "largeMissRate": 0.3905902004454343,
+        "largeMisses": 1403,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "largeMissReduction": -0.0050111358574610465,
+      "events": {
+        "2016 Jun WV Flood": {
+          "published": {
+            "maeFt": 7.979012789804682,
+            "largeMissRate": 0.2942497753818509,
+            "largeMisses": 655,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "pooled \u00d7 0.5": {
+            "maeFt": 8.106129091731932,
+            "largeMissRate": 0.31491464510332434,
+            "largeMisses": 701,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "largeMissReduction": -0.020664869721473467
+        },
+        "2022 June MT Flood": {
+          "published": {
+            "maeFt": 8.074999277227809,
+            "largeMissRate": 0.4883435582822086,
+            "largeMisses": 398,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "pooled \u00d7 0.5": {
+            "maeFt": 7.702327517341616,
+            "largeMissRate": 0.48098159509202454,
+            "largeMisses": 392,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "largeMissReduction": 0.007361963190184062
+        },
+        "2024 Helene": {
+          "published": {
+            "maeFt": 8.086823007687116,
+            "largeMissRate": 0.6025408348457351,
+            "largeMisses": 332,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "pooled \u00d7 0.5": {
+            "maeFt": 7.57428242717266,
+            "largeMissRate": 0.5626134301270418,
+            "largeMisses": 310,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "largeMissReduction": 0.03992740471869327
+        }
+      },
+      "paired95Reduction": [
+        -0.040188520686370605,
+        0.05739581774122426
+      ]
+    },
+    "pooled \u00d7 1": {
+      "published": {
+        "maeFt": 8.017329164332264,
+        "largeMissRate": 0.38557906458797325,
+        "largeMisses": 1385,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "pooled \u00d7 1": {
+        "maeFt": 8.462725267945412,
+        "largeMissRate": 0.44181514476614697,
+        "largeMisses": 1587,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "largeMissReduction": -0.05623608017817372,
+      "events": {
+        "2016 Jun WV Flood": {
+          "published": {
+            "maeFt": 7.979012789804682,
+            "largeMissRate": 0.2942497753818509,
+            "largeMisses": 655,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "pooled \u00d7 1": {
+            "maeFt": 8.848400170107256,
+            "largeMissRate": 0.389937106918239,
+            "largeMisses": 868,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "largeMissReduction": -0.09568733153638814
+        },
+        "2022 June MT Flood": {
+          "published": {
+            "maeFt": 8.074999277227809,
+            "largeMissRate": 0.4883435582822086,
+            "largeMisses": 398,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "pooled \u00d7 1": {
+            "maeFt": 7.942475395418405,
+            "largeMissRate": 0.5042944785276073,
+            "largeMisses": 411,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "largeMissReduction": -0.015950920245398736
+        },
+        "2024 Helene": {
+          "published": {
+            "maeFt": 8.086823007687116,
+            "largeMissRate": 0.6025408348457351,
+            "largeMisses": 332,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "pooled \u00d7 1": {
+            "maeFt": 7.674143260499396,
+            "largeMissRate": 0.558983666061706,
+            "largeMisses": 308,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "largeMissReduction": 0.04355716878402904
+        }
+      },
+      "paired95Reduction": [
+        -0.14081973378719526,
+        0.07645611283504228
+      ]
+    },
+    "equal event \u00d7 0.5": {
+      "published": {
+        "maeFt": 8.017329164332264,
+        "largeMissRate": 0.38557906458797325,
+        "largeMisses": 1385,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "equal event \u00d7 0.5": {
+        "maeFt": 7.913672795144888,
+        "largeMissRate": 0.37806236080178174,
+        "largeMisses": 1358,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "largeMissReduction": 0.007516703786191514,
+      "events": {
+        "2016 Jun WV Flood": {
+          "published": {
+            "maeFt": 7.979012789804682,
+            "largeMissRate": 0.2942497753818509,
+            "largeMisses": 655,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "equal event \u00d7 0.5": {
+            "maeFt": 8.026826813552592,
+            "largeMissRate": 0.28751123090745734,
+            "largeMisses": 640,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "largeMissReduction": 0.006738544474393537
+        },
+        "2022 June MT Flood": {
+          "published": {
+            "maeFt": 8.074999277227809,
+            "largeMissRate": 0.4883435582822086,
+            "largeMisses": 398,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "equal event \u00d7 0.5": {
+            "maeFt": 7.846917804818199,
+            "largeMissRate": 0.5067484662576687,
+            "largeMisses": 413,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "largeMissReduction": -0.018404907975460072
+        },
+        "2024 Helene": {
+          "published": {
+            "maeFt": 8.086823007687116,
+            "largeMissRate": 0.6025408348457351,
+            "largeMisses": 332,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "equal event \u00d7 0.5": {
+            "maeFt": 7.555278007741445,
+            "largeMissRate": 0.5535390199637024,
+            "largeMisses": 305,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "largeMissReduction": 0.0490018148820327
+        }
+      },
+      "paired95Reduction": [
+        -0.04066268184772284,
+        0.06196186191061785
+      ]
+    },
+    "equal event \u00d7 1": {
+      "published": {
+        "maeFt": 8.017329164332264,
+        "largeMissRate": 0.38557906458797325,
+        "largeMisses": 1385,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "equal event \u00d7 1": {
+        "maeFt": 8.459509135851754,
+        "largeMissRate": 0.42733853006681516,
+        "largeMisses": 1535,
+        "pairs": 3592,
+        "uniqueEventSites": 264
+      },
+      "largeMissReduction": -0.041759465478841906,
+      "events": {
+        "2016 Jun WV Flood": {
+          "published": {
+            "maeFt": 7.979012789804682,
+            "largeMissRate": 0.2942497753818509,
+            "largeMisses": 655,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "equal event \u00d7 1": {
+            "maeFt": 8.713536302272662,
+            "largeMissRate": 0.35983827493261455,
+            "largeMisses": 801,
+            "pairs": 2226,
+            "uniqueEventSites": 164
+          },
+          "largeMissReduction": -0.06558849955076368
+        },
+        "2022 June MT Flood": {
+          "published": {
+            "maeFt": 8.074999277227809,
+            "largeMissRate": 0.4883435582822086,
+            "largeMisses": 398,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "equal event \u00d7 1": {
+            "maeFt": 8.329037908488129,
+            "largeMissRate": 0.5447852760736196,
+            "largeMisses": 444,
+            "pairs": 815,
+            "uniqueEventSites": 60
+          },
+          "largeMissReduction": -0.056441717791410995
+        },
+        "2024 Helene": {
+          "published": {
+            "maeFt": 8.086823007687116,
+            "largeMissRate": 0.6025408348457351,
+            "largeMisses": 332,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "equal event \u00d7 1": {
+            "maeFt": 7.626241582037629,
+            "largeMissRate": 0.5263157894736842,
+            "largeMisses": 290,
+            "pairs": 551,
+            "uniqueEventSites": 40
+          },
+          "largeMissReduction": 0.07622504537205088
+        }
+      },
+      "paired95Reduction": [
+        -0.14384763932734107,
+        0.09648049958760457
+      ]
+    }
+  }
+}

@@ -10,7 +10,7 @@ After a flood, a survey coordinator can have a list of places where crews found 
 
 The opening replay shows the recalculation at the closest remaining mark in the same environment. Average error across the same 249 remaining marks falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In the map, choose **Measured miss** to inspect a separate site where bounded regression is closer. Each point shows the starting estimate and the model’s signed correction.
 
-**What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout.
+**What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout. Use **Field measurements only** to view just the readings in the current survey, including any archived readings you add during the replay.
 
 ## Held-out results
 
@@ -135,6 +135,14 @@ We selected a ranking on the two development floods, then replayed it across the
 
 Distances can help prioritize inspection. A flag whose elevation matters for a decision still needs a field measurement. [Review protocol](ARCHIVE_REVIEW_PROTOCOL.md) · [Locked selection](archive_review_selection.json) · [All reporting rates](archive_review_results.json)
 
+## Experiments to reduce steep-terrain misses
+
+We first tested training objectives that directly targeted five-foot misses and gave steep river sites extra weight. The development floods yielded just **21** eligible sites, all from Florence. The published model missed by over five feet on **53 of 281** withheld predictions. Every variant had more large misses. This small check motivated a separate experiment with more examples.
+
+The expanded fit increased the number of steep river training event-sites from **96 to 1,062** by adding five historical events. West Virginia, Montana, and Helene were withheld from both fits for this comparison. The best candidate, a 50/50 blend with an event-balanced model, reduced the large-miss share from **38.56% to 37.81%** across **3,592 withheld predictions** at **264 steep river event-sites**. The paired interval for the reduction was **−4.07 to +6.20 percentage points**. It fell short of the preset one-point threshold, so the released model continues to use its original four training floods.
+
+The map offers a field-measurement view for comparing actual readings without estimate overlays. In an archive replay, **Reveal measurement** lets you check a withheld reading. It joins the current field survey only after **Add measurement**. [Loss and weighting protocol](STEEP_REPAIR_PROTOCOL.md) · [Development results](steep_repair_selection.json) · [Expanded training protocol](EXPANDED_TRAINING_PROTOCOL.md) · [Expanded training results](expanded_training_selection.json)
+
 ## Model and benchmark
 
 The model starts from a physical hypothesis. On the coast the nearby water surface provides the starting estimate. On rivers the nearby rise above terrain is a starting estimate, adjusted for differences in ground elevation. Histogram gradient boosting learns when to correct that estimate based on distance between marks, terrain shape and whether the waterbody matches. The fit uses Sandy, Matthew, Harvey and Irma. Florence and Michael select the method and its strongest transparent comparator. Ian and Helene hold out whole storms. Four site IDs recur across the older and held-out storms. The geographic split measures transfer to later events with some observations already available from them.
@@ -173,6 +181,8 @@ python residual_formulation.py test
 python archival_replay.py evaluate
 python archive_review.py validation
 python archive_review.py test
+python steep_repair.py validation
+python expanded_training.py validation
 python demo_export.py
 ```
 

@@ -1,0 +1,266 @@
+{
+  "freeze": {
+    "STEEP_REPAIR_PROTOCOL.md": "026c674ff44f11571deb7a676e510b6ba20854cbc5bc478360f45262f906cdff",
+    "steep_repair.py": "797d0f75e549fa0dd65684f3bfbb79ea8525e694736e4f60e74d4f1c55c7c1f2",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9",
+    "archival_panel.csv": "13fc2da835425fe48db8ab21d30d332dc57619f543b2f84849d0979eaf5d876e"
+  },
+  "selected": null,
+  "development": {
+    "modal window \u00d7 0.25": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "modal window \u00d7 0.25": {
+        "maeFt": 4.057232990900213,
+        "largeMissRate": 0.2206405693950178,
+        "largeMisses": 62,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.03202846975088969,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "modal window \u00d7 0.25": {
+            "maeFt": 4.057232990900213,
+            "largeMissRate": 0.2206405693950178,
+            "largeMisses": 62,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.03202846975088969
+        }
+      }
+    },
+    "modal window \u00d7 0.5": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "modal window \u00d7 0.5": {
+        "maeFt": 4.142404869837554,
+        "largeMissRate": 0.2491103202846975,
+        "largeMisses": 70,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.060498220640569395,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "modal window \u00d7 0.5": {
+            "maeFt": 4.142404869837554,
+            "largeMissRate": 0.2491103202846975,
+            "largeMisses": 70,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.060498220640569395
+        }
+      }
+    },
+    "modal window \u00d7 1": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "modal window \u00d7 1": {
+        "maeFt": 4.392346898433645,
+        "largeMissRate": 0.298932384341637,
+        "largeMisses": 84,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.11032028469750887,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "modal window \u00d7 1": {
+            "maeFt": 4.392346898433645,
+            "largeMissRate": 0.298932384341637,
+            "largeMisses": 84,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.11032028469750887
+        }
+      }
+    },
+    "weighted absolute \u00d7 0.5": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "weighted absolute \u00d7 0.5": {
+        "maeFt": 3.994041185849512,
+        "largeMissRate": 0.21352313167259787,
+        "largeMisses": 60,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.024911032028469754,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "weighted absolute \u00d7 0.5": {
+            "maeFt": 3.994041185849512,
+            "largeMissRate": 0.21352313167259787,
+            "largeMisses": 60,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.024911032028469754
+        }
+      }
+    },
+    "weighted absolute \u00d7 1": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "weighted absolute \u00d7 1": {
+        "maeFt": 4.024081515880807,
+        "largeMissRate": 0.23487544483985764,
+        "largeMisses": 66,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.04626334519572953,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "weighted absolute \u00d7 1": {
+            "maeFt": 4.024081515880807,
+            "largeMissRate": 0.23487544483985764,
+            "largeMisses": 66,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.04626334519572953
+        }
+      }
+    },
+    "weighted squared \u00d7 0.5": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "weighted squared \u00d7 0.5": {
+        "maeFt": 4.183902360748776,
+        "largeMissRate": 0.2206405693950178,
+        "largeMisses": 62,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.03202846975088969,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "weighted squared \u00d7 0.5": {
+            "maeFt": 4.183902360748776,
+            "largeMissRate": 0.2206405693950178,
+            "largeMisses": 62,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.03202846975088969
+        }
+      }
+    },
+    "weighted squared \u00d7 1": {
+      "published": {
+        "maeFt": 4.00774576211791,
+        "largeMissRate": 0.18861209964412812,
+        "largeMisses": 53,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "weighted squared \u00d7 1": {
+        "maeFt": 4.588238641896035,
+        "largeMissRate": 0.2846975088967972,
+        "largeMisses": 80,
+        "pairs": 281,
+        "uniqueEventSites": 21
+      },
+      "largeMissReduction": -0.09608540925266906,
+      "events": {
+        "2018 Florence": {
+          "published": {
+            "maeFt": 4.00774576211791,
+            "largeMissRate": 0.18861209964412812,
+            "largeMisses": 53,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "weighted squared \u00d7 1": {
+            "maeFt": 4.588238641896035,
+            "largeMissRate": 0.2846975088967972,
+            "largeMisses": 80,
+            "pairs": 281,
+            "uniqueEventSites": 21
+          },
+          "largeMissReduction": -0.09608540925266906
+        }
+      }
+    }
+  }
+}

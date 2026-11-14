@@ -49,6 +49,10 @@
   .examples h2{font-size:1rem;margin:0}.examples p{margin:2px 0 0}.examples .segmented{flex-shrink:0}
   .controls{display:grid;grid-template-columns:1fr .75fr auto;gap:12px;align-items:end;padding-top:10px}
   .controls>div{min-width:0}
+  .display-options{display:flex;align-items:flex-end;gap:6px;flex-wrap:wrap}
+  .outline.field-toggle{display:inline-flex;align-items:center;gap:6px;min-height:44px}
+  .field-toggle::before{content:"";width:8px;height:8px;border:1px solid #658b80;border-radius:50%}
+  .field-toggle[aria-pressed=true]::before{background:var(--accent);border-color:var(--accent)}
   label,.switch-label{font-size:.77rem;font-weight:740;display:block;margin-bottom:5px;color:var(--muted)}
   select{width:100%;background:#f6faf8;padding:10px 32px 10px 12px;border:1px solid var(--line);border-radius:7px;min-height:44px;font-size:.88rem}
   .segmented{display:flex;gap:3px;padding:3px;background:#eef5f2;border:1px solid var(--line);border-radius:8px;min-height:44px}
@@ -68,6 +72,7 @@
   .legend{display:flex;align-items:center;gap:9px 17px;flex-wrap:wrap;margin-top:9px;font-size:.74rem;color:var(--muted)}
   .legend span{display:flex;align-items:center;gap:5px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.7px solid #4d6471;background:white}
   .dot.anchor{background:var(--accent);border-color:var(--accent)}.dot.low{background:#8daea8;border-color:#4b7169}.dot.mid{background:#edbf69;border-color:#895d24}.dot.high{background:#e58a87;border-color:#9d3437}
+  .dot.field-added{background:#d3efe5;border:2px solid #176859}
   .dot.review{background:transparent;border:2px dashed #9a520f}.review-ring{fill:none;stroke:#9a520f;stroke-width:2;stroke-dasharray:2 2;vector-effect:non-scaling-stroke;pointer-events:none}
   .map-layer-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.review-mark{font-weight:700;color:#824606}
   .kbd-strip{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:10px}.kbd-strip p{margin:0}
@@ -165,7 +170,7 @@
     <div class="controls">
       <div><label for="event">Replay flood</label><select id="event"></select></div>
       <div><label for="scenario">Starting survey</label><select id="scenario"></select></div>
-      <div class="methods"><span class="switch-label" id="method-label">Map error layer</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">MarkRoute</button><button id="baseline" type="button">Bounded regression</button></div></div>
+      <div class="methods display-options"><div id="error-methods"><span class="switch-label" id="method-label">Map error layer</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">MarkRoute</button><button id="baseline" type="button">Bounded regression</button></div></div><button class="outline field-toggle" type="button" id="field-only" aria-pressed="false" aria-controls="map mark-select predictions">Field measurements only</button></div>
     </div>
   </section>
   <section class="layout" aria-label="Archive replay">
@@ -187,7 +192,7 @@
     <section class="card map-card" aria-labelledby="map-heading">
       <div class="section-head"><div><h2 id="map-heading">Flagged high-water marks</h2><p class="quiet" id="map-counts" aria-live="polite"></p></div><div class="map-layer-actions"><button class="outline" type="button" id="review-flags" aria-pressed="false" aria-controls="map review-info" hidden>Review flags</button><button class="outline" type="button" id="errors" aria-pressed="false">Reveal map errors</button></div></div>
       <div class="chart"><svg id="map" viewBox="0 0 760 412" role="img" aria-label="Geographic scatterplot of flagged high-water marks"><title>High-water mark coordinates</title></svg></div>
-      <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> Available measurement</span><span><i class="dot" aria-hidden="true"></i> Withheld mark</span><span id="review-legend" hidden><i class="dot review" aria-hidden="true"></i> Review flag</span><span data-error hidden><i class="dot low" aria-hidden="true"></i> Error ≤1 ft</span><span data-error hidden><i class="dot mid" aria-hidden="true"></i> Error &gt;1 to 5 ft</span><span data-error hidden><i class="dot high" aria-hidden="true"></i> Error &gt;5 ft</span></div>
+      <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> <span id="field-legend">Available measurement</span></span><span id="withheld-legend"><i class="dot" aria-hidden="true"></i> Withheld mark</span><span id="added-legend" hidden><i class="dot field-added" aria-hidden="true"></i> Added measurement</span><span id="review-legend" hidden><i class="dot review" aria-hidden="true"></i> Review flag</span><span data-error hidden><i class="dot low" aria-hidden="true"></i> Error ≤1 ft</span><span data-error hidden><i class="dot mid" aria-hidden="true"></i> Error &gt;1 to 5 ft</span><span data-error hidden><i class="dot high" aria-hidden="true"></i> Error &gt;5 ft</span></div>
       <div id="review-info" class="callout" hidden><strong id="review-current"></strong><p id="review-evidence" class="micro"></p><p class="micro">Flags use only the gap between both estimates. Verify flagged and unflagged estimates in the field.</p></div>
       <div class="kbd-strip"><p class="micro" id="map-note">Points show recorded coordinates. Select a point to inspect its mark.</p><div class="strip-actions"><button type="button" class="outline" id="zoom" aria-pressed="false">Zoom near mark</button></div></div>
     </section>
@@ -236,7 +241,7 @@ const METHODS={model:'MarkRoute',baseline:'Bounded local regression'};
 const REF='bounded local regression';
 const CANDIDATE='gradient boost';
 const SVG_NS='http://www.w3.org/2000/svg';
-const state={event:0,scenario:0,site:0,method:'model',revealed:false,revealMap:false,review:false,zoom:false,edited:null};
+const state={event:0,scenario:0,site:0,method:'model',revealed:false,revealMap:false,review:false,zoom:false,edited:null,fieldOnly:false,estimateSelection:null};
 const payload=typeof MARKROUTE_DATA==='undefined'?null:MARKROUTE_DATA;
 const engine=typeof MarkRouteEngine==='undefined'?null:MarkRouteEngine;
 const reviewEvidence=payload?.review;
@@ -262,7 +267,7 @@ function option(parent,index,label){const el=add(parent,'option',label);el.value
 function original(){return payload.events[state.event].scenarios[state.scenario];}
 function active(){return state.edited||original();}
 function disagreement(scenario){
-  if(!state.review)return null;
+  if(!state.review||state.fieldOnly)return null;
   const order=scenario.sites.filter(site=>!site.surveyed)
     .map(site=>({id:site.id,gap:Math.abs(site.modelFt-site.baselineFt)}))
     .sort((a,b)=>(b.gap-a.gap)||(Number(a.id)-Number(b.id)));
@@ -271,10 +276,15 @@ function disagreement(scenario){
 function siteOptions(review=disagreement(active())){
   clear('mark-select');
   active().sites.forEach((site,i)=>{
+    if(state.fieldOnly&&!site.surveyed)return;
     const rank=review?.ranks.get(site.id)?.rank;
-    const markStatus=site.surveyed?'surveyed':rank<=review?.slots?'review flag':'withheld';
+    const markStatus=state.fieldOnly?(original().sites[i].surveyed?'starting measurement':'added measurement'):
+      site.surveyed?'surveyed':rank<=review?.slots?'review flag':'withheld';
     option(node('mark-select'),i,`Mark ${site.id} · ${markStatus}`);
   });
+}
+function defaultSite(sites){
+  return Math.max(0,sites.findIndex(site=>site.surveyed===state.fieldOnly));
 }
 function selectScenario(pick,siteId){
   state.scenario=pick;
@@ -284,9 +294,9 @@ function selectScenario(pick,siteId){
   node('recompute-status').textContent='';
   const points=original().sites;
   const match=points.findIndex(site=>site.id===siteId);
-  state.site=match>=0?match:Math.max(0,points.findIndex(site=>!site.surveyed));
+  state.site=match>=0&&(!state.fieldOnly||points[match].surveyed)?match:defaultSite(points);
   state.revealed=false;
-  state.zoom=true;
+  state.zoom=!state.fieldOnly;
   state.revealMap=false;
   node('influence').open=false;
   node('formula').open=false;
@@ -301,11 +311,36 @@ function selectEvent(pick,survey=0,siteId){
   selectScenario(survey,siteId);
 }
 function chooseSite(index,showActual){
+  if(state.fieldOnly&&!active().sites[index]?.surveyed)return;
   state.site=index;
   state.revealed=showActual;
   node('recompute-status').textContent='';
   node('influence').open=false;
   node('formula').open=false;
+  draw();
+}
+function toggleFieldOnly(){
+  const scenario=active();
+  if(state.fieldOnly){
+    state.fieldOnly=false;
+    const previous=state.estimateSelection;
+    state.site=previous?.scenario===scenario?previous.site:defaultSite(scenario.sites);
+    state.revealed=previous?.scenario===scenario&&previous.revealed;
+    state.zoom=previous?.scenario===scenario?previous.zoom:true;
+    state.estimateSelection=null;
+  }else{
+    state.estimateSelection={scenario,site:state.site,revealed:state.revealed,zoom:state.zoom};
+    state.fieldOnly=true;
+    if(!scenario.sites[state.site].surveyed){
+      const nearest=nearestSite(scenario,scenario.sites[state.site],site=>site.surveyed);
+      state.site=nearest?scenario.sites.indexOf(nearest):defaultSite(scenario.sites);
+    }
+    state.revealed=false;
+    state.zoom=false;
+  }
+  node('influence').open=false;
+  node('formula').open=false;
+  siteOptions();
   draw();
 }
 function exampleLocation(){
@@ -328,7 +363,8 @@ function matchesOpening(){
 }
 function openingSite(scenario){return scenario.sites.find(site=>site.id===examples.worked);}
 function drawOpening(){
-  if(!opening.location)return;
+  node('opening').hidden=!opening.location||state.fieldOnly;
+  if(node('opening').hidden)return;
   const {event,scenario}=opening.location;
   const selected=state.site===active().sites.findIndex(site=>site.id===examples.worked);
   const current=matchesOpening();
@@ -503,11 +539,11 @@ function estimateWithoutReading(scenario,targetIndex,anchorIndex){
   });
   return engine.recompute(previewSites,payload.estimator)[targetIndex]?.modelFt;
 }
-function nearestWithheld(scenario,point){
+function nearestSite(scenario,point,eligible){
   const scale=Math.cos(point.lat*Math.PI/180);
   let nearest=null,best=Infinity;
   for(const site of scenario.sites){
-    if(site.surveyed||site.id===point.id)continue;
+    if(!eligible(site)||site.id===point.id)continue;
     const distance=Math.hypot(site.lat-point.lat,(site.lon-point.lon)*scale);
     if(distance<best){nearest=site;best=distance;}
   }
@@ -516,7 +552,7 @@ function nearestWithheld(scenario,point){
 function addMeasurement(focusReset=true){
   const source=active();
   const selected=source.sites[state.site];
-  if(!engine||selected.surveyed||!(state.revealed||state.revealMap)) return false;
+  if(state.fieldOnly||!engine||selected.surveyed||!(state.revealed||state.revealMap)) return false;
   const sites=source.sites.map((site,i)=>i===state.site?{...site,surveyed:true}: {...site});
   try{
     const scored=engine.recompute(sites);
@@ -526,7 +562,7 @@ function addMeasurement(focusReset=true){
       mae[method]=withheld.length?withheld.reduce((sum,site)=>sum+Math.abs(site[`${method}Ft`]-site.actualFt),0)/withheld.length:null;
     }
     if(matchesOpening()&&selected.id===examples.worked){
-      const nearest=nearestWithheld(source,selected);
+      const nearest=nearestSite(source,selected,site=>!site.surveyed);
       const beforeError=scored.reduce((sum,site,i)=>site.surveyed?sum:sum+Math.abs(source.sites[i].modelFt-site.actualFt),0);
       opening.update={point:selected,remaining:withheld.length,beforeMae:withheld.length?beforeError/withheld.length:null,
         afterMae:mae.model,nearest,recomputed:scored.find(site=>site.id===nearest?.id)};
@@ -692,8 +728,7 @@ function robustness(){
   }
   node('robust-gap').textContent=`At the same 15% measurement budget, excluding a cluster of nearby starting measurements raised pooled error from ${ft(gap.modelDispersed)} to ${ft(gap.modelMissing)} for MarkRoute, and from ${ft(gap.baselineDispersed)} to ${ft(gap.baselineMissing)} for bounded regression.`;
 }
-function extent(sites,box){
-  const selected=sites[state.site];
+function extent(sites,selected,box){
   const inView=state.zoom?sites.map(site=>({site,d:Math.hypot(site.lat-selected.lat,(site.lon-selected.lon)*Math.cos(selected.lat*Math.PI/180))})).sort((a,b)=>a.d-b.d).slice(0,24).map(x=>x.site):sites;
   const lons=inView.map(x=>x.lon),lats=inView.map(x=>x.lat);
   const latitude=(Math.max(...lats)+Math.min(...lats))/2;
@@ -714,8 +749,10 @@ function drawMap(scenario,review=disagreement(scenario)){
   const ticks=compact?3:4;
   root.setAttribute('viewBox',`0 0 ${width} ${height}`);
   root.replaceChildren();
-  svg(root,'title',{},`High-water survey marks for ${payload.events[state.event].name}`);
-  const frame=extent(scenario.sites,{left,right,top,bottom});
+  root.setAttribute('aria-label',state.fieldOnly?'Geographic scatterplot of surveyed high-water marks':'Geographic scatterplot of flagged high-water marks');
+  svg(root,'title',{},`${state.fieldOnly?'Field measurements':'High-water survey marks'} for ${payload.events[state.event].name}`);
+  const displayed=state.fieldOnly?scenario.sites.filter(site=>site.surveyed):scenario.sites;
+  const frame=extent(displayed,scenario.sites[state.site],{left,right,top,bottom});
   const grid=svg(root,'g',{'aria-hidden':'true'});
   const latPrecision=Math.abs(frame.lat(top)-frame.lat(bottom))/ticks<.01?3:2;
   const lonPrecision=Math.abs(frame.lon(left)-frame.lon(right))/ticks<.01?3:2;
@@ -736,18 +773,21 @@ function drawMap(scenario,review=disagreement(scenario)){
   const indices=scenario.sites.map((_,i)=>i).sort((a,b)=>layer(a)-layer(b));
   for(const i of indices){
     const spot=scenario.sites[i];
+    if(state.fieldOnly&&!spot.surveyed)continue;
     const x=frame.x(spot.lon),y=frame.y(spot.lat);
     if(x<left-8||x>right+8||y<top-8||y>bottom+8) continue;
     const value=spot[`${state.method}Ft`];
-    const e=value===null?null:Math.abs(value-spot.actualFt);
-    const color=spot.surveyed?['#14766c','#14564f']:
-      !state.revealMap||e===null?['#fff','#537381']:e<=1?['#a2bbb5','#4b7169']:e<=5?['#edbf69','#895d24']:['#e58a87','#9d3437'];
+    const e=state.revealMap&&!state.fieldOnly&&Number.isFinite(value)?Math.abs(value-spot.actualFt):null;
+    const added=state.fieldOnly&&!original().sites[i].surveyed;
+    const color=spot.surveyed?(added?['#d3efe5','#176859']:['#14766c','#14564f']):
+      e===null?['#fff','#537381']:e<=1?['#a2bbb5','#4b7169']:e<=5?['#edbf69','#895d24']:['#e58a87','#9d3437'];
     const radius=spot.surveyed?5.8:4.7;
     if(i===state.site) svg(points,'circle',{cx:x,cy:y,r:10.5,stroke:'#164d7a','stroke-width':2.5,fill:'#a8d8f077','pointer-events':'none'});
     if(review?.ranks.get(spot.id)?.rank<=review?.slots) svg(points,'circle',{cx:x,cy:y,r:8,class:'review-ring'});
-    svg(points,'circle',{cx:x,cy:y,r:radius,fill:color[0],stroke:color[1],'stroke-width':1.4,class:'point','pointer-events':'none'});
+    svg(points,'circle',{cx:x,cy:y,r:radius,fill:color[0],stroke:color[1],'stroke-width':added?2.1:1.4,class:'point','pointer-events':'none'});
     const hit=svg(points,'circle',{cx:x,cy:y,r:9,class:'hit'});
-    svg(hit,'title',{},`Mark ${spot.id} · ${spot.surveyed?'surveyed':'withheld'}`);
+    const status=state.fieldOnly?(added?'added measurement':'starting measurement'):spot.surveyed?'surveyed':'withheld';
+    svg(hit,'title',{},`Mark ${spot.id} · ${status}`);
     hit.addEventListener('click',()=>chooseSite(i,false));
   }
 }
@@ -763,7 +803,8 @@ function drawDetails(scenario,review=disagreement(scenario)){
   node('review-mark').hidden=!ranking;
   if(ranking)node('review-mark').textContent=`${ranking.rank<=review.slots?'Review flag · ':''}${ft(ranking.gap)} gap between methods · Rank ${ranking.rank} of ${review.ranks.size}`;
   clear('predictions');
-  if(!s.surveyed){
+  node('predictions').hidden=state.fieldOnly;
+  if(!state.fieldOnly&&!s.surveyed){
     Object.entries(METHODS).forEach(([key,label])=>{
       const row=add(node('predictions'),'div',undefined,`reading${state.method===key?' active':''}`);
       const title=add(row,'div');
@@ -776,7 +817,7 @@ function drawDetails(scenario,review=disagreement(scenario)){
       else add(title,'span','Estimated peak elevation','error');
       add(row,'span',ft(result),'value');
     });
-  }else{
+  }else if(!state.fieldOnly){
     add(node('predictions'),'p','Both methods receive this measurement before estimating the withheld sites.','quiet');
   }
   node('actual').textContent=shown?ft(s.actualFt):'Withheld';
@@ -786,7 +827,8 @@ function drawDetails(scenario,review=disagreement(scenario)){
   node('reset-survey').hidden=!state.edited;
   node('reveal').textContent=state.revealed?'Hide measurement':'Reveal measurement';
   node('reveal').setAttribute('aria-expanded',String(shown));
-  node('survey-hint').textContent=s.surveyed?'Choose a withheld mark to see an updated estimate.':shown?'Adding this reading gives it to both methods and reruns estimates for every remaining mark.':'Reveal the archived value to check each estimate before adding it to the survey.';
+  node('survey-hint').textContent=state.fieldOnly?'Choose a surveyed mark to inspect its archived elevation.':s.surveyed?'Choose a withheld mark to see an updated estimate.':shown?'Adding this reading gives it to both methods and reruns estimates for every remaining mark.':'Reveal the archived value to check each estimate before adding it to the survey.';
+  node('recompute-status').hidden=state.fieldOnly;
   const hasFormula=!s.surveyed&&Number.isFinite(s.startingFt)&&Number.isFinite(s.correctionFt);
   const influence=node('influence');
   influence.hidden=s.surveyed||typeof engine?.explainSurveyInfluence!=='function';
@@ -798,27 +840,40 @@ function drawDetails(scenario,review=disagreement(scenario)){
     node('equation').textContent=`${ft(s.startingFt,3)} ${op} ${ft(Math.abs(s.correctionFt),3)} = ${ft(s.modelFt,3)}`;
     node('equation-note').textContent=`Starting elevation plus learned correction gives the estimated peak. ${s.environment==='Coastal'?'On the coast the starting point is the nearby observed water surface.':'For riverine marks the starting point transfers nearby water height above terrain.'} Inputs are rounded for display.`;
   }
-  node('scenario-mae').textContent=scenario.counts.unseen?`${state.edited?'Updated':'Starting'} survey: ${ft(scenario.mae.model)} MarkRoute error and ${ft(scenario.mae.baseline)} regression error over the same ${scenario.counts.unseen} ${state.edited?'remaining ':''}withheld marks. Seed ${scenario.seed}.`:'All archived marks are available to both methods.';
+  node('scenario-mae').hidden=state.fieldOnly;
+  if(!state.fieldOnly)node('scenario-mae').textContent=scenario.counts.unseen?`${state.edited?'Updated':'Starting'} survey: ${ft(scenario.mae.model)} MarkRoute error and ${ft(scenario.mae.baseline)} regression error over the same ${scenario.counts.unseen} ${state.edited?'remaining ':''}withheld marks. Seed ${scenario.seed}.`:'All archived marks are available to both methods.';
   drawOpening();
 }
 function draw(){
   const scenario=active();
   const {initial,unseen,sites}=scenario.counts;
   const review=disagreement(scenario);
-  node('map-counts').textContent=`${sites} sites · ${initial} ${state.edited?'available':'starting'} measurements · ${unseen} withheld`;
+  const starting=original().counts.initial;
+  const added=initial-starting;
+  node('map-heading').textContent=state.fieldOnly?'Field measurements':'Flagged high-water marks';
+  node('map-counts').textContent=state.fieldOnly?`${initial} field readings · ${starting} starting · ${added} added`:
+    `${sites} sites · ${initial} ${state.edited?'available':'starting'} measurements · ${unseen} withheld`;
+  node('field-only').setAttribute('aria-pressed',String(state.fieldOnly));
+  node('error-methods').hidden=state.fieldOnly;
+  node('examples').hidden=!opening.location||state.fieldOnly;
+  node('field-legend').textContent=state.fieldOnly?'Starting measurement':'Available measurement';
+  node('withheld-legend').hidden=state.fieldOnly;
+  node('added-legend').hidden=!state.fieldOnly||added===0;
   Object.keys(METHODS).forEach(key=>node(key).setAttribute('aria-pressed',String(state.method===key)));
   const isExample=String(payload.events[state.event].id)===examples.eventId&&scenario.seed===examples.seed;
   ['worked','miss'].forEach(kind=>node(`${kind}-case`).setAttribute('aria-pressed',String(isExample&&scenario.sites[state.site].id===examples[kind])));
   node('errors').textContent=state.revealMap?'Hide map errors':'Reveal map errors';
   node('errors').setAttribute('aria-pressed',String(state.revealMap));
-  document.querySelectorAll('[data-error]').forEach(x=>{x.hidden=!state.revealMap;});
+  node('errors').hidden=state.fieldOnly;
+  document.querySelectorAll('[data-error]').forEach(x=>{x.hidden=state.fieldOnly||!state.revealMap;});
   node('review-flags').setAttribute('aria-pressed',String(state.review));
+  node('review-flags').hidden=state.fieldOnly||!reviewEvidence;
   node('review-info').hidden=!review;
   node('review-legend').hidden=!review;
   if(review)node('review-current').textContent=`${review.slots} of ${review.ranks.size} withheld marks flagged by estimate disagreement.`;
   node('zoom').textContent=state.zoom?'Fit all marks':'Zoom near mark';
   node('zoom').setAttribute('aria-pressed',String(state.zoom));
-  node('map-note').textContent=state.zoom?'Zoomed near the selected mark. Select a point or use the survey mark menu.':'Points show recorded coordinates. Select a point or use the survey mark menu.';
+  node('map-note').textContent=state.fieldOnly?'Only readings in this survey are shown. Select a point or use the survey mark menu.':state.zoom?'Zoomed near the selected mark. Select a point or use the survey mark menu.':'Points show recorded coordinates. Select a point or use the survey mark menu.';
   drawMap(scenario,review);
   drawDetails(scenario,review);
 }
@@ -829,6 +884,7 @@ function setup(){
   node('event').addEventListener('change',e=>selectEvent(Number(e.target.value)));
   node('scenario').addEventListener('change',e=>selectScenario(Number(e.target.value)));
   node('mark-select').addEventListener('change',e=>chooseSite(Number(e.target.value),false));
+  node('field-only').addEventListener('click',toggleFieldOnly);
   Object.keys(METHODS).forEach(key=>node(key).addEventListener('click',()=>{state.method=key;draw();}));
   node('reveal').addEventListener('click',()=>{state.revealed=!state.revealed;drawDetails(active());});
   node('influence').addEventListener('toggle',()=>{
