@@ -2,7 +2,7 @@
 
 **AI + Climate · Veritas AI International High School Hackathon 2026**
 
-After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay at an Ian survey mark and reveal the crew’s recorded 12.30 ft. MarkRoute’s estimate missed by 0.21 ft and bounded regression missed by 1.85 ft. Add the reading to watch the same models recalculate the other 249 marks.
+After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. The elevation is the height of the peak water surface relative to NAVD88. Flood depth is the height of that surface above the local ground. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay at an Ian survey mark and reveal the crew’s recorded 12.30 ft. MarkRoute’s estimate missed by 0.21 ft and bounded regression missed by 1.85 ft. Add the reading to watch the same models recalculate the other 249 marks.
 
 **With the same starting measurements, MarkRoute reduced average error in all 22 held-out floods against both bounded terrain regression and terrain-aware kriging.** Nine newly tested inland floods contributed 2,560 event-site records. Mean error fell from **5.56 to 4.80 ft** compared with kriging. At the 1,199 riverine event-sites with higher local terrain relief, it went from **7.74 to 7.02 ft**. Large errors remained common in steep terrain.
 
@@ -11,6 +11,31 @@ After a flood, a survey coordinator can have a list of places where crews found 
 The opening replay shows the recalculation at the closest remaining mark in the same environment. Average error across the same 249 remaining marks falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In the map, choose **Measured miss** to inspect a separate site where bounded regression is closer. Each point shows the starting estimate and the model’s signed correction.
 
 **What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout. Use **Field measurements only** to view just the readings in the current survey, including any archived readings you add during the replay.
+
+## What a crew would do differently
+
+1. Load a prepared list of flagged marks with coordinates, terrain and existing survey elevations. The CSV stays in the browser tab. The example file defines the nine required columns.
+2. Go to **Plan the next survey visits**. Enter the number of additional readings the crew can take. Inspect proposed marks, exclude any sites the crew cannot reach, and download the visit list with site IDs and coordinates.
+3. Enter each new field reading. MarkRoute updates the provisional estimates and the next visit list. **Field measurements only** shows recorded readings. **Download updated survey** saves the data for the next shift.
+
+This supports the return survey after crews have located and flagged the marks. Coverage gives priority to a site that would add a comparable reading for many poorly represented flags. It uses distance, ground elevation and named waterbody in a similarity score. It ranks readings by expected coverage and leaves road access and travel order to the crew. [USGS field manual](https://pubs.usgs.gov/publication/ofr20171105)
+
+### What changed at the same number of visits
+
+We gave every rule the same starting readings and the same number of extra readings, about 10% of sites per environment. We kept survey candidates separate from permanently hidden scoring sites. After revealing just the chosen readings, we scored the same predicted elevations for every rule. The older 13-flood experiment fixed the terrain coverage rule before this comparison.
+
+| Visit selection rule | Mean error on the same hidden marks |
+| --- | ---: |
+| Nearest to the starting surveys | 4.28 ft |
+| Farthest first | 3.92 ft |
+| Random | 4.03 ft |
+| **Terrain coverage** | **3.67 ft** |
+
+Across 13 archived floods, terrain coverage reduced error **14.3% compared with nearest-first**. The paired within-event spatial interval was **0.50 to 0.74 ft**, and the mean improved in all 13 floods. On 898 steep riverine event-sites, the share of misses beyond five feet fell from **39.8% to 33.2%** versus nearest-first.
+
+The fixed June 2022 Montana example starts at 32 surveyed flags. With 21 more readings, terrain coverage starts with marks **32316, 32093, and 32317**. It averages **4.72 ft** error on 90 untouched flags, compared with **5.65 ft** after nearest-first visits. Two additional floods from separately published Arkansas and New Hampshire field reports gave a similar direction across 79 scored sites, from 6.05 to 5.42 ft against nearest-first. The paired interval spans zero on this small cohort. The replay measures newly revealed readings. Travel time, access and crew outcomes need a field trial. [Protocol](CREW_REPLAY_PROTOCOL.md) · [Exact event and site results](crew_results.json)
+
+For a fixed set of target flags, the plan maximizes the sum of their best terrain similarities to a surveyed mark. Choosing another reading has diminishing marginal benefit as other comparable sites are selected. This makes the stated coverage objective a monotone submodular set function, with a classical greedy approximation for a fixed count. The approximation concerns the similarity score. The evidence above comes from comparing estimates after revealing real readings. For a live survey, each unmeasured mark is a coverage target and accessible marks are candidates. [Greedy coverage analysis](https://doi.org/10.1007/BF01588971)
 
 ## Held-out results
 
@@ -181,7 +206,7 @@ python residual_formulation.py test
 python archival_replay.py evaluate
 python archive_review.py validation
 python archive_review.py test
-python steep_repair.py validation
+python crew_replay.py\npython steep_repair.py validation
 python expanded_training.py validation
 python demo_export.py
 ```
@@ -190,7 +215,7 @@ These commands use the supplied processed [survey panel](panel.csv) and regenera
 
 ## Regression tests
 
-With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 22 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
+With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. Run \`node test_crew_planner.cjs\` to verify all 21 browser picks against Python on the fixed Montana assignment and to verify the ranking does not use hidden elevations. The replay suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 22 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
 
 ## Scope and data
 

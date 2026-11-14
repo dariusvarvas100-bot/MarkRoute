@@ -7,6 +7,10 @@
 - **0:45–1:20.** Open **Explain this estimate**. Nearby readings move the prediction from 11.52 to 12.51 ft. The biggest contribution is +0.59 ft from 6.14 km away. Shapley averages over every order of adding the four readings. Preview removal of mark 26290 to show the specific estimate with all other readings retained, **12.51 → 12.37 ft**. Mean error fell on **22 of 22** archived floods against bounded regression and terrain-aware kriging. In the nine additional river floods, it fell from **5.56 to 4.80 ft** against local kriging.
 - **1:20–1:46.** Open **Measured miss**. Replay June 2016 West Virginia. Across the new high-relief subset, 46.3% of MarkRoute estimates still missed by more than five feet. The model helps make provisional estimates at known flags. Field testing would be needed to measure travel time, access and decision quality.
 
+## Show the crew decision
+
+Open **Plan the next survey visits**. Set a budget, exclude an inaccessible mark, and download the revised queue. Open **What changed at the same survey budget?**. For the Montana replay, the crew would start with 32316, 32093 and 32317 under terrain coverage. It took 21 additional measurements under each policy, and we scored the same 90 unmeasured marks. MAE was 4.72 ft with terrain coverage and 5.65 ft with nearest-first. Report this as an archival replay.
+
 ## Questions to rehearse
 
 - **Did more training data fix steep terrain?** We increased steep river training event-sites from 96 to 1,062. On three withheld development floods, the best candidate lowered large misses by 0.75 percentage points, below our one-point threshold. The released model keeps its original fit. Use **Field measurements only** to see the readings currently in the survey.

@@ -1,0 +1,1885 @@
+{
+  "historical": {
+    "eventCount": 13,
+    "uniqueEventSites": 2372,
+    "maskSitePairs": 12168,
+    "methods": {
+      "no extra": {
+        "maeFt": 4.399986390253582,
+        "overFive": 3482,
+        "overFiveRate": 0.2861604207758054
+      },
+      "terrain coverage": {
+        "maeFt": 3.671150969379223,
+        "overFive": 2695,
+        "overFiveRate": 0.22148257725180803
+      },
+      "nearest": {
+        "maeFt": 4.2822108563699075,
+        "overFive": 3324,
+        "overFiveRate": 0.27317554240631164
+      },
+      "farthest": {
+        "maeFt": 3.9188909313144635,
+        "overFive": 2962,
+        "overFiveRate": 0.24342537804076267
+      },
+      "random": {
+        "maeFt": 4.034720684268034,
+        "overFive": 3097,
+        "overFiveRate": 0.2545200525969757
+      }
+    },
+    "comparisons": {
+      "no extra": {
+        "maeReductionFt": 0.7288354208743586,
+        "relativeMaeReduction": 0.165644926195409,
+        "overFiveRateReduction": 0.06467784352399736,
+        "paired95WithinEventBlocksFt": [
+          0.6267583725889235,
+          0.8393346786808565
+        ],
+        "overFiveRatePaired95": [
+          0.0544878485145802,
+          0.07566960144844405
+        ],
+        "eventWins": 13
+      },
+      "nearest": {
+        "maeReductionFt": 0.6110598869906845,
+        "relativeMaeReduction": 0.14269729060205336,
+        "overFiveRateReduction": 0.05169296515450361,
+        "paired95WithinEventBlocksFt": [
+          0.4977648158118661,
+          0.7376371055987729
+        ],
+        "overFiveRatePaired95": [
+          0.04127988883796362,
+          0.0624745605749197
+        ],
+        "eventWins": 13
+      },
+      "farthest": {
+        "maeReductionFt": 0.2477399619352405,
+        "relativeMaeReduction": 0.06321685555360539,
+        "overFiveRateReduction": 0.021942800788954636,
+        "paired95WithinEventBlocksFt": [
+          0.1764159469706436,
+          0.32164340060126534
+        ],
+        "overFiveRatePaired95": [
+          0.01439909343394949,
+          0.029694773281051898
+        ],
+        "eventWins": 12
+      },
+      "random": {
+        "maeReductionFt": 0.3635697148888113,
+        "relativeMaeReduction": 0.09011025628277634,
+        "overFiveRateReduction": 0.033037475345167655,
+        "paired95WithinEventBlocksFt": [
+          0.28834646708130673,
+          0.4451147504708578
+        ],
+        "overFiveRatePaired95": [
+          0.025375121047774375,
+          0.04106732477595226
+        ],
+        "eventWins": 13
+      }
+    },
+    "events": {
+      "2015-16 Winter MO Flood": {
+        "uniqueSites": 103,
+        "maskSitePairs": 528,
+        "spatialBlocks": 9,
+        "methods": {
+          "no extra": {
+            "maeFt": 3.1992901428763565,
+            "overFive": 101,
+            "overFiveRate": 0.19128787878787878
+          },
+          "terrain coverage": {
+            "maeFt": 2.452685717132657,
+            "overFive": 59,
+            "overFiveRate": 0.11174242424242424
+          },
+          "nearest": {
+            "maeFt": 2.9174685129919773,
+            "overFive": 85,
+            "overFiveRate": 0.16098484848484848
+          },
+          "farthest": {
+            "maeFt": 2.5744955375802,
+            "overFive": 63,
+            "overFiveRate": 0.11931818181818182
+          },
+          "random": {
+            "maeFt": 2.653191035483154,
+            "overFive": 66,
+            "overFiveRate": 0.125
+          }
+        }
+      },
+      "2016 Jul WI Flood": {
+        "uniqueSites": 48,
+        "maskSitePairs": 252,
+        "spatialBlocks": 5,
+        "methods": {
+          "no extra": {
+            "maeFt": 4.325950090602913,
+            "overFive": 82,
+            "overFiveRate": 0.3253968253968254
+          },
+          "terrain coverage": {
+            "maeFt": 3.5795693958867973,
+            "overFive": 70,
+            "overFiveRate": 0.2777777777777778
+          },
+          "nearest": {
+            "maeFt": 4.188340921815005,
+            "overFive": 79,
+            "overFiveRate": 0.3134920634920635
+          },
+          "farthest": {
+            "maeFt": 3.5244883963318303,
+            "overFive": 65,
+            "overFiveRate": 0.25793650793650796
+          },
+          "random": {
+            "maeFt": 4.02422913522806,
+            "overFive": 76,
+            "overFiveRate": 0.30158730158730157
+          }
+        }
+      },
+      "2021 Ida": {
+        "uniqueSites": 343,
+        "maskSitePairs": 1752,
+        "spatialBlocks": 57,
+        "methods": {
+          "no extra": {
+            "maeFt": 4.819154459876184,
+            "overFive": 519,
+            "overFiveRate": 0.2962328767123288
+          },
+          "terrain coverage": {
+            "maeFt": 3.908835793820469,
+            "overFive": 332,
+            "overFiveRate": 0.18949771689497716
+          },
+          "nearest": {
+            "maeFt": 4.616922012729602,
+            "overFive": 455,
+            "overFiveRate": 0.259703196347032
+          },
+          "farthest": {
+            "maeFt": 4.13418050834675,
+            "overFive": 382,
+            "overFiveRate": 0.2180365296803653
+          },
+          "random": {
+            "maeFt": 4.384769958379573,
+            "overFive": 427,
+            "overFiveRate": 0.2437214611872146
+          }
+        }
+      },
+      "2022 December - 2023 January CA Flood": {
+        "uniqueSites": 37,
+        "maskSitePairs": 192,
+        "spatialBlocks": 12,
+        "methods": {
+          "no extra": {
+            "maeFt": 10.64794519343622,
+            "overFive": 97,
+            "overFiveRate": 0.5052083333333334
+          },
+          "terrain coverage": {
+            "maeFt": 7.242061384370396,
+            "overFive": 59,
+            "overFiveRate": 0.3072916666666667
+          },
+          "nearest": {
+            "maeFt": 10.355617041814861,
+            "overFive": 95,
+            "overFiveRate": 0.4947916666666667
+          },
+          "farthest": {
+            "maeFt": 9.74548789958476,
+            "overFive": 78,
+            "overFiveRate": 0.40625
+          },
+          "random": {
+            "maeFt": 9.516495345915823,
+            "overFive": 78,
+            "overFiveRate": 0.40625
+          }
+        }
+      },
+      "2022 Ian": {
+        "uniqueSites": 293,
+        "maskSitePairs": 1512,
+        "spatialBlocks": 45,
+        "methods": {
+          "no extra": {
+            "maeFt": 1.125581338384912,
+            "overFive": 31,
+            "overFiveRate": 0.0205026455026455
+          },
+          "terrain coverage": {
+            "maeFt": 0.8891174090561625,
+            "overFive": 27,
+            "overFiveRate": 0.017857142857142856
+          },
+          "nearest": {
+            "maeFt": 1.0961999117680532,
+            "overFive": 34,
+            "overFiveRate": 0.022486772486772486
+          },
+          "farthest": {
+            "maeFt": 0.9370414180798693,
+            "overFive": 24,
+            "overFiveRate": 0.015873015873015872
+          },
+          "random": {
+            "maeFt": 1.023049438604188,
+            "overFive": 26,
+            "overFiveRate": 0.017195767195767195
+          }
+        }
+      },
+      "2022 June MT Flood": {
+        "uniqueSites": 211,
+        "maskSitePairs": 1080,
+        "spatialBlocks": 24,
+        "methods": {
+          "no extra": {
+            "maeFt": 5.142888414650962,
+            "overFive": 354,
+            "overFiveRate": 0.3277777777777778
+          },
+          "terrain coverage": {
+            "maeFt": 4.129287096272491,
+            "overFive": 272,
+            "overFiveRate": 0.2518518518518518
+          },
+          "nearest": {
+            "maeFt": 5.02585149279356,
+            "overFive": 352,
+            "overFiveRate": 0.32592592592592595
+          },
+          "farthest": {
+            "maeFt": 4.586285694821143,
+            "overFive": 319,
+            "overFiveRate": 0.2953703703703704
+          },
+          "random": {
+            "maeFt": 4.573426833873519,
+            "overFive": 310,
+            "overFiveRate": 0.28703703703703703
+          }
+        }
+      },
+      "2023 December East Coast Cyclone": {
+        "uniqueSites": 260,
+        "maskSitePairs": 1332,
+        "spatialBlocks": 70,
+        "methods": {
+          "no extra": {
+            "maeFt": 5.447422649092338,
+            "overFive": 564,
+            "overFiveRate": 0.42342342342342343
+          },
+          "terrain coverage": {
+            "maeFt": 4.6832216054217835,
+            "overFive": 461,
+            "overFiveRate": 0.3460960960960961
+          },
+          "nearest": {
+            "maeFt": 5.269931368816372,
+            "overFive": 522,
+            "overFiveRate": 0.3918918918918919
+          },
+          "farthest": {
+            "maeFt": 4.976984738195698,
+            "overFive": 501,
+            "overFiveRate": 0.3761261261261261
+          },
+          "random": {
+            "maeFt": 5.185951605761729,
+            "overFive": 533,
+            "overFiveRate": 0.40015015015015015
+          }
+        }
+      },
+      "2024 Helene": {
+        "uniqueSites": 61,
+        "maskSitePairs": 312,
+        "spatialBlocks": 27,
+        "methods": {
+          "no extra": {
+            "maeFt": 6.685288775839388,
+            "overFive": 153,
+            "overFiveRate": 0.49038461538461536
+          },
+          "terrain coverage": {
+            "maeFt": 5.793045601385888,
+            "overFive": 132,
+            "overFiveRate": 0.4230769230769231
+          },
+          "nearest": {
+            "maeFt": 6.232533970194374,
+            "overFive": 138,
+            "overFiveRate": 0.4423076923076923
+          },
+          "farthest": {
+            "maeFt": 6.231634530205284,
+            "overFive": 136,
+            "overFiveRate": 0.4358974358974359
+          },
+          "random": {
+            "maeFt": 6.2100401269539,
+            "overFive": 146,
+            "overFiveRate": 0.46794871794871795
+          }
+        }
+      },
+      "2024 Jan CA Flood": {
+        "uniqueSites": 31,
+        "maskSitePairs": 156,
+        "spatialBlocks": 4,
+        "methods": {
+          "no extra": {
+            "maeFt": 4.6145853817949885,
+            "overFive": 53,
+            "overFiveRate": 0.33974358974358976
+          },
+          "terrain coverage": {
+            "maeFt": 2.797648570277115,
+            "overFive": 22,
+            "overFiveRate": 0.14102564102564102
+          },
+          "nearest": {
+            "maeFt": 4.311387143384984,
+            "overFive": 42,
+            "overFiveRate": 0.2692307692307692
+          },
+          "farthest": {
+            "maeFt": 3.144308546189007,
+            "overFive": 32,
+            "overFiveRate": 0.20512820512820512
+          },
+          "random": {
+            "maeFt": 2.9000995746971316,
+            "overFive": 29,
+            "overFiveRate": 0.1858974358974359
+          }
+        }
+      },
+      "2024 June IA Flood": {
+        "uniqueSites": 60,
+        "maskSitePairs": 312,
+        "spatialBlocks": 23,
+        "methods": {
+          "no extra": {
+            "maeFt": 3.0696425467445114,
+            "overFive": 51,
+            "overFiveRate": 0.16346153846153846
+          },
+          "terrain coverage": {
+            "maeFt": 2.6035078301155576,
+            "overFive": 34,
+            "overFiveRate": 0.10897435897435898
+          },
+          "nearest": {
+            "maeFt": 3.0050477496552994,
+            "overFive": 54,
+            "overFiveRate": 0.17307692307692307
+          },
+          "farthest": {
+            "maeFt": 2.798446613148732,
+            "overFive": 40,
+            "overFiveRate": 0.1282051282051282
+          },
+          "random": {
+            "maeFt": 2.7644514013789605,
+            "overFive": 36,
+            "overFiveRate": 0.11538461538461539
+          }
+        }
+      },
+      "2025 December (WA, ID, OR, MT) Flood": {
+        "uniqueSites": 34,
+        "maskSitePairs": 180,
+        "spatialBlocks": 6,
+        "methods": {
+          "no extra": {
+            "maeFt": 4.168639079553153,
+            "overFive": 53,
+            "overFiveRate": 0.29444444444444445
+          },
+          "terrain coverage": {
+            "maeFt": 3.2540827475771406,
+            "overFive": 36,
+            "overFiveRate": 0.2
+          },
+          "nearest": {
+            "maeFt": 3.784752035326662,
+            "overFive": 48,
+            "overFiveRate": 0.26666666666666666
+          },
+          "farthest": {
+            "maeFt": 3.3021355253012543,
+            "overFive": 40,
+            "overFiveRate": 0.2222222222222222
+          },
+          "random": {
+            "maeFt": 3.4023737407069223,
+            "overFive": 39,
+            "overFiveRate": 0.21666666666666667
+          }
+        }
+      },
+      "2025 July TX Flood": {
+        "uniqueSites": 280,
+        "maskSitePairs": 1428,
+        "spatialBlocks": 19,
+        "methods": {
+          "no extra": {
+            "maeFt": 6.236524306717248,
+            "overFive": 692,
+            "overFiveRate": 0.484593837535014
+          },
+          "terrain coverage": {
+            "maeFt": 5.15348895647004,
+            "overFive": 569,
+            "overFiveRate": 0.39845938375350143
+          },
+          "nearest": {
+            "maeFt": 6.229284932522651,
+            "overFive": 675,
+            "overFiveRate": 0.4726890756302521
+          },
+          "farthest": {
+            "maeFt": 5.4209247483465335,
+            "overFive": 604,
+            "overFiveRate": 0.42296918767507
+          },
+          "random": {
+            "maeFt": 5.649704020659947,
+            "overFive": 633,
+            "overFiveRate": 0.4432773109243697
+          }
+        }
+      },
+      "Central US Spring 2019": {
+        "uniqueSites": 611,
+        "maskSitePairs": 3132,
+        "spatialBlocks": 264,
+        "methods": {
+          "no extra": {
+            "maeFt": 3.9401068361820215,
+            "overFive": 732,
+            "overFiveRate": 0.23371647509578544
+          },
+          "terrain coverage": {
+            "maeFt": 3.5733198006195646,
+            "overFive": 622,
+            "overFiveRate": 0.19859514687100893
+          },
+          "nearest": {
+            "maeFt": 3.894199224707895,
+            "overFive": 745,
+            "overFiveRate": 0.23786717752234993
+          },
+          "farthest": {
+            "maeFt": 3.7294511411964755,
+            "overFive": 678,
+            "overFiveRate": 0.2164750957854406
+          },
+          "random": {
+            "maeFt": 3.7815152707261164,
+            "overFive": 698,
+            "overFiveRate": 0.22286079182630908
+          }
+        }
+      }
+    },
+    "budget": {
+      "anchors": 4296,
+      "candidates": 12072,
+      "scored": 12168,
+      "visits": 2856,
+      "eligibleCohortSites": 28536
+    },
+    "highReliefRiverine": {
+      "eventCount": 12,
+      "uniqueEventSites": 898,
+      "maskSitePairs": 4570,
+      "methods": {
+        "no extra": {
+          "maeFt": 6.156169803658678,
+          "overFive": 1943,
+          "overFiveRate": 0.42516411378555796
+        },
+        "terrain coverage": {
+          "maeFt": 5.084868950741276,
+          "overFive": 1519,
+          "overFiveRate": 0.3323851203501094
+        },
+        "nearest": {
+          "maeFt": 6.0051595315906,
+          "overFive": 1819,
+          "overFiveRate": 0.3980306345733042
+        },
+        "farthest": {
+          "maeFt": 5.423794015909798,
+          "overFive": 1645,
+          "overFiveRate": 0.3599562363238512
+        },
+        "random": {
+          "maeFt": 5.666929005637667,
+          "overFive": 1742,
+          "overFiveRate": 0.3811816192560175
+        }
+      },
+      "comparisons": {
+        "no extra": {
+          "maeReductionFt": 1.0713008529174015,
+          "relativeMaeReduction": 0.17402067959215745,
+          "overFiveRateReduction": 0.09277899343544854,
+          "paired95WithinEventBlocksFt": [
+            0.8836533206887932,
+            1.281369896332151
+          ],
+          "overFiveRatePaired95": [
+            0.07293737237577576,
+            0.11248997851071552
+          ],
+          "eventWins": 12
+        },
+        "nearest": {
+          "maeReductionFt": 0.9202905808493238,
+          "relativeMaeReduction": 0.15324998045565066,
+          "overFiveRateReduction": 0.06564551422319476,
+          "paired95WithinEventBlocksFt": [
+            0.6991179061376869,
+            1.1701679794630677
+          ],
+          "overFiveRatePaired95": [
+            0.04587949912039744,
+            0.08626570287601631
+          ],
+          "eventWins": 12
+        },
+        "farthest": {
+          "maeReductionFt": 0.33892506516852183,
+          "relativeMaeReduction": 0.062488557672791684,
+          "overFiveRateReduction": 0.02757111597374179,
+          "paired95WithinEventBlocksFt": [
+            0.20081518386887554,
+            0.48599330831197396
+          ],
+          "overFiveRatePaired95": [
+            0.013411624510777499,
+            0.04100965781022351
+          ],
+          "eventWins": 9
+        },
+        "random": {
+          "maeReductionFt": 0.5820600548963908,
+          "relativeMaeReduction": 0.10271172522495628,
+          "overFiveRateReduction": 0.04879649890590809,
+          "paired95WithinEventBlocksFt": [
+            0.4348257623192874,
+            0.7458868644950689
+          ],
+          "overFiveRatePaired95": [
+            0.03345460457910811,
+            0.06414120801623158
+          ],
+          "eventWins": 11
+        }
+      },
+      "events": {
+        "2015-16 Winter MO Flood": {
+          "uniqueSites": 73,
+          "maskSitePairs": 360,
+          "spatialBlocks": 8,
+          "methods": {
+            "no extra": {
+              "maeFt": 3.0942288960880258,
+              "overFive": 71,
+              "overFiveRate": 0.19722222222222222
+            },
+            "terrain coverage": {
+              "maeFt": 2.4188911062685654,
+              "overFive": 42,
+              "overFiveRate": 0.11666666666666667
+            },
+            "nearest": {
+              "maeFt": 2.8513201513339177,
+              "overFive": 62,
+              "overFiveRate": 0.17222222222222222
+            },
+            "farthest": {
+              "maeFt": 2.488598775808694,
+              "overFive": 45,
+              "overFiveRate": 0.125
+            },
+            "random": {
+              "maeFt": 2.591427695857768,
+              "overFive": 46,
+              "overFiveRate": 0.12777777777777777
+            }
+          }
+        },
+        "2016 Jul WI Flood": {
+          "uniqueSites": 8,
+          "maskSitePairs": 35,
+          "spatialBlocks": 3,
+          "methods": {
+            "no extra": {
+              "maeFt": 10.384743782608016,
+              "overFive": 26,
+              "overFiveRate": 0.7428571428571429
+            },
+            "terrain coverage": {
+              "maeFt": 9.136165140072743,
+              "overFive": 27,
+              "overFiveRate": 0.7714285714285715
+            },
+            "nearest": {
+              "maeFt": 10.156327481354115,
+              "overFive": 27,
+              "overFiveRate": 0.7714285714285715
+            },
+            "farthest": {
+              "maeFt": 6.913156372543316,
+              "overFive": 17,
+              "overFiveRate": 0.4857142857142857
+            },
+            "random": {
+              "maeFt": 10.558951463881193,
+              "overFive": 27,
+              "overFiveRate": 0.7714285714285715
+            }
+          }
+        },
+        "2021 Ida": {
+          "uniqueSites": 207,
+          "maskSitePairs": 1074,
+          "spatialBlocks": 40,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.728148173593497,
+              "overFive": 374,
+              "overFiveRate": 0.34823091247672255
+            },
+            "terrain coverage": {
+              "maeFt": 4.648979208001403,
+              "overFive": 233,
+              "overFiveRate": 0.2169459962756052
+            },
+            "nearest": {
+              "maeFt": 5.4430047101937244,
+              "overFive": 327,
+              "overFiveRate": 0.30446927374301674
+            },
+            "farthest": {
+              "maeFt": 4.883045294638723,
+              "overFive": 273,
+              "overFiveRate": 0.2541899441340782
+            },
+            "random": {
+              "maeFt": 5.202949118244736,
+              "overFive": 309,
+              "overFiveRate": 0.2877094972067039
+            }
+          }
+        },
+        "2022 December - 2023 January CA Flood": {
+          "uniqueSites": 12,
+          "maskSitePairs": 71,
+          "spatialBlocks": 7,
+          "methods": {
+            "no extra": {
+              "maeFt": 19.113344959339095,
+              "overFive": 50,
+              "overFiveRate": 0.704225352112676
+            },
+            "terrain coverage": {
+              "maeFt": 13.785321313986403,
+              "overFive": 42,
+              "overFiveRate": 0.5915492957746479
+            },
+            "nearest": {
+              "maeFt": 19.18624928340228,
+              "overFive": 52,
+              "overFiveRate": 0.7323943661971831
+            },
+            "farthest": {
+              "maeFt": 18.720943545010602,
+              "overFive": 51,
+              "overFiveRate": 0.7183098591549296
+            },
+            "random": {
+              "maeFt": 17.392017327121575,
+              "overFive": 44,
+              "overFiveRate": 0.6197183098591549
+            }
+          }
+        },
+        "2022 June MT Flood": {
+          "uniqueSites": 60,
+          "maskSitePairs": 283,
+          "spatialBlocks": 16,
+          "methods": {
+            "no extra": {
+              "maeFt": 7.157497055571972,
+              "overFive": 135,
+              "overFiveRate": 0.47703180212014135
+            },
+            "terrain coverage": {
+              "maeFt": 5.814079479393159,
+              "overFive": 110,
+              "overFiveRate": 0.38869257950530034
+            },
+            "nearest": {
+              "maeFt": 7.248221034894168,
+              "overFive": 126,
+              "overFiveRate": 0.4452296819787986
+            },
+            "farthest": {
+              "maeFt": 6.661728909578146,
+              "overFive": 132,
+              "overFiveRate": 0.4664310954063604
+            },
+            "random": {
+              "maeFt": 6.708829786508745,
+              "overFive": 118,
+              "overFiveRate": 0.4169611307420495
+            }
+          }
+        },
+        "2023 December East Coast Cyclone": {
+          "uniqueSites": 176,
+          "maskSitePairs": 904,
+          "spatialBlocks": 57,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.770165111948199,
+              "overFive": 402,
+              "overFiveRate": 0.4446902654867257
+            },
+            "terrain coverage": {
+              "maeFt": 5.182243180247991,
+              "overFive": 343,
+              "overFiveRate": 0.37942477876106195
+            },
+            "nearest": {
+              "maeFt": 5.67074104129922,
+              "overFive": 378,
+              "overFiveRate": 0.41814159292035397
+            },
+            "farthest": {
+              "maeFt": 5.395894073023185,
+              "overFive": 364,
+              "overFiveRate": 0.4026548672566372
+            },
+            "random": {
+              "maeFt": 5.685001960464383,
+              "overFive": 391,
+              "overFiveRate": 0.4325221238938053
+            }
+          }
+        },
+        "2024 Helene": {
+          "uniqueSites": 40,
+          "maskSitePairs": 207,
+          "spatialBlocks": 14,
+          "methods": {
+            "no extra": {
+              "maeFt": 8.171332921795193,
+              "overFive": 127,
+              "overFiveRate": 0.6135265700483091
+            },
+            "terrain coverage": {
+              "maeFt": 7.152982137807856,
+              "overFive": 113,
+              "overFiveRate": 0.5458937198067633
+            },
+            "nearest": {
+              "maeFt": 7.622599537139697,
+              "overFive": 115,
+              "overFiveRate": 0.5555555555555556
+            },
+            "farthest": {
+              "maeFt": 7.714652288518898,
+              "overFive": 114,
+              "overFiveRate": 0.5507246376811594
+            },
+            "random": {
+              "maeFt": 7.736995848895892,
+              "overFive": 126,
+              "overFiveRate": 0.6086956521739131
+            }
+          }
+        },
+        "2024 Jan CA Flood": {
+          "uniqueSites": 23,
+          "maskSitePairs": 122,
+          "spatialBlocks": 4,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.23686195736718,
+              "overFive": 49,
+              "overFiveRate": 0.4016393442622951
+            },
+            "terrain coverage": {
+              "maeFt": 2.9681324814448375,
+              "overFive": 22,
+              "overFiveRate": 0.18032786885245902
+            },
+            "nearest": {
+              "maeFt": 4.8813287291608525,
+              "overFive": 39,
+              "overFiveRate": 0.319672131147541
+            },
+            "farthest": {
+              "maeFt": 3.3550499336484645,
+              "overFive": 29,
+              "overFiveRate": 0.23770491803278687
+            },
+            "random": {
+              "maeFt": 3.2271725964759725,
+              "overFive": 27,
+              "overFiveRate": 0.22131147540983606
+            }
+          }
+        },
+        "2024 June IA Flood": {
+          "uniqueSites": 15,
+          "maskSitePairs": 75,
+          "spatialBlocks": 9,
+          "methods": {
+            "no extra": {
+              "maeFt": 3.526575736371533,
+              "overFive": 16,
+              "overFiveRate": 0.21333333333333335
+            },
+            "terrain coverage": {
+              "maeFt": 3.0337901339754807,
+              "overFive": 12,
+              "overFiveRate": 0.16
+            },
+            "nearest": {
+              "maeFt": 3.5315917426747,
+              "overFive": 20,
+              "overFiveRate": 0.26666666666666666
+            },
+            "farthest": {
+              "maeFt": 3.013262605797169,
+              "overFive": 11,
+              "overFiveRate": 0.14666666666666667
+            },
+            "random": {
+              "maeFt": 3.2298052101744816,
+              "overFive": 13,
+              "overFiveRate": 0.17333333333333334
+            }
+          }
+        },
+        "2025 December (WA, ID, OR, MT) Flood": {
+          "uniqueSites": 14,
+          "maskSitePairs": 69,
+          "spatialBlocks": 5,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.522943358497669,
+              "overFive": 32,
+              "overFiveRate": 0.463768115942029
+            },
+            "terrain coverage": {
+              "maeFt": 4.914680199004664,
+              "overFive": 28,
+              "overFiveRate": 0.4057971014492754
+            },
+            "nearest": {
+              "maeFt": 5.084883891537247,
+              "overFive": 30,
+              "overFiveRate": 0.43478260869565216
+            },
+            "farthest": {
+              "maeFt": 4.525238540184388,
+              "overFive": 30,
+              "overFiveRate": 0.43478260869565216
+            },
+            "random": {
+              "maeFt": 4.852446692668276,
+              "overFive": 29,
+              "overFiveRate": 0.42028985507246375
+            }
+          }
+        },
+        "2025 July TX Flood": {
+          "uniqueSites": 188,
+          "maskSitePairs": 965,
+          "spatialBlocks": 15,
+          "methods": {
+            "no extra": {
+              "maeFt": 7.067444257567813,
+              "overFive": 527,
+              "overFiveRate": 0.5461139896373057
+            },
+            "terrain coverage": {
+              "maeFt": 5.744896773886286,
+              "overFive": 436,
+              "overFiveRate": 0.45181347150259066
+            },
+            "nearest": {
+              "maeFt": 7.067576066942074,
+              "overFive": 513,
+              "overFiveRate": 0.5316062176165803
+            },
+            "farthest": {
+              "maeFt": 6.05690440151868,
+              "overFive": 462,
+              "overFiveRate": 0.47875647668393784
+            },
+            "random": {
+              "maeFt": 6.375806474249293,
+              "overFive": 485,
+              "overFiveRate": 0.5025906735751295
+            }
+          }
+        },
+        "Central US Spring 2019": {
+          "uniqueSites": 82,
+          "maskSitePairs": 405,
+          "spatialBlocks": 62,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.2084072966150945,
+              "overFive": 134,
+              "overFiveRate": 0.3308641975308642
+            },
+            "terrain coverage": {
+              "maeFt": 4.42503375453621,
+              "overFive": 111,
+              "overFiveRate": 0.2740740740740741
+            },
+            "nearest": {
+              "maeFt": 5.10293246419989,
+              "overFive": 130,
+              "overFiveRate": 0.32098765432098764
+            },
+            "farthest": {
+              "maeFt": 4.747529483987038,
+              "overFive": 117,
+              "overFiveRate": 0.28888888888888886
+            },
+            "random": {
+              "maeFt": 4.9623862747110214,
+              "overFive": 127,
+              "overFiveRate": 0.3135802469135803
+            }
+          }
+        }
+      }
+    }
+  },
+  "workedCase": {
+    "eventId": 319,
+    "seed": 7162,
+    "cohorts": [
+      {
+        "environment": "Riverine",
+        "visitBudget": 21,
+        "initialCount": 32,
+        "candidateCount": 89,
+        "scoredCount": 90,
+        "initialSiteIds": [
+          "32141",
+          "32153",
+          "32072",
+          "32078",
+          "32082",
+          "32110",
+          "32113",
+          "32121",
+          "32126",
+          "32130",
+          "32132",
+          "32143",
+          "32150",
+          "32170",
+          "32182",
+          "32230",
+          "32240",
+          "32244",
+          "32186",
+          "32187",
+          "32207",
+          "32306",
+          "32324",
+          "32349",
+          "32350",
+          "32357",
+          "32360",
+          "32235",
+          "32193",
+          "32352",
+          "33270",
+          "33272"
+        ],
+        "candidateSiteIds": [
+          "32332",
+          "32090",
+          "32076",
+          "32267",
+          "32317",
+          "32278",
+          "33300",
+          "33298",
+          "32343",
+          "32196",
+          "32344",
+          "33263",
+          "32337",
+          "33253",
+          "32341",
+          "32098",
+          "32330",
+          "32103",
+          "32089",
+          "32309",
+          "32302",
+          "32342",
+          "33464",
+          "32345",
+          "32086",
+          "32316",
+          "32068",
+          "32336",
+          "32286",
+          "33257",
+          "32075",
+          "32202",
+          "32218",
+          "32214",
+          "33310",
+          "32266",
+          "32069",
+          "32217",
+          "33299",
+          "32338",
+          "32298",
+          "32280",
+          "33271",
+          "32066",
+          "32161",
+          "32272",
+          "32081",
+          "32289",
+          "32178",
+          "32145",
+          "32203",
+          "32333",
+          "32212",
+          "32071",
+          "32114",
+          "32335",
+          "33304",
+          "32227",
+          "32322",
+          "32061",
+          "32248",
+          "33251",
+          "32167",
+          "32074",
+          "33302",
+          "32108",
+          "32096",
+          "32205",
+          "32104",
+          "32310",
+          "32174",
+          "32060",
+          "32177",
+          "32348",
+          "33260",
+          "32339",
+          "32080",
+          "32173",
+          "32179",
+          "32093",
+          "32138",
+          "33266",
+          "32169",
+          "32312",
+          "32247",
+          "32285",
+          "32340",
+          "32058",
+          "32077"
+        ],
+        "scoringSiteIds": [
+          "32304",
+          "33301",
+          "32283",
+          "32125",
+          "32274",
+          "32088",
+          "32231",
+          "32117",
+          "32087",
+          "32083",
+          "33254",
+          "32269",
+          "32281",
+          "32148",
+          "32216",
+          "32158",
+          "32140",
+          "32059",
+          "32327",
+          "32129",
+          "32305",
+          "32131",
+          "32213",
+          "32185",
+          "32056",
+          "32144",
+          "33465",
+          "32268",
+          "32351",
+          "32201",
+          "32346",
+          "32297",
+          "32353",
+          "32057",
+          "32311",
+          "32313",
+          "32165",
+          "32164",
+          "32183",
+          "32325",
+          "32101",
+          "32142",
+          "32246",
+          "32095",
+          "33252",
+          "32318",
+          "32133",
+          "32331",
+          "32147",
+          "32303",
+          "32194",
+          "32100",
+          "32221",
+          "33255",
+          "33264",
+          "32243",
+          "32204",
+          "32055",
+          "32276",
+          "33265",
+          "32111",
+          "32063",
+          "32356",
+          "32067",
+          "32222",
+          "32292",
+          "32236",
+          "32175",
+          "32184",
+          "32293",
+          "32300",
+          "32362",
+          "32315",
+          "32198",
+          "32334",
+          "32328",
+          "32119",
+          "32052",
+          "32053",
+          "32134",
+          "32168",
+          "32091",
+          "33259",
+          "33303",
+          "32323",
+          "32319",
+          "32228",
+          "32094",
+          "32296",
+          "32156"
+        ]
+      }
+    ],
+    "eventName": "2022 June MT Flood",
+    "siteCount": 211,
+    "initialCount": 32,
+    "visitBudget": 21,
+    "scoredCount": 90,
+    "initialSiteIds": [
+      "32141",
+      "32153",
+      "32072",
+      "32078",
+      "32082",
+      "32110",
+      "32113",
+      "32121",
+      "32126",
+      "32130",
+      "32132",
+      "32143",
+      "32150",
+      "32170",
+      "32182",
+      "32230",
+      "32240",
+      "32244",
+      "32186",
+      "32187",
+      "32207",
+      "32306",
+      "32324",
+      "32349",
+      "32350",
+      "32357",
+      "32360",
+      "32235",
+      "32193",
+      "32352",
+      "33270",
+      "33272"
+    ],
+    "candidateSiteIds": [
+      "32266",
+      "32267",
+      "32322",
+      "32060",
+      "32069",
+      "32071",
+      "32068",
+      "32074",
+      "32077",
+      "32076",
+      "32080",
+      "32081",
+      "32086",
+      "32089",
+      "32090",
+      "32096",
+      "32093",
+      "32098",
+      "32104",
+      "32103",
+      "32108",
+      "32114",
+      "32138",
+      "32145",
+      "32161",
+      "32167",
+      "32169",
+      "32173",
+      "32174",
+      "32178",
+      "32179",
+      "32177",
+      "32214",
+      "32212",
+      "32217",
+      "32218",
+      "32227",
+      "32248",
+      "32196",
+      "32205",
+      "32272",
+      "32278",
+      "32280",
+      "32289",
+      "32285",
+      "32286",
+      "32298",
+      "32302",
+      "32309",
+      "32310",
+      "32312",
+      "32317",
+      "32332",
+      "32333",
+      "32335",
+      "32339",
+      "32336",
+      "32337",
+      "32338",
+      "32340",
+      "32344",
+      "32341",
+      "32343",
+      "32342",
+      "32345",
+      "32348",
+      "33253",
+      "33257",
+      "33260",
+      "33263",
+      "33266",
+      "33271",
+      "33299",
+      "33300",
+      "33304",
+      "33302",
+      "32058",
+      "32066",
+      "32061",
+      "32075",
+      "32247",
+      "32202",
+      "32203",
+      "32316",
+      "32330",
+      "33251",
+      "33298",
+      "33310",
+      "33464"
+    ],
+    "scoringSiteIds": [
+      "32067",
+      "32142",
+      "32140",
+      "32144",
+      "32194",
+      "32201",
+      "32268",
+      "32274",
+      "32293",
+      "32300",
+      "32305",
+      "33252",
+      "32055",
+      "32056",
+      "32052",
+      "32053",
+      "32057",
+      "32059",
+      "32063",
+      "32083",
+      "32088",
+      "32087",
+      "32094",
+      "32091",
+      "32095",
+      "32100",
+      "32101",
+      "32134",
+      "32111",
+      "32117",
+      "32119",
+      "32125",
+      "32129",
+      "32131",
+      "32147",
+      "32148",
+      "32156",
+      "32158",
+      "32165",
+      "32164",
+      "32168",
+      "32175",
+      "32184",
+      "32183",
+      "32185",
+      "32133",
+      "32213",
+      "32216",
+      "32222",
+      "32221",
+      "32243",
+      "32246",
+      "32198",
+      "32204",
+      "32269",
+      "32276",
+      "32281",
+      "32283",
+      "32292",
+      "32297",
+      "32296",
+      "32303",
+      "32304",
+      "32311",
+      "32319",
+      "32318",
+      "32323",
+      "32328",
+      "32327",
+      "32331",
+      "32334",
+      "32346",
+      "32351",
+      "32362",
+      "33254",
+      "33259",
+      "33265",
+      "33301",
+      "32231",
+      "32228",
+      "32236",
+      "32313",
+      "32315",
+      "32325",
+      "32353",
+      "32356",
+      "33255",
+      "33264",
+      "33303",
+      "33465"
+    ],
+    "methods": {
+      "no extra": {
+        "maeFt": 5.529442488879997,
+        "overFive": 27,
+        "overFiveRate": 0.3,
+        "chosenSiteIds": []
+      },
+      "terrain coverage": {
+        "maeFt": 4.724573146152408,
+        "overFive": 25,
+        "overFiveRate": 0.2777777777777778,
+        "chosenSiteIds": [
+          "32316",
+          "32093",
+          "32317",
+          "32278",
+          "32066",
+          "32214",
+          "32266",
+          "32310",
+          "32285",
+          "33464",
+          "33302",
+          "32302",
+          "32298",
+          "33260",
+          "32060",
+          "32247",
+          "32202",
+          "32104",
+          "32058",
+          "32178",
+          "32272"
+        ]
+      },
+      "nearest": {
+        "maeFt": 5.64944662165804,
+        "overFive": 28,
+        "overFiveRate": 0.3111111111111111,
+        "chosenSiteIds": [
+          "32114",
+          "32076",
+          "32138",
+          "32169",
+          "32322",
+          "32077",
+          "32080",
+          "32309",
+          "32196",
+          "32227",
+          "32348",
+          "32161",
+          "32205",
+          "32173",
+          "32145",
+          "32108",
+          "32081",
+          "32074",
+          "32179",
+          "32104",
+          "32174"
+        ]
+      },
+      "farthest": {
+        "maeFt": 5.441726082684636,
+        "overFive": 30,
+        "overFiveRate": 0.3333333333333333,
+        "chosenSiteIds": [
+          "33251",
+          "33257",
+          "33302",
+          "33310",
+          "32298",
+          "33304",
+          "33464",
+          "33266",
+          "32333",
+          "33253",
+          "32316",
+          "32337",
+          "32272",
+          "32335",
+          "32267",
+          "32286",
+          "32341",
+          "33260",
+          "32060",
+          "32336",
+          "32344"
+        ]
+      },
+      "random": {
+        "maeFt": 5.487768131444672,
+        "overFive": 26,
+        "overFiveRate": 0.28888888888888886,
+        "chosenSiteIds": [
+          "32096",
+          "32205",
+          "32080",
+          "32341",
+          "32076",
+          "32266",
+          "32161",
+          "32218",
+          "32086",
+          "32278",
+          "32069",
+          "32074",
+          "32333",
+          "33304",
+          "32066",
+          "32177",
+          "32203",
+          "32108",
+          "32302",
+          "33263",
+          "32173"
+        ]
+      }
+    }
+  },
+  "lockSha256": "a139c98522e4b1a8912fbce09ef5177b4586e49ae35eb2e45387aeed94f4a8c9",
+  "fresh": {
+    "eventCount": 2,
+    "uniqueEventSites": 79,
+    "maskSitePairs": 420,
+    "methods": {
+      "no extra": {
+        "maeFt": 6.435962826657978,
+        "overFive": 210,
+        "overFiveRate": 0.5
+      },
+      "terrain coverage": {
+        "maeFt": 5.414850512351941,
+        "overFive": 171,
+        "overFiveRate": 0.40714285714285714
+      },
+      "nearest": {
+        "maeFt": 6.046097671531871,
+        "overFive": 193,
+        "overFiveRate": 0.4595238095238095
+      },
+      "farthest": {
+        "maeFt": 5.820165977426112,
+        "overFive": 194,
+        "overFiveRate": 0.46190476190476193
+      },
+      "random": {
+        "maeFt": 5.710537526433368,
+        "overFive": 180,
+        "overFiveRate": 0.42857142857142855
+      }
+    },
+    "comparisons": {
+      "no extra": {
+        "maeReductionFt": 1.0211123143060368,
+        "relativeMaeReduction": 0.1586572734815302,
+        "overFiveRateReduction": 0.09285714285714286,
+        "paired95WithinEventBlocksFt": [
+          0.6712271147466989,
+          1.4288171444341458
+        ],
+        "overFiveRatePaired95": [
+          0.049107142857142856,
+          0.14460784313725492
+        ],
+        "eventWins": 2
+      },
+      "nearest": {
+        "maeReductionFt": 0.6312471591799298,
+        "relativeMaeReduction": 0.10440571645942229,
+        "overFiveRateReduction": 0.05238095238095236,
+        "paired95WithinEventBlocksFt": [
+          -0.08849042435762017,
+          1.4023904183675435
+        ],
+        "overFiveRatePaired95": [
+          -0.002551020408163265,
+          0.0994494776256186
+        ],
+        "eventWins": 2
+      },
+      "farthest": {
+        "maeReductionFt": 0.40531546507417104,
+        "relativeMaeReduction": 0.0696398464659278,
+        "overFiveRateReduction": 0.05476190476190479,
+        "paired95WithinEventBlocksFt": [
+          0.10271739804357707,
+          0.6553050311384561
+        ],
+        "overFiveRatePaired95": [
+          0.0027762681159420296,
+          0.10357223294723296
+        ],
+        "eventWins": 2
+      },
+      "random": {
+        "maeReductionFt": 0.2956870140814276,
+        "relativeMaeReduction": 0.05177919113791463,
+        "overFiveRateReduction": 0.021428571428571408,
+        "paired95WithinEventBlocksFt": [
+          -0.00018416084775773825,
+          0.6518749733062316
+        ],
+        "overFiveRatePaired95": [
+          -0.011064727839027042,
+          0.06173991155334443
+        ],
+        "eventWins": 2
+      }
+    },
+    "events": {
+      "2005 Cold River and Warren Brook flood": {
+        "uniqueSites": 48,
+        "maskSitePairs": 252,
+        "spatialBlocks": 4,
+        "methods": {
+          "no extra": {
+            "maeFt": 5.911721299207842,
+            "overFive": 117,
+            "overFiveRate": 0.4642857142857143
+          },
+          "terrain coverage": {
+            "maeFt": 5.0534961319546445,
+            "overFive": 105,
+            "overFiveRate": 0.4166666666666667
+          },
+          "nearest": {
+            "maeFt": 6.098395135304586,
+            "overFive": 122,
+            "overFiveRate": 0.48412698412698413
+          },
+          "farthest": {
+            "maeFt": 5.39854837169105,
+            "overFive": 111,
+            "overFiveRate": 0.44047619047619047
+          },
+          "random": {
+            "maeFt": 5.3618704591158,
+            "overFive": 106,
+            "overFiveRate": 0.42063492063492064
+          }
+        }
+      },
+      "2010 Little Missouri River flash flood": {
+        "uniqueSites": 31,
+        "maskSitePairs": 168,
+        "spatialBlocks": 4,
+        "methods": {
+          "no extra": {
+            "maeFt": 7.222325117833182,
+            "overFive": 93,
+            "overFiveRate": 0.5535714285714286
+          },
+          "terrain coverage": {
+            "maeFt": 5.956882082947887,
+            "overFive": 66,
+            "overFiveRate": 0.39285714285714285
+          },
+          "nearest": {
+            "maeFt": 5.967651475872795,
+            "overFive": 71,
+            "overFiveRate": 0.4226190476190476
+          },
+          "farthest": {
+            "maeFt": 6.452592386028708,
+            "overFive": 83,
+            "overFiveRate": 0.49404761904761907
+          },
+          "random": {
+            "maeFt": 6.233538127409723,
+            "overFive": 74,
+            "overFiveRate": 0.44047619047619047
+          }
+        }
+      }
+    },
+    "budget": {
+      "anchors": 144,
+      "candidates": 396,
+      "scored": 420,
+      "visits": 96,
+      "eligibleCohortSites": 960
+    },
+    "highReliefRiverine": {
+      "eventCount": 2,
+      "uniqueEventSites": 78,
+      "maskSitePairs": 414,
+      "methods": {
+        "no extra": {
+          "maeFt": 6.3992447528723,
+          "overFive": 204,
+          "overFiveRate": 0.4927536231884058
+        },
+        "terrain coverage": {
+          "maeFt": 5.373190478894939,
+          "overFive": 165,
+          "overFiveRate": 0.39855072463768115
+        },
+        "nearest": {
+          "maeFt": 5.995010034152284,
+          "overFive": 187,
+          "overFiveRate": 0.45169082125603865
+        },
+        "farthest": {
+          "maeFt": 5.8033290525917085,
+          "overFive": 188,
+          "overFiveRate": 0.45410628019323673
+        },
+        "random": {
+          "maeFt": 5.673987780646253,
+          "overFive": 174,
+          "overFiveRate": 0.42028985507246375
+        }
+      },
+      "comparisons": {
+        "no extra": {
+          "maeReductionFt": 1.026054273977361,
+          "relativeMaeReduction": 0.16033990159804667,
+          "overFiveRateReduction": 0.09420289855072467,
+          "paired95WithinEventBlocksFt": [
+            0.670953480258749,
+            1.444327579451512
+          ],
+          "overFiveRatePaired95": [
+            0.049107142857142856,
+            0.15
+          ],
+          "eventWins": 2
+        },
+        "nearest": {
+          "maeReductionFt": 0.6218195552573453,
+          "relativeMaeReduction": 0.10372285479339866,
+          "overFiveRateReduction": 0.0531400966183575,
+          "paired95WithinEventBlocksFt": [
+            -0.11121330409108665,
+            1.4045446788769964
+          ],
+          "overFiveRatePaired95": [
+            -0.0025906735751295338,
+            0.10145111454425074
+          ],
+          "eventWins": 2
+        },
+        "farthest": {
+          "maeReductionFt": 0.43013857369676955,
+          "relativeMaeReduction": 0.07411928046793659,
+          "overFiveRateReduction": 0.05555555555555558,
+          "paired95WithinEventBlocksFt": [
+            0.15449393644176845,
+            0.6675296167097857
+          ],
+          "overFiveRatePaired95": [
+            0.0028078248184244836,
+            0.10542168674698796
+          ],
+          "eventWins": 2
+        },
+        "random": {
+          "maeReductionFt": 0.3007973017513139,
+          "relativeMaeReduction": 0.05301338553764983,
+          "overFiveRateReduction": 0.021739130434782594,
+          "paired95WithinEventBlocksFt": [
+            0.0025863296032809595,
+            0.6591284125443067
+          ],
+          "overFiveRatePaired95": [
+            -0.011366242702251877,
+            0.0620209102704861
+          ],
+          "eventWins": 2
+        }
+      },
+      "events": {
+        "2005 Cold River and Warren Brook flood": {
+          "uniqueSites": 47,
+          "maskSitePairs": 246,
+          "spatialBlocks": 4,
+          "methods": {
+            "no extra": {
+              "maeFt": 5.8371410889965745,
+              "overFive": 111,
+              "overFiveRate": 0.45121951219512196
+            },
+            "terrain coverage": {
+              "maeFt": 4.974571822468534,
+              "overFive": 99,
+              "overFiveRate": 0.4024390243902439
+            },
+            "nearest": {
+              "maeFt": 6.013693927611446,
+              "overFive": 116,
+              "overFiveRate": 0.4715447154471545
+            },
+            "farthest": {
+              "maeFt": 5.359929702927417,
+              "overFive": 105,
+              "overFiveRate": 0.4268292682926829
+            },
+            "random": {
+              "maeFt": 5.2918558365151025,
+              "overFive": 100,
+              "overFiveRate": 0.4065040650406504
+            }
+          }
+        },
+        "2010 Little Missouri River flash flood": {
+          "uniqueSites": 31,
+          "maskSitePairs": 168,
+          "spatialBlocks": 4,
+          "methods": {
+            "no extra": {
+              "maeFt": 7.222325117833182,
+              "overFive": 93,
+              "overFiveRate": 0.5535714285714286
+            },
+            "terrain coverage": {
+              "maeFt": 5.956882082947887,
+              "overFive": 66,
+              "overFiveRate": 0.39285714285714285
+            },
+            "nearest": {
+              "maeFt": 5.967651475872795,
+              "overFive": 71,
+              "overFiveRate": 0.4226190476190476
+            },
+            "farthest": {
+              "maeFt": 6.452592386028708,
+              "overFive": 83,
+              "overFiveRate": 0.49404761904761907
+            },
+            "random": {
+              "maeFt": 6.233538127409723,
+              "overFive": 74,
+              "overFiveRate": 0.44047619047619047
+            }
+          }
+        }
+      }
+    }
+  }
+}

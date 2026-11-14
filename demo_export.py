@@ -95,6 +95,30 @@ def archival_summary():
     }
 
 
+def crew_summary():
+    path = ROOT / 'crew_results.json'
+    if not path.is_file():
+        return None
+    result = json.loads(path.read_text())
+    report = result['historical']
+    methods = report['methods']
+    coverage = methods['terrain coverage']['maeFt']
+    nearest = methods['nearest']['maeFt']
+    example = result['workedCase']
+    selected = example['methods']
+    terrain_ids = ', '.join(selected['terrain coverage']['chosenSiteIds'][:3])
+    nearest_ids = ', '.join(selected['nearest']['chosenSiteIds'][:3])
+    return {
+        'summary': f'Same number of visits across 13 archived floods: {nearest:.2f} ft average error '
+                   f'for nearest-first, {coverage:.2f} ft for terrain coverage.',
+        'example': f'June 2022 Montana flood: start from {example["initialCount"]} known readings and take '
+                   f'{example["visitBudget"]} more. Terrain coverage starts with marks {terrain_ids}; nearest-first '
+                   f'starts with {nearest_ids}. On the same {example["scoredCount"]} untouched marks, '
+                   f'average error was {selected["terrain coverage"]["maeFt"]:.2f} ft with terrain coverage '
+                   f'and {selected["nearest"]["maeFt"]:.2f} ft with nearest-first.',
+    }
+
+
 def build():
     frame=pd.read_csv(ROOT/'panel.csv',keep_default_na=False)
     model=fit_boosted(sample(frame,TRAIN,18))
@@ -151,6 +175,9 @@ def build():
     archival = archival_summary()
     if archival is not None:
         payload['archive'] = archival
+    crew = crew_summary()
+    if crew is not None:
+        payload['crew'] = crew
     return payload
 
 
@@ -171,6 +198,11 @@ def main():
             raise ValueError('The page template must declare one marker each for model data and the engine')
         data='const MARKROUTE_DATA = '+serialized.replace('<','\\u003c')+';'
         html=html.replace(markers[0],data).replace(markers[1],(ROOT/'browser_engine.js').read_text())
+        crew_marker = '/*__MARKROUTE_CREW__*/'
+        if crew_marker in html:
+            if html.count(crew_marker) != 1:
+                raise ValueError('The page template must declare one visit planner marker')
+            html = html.replace(crew_marker, (ROOT / 'crew_planner.js').read_text())
         args.output.write_text(html)
 
 

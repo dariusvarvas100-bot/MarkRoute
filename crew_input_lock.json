@@ -1,0 +1,45 @@
+{
+  "protocolSha256": "1fd8e2b1d92f3d9213c23f934c6e63328d691c2c1c5801fee03185c6e5b1b3fe",
+  "analysisSha256": "bea05a4d31d86d469177f624dbc924d475216f7ddbd8d4a2a2ce208befec1e80",
+  "priorInputs": {
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9",
+    "archival_panel.csv": "13fc2da835425fe48db8ab21d30d332dc57619f543b2f84849d0979eaf5d876e"
+  },
+  "priorSurveySelectionSha256": "0f121334ab1cf79421deb6eb27b111f569398dfccabf5b4003fe14076d2d7289",
+  "sources": {
+    "AR_LittleMissouri_2010": {
+      "eventId": "legacy-ar-little-missouri-2010",
+      "source": "https://pubs.usgs.gov/sir/2013/5056/pdf/sir2013-5056.pdf",
+      "panelSha256": "92b97ab7ab9e57ca63fcd6168feff3caefb014390d6b2d4eff551db28e44add6",
+      "sourceLockSha256": "7bad3d0d10862dbaa19d47e4ac9e6b78d7d5f349881324a4b5c4430d913604a7",
+      "fieldReportSha256": "998cf75cf65b47b875ec4f1a536842d5616bcaa0d5e5af052d4082b803ea83e3",
+      "surveySites": 32,
+      "steepRiverineSites": 32,
+      "nearestPriorKm": 95.00133297539155,
+      "medianNearestPriorKm": 96.7421040401298,
+      "priorGridCellsShared": 0,
+      "exactPriorSiteIdsShared": 0,
+      "horizontalDatumNote": "Read NAD83 DMS, convert to decimal degrees and transform EPSG:4269 to EPSG:4326 with pyproj."
+    },
+    "NH_ColdRiver_2005": {
+      "eventId": "legacy-nh-cold-river-2005",
+      "source": "https://pubs.usgs.gov/of/2006/1221/pdf/OFR2006-1221.pdf",
+      "panelSha256": "5324b40c2287129e5cb41235d50cedabae24af604ac54ba23bcc4f9fe340f8ad",
+      "sourceLockSha256": "9a2c8d1f1b63109fad965be423ebcda4139812d66a288ab2e3d8c16212073553",
+      "fieldReportSha256": "bf6b964caa92c97a6140544d054d615af5702d06a38c7837b707133bea4777a3",
+      "surveySites": 48,
+      "steepRiverineSites": 47,
+      "nearestPriorKm": 12.758643308638339,
+      "medianNearestPriorKm": 19.807502390762913,
+      "priorGridCellsShared": 0,
+      "exactPriorSiteIdsShared": 0,
+      "horizontalDatumNote": "GPS, DMS in published tables; horizontal datum not specified by the source."
+    }
+  },
+  "illustration": {
+    "eventId": 319,
+    "seed": 7162
+  }
+}

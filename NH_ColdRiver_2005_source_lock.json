@@ -1,0 +1,55 @@
+{
+  "eventDates": [
+    "2005-10-08",
+    "2005-10-09"
+  ],
+  "source": "https://pubs.usgs.gov/of/2006/1221/pdf/OFR2006-1221.pdf",
+  "sourceTables": [
+    1,
+    2
+  ],
+  "sourcePdfSha256": "bf6b964caa92c97a6140544d054d615af5702d06a38c7837b707133bea4777a3",
+  "sourceExtractSha256": "d386a07a285ae780394339aa289bc9f19c0bdf0dacb875c2026d630c9b844eb9",
+  "measurement": "NAVD88 ft (closed level loops)",
+  "horizontal": "GPS, DMS in published tables; horizontal datum not specified by the source.",
+  "sourceMarks": 100,
+  "qualityAndGpsEligible": 73,
+  "gridSites": 48,
+  "selectedWaterbodies": {
+    "cold river": 23,
+    "warren brook": 25
+  },
+  "minimumPreviousSiteDistanceKm": 12.758643308638339,
+  "sitesOver100KmFromAnyExistingPanel": 0,
+  "sitesAtLeast35FtRelief": 47,
+  "terrainCodeSha256": "549782f3c9bde7bce3de825a3fa9abb35fa46c7dd9b3a3f2b2673e9fe5853b20",
+  "terrainSources": [
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/1223/1503.png",
+      "b97c7100b35594a9840e0066a4963d410e2caa5f3cee88fae012a5ef31fb6899"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/1224/1502.png",
+      "31dd9da3700b72557f7b823f24e0a3b1ac08ecd7b12127552e1ab7f1a4204e6e"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/1224/1503.png",
+      "e798533c8535aa6304c485ecce4ccbd1c97815efe4bb9f80fef4d1d334b0dea3"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/1225/1502.png",
+      "b675f429eed4d855ecb9227133ae8f7ae2d664971f88e9d2b1a7a0a5db11bfbc"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/1225/1503.png",
+      "1c03d406f0729ac91f60abc5be0da82ced481e44ac94c6e305301477570a8e45"
+    ]
+  ],
+  "preexistingPanelHashes": {
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9",
+    "archival_panel.csv": "13fc2da835425fe48db8ab21d30d332dc57619f543b2f84849d0979eaf5d876e"
+  },
+  "preparedPanelSha256": "5324b40c2287129e5cb41235d50cedabae24af604ac54ba23bcc4f9fe340f8ad"
+}

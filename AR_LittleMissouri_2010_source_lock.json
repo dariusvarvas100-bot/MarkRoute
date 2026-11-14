@@ -1,0 +1,56 @@
+{
+  "eventDate": "2010-06-11",
+  "source": "https://pubs.usgs.gov/sir/2013/5056/pdf/sir2013-5056.pdf",
+  "appendixPrintedPages": [
+    33,
+    34
+  ],
+  "sourcePdfSha256": "998cf75cf65b47b875ec4f1a536842d5616bcaa0d5e5af052d4082b803ea83e3",
+  "sourceExtractSha256": "35fdcee0720d170a6fa9677cc2d1ab6acb7b953dc5f857bf9c9bc3e6ba95a432",
+  "measurement": "Surveyed peak water-surface elevation in NAVD88 feet, kept exactly from Appendix 1.",
+  "horizontal": "Read NAD83 DMS, convert to decimal degrees and transform EPSG:4269 to EPSG:4326 with pyproj.",
+  "rawMarks": 88,
+  "rawReportDefinedGroups": 57,
+  "rawQualityCounts": {
+    "good": 31,
+    "poor": 19,
+    "fair": 23,
+    "na": 4,
+    "excellent": 11
+  },
+  "goodOrBetterOrFair": 65,
+  "sourceGroupsAfterQuality": 45,
+  "grid": "One record per source group then per floor(lon*600), floor(lat*600) cell, best quality then mark ID.",
+  "gridSites": 32,
+  "selectedWaterbodies": {
+    "little missouri river": 21,
+    "long creek": 4,
+    "brier creek": 3,
+    "blaylock creek": 4
+  },
+  "minimumPreviousSiteDistanceKm": 95.00133297539155,
+  "sitesOver100KmFromAnyExistingPanel": 6,
+  "sitesAtLeast35FtRelief": 32,
+  "terrainCodeSha256": "549782f3c9bde7bce3de825a3fa9abb35fa46c7dd9b3a3f2b2673e9fe5853b20",
+  "terrainSources": [
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/979/1630.png",
+      "ff195ea2ab43688d62a719a80862663f9b5ccf331c016b81a4000cb0323ba3c7"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/979/1631.png",
+      "3910b6ad6f9a0b78251c0f5bf2d345cd718d415e277c2aa35312f206994479d8"
+    ],
+    [
+      "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/12/979/1632.png",
+      "300ae2e17f3ff07e37a1639e0237822e68b11c93ddc159c54ed1262a5e2ed676"
+    ]
+  ],
+  "preexistingPanelHashes": {
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9",
+    "archival_panel.csv": "13fc2da835425fe48db8ab21d30d332dc57619f543b2f84849d0979eaf5d876e"
+  },
+  "preparedPanelSha256": "92b97ab7ab9e57ca63fcd6168feff3caefb014390d6b2d4eff551db28e44add6"
+}
