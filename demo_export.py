@@ -10,6 +10,10 @@ from scipy.spatial.distance import cdist
 from map_model import ROOT, SEED, TRAIN, TEST, fit_boosted, observation_features, sample, split_points, xy_km
 
 
+ARCHIVE_REPLAY_EVENT = 125  # June 2016 West Virginia flood
+ARCHIVE_REPLAY_MASKS = 4
+
+
 def pack_trees(model):
     trees=[]
     for iteration in model._predictors:
@@ -57,6 +61,40 @@ def replay(frame,seed,model):
             'mae':{'model':error('modelFt'),'baseline':error('baselineFt')}}
 
 
+def archival_summary():
+    result_path = ROOT / 'archival_results.json'
+    if not result_path.is_file():
+        return None
+    from archival_replay import BASELINE, ESTIMATOR, KRIGING, RELIEF_FT
+
+    report = json.loads(result_path.read_text())
+    panel = pd.read_csv(ROOT / 'archival_panel.csv')
+    medians = panel.groupby('event_name').relief_ft.median()
+    overall = report['all']
+    steep = report['highReliefPrimary']
+
+    def mae(methods):
+        return {'markroute': methods[ESTIMATOR]['maeFt'],
+                'bounded': methods[BASELINE]['maeFt'], 'kriging': methods[KRIGING]['maeFt']}
+
+    def pooled(cohort):
+        return {'siteCount': cohort['uniqueEventSites'], 'pairCount': cohort['maskSitePairs'],
+                'mae': mae(cohort['methods']), 'comparisonModel': 'kriging',
+                'intervalFt': cohort['comparisons'][KRIGING]['paired95IntervalFt']}
+
+    return {
+        'title': 'Nine additional river floods',
+        'geographyNote': 'Each flood was withheld from training and development. Exact prior site IDs were '
+                         'excluded. Some sites are near earlier survey locations.',
+        'primary': {**pooled(overall), 'label': 'All nine additional river floods'},
+        'steep': {**pooled(steep), 'cutoffFt': RELIEF_FT,
+                  'overFiveFtRate': steep['methods'][ESTIMATOR]['overFiveFtRate']} if steep else None,
+        'events': [{'label': name, 'siteCount': row['sites'], 'pairCount': row['maskSitePairs'],
+                    'medianReliefFt': float(medians[name]), 'mae': mae(row['methods'])}
+                   for name, row in overall['byEvent'].items()],
+    }
+
+
 def build():
     frame=pd.read_csv(ROOT/'panel.csv',keep_default_na=False)
     model=fit_boosted(sample(frame,TRAIN,18))
@@ -65,6 +103,14 @@ def build():
         points=frame[frame.event_id.eq(id_)].reset_index(drop=True)
         events.append({'id':id_,'name':points.event_name.iat[0],
                        'scenarios':[replay(points,seed,model) for seed in range(SEED,SEED+16)]})
+    archive_path = ROOT / 'archival_panel.csv'
+    if archive_path.is_file():
+        archive = pd.read_csv(archive_path, keep_default_na=False)
+        west_virginia = archive.loc[archive.event_id.eq(ARCHIVE_REPLAY_EVENT)].reset_index(drop=True)
+        if not west_virginia.empty:
+            events.append({'id': ARCHIVE_REPLAY_EVENT, 'name': 'June 2016 West Virginia flood',
+                           'scenarios': [replay(west_virginia, seed, model)
+                                         for seed in range(SEED, SEED + ARCHIVE_REPLAY_MASKS)]})
     payload = {'summary': json.loads((ROOT/'holdout.json').read_text()), 'events': events,
                'estimator': pack_trees(model)}
     external = ROOT/'external_results.json'
@@ -102,6 +148,9 @@ def build():
                                             for budget in budgets],
                                  'gap': {'modelDispersed': dispersed['model'], 'modelMissing': missing['model'],
                                          'baselineDispersed': dispersed['baseline'], 'baselineMissing': missing['baseline']}}
+    archival = archival_summary()
+    if archival is not None:
+        payload['archive'] = archival
     return payload
 
 

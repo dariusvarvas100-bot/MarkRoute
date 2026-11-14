@@ -21,7 +21,7 @@ DEFAULT_ROOT = HERE if (HERE / 'panel.csv').is_file() else HERE.parent
 ROOT = Path(os.environ.get('MARKROUTE_ROOT', DEFAULT_ROOT)).resolve()
 sys.path.insert(0, str(ROOT))
 
-from demo_export import pack_trees, replay
+from demo_export import ARCHIVE_REPLAY_EVENT, ARCHIVE_REPLAY_MASKS, archival_summary, pack_trees, replay
 from map_model import (DEV, OBSERVED, PEERS, SEED, STATIC_NAMES, TEST, TRAIN, episode,
                        fit_boosted, observation_features, sample, split_points, xy_km)
 
@@ -97,15 +97,16 @@ class MarkRouteRegression(unittest.TestCase):
         cls.panel = pd.read_csv(ROOT / 'panel.csv', keep_default_na=False)
         cls.external = pd.read_csv(ROOT / 'external_panel.csv', keep_default_na=False)
         cls.remote = pd.read_csv(ROOT / 'remote_panel.csv', keep_default_na=False)
+        cls.archival = pd.read_csv(ROOT / 'archival_panel.csv', keep_default_na=False)
         with threadpool_limits(4):
             cls.model = fit_boosted(sample(cls.panel, TRAIN, 18))
 
     def test_holdouts_and_archive_manifest_membership(self):
-        groups = [set(ids) for ids in (TRAIN, DEV, TEST, self.external.event_id, self.remote.event_id)]
+        groups = [set(ids) for ids in (TRAIN, DEV, TEST, self.external.event_id, self.remote.event_id, self.archival.event_id)]
         for left, right in combinations(groups, 2):
             self.assertTrue(left.isdisjoint(right))
         self.assertEqual(set(self.panel.event_id), set.union(*groups[:3]))
-        for panel in (self.panel, self.external, self.remote):
+        for panel in (self.panel, self.external, self.remote, self.archival):
             self.assertFalse(panel.duplicated(['event_id', 'site_id']).any())
         for panel, file, key in ((self.external, 'external_manifest.json', 'events'),
                                  (self.remote, 'remote_manifest.json', 'eligibility')):
@@ -114,9 +115,12 @@ class MarkRouteRegression(unittest.TestCase):
         previous = pd.concat([self.panel, self.external], ignore_index=True)
         self.assertTrue(set(self.remote.site_id).isdisjoint(previous.site_id))
         self.assertGreater(self.remote.distance_to_prior_km.min(), 100)
+        self.assertTrue(set(self.archival.site_id).isdisjoint(pd.concat([previous, self.remote]).site_id))
+        archive_manifest = read_json('archival_manifest.json')['events']
+        self.assertEqual(set(self.archival.event_id), {event['id'] for event in archive_manifest if not event.get('excluded')})
 
     def test_reveal_masks_only_score_unseen_sites(self):
-        for panel in (self.panel, self.external, self.remote):
+        for panel in (self.panel, self.external, self.remote, self.archival):
             for event_id, frame in panel.groupby('event_id'):
                 frame = frame.reset_index(drop=True)
                 for seed in (SEED, SEED + 15):
@@ -169,9 +173,12 @@ class MarkRouteRegression(unittest.TestCase):
         holdout = read_json('holdout.json')
         external = read_json('external_results.json')['additionalEventReplay']
         remote = read_json('remote_results.json')['all']
+        archival = read_json('archival_results.json')['all']
+        archive_events = {name: row['methods'] for name, row in archival['byEvent'].items()}
         groups = ((self.panel, TEST, holdout['evaluatedMaskLocationPairs'], holdout['results']['events']),
                   (self.external, self.external.event_id.unique(), external['maskSitePairs'], external['events']),
-                  (self.remote, self.remote.event_id.unique(), remote['pooled']['maskSitePairs'], remote['events']))
+                  (self.remote, self.remote.event_id.unique(), remote['pooled']['maskSitePairs'], remote['events']),
+                  (self.archival, self.archival.event_id.unique(), archival['maskSitePairs'], archive_events))
         with threadpool_limits(4):
             for panel, ids, count, events in groups:
                 data = sample(panel, ids, 16)
@@ -185,7 +192,7 @@ class MarkRouteRegression(unittest.TestCase):
                         with self.subTest(event=event, method=method):
                             errors = np.abs(values[belongs] - data['actual'][belongs])
                             self.assertAlmostEqual(float(errors.mean()), report[method]['maeFt'], places=9)
-                            miss_rate = report[method].get('missOver5FtRate', report[method].get('gt5FtRate'))
+                            miss_rate = report[method].get('missOver5FtRate', report[method].get('gt5FtRate', report[method].get('overFiveFtRate')))
                             self.assertAlmostEqual(float((errors > 5).mean()), miss_rate, places=12)
 
     def test_shipped_export_and_javascript_replay_match_python(self):
@@ -194,12 +201,14 @@ class MarkRouteRegression(unittest.TestCase):
         self.assertIn(engine, page)
         self.assertIn('url=demo.html', (ROOT / 'index.html').read_text())
         data, _ = json.JSONDecoder().raw_decode(page.split('const MARKROUTE_DATA = ', 1)[1])
-        self.assertEqual([event['id'] for event in data['events']], list(TEST))
+        self.assertEqual([event['id'] for event in data['events']], [*TEST, ARCHIVE_REPLAY_EVENT])
         self.assertEqual(data['summary'], read_json('holdout.json'))
+        self.assertEqual(data['archive'], archival_summary())
         self.assertEqual(data['estimator'], pack_trees(self.model))
         for event in data['events']:
-            frame = self.panel.loc[self.panel.event_id.eq(event['id'])].reset_index(drop=True)
-            self.assertEqual([scenario['seed'] for scenario in event['scenarios']], list(range(SEED, SEED + 16)))
+            panel, count = (self.archival, ARCHIVE_REPLAY_MASKS) if event['id'] == ARCHIVE_REPLAY_EVENT else (self.panel, 16)
+            frame = panel.loc[panel.event_id.eq(event['id'])].reset_index(drop=True)
+            self.assertEqual([scenario['seed'] for scenario in event['scenarios']], list(range(SEED, SEED + count)))
             for scenario in event['scenarios']:
                 expected = replay(frame, scenario['seed'], self.model)
                 self.assertEqual(expected['counts'], scenario['counts'])

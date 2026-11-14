@@ -1,0 +1,340 @@
+{
+  "protocolSha256": "09eff31915dd9287f34024a7ce009bbd3456ccbd54c746f37e12966d05f878d5",
+  "catalogSha256": "34520e6c78ab65d5512b05470fd23ec3e023d07d70c1ff3c38f99bd06bd49b3a",
+  "candidates": [
+    {
+      "id": 8,
+      "name": "2005 Wilma",
+      "start": "2005-10-20",
+      "end": "2005-10-31",
+      "group": 8,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=8&format=json"
+    },
+    {
+      "id": 9,
+      "name": "2011 Midwest Floods",
+      "start": "2011-02-01",
+      "end": "2011-08-30",
+      "group": 9,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=9&format=json"
+    },
+    {
+      "id": 10,
+      "name": "2013 June PA Flood",
+      "start": "2013-06-23",
+      "end": "2013-07-01",
+      "group": 10,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=10&format=json"
+    },
+    {
+      "id": 11,
+      "name": "2013 September CO Flood",
+      "start": "2013-09-12",
+      "end": "2013-09-24",
+      "group": 11,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=11&format=json"
+    },
+    {
+      "id": 18,
+      "name": "2012 Isaac",
+      "start": "2012-08-27",
+      "end": "2012-09-02",
+      "group": 18,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=18&format=json"
+    },
+    {
+      "id": 19,
+      "name": "2005 Rita",
+      "start": "2005-09-23",
+      "end": "2005-09-25",
+      "group": 19,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=19&format=json"
+    },
+    {
+      "id": 20,
+      "name": "2010 March Extratropical Cyclone",
+      "start": "2010-03-13",
+      "end": "2010-03-15",
+      "group": 20,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=20&format=json"
+    },
+    {
+      "id": 21,
+      "name": "2009 November Extratropical Cyclone",
+      "start": "2009-11-10",
+      "end": "2009-11-16",
+      "group": 21,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=21&format=json"
+    },
+    {
+      "id": 22,
+      "name": "Storm-September 2010",
+      "start": "2010-08-31",
+      "end": "2010-09-08",
+      "group": 22,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=22&format=json"
+    },
+    {
+      "id": 23,
+      "name": "2011 Irene",
+      "start": "2011-08-26",
+      "end": "2011-08-29",
+      "group": 23,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=23&format=json"
+    },
+    {
+      "id": 25,
+      "name": "2008 Gustav",
+      "start": "2008-08-31",
+      "end": "2008-09-03",
+      "group": 25,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=25&format=json"
+    },
+    {
+      "id": 26,
+      "name": "2008 Ike",
+      "start": "2008-09-11",
+      "end": "2008-09-12",
+      "group": 26,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=26&format=json"
+    },
+    {
+      "id": 29,
+      "name": "2007 May IA Flood",
+      "start": "2007-05-06",
+      "end": "2007-05-06",
+      "group": 29,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=29&format=json"
+    },
+    {
+      "id": 90,
+      "name": "2004 Sep OH Flood",
+      "start": "2004-08-31",
+      "end": "2004-09-30",
+      "group": 90,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=90&format=json"
+    },
+    {
+      "id": 91,
+      "name": "2007 Aug OH Flood",
+      "start": "2007-07-31",
+      "end": "2007-08-31",
+      "group": 91,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=91&format=json"
+    },
+    {
+      "id": 122,
+      "name": "2016 Mar LA Flood",
+      "start": "2016-03-10",
+      "end": "2016-03-27",
+      "group": 122,
+      "cohort": "previously outside distance screen",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=122&format=json"
+    },
+    {
+      "id": 123,
+      "name": "September 2011 flood - Tropical Storm Lee",
+      "start": "2011-09-01",
+      "end": "2011-10-01",
+      "group": 123,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=123&format=json"
+    },
+    {
+      "id": 125,
+      "name": "2016 Jun WV Flood",
+      "start": "2016-06-24",
+      "end": "2016-07-04",
+      "group": 125,
+      "cohort": "previously outside distance screen",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=125&format=json"
+    },
+    {
+      "id": 126,
+      "name": "2010 Aug IA Flood",
+      "start": "2010-08-10",
+      "end": "2010-08-15",
+      "group": 126,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=126&format=json"
+    },
+    {
+      "id": 127,
+      "name": "2006 June NY PA DE MD NJ VA Flood",
+      "start": "2006-06-25",
+      "end": "2006-06-28",
+      "group": 127,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=127&format=json"
+    },
+    {
+      "id": 129,
+      "name": "2016 Aug LA Flood",
+      "start": "2016-08-12",
+      "end": "2016-08-25",
+      "group": 129,
+      "cohort": "previously outside distance screen",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=129&format=json"
+    },
+    {
+      "id": 130,
+      "name": "April 2-4, 2005 Delaware River Flood",
+      "start": "2005-04-02",
+      "end": "2005-04-04",
+      "group": 130,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=130&format=json"
+    },
+    {
+      "id": 133,
+      "name": "2003 Isabel",
+      "start": "2003-09-06",
+      "end": "2003-09-30",
+      "group": 133,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=133&format=json"
+    },
+    {
+      "id": 143,
+      "name": "2002 June IA Flood",
+      "start": "2002-06-04",
+      "end": "2002-06-24",
+      "group": 143,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=143&format=json"
+    },
+    {
+      "id": 145,
+      "name": "2008 June IA Flood",
+      "start": "2008-06-08",
+      "end": "2008-07-08",
+      "group": 145,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=145&format=json"
+    },
+    {
+      "id": 148,
+      "name": "2002 June IA Flood",
+      "start": "2002-06-04",
+      "end": "2002-07-04",
+      "group": 143,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=148&format=json"
+    },
+    {
+      "id": 150,
+      "name": "2004 May IA Flood",
+      "start": "2004-05-23",
+      "end": "2004-06-23",
+      "group": 150,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=150&format=json"
+    },
+    {
+      "id": 151,
+      "name": "2010 July IA Flood",
+      "start": "2010-07-23",
+      "end": "2010-08-23",
+      "group": 151,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=151&format=json"
+    },
+    {
+      "id": 206,
+      "name": "2010 June IA Flood",
+      "start": "2010-06-28",
+      "end": "2010-06-28",
+      "group": 206,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=206&format=json"
+    },
+    {
+      "id": 207,
+      "name": "2011 July IA Flood",
+      "start": "2011-07-28",
+      "end": "2011-07-28",
+      "group": 207,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=207&format=json"
+    },
+    {
+      "id": 238,
+      "name": "2008 May June IA Flood",
+      "start": "2008-05-30",
+      "end": "2008-06-15",
+      "group": 145,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=238&format=json"
+    },
+    {
+      "id": 274,
+      "name": "2011 Jun Jul IA Flood",
+      "start": "2011-06-23",
+      "end": "2011-07-22",
+      "group": 274,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=274&format=json"
+    },
+    {
+      "id": 276,
+      "name": "2008 June IA Flood",
+      "start": "2008-05-30",
+      "end": "2008-06-15",
+      "group": 145,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=276&format=json"
+    },
+    {
+      "id": 277,
+      "name": "2008 June IA Flood",
+      "start": "2008-05-30",
+      "end": "2008-06-15",
+      "group": 145,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=277&format=json"
+    },
+    {
+      "id": 278,
+      "name": "2008 June IA Flood",
+      "start": "2008-05-30",
+      "end": "2008-06-15",
+      "group": 145,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=278&format=json"
+    },
+    {
+      "id": 293,
+      "name": "2010 March - April RI MA Flood",
+      "start": "2010-03-01",
+      "end": "2010-04-30",
+      "group": 293,
+      "cohort": "earlier archives",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=293&format=json"
+    },
+    {
+      "id": 334,
+      "name": "2023 July MA NY VT Flood",
+      "start": "2023-07-01",
+      "end": "2023-07-31",
+      "group": 334,
+      "cohort": "previously outside distance screen",
+      "source": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=334&format=json"
+    }
+  ],
+  "rawCatalogSha256": "dcc5867e9563118991bcd63e72f46cb6a56991b14d977ace0a8f6f7d2326ef9b"
+}

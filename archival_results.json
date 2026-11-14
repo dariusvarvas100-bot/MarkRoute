@@ -1,0 +1,641 @@
+{
+  "manifestSha256": "2581bb81676f72394fc1ef28f349094295e2761c1071f2d4d2edd46afaf5521b",
+  "modelSha256": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+  "highReliefPrimary": {
+    "events": 9,
+    "uniqueEventSites": 1199,
+    "maskSitePairs": 16290,
+    "methods": {
+      "gradient boost": {
+        "maeFt": 7.023090361740812,
+        "overFiveFtRate": 0.46335174953959485
+      },
+      "bounded local regression": {
+        "maeFt": 7.816491241539784,
+        "overFiveFtRate": 0.48747697974217313
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 7.7366088996479965,
+        "overFiveFtRate": 0.48698588090853284
+      }
+    },
+    "comparisons": {
+      "bounded local regression": {
+        "relativeMaeReduction": 0.10150345663825988,
+        "paired95IntervalFt": [
+          0.38501218192947534,
+          1.7546760276883266
+        ]
+      },
+      "terrain-aware local kriging": {
+        "relativeMaeReduction": 0.09222626439597437,
+        "paired95IntervalFt": [
+          0.32589421126159984,
+          1.6683125113450303
+        ]
+      }
+    },
+    "byEvent": {
+      "2008 June IA Flood": {
+        "sites": 169,
+        "maskSitePairs": 2318,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 3.183729995791801,
+            "overFiveFtRate": 0.20232959447799828
+          },
+          "bounded local regression": {
+            "maeFt": 3.847846909941826,
+            "overFiveFtRate": 0.26660914581535805
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 3.7301168421625954,
+            "overFiveFtRate": 0.2553925798101812
+          }
+        }
+      },
+      "2010 March - April RI MA Flood": {
+        "sites": 63,
+        "maskSitePairs": 848,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 5.400275980102662,
+            "overFiveFtRate": 0.3313679245283019
+          },
+          "bounded local regression": {
+            "maeFt": 6.449415224866052,
+            "overFiveFtRate": 0.3761792452830189
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 6.451145740542008,
+            "overFiveFtRate": 0.37735849056603776
+          }
+        }
+      },
+      "2011 Irene": {
+        "sites": 638,
+        "maskSitePairs": 8675,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 7.910738955883877,
+            "overFiveFtRate": 0.5870893371757925
+          },
+          "bounded local regression": {
+            "maeFt": 8.378840011009817,
+            "overFiveFtRate": 0.578328530259366
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 8.284758616858259,
+            "overFiveFtRate": 0.5881268011527377
+          }
+        }
+      },
+      "2016 Aug LA Flood": {
+        "sites": 7,
+        "maskSitePairs": 91,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 30.38221555231599,
+            "overFiveFtRate": 0.3626373626373626
+          },
+          "bounded local regression": {
+            "maeFt": 37.1266858784394,
+            "overFiveFtRate": 0.5604395604395604
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 36.872973046165484,
+            "overFiveFtRate": 0.5714285714285714
+          }
+        }
+      },
+      "2016 Jun WV Flood": {
+        "sites": 164,
+        "maskSitePairs": 2226,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 7.979012789804682,
+            "overFiveFtRate": 0.2942497753818509
+          },
+          "bounded local regression": {
+            "maeFt": 8.935730051711557,
+            "overFiveFtRate": 0.3230008984725966
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 8.916819377844138,
+            "overFiveFtRate": 0.3090745732255166
+          }
+        }
+      },
+      "2016 Mar LA Flood": {
+        "sites": 6,
+        "maskSitePairs": 83,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 3.5903258704249668,
+            "overFiveFtRate": 0.20481927710843373
+          },
+          "bounded local regression": {
+            "maeFt": 5.7048691063082675,
+            "overFiveFtRate": 0.3373493975903614
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 5.759458070654904,
+            "overFiveFtRate": 0.3373493975903614
+          }
+        }
+      },
+      "2023 July MA NY VT Flood": {
+        "sites": 56,
+        "maskSitePairs": 748,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 6.999287717793072,
+            "overFiveFtRate": 0.5574866310160428
+          },
+          "bounded local regression": {
+            "maeFt": 8.207462522147873,
+            "overFiveFtRate": 0.5949197860962567
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 8.364050139013434,
+            "overFiveFtRate": 0.5868983957219251
+          }
+        }
+      },
+      "April 2-4, 2005 Delaware River Flood": {
+        "sites": 34,
+        "maskSitePairs": 461,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 6.523303965218218,
+            "overFiveFtRate": 0.44468546637744033
+          },
+          "bounded local regression": {
+            "maeFt": 7.738200695929883,
+            "overFiveFtRate": 0.559652928416486
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 8.030741626244279,
+            "overFiveFtRate": 0.5639913232104121
+          }
+        }
+      },
+      "September 2011 flood - Tropical Storm Lee": {
+        "sites": 62,
+        "maskSitePairs": 840,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 5.659987994769868,
+            "overFiveFtRate": 0.45
+          },
+          "bounded local regression": {
+            "maeFt": 8.102776009499479,
+            "overFiveFtRate": 0.5785714285714286
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 7.6205936310485844,
+            "overFiveFtRate": 0.5380952380952381
+          }
+        }
+      }
+    }
+  },
+  "passesHighReliefGate": true,
+  "all": {
+    "events": 9,
+    "uniqueEventSites": 2560,
+    "maskSitePairs": 34800,
+    "methods": {
+      "gradient boost": {
+        "maeFt": 4.8000597833251994,
+        "overFiveFtRate": 0.2980747126436782
+      },
+      "bounded local regression": {
+        "maeFt": 5.568615488386031,
+        "overFiveFtRate": 0.33232758620689656
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 5.56193426701546,
+        "overFiveFtRate": 0.3327873563218391
+      }
+    },
+    "comparisons": {
+      "bounded local regression": {
+        "relativeMaeReduction": 0.13801558155052007,
+        "paired95IntervalFt": [
+          0.48946751574984837,
+          1.1880426717967625
+        ]
+      },
+      "terrain-aware local kriging": {
+        "relativeMaeReduction": 0.13698013085276595,
+        "paired95IntervalFt": [
+          0.46063433567885936,
+          1.230463141616869
+        ]
+      }
+    },
+    "byEvent": {
+      "2008 June IA Flood": {
+        "sites": 572,
+        "maskSitePairs": 7776,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 2.738045720737778,
+            "overFiveFtRate": 0.14827674897119342
+          },
+          "bounded local regression": {
+            "maeFt": 3.273310499597835,
+            "overFiveFtRate": 0.2001028806584362
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 3.1761937800775457,
+            "overFiveFtRate": 0.19470164609053497
+          }
+        }
+      },
+      "2010 March - April RI MA Flood": {
+        "sites": 194,
+        "maskSitePairs": 2640,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 3.895131256634871,
+            "overFiveFtRate": 0.2428030303030303
+          },
+          "bounded local regression": {
+            "maeFt": 4.764126150354625,
+            "overFiveFtRate": 0.30416666666666664
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 4.787397742958555,
+            "overFiveFtRate": 0.3018939393939394
+          }
+        }
+      },
+      "2011 Irene": {
+        "sites": 744,
+        "maskSitePairs": 10112,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 7.531272956572134,
+            "overFiveFtRate": 0.5625988924050633
+          },
+          "bounded local regression": {
+            "maeFt": 8.035359224755926,
+            "overFiveFtRate": 0.5603243670886076
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 7.956749186321617,
+            "overFiveFtRate": 0.5684335443037974
+          }
+        }
+      },
+      "2016 Aug LA Flood": {
+        "sites": 395,
+        "maskSitePairs": 5376,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 2.8382672924453853,
+            "overFiveFtRate": 0.0818452380952381
+          },
+          "bounded local regression": {
+            "maeFt": 3.9851311647107157,
+            "overFiveFtRate": 0.11811755952380952
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 4.081978693520732,
+            "overFiveFtRate": 0.12890625
+          }
+        }
+      },
+      "2016 Jun WV Flood": {
+        "sites": 191,
+        "maskSitePairs": 2592,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 7.141035274573913,
+            "overFiveFtRate": 0.2619598765432099
+          },
+          "bounded local regression": {
+            "maeFt": 8.066333782471387,
+            "overFiveFtRate": 0.2959104938271605
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 8.227351929177821,
+            "overFiveFtRate": 0.2839506172839506
+          }
+        }
+      },
+      "2016 Mar LA Flood": {
+        "sites": 234,
+        "maskSitePairs": 3184,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 2.271435337681366,
+            "overFiveFtRate": 0.09641959798994974
+          },
+          "bounded local regression": {
+            "maeFt": 2.886673150140346,
+            "overFiveFtRate": 0.13347989949748743
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 3.1220838923042793,
+            "overFiveFtRate": 0.13787688442211055
+          }
+        }
+      },
+      "2023 July MA NY VT Flood": {
+        "sites": 77,
+        "maskSitePairs": 1040,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 6.686094277231056,
+            "overFiveFtRate": 0.5432692307692307
+          },
+          "bounded local regression": {
+            "maeFt": 7.895675775232054,
+            "overFiveFtRate": 0.5759615384615384
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 7.957497742355615,
+            "overFiveFtRate": 0.5721153846153846
+          }
+        }
+      },
+      "April 2-4, 2005 Delaware River Flood": {
+        "sites": 55,
+        "maskSitePairs": 752,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 5.29448155097352,
+            "overFiveFtRate": 0.3723404255319149
+          },
+          "bounded local regression": {
+            "maeFt": 6.506736966953133,
+            "overFiveFtRate": 0.4920212765957447
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 6.59628934656953,
+            "overFiveFtRate": 0.4720744680851064
+          }
+        }
+      },
+      "September 2011 flood - Tropical Storm Lee": {
+        "sites": 98,
+        "maskSitePairs": 1328,
+        "methods": {
+          "gradient boost": {
+            "maeFt": 5.554466562631516,
+            "overFiveFtRate": 0.4661144578313253
+          },
+          "bounded local regression": {
+            "maeFt": 7.4367262140100765,
+            "overFiveFtRate": 0.5602409638554217
+          },
+          "terrain-aware local kriging": {
+            "maeFt": 7.012737826955494,
+            "overFiveFtRate": 0.5301204819277109
+          }
+        }
+      }
+    }
+  },
+  "byCohort": {
+    "earlier archives": {
+      "events": 5,
+      "uniqueEventSites": 1663,
+      "maskSitePairs": 22608,
+      "methods": {
+        "gradient boost": {
+          "maeFt": 5.267524942513145,
+          "overFiveFtRate": 0.37075371549893843
+        },
+        "bounded local regression": {
+          "maeFt": 5.929456235575683,
+          "overFiveFtRate": 0.4042374380750177
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 5.841683743373804,
+          "overFiveFtRate": 0.4033085633404105
+        }
+      },
+      "comparisons": {
+        "bounded local regression": {
+          "relativeMaeReduction": 0.11163440065398711,
+          "paired95IntervalFt": [
+            0.36927692848265753,
+            1.3417553117890062
+          ]
+        },
+        "terrain-aware local kriging": {
+          "relativeMaeReduction": 0.09828652595442622,
+          "paired95IntervalFt": [
+            0.30117865211001926,
+            1.248776551142186
+          ]
+        }
+      },
+      "byEvent": {
+        "2008 June IA Flood": {
+          "sites": 572,
+          "maskSitePairs": 7776,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 2.738045720737778,
+              "overFiveFtRate": 0.14827674897119342
+            },
+            "bounded local regression": {
+              "maeFt": 3.273310499597835,
+              "overFiveFtRate": 0.2001028806584362
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 3.1761937800775457,
+              "overFiveFtRate": 0.19470164609053497
+            }
+          }
+        },
+        "2010 March - April RI MA Flood": {
+          "sites": 194,
+          "maskSitePairs": 2640,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 3.895131256634871,
+              "overFiveFtRate": 0.2428030303030303
+            },
+            "bounded local regression": {
+              "maeFt": 4.764126150354625,
+              "overFiveFtRate": 0.30416666666666664
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 4.787397742958555,
+              "overFiveFtRate": 0.3018939393939394
+            }
+          }
+        },
+        "2011 Irene": {
+          "sites": 744,
+          "maskSitePairs": 10112,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 7.531272956572134,
+              "overFiveFtRate": 0.5625988924050633
+            },
+            "bounded local regression": {
+              "maeFt": 8.035359224755926,
+              "overFiveFtRate": 0.5603243670886076
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 7.956749186321617,
+              "overFiveFtRate": 0.5684335443037974
+            }
+          }
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "sites": 55,
+          "maskSitePairs": 752,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 5.29448155097352,
+              "overFiveFtRate": 0.3723404255319149
+            },
+            "bounded local regression": {
+              "maeFt": 6.506736966953133,
+              "overFiveFtRate": 0.4920212765957447
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 6.59628934656953,
+              "overFiveFtRate": 0.4720744680851064
+            }
+          }
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "sites": 98,
+          "maskSitePairs": 1328,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 5.554466562631516,
+              "overFiveFtRate": 0.4661144578313253
+            },
+            "bounded local regression": {
+              "maeFt": 7.4367262140100765,
+              "overFiveFtRate": 0.5602409638554217
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 7.012737826955494,
+              "overFiveFtRate": 0.5301204819277109
+            }
+          }
+        }
+      }
+    },
+    "previously outside distance screen": {
+      "events": 4,
+      "uniqueEventSites": 897,
+      "maskSitePairs": 12192,
+      "methods": {
+        "gradient boost": {
+          "maeFt": 3.933224783413693,
+          "overFiveFtRate": 0.16330380577427822
+        },
+        "bounded local regression": {
+          "maeFt": 4.899497409935929,
+          "overFiveFtRate": 0.19898293963254593
+        },
+        "terrain-aware local kriging": {
+          "maeFt": 5.04318622227223,
+          "overFiveFtRate": 0.20201771653543307
+        }
+      },
+      "comparisons": {
+        "bounded local regression": {
+          "relativeMaeReduction": 0.19721872381495387,
+          "paired95IntervalFt": [
+            0.5639191068665396,
+            1.4594113549935643
+          ]
+        },
+        "terrain-aware local kriging": {
+          "relativeMaeReduction": 0.220091305364972,
+          "paired95IntervalFt": [
+            0.7239734482806843,
+            1.6038636559524146
+          ]
+        }
+      },
+      "byEvent": {
+        "2016 Aug LA Flood": {
+          "sites": 395,
+          "maskSitePairs": 5376,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 2.8382672924453853,
+              "overFiveFtRate": 0.0818452380952381
+            },
+            "bounded local regression": {
+              "maeFt": 3.9851311647107157,
+              "overFiveFtRate": 0.11811755952380952
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 4.081978693520732,
+              "overFiveFtRate": 0.12890625
+            }
+          }
+        },
+        "2016 Jun WV Flood": {
+          "sites": 191,
+          "maskSitePairs": 2592,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 7.141035274573913,
+              "overFiveFtRate": 0.2619598765432099
+            },
+            "bounded local regression": {
+              "maeFt": 8.066333782471387,
+              "overFiveFtRate": 0.2959104938271605
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 8.227351929177821,
+              "overFiveFtRate": 0.2839506172839506
+            }
+          }
+        },
+        "2016 Mar LA Flood": {
+          "sites": 234,
+          "maskSitePairs": 3184,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 2.271435337681366,
+              "overFiveFtRate": 0.09641959798994974
+            },
+            "bounded local regression": {
+              "maeFt": 2.886673150140346,
+              "overFiveFtRate": 0.13347989949748743
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 3.1220838923042793,
+              "overFiveFtRate": 0.13787688442211055
+            }
+          }
+        },
+        "2023 July MA NY VT Flood": {
+          "sites": 77,
+          "maskSitePairs": 1040,
+          "methods": {
+            "gradient boost": {
+              "maeFt": 6.686094277231056,
+              "overFiveFtRate": 0.5432692307692307
+            },
+            "bounded local regression": {
+              "maeFt": 7.895675775232054,
+              "overFiveFtRate": 0.5759615384615384
+            },
+            "terrain-aware local kriging": {
+              "maeFt": 7.957497742355615,
+              "overFiveFtRate": 0.5721153846153846
+            }
+          }
+        }
+      }
+    }
+  }
+}

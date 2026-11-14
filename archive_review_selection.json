@@ -1,0 +1,762 @@
+{
+  "freeze": {
+    "ARCHIVE_REVIEW_PROTOCOL.md": "626d98bebafbf076df84e5ad30692f326034a3e64e54628e3313944d252c5aa0",
+    "archive_review.py": "dc299422119af7d04bfa0a3ff35da7fad804d97872352d278ee5c5e0b9e92c86",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd"
+  },
+  "primary": "nearest survey",
+  "devBestByBudget": {
+    "0.05": "mean rank",
+    "0.1": "nearest survey",
+    "0.2": "nearest survey",
+    "0.4": "nearest survey",
+    "0.6": "nearest survey",
+    "0.8": "mean rank",
+    "1.0": "disagreement"
+  },
+  "development": {
+    "0.05": {
+      "disagreement": {
+        "reported": 320,
+        "available": 6336,
+        "coverage": 0.050505050505050504,
+        "largeMisses": 25,
+        "largeMissRate": 0.078125,
+        "maeFt": 1.9792558516111636,
+        "events": {
+          "2018 Florence": {
+            "reported": 304,
+            "available": 6080,
+            "coverage": 0.05,
+            "largeMisses": 25,
+            "largeMissRate": 0.08223684210526316,
+            "maeFt": 2.0302687170581666
+          },
+          "2018 Michael": {
+            "reported": 16,
+            "available": 256,
+            "coverage": 0.0625,
+            "largeMisses": 0,
+            "largeMissRate": 0.0,
+            "maeFt": 1.010011408118102
+          }
+        }
+      },
+      "relief": {
+        "reported": 320,
+        "available": 6336,
+        "coverage": 0.050505050505050504,
+        "largeMisses": 60,
+        "largeMissRate": 0.1875,
+        "maeFt": 3.238235506846281,
+        "events": {
+          "2018 Florence": {
+            "reported": 304,
+            "available": 6080,
+            "coverage": 0.05,
+            "largeMisses": 57,
+            "largeMissRate": 0.1875,
+            "maeFt": 3.1623706101428044
+          },
+          "2018 Michael": {
+            "reported": 16,
+            "available": 256,
+            "coverage": 0.0625,
+            "largeMisses": 3,
+            "largeMissRate": 0.1875,
+            "maeFt": 4.679668544212342
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 320,
+        "available": 6336,
+        "coverage": 0.050505050505050504,
+        "largeMisses": 14,
+        "largeMissRate": 0.04375,
+        "maeFt": 1.5118544353159695,
+        "events": {
+          "2018 Florence": {
+            "reported": 304,
+            "available": 6080,
+            "coverage": 0.05,
+            "largeMisses": 13,
+            "largeMissRate": 0.04276315789473684,
+            "maeFt": 1.4933003532467837
+          },
+          "2018 Michael": {
+            "reported": 16,
+            "available": 256,
+            "coverage": 0.0625,
+            "largeMisses": 1,
+            "largeMissRate": 0.0625,
+            "maeFt": 1.8643819946304983
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 320,
+        "available": 6336,
+        "coverage": 0.050505050505050504,
+        "largeMisses": 13,
+        "largeMissRate": 0.040625,
+        "maeFt": 1.417159833655917,
+        "events": {
+          "2018 Florence": {
+            "reported": 304,
+            "available": 6080,
+            "coverage": 0.05,
+            "largeMisses": 11,
+            "largeMissRate": 0.03618421052631579,
+            "maeFt": 1.3578002199026344
+          },
+          "2018 Michael": {
+            "reported": 16,
+            "available": 256,
+            "coverage": 0.0625,
+            "largeMisses": 2,
+            "largeMissRate": 0.125,
+            "maeFt": 2.544992494968292
+          }
+        }
+      }
+    },
+    "0.1": {
+      "disagreement": {
+        "reported": 640,
+        "available": 6336,
+        "coverage": 0.10101010101010101,
+        "largeMisses": 47,
+        "largeMissRate": 0.0734375,
+        "maeFt": 1.952465691441668,
+        "events": {
+          "2018 Florence": {
+            "reported": 608,
+            "available": 6080,
+            "coverage": 0.1,
+            "largeMisses": 47,
+            "largeMissRate": 0.07730263157894737,
+            "maeFt": 2.005088435255683
+          },
+          "2018 Michael": {
+            "reported": 32,
+            "available": 256,
+            "coverage": 0.125,
+            "largeMisses": 0,
+            "largeMissRate": 0.0,
+            "maeFt": 0.9526335589753769
+          }
+        }
+      },
+      "relief": {
+        "reported": 640,
+        "available": 6336,
+        "coverage": 0.10101010101010101,
+        "largeMisses": 72,
+        "largeMissRate": 0.1125,
+        "maeFt": 2.423196291943852,
+        "events": {
+          "2018 Florence": {
+            "reported": 608,
+            "available": 6080,
+            "coverage": 0.1,
+            "largeMisses": 65,
+            "largeMissRate": 0.1069078947368421,
+            "maeFt": 2.276695217961017
+          },
+          "2018 Michael": {
+            "reported": 32,
+            "available": 256,
+            "coverage": 0.125,
+            "largeMisses": 7,
+            "largeMissRate": 0.21875,
+            "maeFt": 5.2067166976177255
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 640,
+        "available": 6336,
+        "coverage": 0.10101010101010101,
+        "largeMisses": 24,
+        "largeMissRate": 0.0375,
+        "maeFt": 1.5655245984229524,
+        "events": {
+          "2018 Florence": {
+            "reported": 608,
+            "available": 6080,
+            "coverage": 0.1,
+            "largeMisses": 20,
+            "largeMissRate": 0.03289473684210526,
+            "maeFt": 1.5207399744240586
+          },
+          "2018 Michael": {
+            "reported": 32,
+            "available": 256,
+            "coverage": 0.125,
+            "largeMisses": 4,
+            "largeMissRate": 0.125,
+            "maeFt": 2.416432454401935
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 640,
+        "available": 6336,
+        "coverage": 0.10101010101010101,
+        "largeMisses": 30,
+        "largeMissRate": 0.046875,
+        "maeFt": 1.537157827432408,
+        "events": {
+          "2018 Florence": {
+            "reported": 608,
+            "available": 6080,
+            "coverage": 0.1,
+            "largeMisses": 27,
+            "largeMissRate": 0.044407894736842105,
+            "maeFt": 1.5218414846711783
+          },
+          "2018 Michael": {
+            "reported": 32,
+            "available": 256,
+            "coverage": 0.125,
+            "largeMisses": 3,
+            "largeMissRate": 0.09375,
+            "maeFt": 1.8281683398957744
+          }
+        }
+      }
+    },
+    "0.2": {
+      "disagreement": {
+        "reported": 1264,
+        "available": 6336,
+        "coverage": 0.1994949494949495,
+        "largeMisses": 107,
+        "largeMissRate": 0.08465189873417721,
+        "maeFt": 2.0895813329260813,
+        "events": {
+          "2018 Florence": {
+            "reported": 1216,
+            "available": 6080,
+            "coverage": 0.2,
+            "largeMisses": 107,
+            "largeMissRate": 0.08799342105263158,
+            "maeFt": 2.1338563245675646
+          },
+          "2018 Michael": {
+            "reported": 48,
+            "available": 256,
+            "coverage": 0.1875,
+            "largeMisses": 0,
+            "largeMissRate": 0.0,
+            "maeFt": 0.9679482113418384
+          }
+        }
+      },
+      "relief": {
+        "reported": 1264,
+        "available": 6336,
+        "coverage": 0.1994949494949495,
+        "largeMisses": 90,
+        "largeMissRate": 0.07120253164556962,
+        "maeFt": 1.9760463897676577,
+        "events": {
+          "2018 Florence": {
+            "reported": 1216,
+            "available": 6080,
+            "coverage": 0.2,
+            "largeMisses": 80,
+            "largeMissRate": 0.06578947368421052,
+            "maeFt": 1.875627057202058
+          },
+          "2018 Michael": {
+            "reported": 48,
+            "available": 256,
+            "coverage": 0.1875,
+            "largeMisses": 10,
+            "largeMissRate": 0.20833333333333334,
+            "maeFt": 4.520002814762857
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 1264,
+        "available": 6336,
+        "coverage": 0.1994949494949495,
+        "largeMisses": 57,
+        "largeMissRate": 0.04509493670886076,
+        "maeFt": 1.7436265310302421,
+        "events": {
+          "2018 Florence": {
+            "reported": 1216,
+            "available": 6080,
+            "coverage": 0.2,
+            "largeMisses": 53,
+            "largeMissRate": 0.04358552631578947,
+            "maeFt": 1.7346536586800065
+          },
+          "2018 Michael": {
+            "reported": 48,
+            "available": 256,
+            "coverage": 0.1875,
+            "largeMisses": 4,
+            "largeMissRate": 0.08333333333333333,
+            "maeFt": 1.970939297236212
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 1264,
+        "available": 6336,
+        "coverage": 0.1994949494949495,
+        "largeMisses": 72,
+        "largeMissRate": 0.056962025316455694,
+        "maeFt": 1.723063236690112,
+        "events": {
+          "2018 Florence": {
+            "reported": 1216,
+            "available": 6080,
+            "coverage": 0.2,
+            "largeMisses": 68,
+            "largeMissRate": 0.05592105263157895,
+            "maeFt": 1.7268585281802324
+          },
+          "2018 Michael": {
+            "reported": 48,
+            "available": 256,
+            "coverage": 0.1875,
+            "largeMisses": 4,
+            "largeMissRate": 0.08333333333333333,
+            "maeFt": 1.626915852273731
+          }
+        }
+      }
+    },
+    "0.4": {
+      "disagreement": {
+        "reported": 2528,
+        "available": 6336,
+        "coverage": 0.398989898989899,
+        "largeMisses": 221,
+        "largeMissRate": 0.08742088607594936,
+        "maeFt": 2.0995117844636573,
+        "events": {
+          "2018 Florence": {
+            "reported": 2432,
+            "available": 6080,
+            "coverage": 0.4,
+            "largeMisses": 215,
+            "largeMissRate": 0.0884046052631579,
+            "maeFt": 2.1266404361901543
+          },
+          "2018 Michael": {
+            "reported": 96,
+            "available": 256,
+            "coverage": 0.375,
+            "largeMisses": 6,
+            "largeMissRate": 0.0625,
+            "maeFt": 1.4122526073924055
+          }
+        }
+      },
+      "relief": {
+        "reported": 2528,
+        "available": 6336,
+        "coverage": 0.398989898989899,
+        "largeMisses": 247,
+        "largeMissRate": 0.09770569620253164,
+        "maeFt": 2.240908446357239,
+        "events": {
+          "2018 Florence": {
+            "reported": 2432,
+            "available": 6080,
+            "coverage": 0.4,
+            "largeMisses": 228,
+            "largeMissRate": 0.09375,
+            "maeFt": 2.1766882640535665
+          },
+          "2018 Michael": {
+            "reported": 96,
+            "available": 256,
+            "coverage": 0.375,
+            "largeMisses": 19,
+            "largeMissRate": 0.19791666666666666,
+            "maeFt": 3.867819731383603
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 2528,
+        "available": 6336,
+        "coverage": 0.398989898989899,
+        "largeMisses": 156,
+        "largeMissRate": 0.061708860759493674,
+        "maeFt": 1.9445204429939824,
+        "events": {
+          "2018 Florence": {
+            "reported": 2432,
+            "available": 6080,
+            "coverage": 0.4,
+            "largeMisses": 144,
+            "largeMissRate": 0.05921052631578947,
+            "maeFt": 1.9357921219993586
+          },
+          "2018 Michael": {
+            "reported": 96,
+            "available": 256,
+            "coverage": 0.375,
+            "largeMisses": 12,
+            "largeMissRate": 0.125,
+            "maeFt": 2.165637908191124
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 2528,
+        "available": 6336,
+        "coverage": 0.398989898989899,
+        "largeMisses": 182,
+        "largeMissRate": 0.07199367088607594,
+        "maeFt": 1.9257016595139111,
+        "events": {
+          "2018 Florence": {
+            "reported": 2432,
+            "available": 6080,
+            "coverage": 0.4,
+            "largeMisses": 170,
+            "largeMissRate": 0.06990131578947369,
+            "maeFt": 1.9204909664283207
+          },
+          "2018 Michael": {
+            "reported": 96,
+            "available": 256,
+            "coverage": 0.375,
+            "largeMisses": 12,
+            "largeMissRate": 0.125,
+            "maeFt": 2.0577058843488683
+          }
+        }
+      }
+    },
+    "0.6": {
+      "disagreement": {
+        "reported": 3808,
+        "available": 6336,
+        "coverage": 0.601010101010101,
+        "largeMisses": 353,
+        "largeMissRate": 0.09269957983193278,
+        "maeFt": 2.166140107188918,
+        "events": {
+          "2018 Florence": {
+            "reported": 3648,
+            "available": 6080,
+            "coverage": 0.6,
+            "largeMisses": 335,
+            "largeMissRate": 0.0918311403508772,
+            "maeFt": 2.1762194940005273
+          },
+          "2018 Michael": {
+            "reported": 160,
+            "available": 256,
+            "coverage": 0.625,
+            "largeMisses": 18,
+            "largeMissRate": 0.1125,
+            "maeFt": 1.9363300878842338
+          }
+        }
+      },
+      "relief": {
+        "reported": 3808,
+        "available": 6336,
+        "coverage": 0.601010101010101,
+        "largeMisses": 327,
+        "largeMissRate": 0.0858718487394958,
+        "maeFt": 2.1341905395682668,
+        "events": {
+          "2018 Florence": {
+            "reported": 3648,
+            "available": 6080,
+            "coverage": 0.6,
+            "largeMisses": 297,
+            "largeMissRate": 0.08141447368421052,
+            "maeFt": 2.0829633929003912
+          },
+          "2018 Michael": {
+            "reported": 160,
+            "available": 256,
+            "coverage": 0.625,
+            "largeMisses": 30,
+            "largeMissRate": 0.1875,
+            "maeFt": 3.3021694835958235
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 3808,
+        "available": 6336,
+        "coverage": 0.601010101010101,
+        "largeMisses": 296,
+        "largeMissRate": 0.07773109243697479,
+        "maeFt": 2.10459315041954,
+        "events": {
+          "2018 Florence": {
+            "reported": 3648,
+            "available": 6080,
+            "coverage": 0.6,
+            "largeMisses": 273,
+            "largeMissRate": 0.07483552631578948,
+            "maeFt": 2.090563703225755
+          },
+          "2018 Michael": {
+            "reported": 160,
+            "available": 256,
+            "coverage": 0.625,
+            "largeMisses": 23,
+            "largeMissRate": 0.14375,
+            "maeFt": 2.424464546437837
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 3808,
+        "available": 6336,
+        "coverage": 0.601010101010101,
+        "largeMisses": 308,
+        "largeMissRate": 0.08088235294117647,
+        "maeFt": 2.070013720586325,
+        "events": {
+          "2018 Florence": {
+            "reported": 3648,
+            "available": 6080,
+            "coverage": 0.6,
+            "largeMisses": 286,
+            "largeMissRate": 0.07839912280701754,
+            "maeFt": 2.0549703210465915
+          },
+          "2018 Michael": {
+            "reported": 160,
+            "available": 256,
+            "coverage": 0.625,
+            "largeMisses": 22,
+            "largeMissRate": 0.1375,
+            "maeFt": 2.4130032300922464
+          }
+        }
+      }
+    },
+    "0.8": {
+      "disagreement": {
+        "reported": 5072,
+        "available": 6336,
+        "coverage": 0.8005050505050505,
+        "largeMisses": 483,
+        "largeMissRate": 0.09522870662460568,
+        "maeFt": 2.256974347998089,
+        "events": {
+          "2018 Florence": {
+            "reported": 4864,
+            "available": 6080,
+            "coverage": 0.8,
+            "largeMisses": 455,
+            "largeMissRate": 0.09354440789473684,
+            "maeFt": 2.2523446572055295
+          },
+          "2018 Michael": {
+            "reported": 208,
+            "available": 256,
+            "coverage": 0.8125,
+            "largeMisses": 28,
+            "largeMissRate": 0.1346153846153846,
+            "maeFt": 2.3652378865317947
+          }
+        }
+      },
+      "relief": {
+        "reported": 5072,
+        "available": 6336,
+        "coverage": 0.8005050505050505,
+        "largeMisses": 453,
+        "largeMissRate": 0.08931388012618297,
+        "maeFt": 2.1758247173886143,
+        "events": {
+          "2018 Florence": {
+            "reported": 4864,
+            "available": 6080,
+            "coverage": 0.8,
+            "largeMisses": 415,
+            "largeMissRate": 0.08532072368421052,
+            "maeFt": 2.136220033738224
+          },
+          "2018 Michael": {
+            "reported": 208,
+            "available": 256,
+            "coverage": 0.8125,
+            "largeMisses": 38,
+            "largeMissRate": 0.18269230769230768,
+            "maeFt": 3.101965011982358
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 5072,
+        "available": 6336,
+        "coverage": 0.8005050505050505,
+        "largeMisses": 464,
+        "largeMissRate": 0.0914826498422713,
+        "maeFt": 2.2288858722903653,
+        "events": {
+          "2018 Florence": {
+            "reported": 4864,
+            "available": 6080,
+            "coverage": 0.8,
+            "largeMisses": 434,
+            "largeMissRate": 0.08922697368421052,
+            "maeFt": 2.2108096517057634
+          },
+          "2018 Michael": {
+            "reported": 208,
+            "available": 256,
+            "coverage": 0.8125,
+            "largeMisses": 30,
+            "largeMissRate": 0.14423076923076922,
+            "maeFt": 2.6515913382687595
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 5072,
+        "available": 6336,
+        "coverage": 0.8005050505050505,
+        "largeMisses": 443,
+        "largeMissRate": 0.08734227129337539,
+        "maeFt": 2.172846773824478,
+        "events": {
+          "2018 Florence": {
+            "reported": 4864,
+            "available": 6080,
+            "coverage": 0.8,
+            "largeMisses": 414,
+            "largeMissRate": 0.08511513157894737,
+            "maeFt": 2.156874069135454
+          },
+          "2018 Michael": {
+            "reported": 208,
+            "available": 256,
+            "coverage": 0.8125,
+            "largeMisses": 29,
+            "largeMissRate": 0.13942307692307693,
+            "maeFt": 2.5463623296293467
+          }
+        }
+      }
+    },
+    "1.0": {
+      "disagreement": {
+        "reported": 6336,
+        "available": 6336,
+        "coverage": 1.0,
+        "largeMisses": 650,
+        "largeMissRate": 0.10258838383838384,
+        "maeFt": 2.3893061342871693,
+        "events": {
+          "2018 Florence": {
+            "reported": 6080,
+            "available": 6080,
+            "coverage": 1.0,
+            "largeMisses": 612,
+            "largeMissRate": 0.1006578947368421,
+            "maeFt": 2.370683608549198
+          },
+          "2018 Michael": {
+            "reported": 256,
+            "available": 256,
+            "coverage": 1.0,
+            "largeMisses": 38,
+            "largeMissRate": 0.1484375,
+            "maeFt": 2.831591120564004
+          }
+        }
+      },
+      "relief": {
+        "reported": 6336,
+        "available": 6336,
+        "coverage": 1.0,
+        "largeMisses": 650,
+        "largeMissRate": 0.10258838383838384,
+        "maeFt": 2.3893061342871693,
+        "events": {
+          "2018 Florence": {
+            "reported": 6080,
+            "available": 6080,
+            "coverage": 1.0,
+            "largeMisses": 612,
+            "largeMissRate": 0.1006578947368421,
+            "maeFt": 2.370683608549198
+          },
+          "2018 Michael": {
+            "reported": 256,
+            "available": 256,
+            "coverage": 1.0,
+            "largeMisses": 38,
+            "largeMissRate": 0.1484375,
+            "maeFt": 2.831591120564004
+          }
+        }
+      },
+      "nearest survey": {
+        "reported": 6336,
+        "available": 6336,
+        "coverage": 1.0,
+        "largeMisses": 650,
+        "largeMissRate": 0.10258838383838384,
+        "maeFt": 2.3893061342871693,
+        "events": {
+          "2018 Florence": {
+            "reported": 6080,
+            "available": 6080,
+            "coverage": 1.0,
+            "largeMisses": 612,
+            "largeMissRate": 0.1006578947368421,
+            "maeFt": 2.370683608549198
+          },
+          "2018 Michael": {
+            "reported": 256,
+            "available": 256,
+            "coverage": 1.0,
+            "largeMisses": 38,
+            "largeMissRate": 0.1484375,
+            "maeFt": 2.831591120564004
+          }
+        }
+      },
+      "mean rank": {
+        "reported": 6336,
+        "available": 6336,
+        "coverage": 1.0,
+        "largeMisses": 650,
+        "largeMissRate": 0.10258838383838384,
+        "maeFt": 2.3893061342871693,
+        "events": {
+          "2018 Florence": {
+            "reported": 6080,
+            "available": 6080,
+            "coverage": 1.0,
+            "largeMisses": 612,
+            "largeMissRate": 0.1006578947368421,
+            "maeFt": 2.370683608549198
+          },
+          "2018 Michael": {
+            "reported": 256,
+            "available": 256,
+            "coverage": 1.0,
+            "largeMisses": 38,
+            "largeMissRate": 0.1484375,
+            "maeFt": 2.831591120564004
+          }
+        }
+      }
+    }
+  }
+}

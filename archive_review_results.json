@@ -1,0 +1,579 @@
+{
+  "policy": "nearest survey",
+  "curve": {
+    "0.05": {
+      "reported": 1728,
+      "available": 34800,
+      "coverage": 0.0496551724137931,
+      "largeMisses": 268,
+      "largeMissRate": 0.1550925925925926,
+      "maeFt": 2.648668309648025,
+      "events": {
+        "2011 Irene": {
+          "reported": 512,
+          "available": 10112,
+          "coverage": 0.05063291139240506,
+          "largeMisses": 147,
+          "largeMissRate": 0.287109375,
+          "maeFt": 4.0931201529333086
+        },
+        "2016 Mar LA Flood": {
+          "reported": 160,
+          "available": 3184,
+          "coverage": 0.05025125628140704,
+          "largeMisses": 2,
+          "largeMissRate": 0.0125,
+          "maeFt": 1.1917608065197594
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 64,
+          "available": 1328,
+          "coverage": 0.04819277108433735,
+          "largeMisses": 32,
+          "largeMissRate": 0.5,
+          "maeFt": 4.855969710112605
+        },
+        "2016 Jun WV Flood": {
+          "reported": 128,
+          "available": 2592,
+          "coverage": 0.04938271604938271,
+          "largeMisses": 15,
+          "largeMissRate": 0.1171875,
+          "maeFt": 2.141388144189076
+        },
+        "2016 Aug LA Flood": {
+          "reported": 272,
+          "available": 5376,
+          "coverage": 0.050595238095238096,
+          "largeMisses": 10,
+          "largeMissRate": 0.03676470588235294,
+          "maeFt": 1.6167410714281367
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 32,
+          "available": 752,
+          "coverage": 0.0425531914893617,
+          "largeMisses": 5,
+          "largeMissRate": 0.15625,
+          "maeFt": 2.283545725514142
+        },
+        "2008 June IA Flood": {
+          "reported": 384,
+          "available": 7776,
+          "coverage": 0.04938271604938271,
+          "largeMisses": 22,
+          "largeMissRate": 0.057291666666666664,
+          "maeFt": 1.7372268754179323
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 128,
+          "available": 2640,
+          "coverage": 0.048484848484848485,
+          "largeMisses": 22,
+          "largeMissRate": 0.171875,
+          "maeFt": 2.5159793678969997
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 48,
+          "available": 1040,
+          "coverage": 0.046153846153846156,
+          "largeMisses": 13,
+          "largeMissRate": 0.2708333333333333,
+          "maeFt": 4.243590290149059
+        }
+      }
+    },
+    "0.1": {
+      "reported": 3472,
+      "available": 34800,
+      "coverage": 0.09977011494252873,
+      "largeMisses": 555,
+      "largeMissRate": 0.15985023041474655,
+      "maeFt": 2.732773063733237,
+      "events": {
+        "2011 Irene": {
+          "reported": 1008,
+          "available": 10112,
+          "coverage": 0.09968354430379747,
+          "largeMisses": 317,
+          "largeMissRate": 0.314484126984127,
+          "maeFt": 4.363252231224846
+        },
+        "2016 Mar LA Flood": {
+          "reported": 320,
+          "available": 3184,
+          "coverage": 0.10050251256281408,
+          "largeMisses": 4,
+          "largeMissRate": 0.0125,
+          "maeFt": 1.195087149336
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 128,
+          "available": 1328,
+          "coverage": 0.0963855421686747,
+          "largeMisses": 51,
+          "largeMissRate": 0.3984375,
+          "maeFt": 4.393475475843481
+        },
+        "2016 Jun WV Flood": {
+          "reported": 256,
+          "available": 2592,
+          "coverage": 0.09876543209876543,
+          "largeMisses": 36,
+          "largeMissRate": 0.140625,
+          "maeFt": 2.517357137109332
+        },
+        "2016 Aug LA Flood": {
+          "reported": 544,
+          "available": 5376,
+          "coverage": 0.10119047619047619,
+          "largeMisses": 22,
+          "largeMissRate": 0.04044117647058824,
+          "maeFt": 1.5340341541712037
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 80,
+          "available": 752,
+          "coverage": 0.10638297872340426,
+          "largeMisses": 14,
+          "largeMissRate": 0.175,
+          "maeFt": 2.5799094331810597
+        },
+        "2008 June IA Flood": {
+          "reported": 784,
+          "available": 7776,
+          "coverage": 0.10082304526748971,
+          "largeMisses": 51,
+          "largeMissRate": 0.06505102040816327,
+          "maeFt": 1.818142263482011
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 256,
+          "available": 2640,
+          "coverage": 0.09696969696969697,
+          "largeMisses": 34,
+          "largeMissRate": 0.1328125,
+          "maeFt": 2.4524687826347966
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 96,
+          "available": 1040,
+          "coverage": 0.09230769230769231,
+          "largeMisses": 26,
+          "largeMissRate": 0.2708333333333333,
+          "maeFt": 4.2357372392047425
+        }
+      }
+    },
+    "0.2": {
+      "reported": 6944,
+      "available": 34800,
+      "coverage": 0.19954022988505746,
+      "largeMisses": 1315,
+      "largeMissRate": 0.1893721198156682,
+      "maeFt": 3.194022811615458,
+      "events": {
+        "2011 Irene": {
+          "reported": 2016,
+          "available": 10112,
+          "coverage": 0.19936708860759494,
+          "largeMisses": 794,
+          "largeMissRate": 0.39384920634920634,
+          "maeFt": 5.185700337333206
+        },
+        "2016 Mar LA Flood": {
+          "reported": 640,
+          "available": 3184,
+          "coverage": 0.20100502512562815,
+          "largeMisses": 14,
+          "largeMissRate": 0.021875,
+          "maeFt": 1.2288131091869414
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 272,
+          "available": 1328,
+          "coverage": 0.20481927710843373,
+          "largeMisses": 96,
+          "largeMissRate": 0.35294117647058826,
+          "maeFt": 4.276252763280344
+        },
+        "2016 Jun WV Flood": {
+          "reported": 512,
+          "available": 2592,
+          "coverage": 0.19753086419753085,
+          "largeMisses": 68,
+          "largeMissRate": 0.1328125,
+          "maeFt": 3.973914094594411
+        },
+        "2016 Aug LA Flood": {
+          "reported": 1072,
+          "available": 5376,
+          "coverage": 0.19940476190476192,
+          "largeMisses": 45,
+          "largeMissRate": 0.04197761194029851,
+          "maeFt": 1.5573955410725702
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 144,
+          "available": 752,
+          "coverage": 0.19148936170212766,
+          "largeMisses": 30,
+          "largeMissRate": 0.20833333333333334,
+          "maeFt": 2.776720318559887
+        },
+        "2008 June IA Flood": {
+          "reported": 1552,
+          "available": 7776,
+          "coverage": 0.19958847736625515,
+          "largeMisses": 127,
+          "largeMissRate": 0.0818298969072165,
+          "maeFt": 2.0882200670148015
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 528,
+          "available": 2640,
+          "coverage": 0.2,
+          "largeMisses": 63,
+          "largeMissRate": 0.11931818181818182,
+          "maeFt": 2.6393720449913523
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 208,
+          "available": 1040,
+          "coverage": 0.2,
+          "largeMisses": 78,
+          "largeMissRate": 0.375,
+          "maeFt": 4.984690558677581
+        }
+      }
+    },
+    "0.4": {
+      "reported": 13920,
+      "available": 34800,
+      "coverage": 0.4,
+      "largeMisses": 3253,
+      "largeMissRate": 0.23369252873563218,
+      "maeFt": 3.7371584299319265,
+      "events": {
+        "2011 Irene": {
+          "reported": 4048,
+          "available": 10112,
+          "coverage": 0.40031645569620256,
+          "largeMisses": 1952,
+          "largeMissRate": 0.48221343873517786,
+          "maeFt": 6.4986232791322145
+        },
+        "2016 Mar LA Flood": {
+          "reported": 1280,
+          "available": 3184,
+          "coverage": 0.4020100502512563,
+          "largeMisses": 39,
+          "largeMissRate": 0.03046875,
+          "maeFt": 1.3632071040174953
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 528,
+          "available": 1328,
+          "coverage": 0.39759036144578314,
+          "largeMisses": 203,
+          "largeMissRate": 0.38446969696969696,
+          "maeFt": 4.867035034736067
+        },
+        "2016 Jun WV Flood": {
+          "reported": 1040,
+          "available": 2592,
+          "coverage": 0.4012345679012346,
+          "largeMisses": 152,
+          "largeMissRate": 0.14615384615384616,
+          "maeFt": 3.6869723686486595
+        },
+        "2016 Aug LA Flood": {
+          "reported": 2144,
+          "available": 5376,
+          "coverage": 0.39880952380952384,
+          "largeMisses": 96,
+          "largeMissRate": 0.04477611940298507,
+          "maeFt": 1.609522346897027
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 304,
+          "available": 752,
+          "coverage": 0.40425531914893614,
+          "largeMisses": 79,
+          "largeMissRate": 0.2598684210526316,
+          "maeFt": 3.3451352384874142
+        },
+        "2008 June IA Flood": {
+          "reported": 3104,
+          "available": 7776,
+          "coverage": 0.3991769547325103,
+          "largeMisses": 376,
+          "largeMissRate": 0.1211340206185567,
+          "maeFt": 2.4430550708877306
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 1056,
+          "available": 2640,
+          "coverage": 0.4,
+          "largeMisses": 164,
+          "largeMissRate": 0.1553030303030303,
+          "maeFt": 2.962109438531947
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 416,
+          "available": 1040,
+          "coverage": 0.4,
+          "largeMisses": 192,
+          "largeMissRate": 0.46153846153846156,
+          "maeFt": 5.73725943383395
+        }
+      }
+    },
+    "0.6": {
+      "reported": 20880,
+      "available": 34800,
+      "coverage": 0.6,
+      "largeMisses": 5502,
+      "largeMissRate": 0.26350574712643676,
+      "maeFt": 4.248479470040783,
+      "events": {
+        "2011 Irene": {
+          "reported": 6064,
+          "available": 10112,
+          "coverage": 0.5996835443037974,
+          "largeMisses": 3227,
+          "largeMissRate": 0.5321569920844327,
+          "maeFt": 7.076490940761174
+        },
+        "2016 Mar LA Flood": {
+          "reported": 1904,
+          "available": 3184,
+          "coverage": 0.5979899497487438,
+          "largeMisses": 80,
+          "largeMissRate": 0.04201680672268908,
+          "maeFt": 1.5427858724983554
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 800,
+          "available": 1328,
+          "coverage": 0.6024096385542169,
+          "largeMisses": 334,
+          "largeMissRate": 0.4175,
+          "maeFt": 5.22240156377537
+        },
+        "2016 Jun WV Flood": {
+          "reported": 1552,
+          "available": 2592,
+          "coverage": 0.5987654320987654,
+          "largeMisses": 266,
+          "largeMissRate": 0.1713917525773196,
+          "maeFt": 5.656265864292108
+        },
+        "2016 Aug LA Flood": {
+          "reported": 3232,
+          "available": 5376,
+          "coverage": 0.6011904761904762,
+          "largeMisses": 165,
+          "largeMissRate": 0.0510519801980198,
+          "maeFt": 2.0695950906533738
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 448,
+          "available": 752,
+          "coverage": 0.5957446808510638,
+          "largeMisses": 140,
+          "largeMissRate": 0.3125,
+          "maeFt": 3.776397478576457
+        },
+        "2008 June IA Flood": {
+          "reported": 4672,
+          "available": 7776,
+          "coverage": 0.6008230452674898,
+          "largeMisses": 654,
+          "largeMissRate": 0.13998287671232876,
+          "maeFt": 2.605944379593711
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 1584,
+          "available": 2640,
+          "coverage": 0.6,
+          "largeMisses": 311,
+          "largeMissRate": 0.19633838383838384,
+          "maeFt": 3.3719127495689873
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 624,
+          "available": 1040,
+          "coverage": 0.6,
+          "largeMisses": 325,
+          "largeMissRate": 0.5208333333333334,
+          "maeFt": 6.419328134397801
+        }
+      }
+    },
+    "0.8": {
+      "reported": 27856,
+      "available": 34800,
+      "coverage": 0.8004597701149425,
+      "largeMisses": 7890,
+      "largeMissRate": 0.28324238943136126,
+      "maeFt": 4.630791471163058,
+      "events": {
+        "2011 Irene": {
+          "reported": 8096,
+          "available": 10112,
+          "coverage": 0.8006329113924051,
+          "largeMisses": 4510,
+          "largeMissRate": 0.5570652173913043,
+          "maeFt": 7.459546510094732
+        },
+        "2016 Mar LA Flood": {
+          "reported": 2544,
+          "available": 3184,
+          "coverage": 0.7989949748743719,
+          "largeMisses": 165,
+          "largeMissRate": 0.06485849056603774,
+          "maeFt": 2.0213689976749363
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 1056,
+          "available": 1328,
+          "coverage": 0.7951807228915663,
+          "largeMisses": 460,
+          "largeMissRate": 0.4356060606060606,
+          "maeFt": 5.2927738004451825
+        },
+        "2016 Jun WV Flood": {
+          "reported": 2080,
+          "available": 2592,
+          "coverage": 0.8024691358024691,
+          "largeMisses": 435,
+          "largeMissRate": 0.2091346153846154,
+          "maeFt": 7.22699147518296
+        },
+        "2016 Aug LA Flood": {
+          "reported": 4304,
+          "available": 5376,
+          "coverage": 0.8005952380952381,
+          "largeMisses": 261,
+          "largeMissRate": 0.06064126394052045,
+          "maeFt": 2.329964409325395
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 608,
+          "available": 752,
+          "coverage": 0.8085106382978723,
+          "largeMisses": 206,
+          "largeMissRate": 0.33881578947368424,
+          "maeFt": 4.32389436336917
+        },
+        "2008 June IA Flood": {
+          "reported": 6224,
+          "available": 7776,
+          "coverage": 0.8004115226337448,
+          "largeMisses": 926,
+          "largeMissRate": 0.1487789203084833,
+          "maeFt": 2.727054496710223
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 2112,
+          "available": 2640,
+          "coverage": 0.8,
+          "largeMisses": 476,
+          "largeMissRate": 0.22537878787878787,
+          "maeFt": 3.6284756572185044
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 832,
+          "available": 1040,
+          "coverage": 0.8,
+          "largeMisses": 451,
+          "largeMissRate": 0.5420673076923077,
+          "maeFt": 6.665315116611302
+        }
+      }
+    },
+    "1.0": {
+      "reported": 34800,
+      "available": 34800,
+      "coverage": 1.0,
+      "largeMisses": 10373,
+      "largeMissRate": 0.2980747126436782,
+      "maeFt": 4.8000597833251994,
+      "events": {
+        "2011 Irene": {
+          "reported": 10112,
+          "available": 10112,
+          "coverage": 1.0,
+          "largeMisses": 5689,
+          "largeMissRate": 0.5625988924050633,
+          "maeFt": 7.531272956572136
+        },
+        "2016 Mar LA Flood": {
+          "reported": 3184,
+          "available": 3184,
+          "coverage": 1.0,
+          "largeMisses": 307,
+          "largeMissRate": 0.09641959798994974,
+          "maeFt": 2.271435337681366
+        },
+        "September 2011 flood - Tropical Storm Lee": {
+          "reported": 1328,
+          "available": 1328,
+          "coverage": 1.0,
+          "largeMisses": 619,
+          "largeMissRate": 0.4661144578313253,
+          "maeFt": 5.554466562631516
+        },
+        "2016 Jun WV Flood": {
+          "reported": 2592,
+          "available": 2592,
+          "coverage": 1.0,
+          "largeMisses": 679,
+          "largeMissRate": 0.2619598765432099,
+          "maeFt": 7.141035274573913
+        },
+        "2016 Aug LA Flood": {
+          "reported": 5376,
+          "available": 5376,
+          "coverage": 1.0,
+          "largeMisses": 440,
+          "largeMissRate": 0.0818452380952381,
+          "maeFt": 2.8382672924453853
+        },
+        "April 2-4, 2005 Delaware River Flood": {
+          "reported": 752,
+          "available": 752,
+          "coverage": 1.0,
+          "largeMisses": 280,
+          "largeMissRate": 0.3723404255319149,
+          "maeFt": 5.29448155097352
+        },
+        "2008 June IA Flood": {
+          "reported": 7776,
+          "available": 7776,
+          "coverage": 1.0,
+          "largeMisses": 1153,
+          "largeMissRate": 0.14827674897119342,
+          "maeFt": 2.738045720737778
+        },
+        "2010 March - April RI MA Flood": {
+          "reported": 2640,
+          "available": 2640,
+          "coverage": 1.0,
+          "largeMisses": 641,
+          "largeMissRate": 0.2428030303030303,
+          "maeFt": 3.895131256634871
+        },
+        "2023 July MA NY VT Flood": {
+          "reported": 1040,
+          "available": 1040,
+          "coverage": 1.0,
+          "largeMisses": 565,
+          "largeMissRate": 0.5432692307692307,
+          "maeFt": 6.686094277231056
+        }
+      }
+    }
+  }
+}

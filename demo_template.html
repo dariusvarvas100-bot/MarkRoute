@@ -106,11 +106,26 @@
   table{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}caption{text-align:left;font-weight:650;margin-bottom:6px}
   th,td{text-align:left;padding:8px 7px;border-bottom:1px solid var(--line)}th{font-size:.74rem;color:var(--muted)}td:nth-child(n+2),th:nth-child(n+2){text-align:right;white-space:nowrap}
   .bench-text p{font-size:.83rem;color:var(--muted);margin:0 0 7px}.bench-text strong{color:var(--ink)}
+  .archive-lead{margin:7px 0 0;color:var(--muted);font-size:.83rem}
+  .archive-grid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(225px,1fr);gap:18px;align-items:start;margin-top:10px}
+  .archive-grid:has(.archive-notes[hidden]){grid-template-columns:minmax(0,1fr)}
+  .archive-table{table-layout:fixed;margin:0}.archive-table caption{text-align:left;font-size:.81rem;color:var(--ink)}
+  .archive-table th,.archive-table td{padding:7px 5px;white-space:normal;overflow-wrap:anywhere}
+  .archive-table th:first-child{width:43%}.archive-table tbody th{font-size:.82rem;color:var(--ink);font-weight:710}
+  .archive-table tbody small{display:block;margin-top:2px;color:var(--muted);font-size:.69rem;font-weight:450}
+  .archive-table tbody td{font-size:.83rem;font-variant-numeric:tabular-nums}
+  .archive-table .archive-steep-row{background:#ecf4ed}.archive-table .archive-steep-row th,.archive-table .archive-steep-row td{border-top:2px solid #b8cabd}
+  .archive-notes{border-left:2px solid var(--accent);background:#f0f6f1;border-radius:5px;padding:10px 12px}
+  .archive-notes p{margin:0 0 6px;color:var(--muted);font-size:.8rem}.archive-notes p:last-child{margin-bottom:0}
+  .archive-notes strong{color:var(--ink);font-size:.84rem;display:block;margin-bottom:3px}.archive-notes strong:empty{display:none}.archive-scopes{margin-top:8px}
+  .archive-notes .archive-steep{border-top:1px solid #c9dbd1;padding-top:8px;margin-top:8px}.archive-notes .archive-steep:first-child{border:0;padding:0;margin:0}
   footer{font-size:.79rem;color:var(--muted);padding-bottom:24px}footer p{margin:0 0 4px}[hidden]{display:none!important}
   @media(max-width:900px){.wrap{padding:0 18px}.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.methods{grid-column:1/-1}.segmented{width:max-content;max-width:100%}.layout{grid-template-columns:minmax(0,1.22fr) minmax(290px,1fr)}.bench-grid{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr 205px}}
   @media(max-width:660px){.wrap{padding:0 12px}.head>span{font-size:.71rem}.head{height:45px}.hero{padding:20px 0}.hero-grid,.layout,.bench-grid,.robust-grid{display:block}.robust-note{margin-top:13px}.hero h1{font-size:clamp(2rem,8vw,2.72rem)}.hero p{margin-top:7px;font-size:.84rem}.proof{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:9px;border:0;border-top:1px solid #43645f;margin-top:12px;padding:9px 0 0}.proof strong{grid-row:span 2;font-size:1.42rem}.proof span,.proof small{margin:0;font-size:.75rem}.map-card,.inspect,.bench{padding:12px}.map-card{margin-top:12px}.workbench{padding:10px}.examples{gap:6px;padding-bottom:8px}.controls{gap:7px;padding-top:8px}.switch-label,label{margin-bottom:3px}.segmented button{padding:5px 7px;font-size:.76rem}.bench-text{margin-top:13px}.kbd-strip{display:block}.strip-actions{margin-top:6px}.section-head{gap:4px}.outline{padding:6px 8px;min-height:42px}.legend{gap:5px 10px}}
   @media(min-width:661px) and (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(290px,1fr);gap:20px}}
   @media(max-width:660px){.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:12px}.opening{padding:11px}.opening-values>div{padding:7px 6px}.opening-values dt{font-size:.69rem;min-height:2.5em}.opening-values dd{font-size:.93rem}.opening-values .opening-error{font-size:.65rem}.proof{margin-top:11px;padding-top:8px}}
+  @media(max-width:740px){.archive-grid,.archive-grid:has(.archive-notes[hidden]){display:flex;flex-direction:column;gap:12px}.archive-notes{order:-1;width:100%}.archive-table th:first-child{width:38%}}
+  @media(max-width:410px){.archive-table th,.archive-table td{padding-inline:3px}.archive-table thead th{font-size:.67rem}}
   @media(prefers-reduced-motion:reduce){.point{transition:none}}
 </style>
 </head>
@@ -148,7 +163,7 @@
       <div class="segmented" role="group" aria-labelledby="examples-heading"><button id="worked-case" type="button" aria-pressed="false">Worked example</button><button id="miss-case" type="button" aria-pressed="false">Measured miss</button></div>
     </div>
     <div class="controls">
-      <div><label for="event">Held-out storm</label><select id="event"></select></div>
+      <div><label for="event">Replay flood</label><select id="event"></select></div>
       <div><label for="scenario">Starting survey</label><select id="scenario"></select></div>
       <div class="methods"><span class="switch-label" id="method-label">Map error layer</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">MarkRoute</button><button id="baseline" type="button">Bounded regression</button></div></div>
     </div>
@@ -180,6 +195,19 @@
   <section class="card bench" aria-labelledby="benchmark-heading">
     <h2 id="benchmark-heading">Held-out benchmark</h2><p id="bench-size" class="quiet"></p>
     <div class="bench-grid"><div><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Cohort</th><th scope="col">Regression</th><th scope="col">MarkRoute</th></tr></thead><tbody id="benchmark"></tbody></table></div><div class="bench-text"><p id="interval"></p><p id="miss"></p><p id="external" hidden></p><p id="remote-evidence" hidden></p><p>Both methods received the same starting marks. Bounded local regression fits water elevation against nearby terrain. It was the strongest nonlearned method on the development storms.</p></div></div>
+  </section>
+  <section class="card bench" id="archive-evidence" aria-labelledby="archive-heading" hidden>
+    <div class="section-head"><h2 id="archive-heading">Steep inland flood archives</h2><button class="outline" type="button" id="archive-replay" hidden>Replay West Virginia</button></div>
+    <p class="archive-lead" id="archive-intro">Compare estimates against surveyed peak water-surface elevations at flagged locations.</p>
+    <div class="archive-grid">
+      <table class="archive-table"><caption>Mean absolute error in feet · lower is better</caption><thead id="archive-columns"></thead><tbody id="archive-rows"></tbody></table>
+      <div class="archive-notes" id="archive-notes" hidden>
+        <div id="archive-overall" hidden><strong id="archive-primary"></strong><p id="archive-size" hidden></p><p id="archive-interval" hidden></p></div>
+        <div class="archive-steep" id="archive-steep" hidden><strong id="archive-steep-title"></strong><p id="archive-steep-outcome" hidden></p><p id="archive-steep-interval" hidden></p></div>
+        <p id="archive-geography" hidden></p>
+      </div>
+    </div>
+    <p class="micro archive-scopes" id="archive-methods"></p>
   </section>
   <section class="card bench" id="robustness" aria-labelledby="robustness-heading" hidden>
     <h2 id="robustness-heading">When starting surveys are sparse</h2>
@@ -544,6 +572,97 @@ function benchmark(){
     node('external').textContent=`A separate catalog-selected test of ${external.testEvents} floods and ${external.distinctSites} sites lowered pooled error from ${ft(external.pooled[REF].maeFt)} to ${ft(external.pooled[CANDIDATE].maeFt)} (${pct(external.pooledRelativeGain)}).`;
   }
 }
+function archiveEvidence(){
+  const report=payload.archive;
+  if(!report?.events?.length)return;
+  const methods=[
+    {key:'markroute',column:'MarkRoute',name:'MarkRoute'},
+    {key:'bounded',column:'Regression',name:'bounded local regression'},
+    {key:'kriging',column:'Kriging',name:'terrain-aware kriging'}
+  ];
+  const entries=report.steep?[report.steep,...report.events]:report.events;
+  const scored=methods.filter(({key})=>entries.some(item=>Number.isFinite(item?.mae?.[key])));
+  if(!scored.length)return;
+  node('archive-evidence').hidden=false;
+  if(report.title)node('archive-heading').textContent=report.title;
+  if(report.intro)node('archive-intro').textContent=report.intro;
+  const westVirginia=payload.events.findIndex(event=>String(event.id)==='125');
+  const canReplay=westVirginia>=0&&payload.events[westVirginia].scenarios.length>0;
+  if(canReplay){
+    const action=node('archive-replay');
+    action.hidden=false;
+    action.addEventListener('click',()=>{
+      selectEvent(westVirginia);
+      node('inspect-heading').focus();
+      node('inspect-heading').closest('.layout').scrollIntoView({block:'start'});
+    });
+  }
+  const headings=add(node('archive-columns'),'tr');
+  add(headings,'th','Flood or terrain subset').scope='col';
+  for(const method of scored)add(headings,'th',method.column).scope='col';
+  for(const item of entries){
+    const steep=item===report.steep;
+    const line=add(node('archive-rows'),'tr',undefined,steep?'archive-steep-row':'');
+    const name=item.label??`Terrain relief ≥ ${item.cutoffFt} ft`;
+    const row=add(line,'th',name);
+    row.scope='row';
+    const summary=[];
+    if(Number.isInteger(item.siteCount))summary.push(`${item.siteCount.toLocaleString()} ${steep?'event sites':'sites'}`);
+    if(Number.isFinite(item.medianReliefFt))summary.push(`${ft(item.medianReliefFt,0)} median relief`);
+    if(steep&&Number.isInteger(item.pairCount))summary.push(`${item.pairCount.toLocaleString()} predictions`);
+    if(summary.length)add(row,'small',summary.join(' · '));
+    for(const method of scored){
+      const value=item.mae?.[method.key];
+      const cell=add(line,'td',Number.isFinite(value)?value.toFixed(2):'—');
+      if(!Number.isFinite(value))cell.setAttribute('aria-label','Unavailable');
+    }
+  }
+  const primary=report.primary;
+  const comparison=methods.find(method=>method.key===primary?.comparisonModel);
+  if(primary&&comparison&&Number.isFinite(primary.mae?.markroute)&&Number.isFinite(primary.mae[comparison.key])){
+    node('archive-notes').hidden=false;
+    node('archive-overall').hidden=false;
+    const baselines=scored.filter(method=>method.key!=='markroute');
+    const cleanSweep=baselines.length>0&&report.events.every(item=>Number.isFinite(item.mae?.markroute)&&
+      baselines.every(method=>Number.isFinite(item.mae[method.key])&&item.mae.markroute<item.mae[method.key]));
+    const result=`${ft(primary.mae.markroute)} for MarkRoute and ${ft(primary.mae[comparison.key])} for ${comparison.name}.`;
+    node('archive-primary').textContent=cleanSweep?`MarkRoute had the lowest mean error in all ${report.events.length} floods. Pooled error was ${result}`:`${primary.label} averaged ${result}`;
+    const size=[];
+    if(Number.isInteger(primary.siteCount))size.push(`${primary.siteCount.toLocaleString()} event sites`);
+    if(Number.isInteger(primary.pairCount))size.push(`${primary.pairCount.toLocaleString()} predictions across repeated survey splits`);
+    if(size.length){
+      node('archive-size').hidden=false;
+      node('archive-size').textContent=size.join(' · ');
+    }
+    archiveInterval('archive-interval',primary.intervalFt,comparison.name);
+  }
+  const steep=report.steep;
+  const steepComparison=methods.find(method=>method.key===steep?.comparisonModel);
+  if(steep&&(Number.isFinite(steep.overFiveFtRate)||steepComparison&&steep.intervalFt)){
+    node('archive-notes').hidden=false;
+    node('archive-steep').hidden=false;
+    node('archive-steep-title').textContent='Large misses on steeper terrain';
+    if(Number.isFinite(steep.overFiveFtRate)){
+      node('archive-steep-outcome').hidden=false;
+      node('archive-steep-outcome').textContent=`${pct(steep.overFiveFtRate)} of MarkRoute predictions in this terrain subset still missed by more than 5 ft.`;
+    }
+    if(steepComparison)archiveInterval('archive-steep-interval',steep.intervalFt,steepComparison.name);
+  }
+  if(report.geographyNote){
+    node('archive-notes').hidden=false;
+    node('archive-geography').hidden=false;
+    node('archive-geography').textContent=report.geographyNote;
+  }
+  const comparators=scored.filter(method=>method.key!=='markroute').map(method=>method.name);
+  const labels=comparators.length?`Comparators include ${comparators.join(' and ')}. `:'';
+  node('archive-methods').textContent=`${labels}Terrain relief measures local ground elevation variation in the project’s terrain raster.`;
+}
+function archiveInterval(id,bounds,comparator){
+  if(bounds?.length!==2||!bounds.every(Number.isFinite))return;
+  const [low,high]=bounds;
+  node(id).hidden=false;
+  node(id).textContent=`The paired spatial 95% interval for ${comparator} error minus MarkRoute error ran from ${low.toFixed(2)} to ${ft(high)} across these floods.`;
+}
 function robustness(){
   const report=payload.robustness;
   if(!report?.points?.length||!report.gap)return;
@@ -732,6 +851,7 @@ function setup(){
   node('zoom').addEventListener('click',()=>{state.zoom=!state.zoom;draw();});
   window.addEventListener('resize',()=>drawMap(active()));
   benchmark();
+  archiveEvidence();
   robustness();
   const location=exampleLocation();
   if(location){

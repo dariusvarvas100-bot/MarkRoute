@@ -4,8 +4,8 @@
 
 - **0:00–0:25.** Open the live replay already on Hurricane Ian mark 32828. “A crew found this high-water mark. Both methods receive the same partial survey. Let’s see what the crew measured here.” Reveal **12.30 ft** and show errors of **0.21 ft** and **1.85 ft**.
 - **0:25–0:45.** Add the measurement. Both models recompute the other **249** estimates. MarkRoute’s average error on those same sites goes from **1.21 to 1.20 ft**. At the nearest remaining mark it rises from **0.69 to 0.72 ft**.
-- **0:45–1:20.** Open **Explain this estimate**. Nearby readings move the prediction from 11.52 to 12.51 ft. The biggest contribution is +0.59 ft from 6.14 km away. Shapley averages over every order of adding the four readings. Preview removal of mark 26290 to show the specific estimate with all other readings retained, **12.51 → 12.37 ft**. Mean error fell on **13 of 13** archived floods against bounded regression and terrain-aware kriging. In the eight-flood geographic check, it fell from **5.46 to 4.57 ft**.
-- **1:20–1:46.** Open **Measured miss**. In Helene, almost half the estimates still missed by more than five feet. The model helps make provisional estimates at known flags. Field testing would be needed to measure travel time, access and decision quality.
+- **0:45–1:20.** Open **Explain this estimate**. Nearby readings move the prediction from 11.52 to 12.51 ft. The biggest contribution is +0.59 ft from 6.14 km away. Shapley averages over every order of adding the four readings. Preview removal of mark 26290 to show the specific estimate with all other readings retained, **12.51 → 12.37 ft**. Mean error fell on **22 of 22** archived floods against bounded regression and terrain-aware kriging. In the nine additional river floods, it fell from **5.56 to 4.80 ft** against local kriging.
+- **1:20–1:46.** Open **Measured miss**. Replay June 2016 West Virginia. Across the new high-relief subset, 46.3% of MarkRoute estimates still missed by more than five feet. The model helps make provisional estimates at known flags. Field testing would be needed to measure travel time, access and decision quality.
 
 ## Questions to rehearse
 

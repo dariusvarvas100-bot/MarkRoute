@@ -4,7 +4,7 @@
 
 After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay at an Ian survey mark and reveal the crew’s recorded 12.30 ft. MarkRoute’s estimate missed by 0.21 ft and bounded regression missed by 1.85 ft. Add the reading to watch the same models recalculate the other 249 marks.
 
-**With the same initial surveys, MarkRoute reduced mean error in 13 of 13 archived floods against bounded terrain regression.** It cut error from **2.48 to 2.08 ft** on Ian and Helene and from **6.17 to 5.30 ft** on three additional floods. In a separate geographic test covering eight floods, error fell from **5.46 to 4.57 ft** across 1,371 sites more than 100 km from earlier study sites. It still struggled in Helene, where 49% of the estimates missed by more than five feet.
+**With the same starting measurements, MarkRoute reduced average error in all 22 held-out floods against both bounded terrain regression and terrain-aware kriging.** Nine newly tested inland floods contributed 2,560 event-site records. Mean error fell from **5.56 to 4.80 ft** compared with kriging. At the 1,199 riverine event-sites with higher local terrain relief, it went from **7.74 to 7.02 ft**. Large errors remained common in steep terrain.
 
 [Open the live replay](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html) · [Download the offline replay](https://github.com/dariusvarvas100-bot/MarkRoute/archive/refs/heads/main.zip) · [One-page write-up](MarkRoute_Writeup.pdf) · [106-second walkthrough](MarkRoute_Demo.mp4)
 
@@ -42,6 +42,18 @@ The external check covers **659 archived sites** and 8,960 withheld location and
 This separate test kept the point model and bounded regression fixed. We screened USGS events using archive completeness, eligible survey counts, and geographic distance before scoring. The eight qualifying floods contributed **1,371 actual sites**, each more than 100 km from the nearest site in the earlier panels. As in the original evaluation, each method started with the same roughly 15% survey sample in each replay.
 
 Mean error fell from **5.46 to 4.57 ft (16.3%)**. The mean improved in all eight floods. The paired spatial interval for the improvement was **0.68 to 1.13 ft** within these archives. Errors larger than five feet fell from **34.8% to 29.3%** across 18,608 withheld predictions. Storms contribute differing numbers of observations, and the same site may occur in several survey splits. [Geographic selection protocol](REMOTE_PROTOCOL.md) · [Event-level results](remote_results.json) · [Data manifest](remote_manifest.json)
+
+## Nine additional inland floods
+
+We screened 37 USGS catalog records and kept nine flood episodes with at least 30 eligible riverine sites. Five were earlier archives and four had previously fallen outside the geographic test because too many sites were near earlier locations. Each whole flood was withheld from training and development. Exact prior site IDs were excluded. Thirteen retained sites share a grid cell with a previous survey location. The nine episodes contributed **2,560 event-site records** across **2,554 distinct site IDs** and **34,800 withheld predictions**.
+
+| Same starting surveys | Sites within events | Bounded regression | Terrain-aware kriging | MarkRoute |
+| --- | ---: | ---: | ---: | ---: |
+| All nine river floods | 2,560 | 5.57 ft | 5.56 ft | **4.80 ft** |
+| Local terrain relief at least 35 ft | 1,199 | 7.82 ft | 7.74 ft | **7.02 ft** |
+| June 2016 West Virginia flood | 191 | 8.07 ft | 8.23 ft | **7.14 ft** |
+
+The high-relief subset was the primary outcome selected before scoring. MarkRoute cut average error **9.2% against kriging**, with a paired 95% interval of **0.33 to 1.67 ft**. **46.3%** of its predictions in that subset still missed by more than five feet, compared with **48.7%** for kriging. West Virginia's median local terrain relief was **135.6 ft**. Select *June 2016 West Virginia flood* in the browser replay to test the estimator on that event. [Archived measurements](archival_panel.csv) · [Screening and protocol](ARCHIVAL_PROTOCOL.md) · [Per-event results](archival_results.json) · [USGS West Virginia field survey](https://pubs.usgs.gov/publication/ofr20171140)
 
 ## Comparison with spatial kriging
 
@@ -110,6 +122,19 @@ The research policy uses a terrain and waterbody Matérn kernel. It greedily cho
 
 The variance policy failed the predeclared superiority threshold. For one extra mark, its paired advantage over terrain coverage was **−0.003 ft**, with a 95% interval of **−0.045 to +0.041 ft**. Terrain coverage had lower observed error than random and farthest-first at both budgets. The released map keeps its existing review flags, which indicate disagreement about the current estimate. This experiment measures retrospective placement decisions and leaves travel effort and access unmodeled. [Protocol](SURVEY_PROTOCOL.md) · [Development lock](survey_selection.json) · [Full results](survey_decision_results.json) · [Spatial observation design research](https://jmlr.org/papers/v9/krause08a.html)
 
+## How many large misses can we screen out?
+
+We selected a ranking on the two development floods, then replayed it across the nine additional archives. It favors flags closest to an already surveyed mark. The ranking uses no withheld elevations. Keeping only the closest **5%** of predictions still produced **268 errors over five feet out of 1,728**. The table shows the coverage cost of lowering the large-error rate.
+
+| Share of estimates reported | Errors over 5 ft among reported estimates |
+| --- | ---: |
+| About 5% | 15.5% |
+| About 20% | 18.9% |
+| About 40% | 23.4% |
+| 100% | 29.8% |
+
+Distances can help prioritize inspection. A flag whose elevation matters for a decision still needs a field measurement. [Review protocol](ARCHIVE_REVIEW_PROTOCOL.md) · [Locked selection](archive_review_selection.json) · [All reporting rates](archive_review_results.json)
+
 ## Model and benchmark
 
 The model starts from a physical hypothesis. On the coast the nearby water surface provides the starting estimate. On rivers the nearby rise above terrain is a starting estimate, adjusted for differences in ground elevation. Histogram gradient boosting learns when to correct that estimate based on distance between marks, terrain shape and whether the waterbody matches. The fit uses Sandy, Matthew, Harvey and Irma. Florence and Michael select the method and its strongest transparent comparator. Ian and Helene hold out whole storms. Four site IDs recur across the older and held-out storms. The geographic split measures transfer to later events with some observations already available from them.
@@ -145,14 +170,17 @@ python waterbody_ablation.py
 python terrain_ablation.py
 python residual_formulation.py validation
 python residual_formulation.py test
+python archival_replay.py evaluate
+python archive_review.py validation
+python archive_review.py test
 python demo_export.py
 ```
 
-These commands use the supplied processed [survey panel](panel.csv) and regenerate the validation selection, holdout metrics and browser demo. They fit fresh models. For tracing the upstream inputs, `python fetch_events.py` pulls the USGS event data and `python terrain.py` joins the public ground-elevation tiles. For the separate three-event benchmark, `python external_eval.py prepare` rebuilds its processed panel from the current catalog. Upstream services can revise the data. The supplied panels are the benchmark snapshots.
+These commands use the supplied processed [survey panel](panel.csv) and regenerate the validation selection, holdout metrics and browser demo. They fit fresh models. For tracing the upstream inputs, `python fetch_events.py` pulls the USGS event data and `python terrain.py` joins the public ground-elevation tiles. For the separate three-event benchmark, `python external_eval.py prepare` rebuilds its processed panel from the current catalog. Upstream services can revise the data. The supplied panels are the benchmark snapshots. The archived inland extension can also be screened again with `python archival_replay.py prepare`. That step downloads public survey records and elevation tiles. It uses a compact snapshot of the catalog fields required for selection, whose derivation is logged in the eligibility lock.
 
 ## Regression tests
 
-With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 13 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
+With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 22 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
 
 ## Scope and data
 
