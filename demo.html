@@ -23,10 +23,27 @@
   .mark::before,.mark::after{content:"";position:absolute;top:50%;left:50%;width:14px;height:1.5px;background:#a4e9db;transform:translate(-50%,-50%)}
   .mark::after{transform:translate(-50%,-50%) rotate(90deg)}
   .hero{color:#f1fcf8;background:var(--dark);padding:28px 0 34px}
-  .hero-grid{display:grid;grid-template-columns:1fr 248px;gap:34px;align-items:center}.hero h1{font-family:Georgia,serif;font-size:clamp(2.18rem,5.55vw,3.78rem);letter-spacing:-.055em;line-height:1.02;margin:0;max-width:710px;font-weight:400}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.82fr);gap:34px;align-items:center}.hero h1{font-family:Georgia,serif;font-size:clamp(2.18rem,4.66vw,3.5rem);letter-spacing:-.055em;line-height:1.02;margin:0;max-width:710px;font-weight:400}
   .hero p{margin:11px 0 0;max-width:650px;color:#c8dbd8;font-size:.94rem}.proof{border-left:1px solid #50756f;padding:4px 0 4px 20px;min-width:0}
-  .proof strong{display:block;font-size:2.65rem;font-weight:740;line-height:1;letter-spacing:-.065em;color:var(--mint)}
-  .proof span{font-size:.91rem;color:#effbf8;display:block;margin-top:6px;font-weight:650}.proof small{color:#c5dad6;display:block;font-size:.77rem;margin-top:4px}
+  .proof{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:10px;margin-top:20px;padding:0 0 0 11px}
+  .proof strong{grid-row:span 2;font-size:1.55rem;font-weight:740;line-height:1;letter-spacing:-.06em;color:var(--mint)}
+  .proof span{font-size:.77rem;color:#effbf8;font-weight:650}.proof small{color:#c5dad6;font-size:.72rem}
+  .opening{border:1px solid #4f706b;background:#183b3e;border-radius:10px;padding:14px 16px;color:#f0faf5;min-width:0}
+  .opening h2{font-size:1rem;letter-spacing:-.018em;margin:0}.opening .opening-meta{font-size:.77rem;margin:2px 0 9px}
+  .opening-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:0;background:#426461;border:1px solid #426461;border-radius:6px;overflow:hidden}
+  .opening-values>div{background:#143235;min-width:0;padding:8px}.opening-values dt{font-size:.73rem;color:#cce0d9;line-height:1.25}
+  .opening-values dd{margin:4px 0 0;font-size:1.05rem;line-height:1;white-space:nowrap;font-weight:740;font-variant-numeric:tabular-nums}
+  .opening-values .model dd{color:var(--mint)}.opening-values .baseline dd{color:#f1cf9b}.opening-values .field dd{color:#eef8f4}
+  .opening-values .opening-error{display:block;margin-top:5px;font-size:.7rem;font-weight:450;color:#cce0d9}
+  .opening .track{height:20px;position:relative;margin:3px 8px 2px}.track::before{position:absolute;inset:9px 0 auto;border-top:1px solid #668580;content:""}
+  .track i{position:absolute;top:6px;width:8px;height:8px;transform:translateX(-50%);border-radius:50%;background:var(--mint)}
+  .track .baseline{background:#f1cf9b}.track .field{border-radius:1px;background:#fff;transform:translateX(-50%) rotate(45deg);outline:1px solid #183b3e}
+  .opening .opening-action{background:var(--mint);border:1px solid var(--mint);border-radius:6px;color:#153332;font-size:.78rem;font-weight:750;padding:7px 10px;min-height:42px;white-space:normal;text-align:left}
+  .opening .opening-action:hover{background:#dbf4e3}.opening .opening-action:focus-visible{outline-color:#f0d5a7}
+  .opening-actions{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px}
+  .opening .opening-explain{background:none;border:0;color:#d5e7df;text-decoration:underline;text-underline-offset:3px;padding:6px 3px;min-height:42px;font-size:.75rem;font-weight:700}
+  .opening .opening-explain:focus-visible{outline-color:#f0d5a7}.opening .opening-explain:hover{color:#fff}
+  .opening p.opening-feedback{margin:7px 0 0;font-size:.76rem;color:#d5e7df}.opening .opening-feedback:empty{display:none}
   main.wrap{padding-top:19px;padding-bottom:19px}.card{background:white;border:1px solid var(--line);border-radius:10px;min-width:0}
   .workbench{padding:12px 15px}.examples{display:flex;align-items:center;gap:9px 18px;justify-content:space-between;flex-wrap:wrap;padding-bottom:11px;border-bottom:1px solid var(--line)}
   .examples h2{font-size:1rem;margin:0}.examples p{margin:2px 0 0}.examples .segmented{flex-shrink:0}
@@ -61,6 +78,16 @@
   .geo{margin:6px 0 0;color:var(--muted);font-size:.76rem;overflow-wrap:anywhere}.survey-actions{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
   .truth{font-size:.85rem;border-top:1px solid var(--line);margin:9px 0 0;padding-top:8px;display:flex;justify-content:space-between;gap:7px}.truth>strong{font-variant-numeric:tabular-nums;white-space:nowrap}
   .formula{margin:7px 0 0;font-size:.75rem;color:var(--muted)}.formula summary{cursor:pointer;font-weight:700;color:var(--accent);width:max-content;max-width:100%;padding-block:4px}.formula summary:focus-visible{outline:3px solid #066b9a;outline-offset:3px}.formula p{margin:4px 0 0}.formula .equation{font-variant-numeric:tabular-nums;font-weight:650;color:var(--ink);overflow-wrap:anywhere}
+  .influence{margin:8px 0;color:var(--muted);font-size:.75rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .influence summary{cursor:pointer;font-weight:740;color:var(--accent);padding:8px 2px}.influence summary:focus-visible{outline:3px solid #066b9a;outline-offset:2px}
+  .influence-content{padding:0 1px 9px}.influence-content p{margin:0 0 6px}.influence-content p:last-child{margin:7px 0 0}
+  .influence-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin:0 0 6px}.influence-pair>div{background:#f0f6f1;padding:6px 8px;border-radius:4px}
+  .influence-pair dd{margin:2px 0 0;color:var(--ink);font-size:.93rem;font-variant-numeric:tabular-nums;font-weight:740}
+  .influence-list{margin:0;padding:0;list-style:none}.influence-row{display:grid;grid-template-columns:minmax(90px,1.1fr) minmax(40px,1fr) minmax(50px,auto);align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid var(--line)}
+  .influence-row strong{display:block;color:var(--ink)}.influence-row small{display:block;font-size:.65rem;line-height:1.27}
+  .influence-plot{height:11px;position:relative;background:#f0f4f2;border-radius:2px}.influence-plot::before{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;border-left:1px solid #63847b}
+  .influence-bar{position:absolute;top:2px;bottom:2px;border-radius:1px;background:#176859}.influence-bar.negative{background:#a35d1b}
+  .influence-signed{color:var(--ink);text-align:right;font-weight:750;font-variant-numeric:tabular-nums;white-space:nowrap}
   .callout{margin-top:11px;padding:8px 9px;border-radius:5px;background:#f0f6f1;border-left:2px solid var(--accent);font-size:.77rem;color:#36525b}
   .hint{margin-top:7px}.status:empty{display:none}.source-line{margin-top:9px}.status{color:#204b46}.comparison--miss{color:#8c3739}
   .bench-grid{display:grid;grid-template-columns:minmax(340px,1.03fr) minmax(280px,.97fr);align-items:start;gap:19px;margin-top:11px}
@@ -74,13 +101,35 @@
   footer{font-size:.79rem;color:var(--muted);padding-bottom:24px}footer p{margin:0 0 4px}[hidden]{display:none!important}
   @media(max-width:900px){.wrap{padding:0 18px}.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.methods{grid-column:1/-1}.segmented{width:max-content;max-width:100%}.layout{grid-template-columns:minmax(0,1.22fr) minmax(290px,1fr)}.bench-grid{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr 205px}}
   @media(max-width:660px){.wrap{padding:0 12px}.head>span{font-size:.71rem}.head{height:45px}.hero{padding:20px 0}.hero-grid,.layout,.bench-grid,.robust-grid{display:block}.robust-note{margin-top:13px}.hero h1{font-size:clamp(2rem,8vw,2.72rem)}.hero p{margin-top:7px;font-size:.84rem}.proof{display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:9px;border:0;border-top:1px solid #43645f;margin-top:12px;padding:9px 0 0}.proof strong{grid-row:span 2;font-size:1.42rem}.proof span,.proof small{margin:0;font-size:.75rem}.map-card,.inspect,.bench{padding:12px}.map-card{margin-top:12px}.workbench{padding:10px}.examples{gap:6px;padding-bottom:8px}.controls{gap:7px;padding-top:8px}.switch-label,label{margin-bottom:3px}.segmented button{padding:5px 7px;font-size:.76rem}.bench-text{margin-top:13px}.kbd-strip{display:block}.strip-actions{margin-top:6px}.section-head{gap:4px}.outline{padding:6px 8px;min-height:42px}.legend{gap:5px 10px}}
+  @media(min-width:661px) and (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(290px,1fr);gap:20px}}
+  @media(max-width:660px){.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:12px}.opening{padding:11px}.opening-values>div{padding:7px 6px}.opening-values dt{font-size:.69rem;min-height:2.5em}.opening-values dd{font-size:.93rem}.opening-values .opening-error{font-size:.65rem}.proof{margin-top:11px;padding-top:8px}}
   @media(prefers-reduced-motion:reduce){.point{transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#replay">Skip to replay</a>
 <header><div class="wrap head"><div class="brand"><span class="mark" aria-hidden="true"></span>MarkRoute</div><span>Post-flood survey replay</span></div></header>
-<section class="hero" aria-labelledby="hero-title"><div class="wrap hero-grid"><div><h1 id="hero-title">Estimate elevations at unmeasured flood marks.</h1><p>Replay a partial USGS survey. Reveal a field measurement, then add it to the survey and watch both methods rerun.</p></div><div class="proof"><strong id="headline">—</strong><span>lower mean absolute error</span><small id="headline-detail">Compared on two held-out storms</small></div></div></section>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="hero-title">Estimate elevations at unmeasured flood marks.</h1>
+      <p>After a flood, crews flag evidence of peak water. MarkRoute uses the first surveyed elevations to estimate the rest.</p>
+      <div class="proof"><strong id="headline">—</strong><span>lower mean absolute error</span><small id="headline-detail">Compared on two held-out storms</small></div>
+    </div>
+    <section class="opening" id="opening" aria-labelledby="opening-title" hidden>
+      <h2 id="opening-title">Try one flood mark</h2>
+      <p class="opening-meta" id="opening-meta"></p>
+      <dl class="opening-values" id="opening-values">
+        <div class="model"><dt>MarkRoute</dt><dd><span id="opening-model"></span><small class="opening-error" id="opening-model-error" hidden></small></dd></div>
+        <div class="baseline"><dt>Bounded regression</dt><dd><span id="opening-baseline"></span><small class="opening-error" id="opening-baseline-error" hidden></small></dd></div>
+        <div class="field"><dt>USGS reading</dt><dd id="opening-actual">Withheld</dd></div>
+      </dl>
+      <div class="track" aria-hidden="true"><i id="track-model"></i><i class="baseline" id="track-baseline"></i><i class="field" id="track-actual" hidden></i></div>
+      <div class="opening-actions"><button class="opening-action" id="opening-action" type="button" aria-controls="opening-values opening-feedback">Reveal the USGS reading</button><button class="opening-explain" id="opening-explain" type="button" aria-controls="influence" hidden>Explain this estimate</button></div>
+      <p id="opening-feedback" class="opening-feedback" role="status" aria-atomic="true"></p>
+    </section>
+  </div>
+</section>
 <main id="replay" class="wrap">
   <noscript><p>This replay needs JavaScript.</p></noscript>
   <p id="no-data" hidden>Replay data are unavailable.</p>
@@ -107,6 +156,7 @@
       <div class="survey-actions"><button class="outline primary" id="reveal" type="button" aria-expanded="false" aria-controls="actual">Reveal measurement</button><button class="outline primary" id="add-survey" type="button" hidden>Add to survey</button><button class="outline" id="reset-survey" type="button" hidden>Reset survey</button></div>
       <p class="micro hint" id="survey-hint" aria-live="polite"></p>
       <p class="micro status" id="recompute-status" role="status"></p>
+      <details class="influence" id="influence" hidden><summary id="influence-toggle">Which survey readings moved the estimate?</summary><div class="influence-content" id="influence-content"></div></details>
       <details class="formula" id="formula" hidden><summary>How MarkRoute gets this estimate</summary><p class="equation" id="equation"></p><p id="equation-note"></p></details>
       <div class="callout" id="scenario-mae"></div>
       <p class="micro source-line" id="mark-source">USGS Flood Event Viewer · peak elevation in NAVD88 feet.</p>
@@ -197,20 +247,80 @@ const MarkRouteEngine = (() => {
     return {modelFt: base + residual, baselineFt: baseline, startingFt: base, correctionFt: residual};
   }
 
-  function recompute(sites, model = MARKROUTE_DATA.estimator) {
+  function projectSites(sites) {
     const midLat = sum(sites.map(site => site.lat)) / sites.length;
     const midLon = sum(sites.map(site => site.lon)) / sites.length;
     const horizontal = 111.2 * Math.cos(midLat * Math.PI / 180);
-    const points = sites.map(site => ({
+    return sites.map(site => ({
       ...site, x: horizontal * (site.lon - midLon), y: 111.2 * (site.lat - midLat)
     }));
+  }
+
+  function recompute(sites, model = MARKROUTE_DATA.estimator) {
+    const points = projectSites(sites);
     const known = points.filter(point => point.surveyed);
     if (known.length === 0) return sites;
     return sites.map((site, i) => site.surveyed ?
       {...site, modelFt: null, baselineFt: null, startingFt: null, correctionFt: null} : {...site, ...prediction(points[i], known, model)});
   }
 
-  return {recompute};
+  function explainSurveyInfluence(sites, model, targetIndex) {
+    const target = sites[targetIndex];
+    if (!target) return {available: false, reason: 'Select an unmeasured mark to explain its estimate.'};
+    if (target.surveyed) return {available: false, reason: 'This mark already has a survey reading.'};
+
+    const points = projectSites(sites);
+    const query = points[targetIndex];
+    const surveyed = points.map((point, index) => ({point, index})).filter(({point}) => point.surveyed);
+    const local = surveyed.filter(({point}) => point.environment === query.environment);
+    if (local.length < 2) {
+      return {available: false, reason: 'At least two surveyed marks of this environment are needed to compare their influence.'};
+    }
+    if (local.some(({point}) => !Number.isFinite(point.actualFt))) {
+      return {available: false, reason: 'A survey reading is missing from this replay.'};
+    }
+
+    // Keeping one local reading fixed makes every coalition use the same
+    // environment-specific estimator, including the empty coalition.
+    const varied = local.map(({point, index}) => ({
+      point, index, distanceKm: Math.hypot(query.x - point.x, query.y - point.y)
+    })).sort((a, b) => a.distanceKm - b.distanceKm || a.index - b.index)
+      .slice(0, Math.min(4, local.length - 1));
+    const position = new Map(varied.map(({index}, bit) => [index, bit]));
+    const count = varied.length;
+    const full = (1 << count) - 1;
+    const estimates = [];
+    const coalitionSizes = [];
+    for (let mask = 0; mask <= full; mask++) {
+      let size = 0;
+      const observed = surveyed.filter(({index}) => {
+        const bit = position.get(index);
+        if (bit === undefined) return true;
+        if (!(mask & (1 << bit))) return false;
+        size++;
+        return true;
+      }).map(({point}) => point);
+      coalitionSizes.push(size);
+      estimates.push(prediction(query, observed, model).modelFt);
+    }
+
+    const factorial = [1, 1, 2, 6, 24];
+    const contributions = varied.map(({point, index, distanceKm}, bit) => {
+      const add = 1 << bit;
+      let contributionFt = 0;
+      for (let mask = 0; mask <= full; mask++) {
+        if (mask & add) continue;
+        const size = coalitionSizes[mask];
+        const weight = factorial[size] * factorial[count - size - 1] / factorial[count];
+        contributionFt += weight * (estimates[mask | add] - estimates[mask]);
+      }
+      return {id: point.id, index, observedFt: point.actualFt, distanceKm, contributionFt};
+    });
+    return {available: true, startingFt: estimates[0], modelFt: estimates[full], contributions,
+      fixedCount: surveyed.length - count};
+  }
+
+  return {recompute, explainSurveyInfluence};
 })();
 
 </script>
@@ -228,6 +338,7 @@ const payload=typeof MARKROUTE_DATA==='undefined'?null:MARKROUTE_DATA;
 const engine=typeof MarkRouteEngine==='undefined'?null:MarkRouteEngine;
 const reviewEvidence=payload?.review;
 const examples={eventId:'325',seed:7162,worked:'32828',miss:'3131'};
+const opening={location:null,update:null};
 const clear=id=>node(id).replaceChildren();
 function add(parent,tag,value,cls){
   const el=document.createElement(tag);
@@ -265,6 +376,7 @@ function selectScenario(pick,siteId){
   state.scenario=pick;
   node('scenario').value=String(pick);
   state.edited=null;
+  opening.update=null;
   node('recompute-status').textContent='';
   const points=original().sites;
   const match=points.findIndex(site=>site.id===siteId);
@@ -272,6 +384,7 @@ function selectScenario(pick,siteId){
   state.revealed=false;
   state.zoom=true;
   state.revealMap=false;
+  node('influence').open=false;
   node('formula').open=false;
   siteOptions();
   draw();
@@ -287,6 +400,7 @@ function chooseSite(index,showActual){
   state.site=index;
   state.revealed=showActual;
   node('recompute-status').textContent='';
+  node('influence').open=false;
   node('formula').open=false;
   draw();
 }
@@ -305,10 +419,136 @@ function tryExample(location,kind){
   chooseSite(index,kind==='miss');
   (kind==='miss'||node('reveal').hidden?node('inspect-heading'):node('reveal')).focus();
 }
-function addMeasurement(){
+function matchesOpening(){
+  return state.event===opening.location?.event&&state.scenario===opening.location?.scenario;
+}
+function openingSite(scenario){return scenario.sites.find(site=>site.id===examples.worked);}
+function drawOpening(){
+  if(!opening.location)return;
+  const {event,scenario}=opening.location;
+  const selected=state.site===active().sites.findIndex(site=>site.id===examples.worked);
+  const current=matchesOpening();
+  const source=current?active():payload.events[event].scenarios[scenario];
+  const site=openingSite(source);
+  const point=opening.update?.point||site;
+  const shown=current&&(site.surveyed||state.revealMap||(selected&&state.revealed));
+  for(const method of Object.keys(METHODS)){
+    const value=point[`${method}Ft`];
+    node(`opening-${method}`).textContent=ft(value);
+    const error=node(`opening-${method}-error`);
+    error.hidden=!shown;
+    error.textContent=shown?`${ft(Math.abs(value-point.actualFt))} error`:'';
+  }
+  node('opening-actual').textContent=shown?ft(point.actualFt):'Withheld';
+  node('track-actual').hidden=!shown;
+  const anchors=[point.modelFt,point.baselineFt];
+  if(shown)anchors.push(point.actualFt);
+  const low=Math.min(...anchors),high=Math.max(...anchors);
+  const range=Math.max(high-low,.01);
+  for(const [key,value] of [['model',point.modelFt],['baseline',point.baselineFt],['actual',shown?point.actualFt:low]]){
+    node(`track-${key}`).style.left=`${8+84*(value-low)/range}%`;
+  }
+  const action=node('opening-action');
+  action.textContent=site.surveyed?'Reset Ian replay':shown&&engine?'Add reading & recalculate':shown?'Hide the USGS reading':'Reveal the USGS reading';
+  node('opening-explain').hidden=site.surveyed||typeof engine?.explainSurveyInfluence!=='function';
+  let feedback='';
+  if(site.surveyed){
+    const update=opening.update;
+    feedback=`Both methods reran on ${update?.remaining ?? source.counts.unseen} remaining marks.`;
+    if(update?.remaining) feedback+=` On those same marks, MarkRoute mean error went from ${ft(update.beforeMae)} to ${ft(update.afterMae)}.`;
+    if(update?.nearest&&update.recomputed){
+      const {nearest,recomputed}=update;
+      const before=Math.abs(nearest.modelFt-nearest.actualFt),after=Math.abs(recomputed.modelFt-nearest.actualFt);
+      feedback+=` At the nearest withheld mark (${nearest.id}), error went from ${ft(before)} to ${ft(after)}.`;
+    }
+  }else if(shown){
+    feedback='The USGS reading is visible. It can now be added as a survey input.';
+  }
+  if(node('opening-feedback').textContent!==feedback)node('opening-feedback').textContent=feedback;
+}
+function runOpening(){
+  const {event,scenario}=opening.location;
+  if(!matchesOpening())selectEvent(event,scenario,examples.worked);
+  const source=active();
+  const index=source.sites.findIndex(site=>site.id===examples.worked);
+  if(source.sites[index].surveyed){
+    selectScenario(scenario,examples.worked);
+  }else if(state.revealMap||(state.site===index&&state.revealed)){
+    if(engine){
+      if(state.site!==index)chooseSite(index,true);
+      if(!addMeasurement(false))node('opening-feedback').textContent='The replay could not recalculate this survey.';
+    }else{
+      state.revealMap=false;
+      chooseSite(index,false);
+    }
+  }else{
+    chooseSite(index,true);
+  }
+}
+function explainOpening(){
+  const {event,scenario}=opening.location;
+  if(!matchesOpening())selectEvent(event,scenario,examples.worked);
+  const index=active().sites.findIndex(site=>site.id===examples.worked);
+  if(state.site!==index)chooseSite(index,false);
+  node('influence').open=true;
+  node('influence-toggle').focus();
+}
+function drawInfluence(scenario){
+  const panel=node('influence');
+  if(panel.hidden||!panel.open)return;
+  const result=engine.explainSurveyInfluence(scenario.sites,payload.estimator,state.site);
+  const contents=node('influence-content');
+  contents.replaceChildren();
+  if(!result.available){
+    add(contents,'p',result.reason);
+    return;
+  }
+  const contributions=[...result.contributions].sort((a,b)=>Math.abs(b.contributionFt)-Math.abs(a.contributionFt));
+  const count=contributions.length;
+  add(contents,'p',`Vary the ${count} nearest ${scenario.sites[state.site].environment.toLowerCase()} readings shown below. Keep the other ${result.fixedCount} surveyed readings in place.`);
+  const totals=add(contents,'dl',undefined,'influence-pair');
+  for(const [label,value] of [['With other readings',result.startingFt],['With all readings',result.modelFt]]){
+    const pair=add(totals,'div');
+    add(pair,'dt',label);
+    add(pair,'dd',ft(value));
+  }
+  const max=Math.max(...contributions.map(row=>Math.abs(row.contributionFt)),.001);
+  const list=add(contents,'ul',undefined,'influence-list');
+  list.setAttribute('aria-label','Changes to the estimate from nearby readings');
+  for(const row of contributions){
+    const item=add(list,'li',undefined,'influence-row');
+    const label=add(item,'div');
+    add(label,'strong',`Mark ${row.id}`);
+    const distance=row.distanceKm<1?`${Math.round(row.distanceKm*1000)} m`:`${row.distanceKm.toFixed(2)} km`;
+    add(label,'small',`${ft(row.observedFt)} recorded · ${distance} away`);
+    const plot=add(item,'div',undefined,'influence-plot');
+    plot.setAttribute('aria-hidden','true');
+    const effect=row.contributionFt;
+    const span=49*Math.abs(effect)/max;
+    const bar=add(plot,'div',undefined,`influence-bar${effect<0?' negative':''}`);
+    bar.style.left=`${effect<0?50-span:50}%`;
+    bar.style.width=`${span}%`;
+    const direction=effect<0?'Lowered':effect>0?'Raised':'Changed';
+    const sign=Math.abs(effect)<.005?'':effect<0?'−':'+';
+    const numeral=add(item,'span',`${sign}${ft(Math.abs(effect))}`,'influence-signed');
+    numeral.setAttribute('aria-label',`${direction} estimate by ${ft(Math.abs(effect))}`);
+  }
+  add(contents,'p',`The Shapley values average how much each reading changes this estimate when added in every possible order. The changes sum to the difference between the two estimates before rounding.`);
+}
+function nearestWithheld(scenario,point){
+  const scale=Math.cos(point.lat*Math.PI/180);
+  let nearest=null,best=Infinity;
+  for(const site of scenario.sites){
+    if(site.surveyed||site.id===point.id)continue;
+    const distance=Math.hypot(site.lat-point.lat,(site.lon-point.lon)*scale);
+    if(distance<best){nearest=site;best=distance;}
+  }
+  return nearest;
+}
+function addMeasurement(focusReset=true){
   const source=active();
   const selected=source.sites[state.site];
-  if(!engine||selected.surveyed||!(state.revealed||state.revealMap)) return;
+  if(!engine||selected.surveyed||!(state.revealed||state.revealMap)) return false;
   const sites=source.sites.map((site,i)=>i===state.site?{...site,surveyed:true}: {...site});
   try{
     const scored=engine.recompute(sites);
@@ -317,6 +557,12 @@ function addMeasurement(){
     for(const method of Object.keys(METHODS)){
       mae[method]=withheld.length?withheld.reduce((sum,site)=>sum+Math.abs(site[`${method}Ft`]-site.actualFt),0)/withheld.length:null;
     }
+    if(matchesOpening()&&selected.id===examples.worked){
+      const nearest=nearestWithheld(source,selected);
+      const beforeError=scored.reduce((sum,site,i)=>site.surveyed?sum:sum+Math.abs(source.sites[i].modelFt-site.actualFt),0);
+      opening.update={point:selected,remaining:withheld.length,beforeMae:withheld.length?beforeError/withheld.length:null,
+        afterMae:mae.model,nearest,recomputed:scored.find(site=>site.id===nearest?.id)};
+    }
     state.edited={...source,sites:scored,mae,counts:{sites:scored.length,initial:scored.length-withheld.length,unseen:withheld.length}};
     state.revealed=true;
     const changed=scored.filter((site,i)=>!site.surveyed&&
@@ -324,9 +570,11 @@ function addMeasurement(){
     node('recompute-status').textContent=`Mark ${selected.id} is now a survey input. Both methods reran, and ${changed} remaining ${changed===1?'mark has':'marks have'} a changed estimate at the displayed precision.`;
     siteOptions();
     draw();
-    node('reset-survey').focus();
+    if(focusReset)node('reset-survey').focus();
+    return true;
   }catch(e){
     node('recompute-status').textContent='The replay could not recompute these estimates.';
+    return false;
   }
 }
 function addRow(name,pair){
@@ -481,6 +729,10 @@ function drawDetails(scenario,review=disagreement(scenario)){
   node('reveal').setAttribute('aria-expanded',String(shown));
   node('survey-hint').textContent=s.surveyed?'Choose a withheld mark to see an updated estimate.':shown?'Adding this reading gives it to both methods and reruns estimates for every remaining mark.':'Reveal the archived value to check each estimate before adding it to the survey.';
   const hasFormula=!s.surveyed&&Number.isFinite(s.startingFt)&&Number.isFinite(s.correctionFt);
+  const influence=node('influence');
+  influence.hidden=s.surveyed||typeof engine?.explainSurveyInfluence!=='function';
+  if(influence.hidden)influence.open=false;
+  drawInfluence(scenario);
   node('formula').hidden=!hasFormula;
   if(hasFormula){
     const op=s.correctionFt<0?'−':'+';
@@ -488,6 +740,7 @@ function drawDetails(scenario,review=disagreement(scenario)){
     node('equation-note').textContent=`Starting elevation plus learned correction gives the estimated peak. ${s.environment==='Coastal'?'On the coast the starting point is the nearby observed water surface.':'For riverine marks the starting point transfers nearby water height above terrain.'} Inputs are rounded for display.`;
   }
   node('scenario-mae').textContent=scenario.counts.unseen?`${state.edited?'Updated':'Starting'} survey: ${ft(scenario.mae.model)} MarkRoute error and ${ft(scenario.mae.baseline)} regression error over the same ${scenario.counts.unseen} ${state.edited?'remaining ':''}withheld marks. Seed ${scenario.seed}.`:'All archived marks are available to both methods.';
+  drawOpening();
 }
 function draw(){
   const scenario=active();
@@ -519,7 +772,8 @@ function setup(){
   node('mark-select').addEventListener('change',e=>chooseSite(Number(e.target.value),false));
   Object.keys(METHODS).forEach(key=>node(key).addEventListener('click',()=>{state.method=key;draw();}));
   node('reveal').addEventListener('click',()=>{state.revealed=!state.revealed;drawDetails(active());});
-  node('add-survey').addEventListener('click',addMeasurement);
+  node('influence').addEventListener('toggle',()=>drawInfluence(active()));
+  node('add-survey').addEventListener('click',()=>addMeasurement());
   node('reset-survey').addEventListener('click',()=>{
     selectScenario(state.scenario,active().sites[state.site].id);
     node('recompute-status').textContent='The original survey has been restored.';
@@ -538,6 +792,11 @@ function setup(){
   robustness();
   const location=exampleLocation();
   if(location){
+    opening.location=location;
+    node('opening').hidden=false;
+    node('opening-meta').textContent=`Hurricane Ian, 2022 · USGS mark ${examples.worked} · NAVD88`;
+    node('opening-action').addEventListener('click',runOpening);
+    node('opening-explain').addEventListener('click',explainOpening);
     node('examples').hidden=false;
     node('worked-case').addEventListener('click',()=>tryExample(location,'worked'));
     node('miss-case').addEventListener('click',()=>tryExample(location,'miss'));

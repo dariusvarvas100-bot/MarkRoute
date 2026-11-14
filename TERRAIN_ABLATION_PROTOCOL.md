@@ -1,0 +1,7 @@
+# Terrain ablation on geographically distant floods
+
+**Hypothesis.** Terrain information improves transfer of a learned partial-survey model to riverine sites far from earlier studies. Terrain lets the estimator transfer observed height above local ground and learn corrections from relative relief. The test evaluates the combined terrain inputs and the resulting starting estimate.
+
+Fit the same gradient-boosted model on the same four archived training events and 18 masks. The ablation sets the three terrain fields to zero before feature generation in both training and evaluation. It preserves site geometry, waterbody names, environment, observed elevations, training holdout, and all hyperparameters. The ablated model uses the same implementation; with terrain set to zero it starts from the median surveyed elevation on rivers and the usual geographically weighted elevation on the coast.
+
+The primary group is riverine sites in the eight previously frozen geographic holdout floods, all more than 100 km from earlier study sites. Score the same 16 masks and initial surveys. Preset success requires a reduction of at least 5% in pooled MAE with a paired 95% interval above zero, based on flood and 10 km block resampling. Report individual floods. The complete model's previous holdout scores were already known. This retrospective ablation evaluates support for the terrain mechanism in those archives.

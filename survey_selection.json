@@ -1,0 +1,89 @@
+{
+  "freeze": {
+    "SURVEY_PROTOCOL.md": "705cbeea72e22ec4138a14f74b3621544ce4c6fb9f6b1f0a3b69ed98d0c85a68",
+    "survey_decision.py": "980e4925f4d0fdefd0a09941791765cf3dfe59b192f2cecc487471235b908270",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "kriging.py": "d9ee82af284fab37348d7584af76c2eea6db2c2f2506c2745ae27b79edc30a5d",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd"
+  },
+  "selected": {
+    "one": {
+      "policy": "terrain IVR",
+      "control": "terrain coverage"
+    },
+    "tenPercent": {
+      "policy": "terrain IVR wide",
+      "control": "terrain coverage"
+    }
+  },
+  "development": {
+    "one": {
+      "no extra": {
+        "maeFt": 1.970266690034254,
+        "missOver5Ft": 0.07966457023060797
+      },
+      "random": {
+        "maeFt": 1.9617572254597193,
+        "missOver5Ft": 0.07783018867924528
+      },
+      "farthest": {
+        "maeFt": 1.9566305978229124,
+        "missOver5Ft": 0.07887840670859539
+      },
+      "terrain coverage": {
+        "maeFt": 1.8797375058457075,
+        "missOver5Ft": 0.06892033542976939
+      },
+      "disagreement": {
+        "maeFt": 1.9132540767647126,
+        "missOver5Ft": 0.07154088050314465
+      },
+      "geographic IVR": {
+        "maeFt": 1.8793368006237243,
+        "missOver5Ft": 0.06970649895178196
+      },
+      "terrain IVR": {
+        "maeFt": 1.8747233620253336,
+        "missOver5Ft": 0.06918238993710692
+      },
+      "terrain IVR wide": {
+        "maeFt": 1.8831816430952721,
+        "missOver5Ft": 0.06918238993710692
+      }
+    },
+    "tenPercent": {
+      "no extra": {
+        "maeFt": 1.970266690034254,
+        "missOver5Ft": 0.07966457023060797
+      },
+      "random": {
+        "maeFt": 1.7676902524635731,
+        "missOver5Ft": 0.05948637316561845
+      },
+      "farthest": {
+        "maeFt": 1.749872544342857,
+        "missOver5Ft": 0.05712788259958071
+      },
+      "terrain coverage": {
+        "maeFt": 1.5636618960557087,
+        "missOver5Ft": 0.040880503144654086
+      },
+      "disagreement": {
+        "maeFt": 1.739134595645014,
+        "missOver5Ft": 0.052148846960167715
+      },
+      "geographic IVR": {
+        "maeFt": 1.5590095661886305,
+        "missOver5Ft": 0.04009433962264151
+      },
+      "terrain IVR": {
+        "maeFt": 1.6156366084502043,
+        "missOver5Ft": 0.04481132075471698
+      },
+      "terrain IVR wide": {
+        "maeFt": 1.5913822936428483,
+        "missOver5Ft": 0.040880503144654086
+      }
+    }
+  }
+}

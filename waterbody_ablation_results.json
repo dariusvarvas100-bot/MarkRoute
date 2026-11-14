@@ -1,0 +1,111 @@
+{
+  "freeze": {
+    "WATERBODY_PROTOCOL.md": "019d84f10a9acc7718af0ab94a45f3601b0b1391aefd1206ae8fc652c2182477",
+    "waterbody_ablation.py": "0aa0743787606cb87f8c0a934129d61dacc42d32056ce9cde08d6c588298d451",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "external_panel.csv": "9d6b17078681c1298fd079541ca89599ee74a82d5f7839774fec540685dcfdf8",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9"
+  },
+  "pooled": {
+    "uniqueSites": 2384,
+    "maskSitePairs": 32384,
+    "floodCount": 13,
+    "completeMaeFt": 4.400742636680703,
+    "withoutWaterbodyMatchMaeFt": 4.403209858113713,
+    "gainFt": 0.002467221433009925,
+    "relativeGain": 0.0005603233805592123,
+    "paired95IntervalFt": [
+      -0.03024464296982009,
+      0.03291590774669658
+    ],
+    "eventWins": 6,
+    "meetsBenefitThreshold": false
+  },
+  "environments": {
+    "Coastal": {
+      "uniqueSites": 261,
+      "maskSitePairs": 3504,
+      "floodCount": 4,
+      "completeMaeFt": 0.9869088333738765,
+      "withoutWaterbodyMatchMaeFt": 1.006994947946104,
+      "gainFt": 0.02008611457222753,
+      "relativeGain": 0.019946589218938736,
+      "paired95IntervalFt": [
+        -0.2143599266536113,
+        0.1768613679111742
+      ],
+      "eventWins": 3,
+      "meetsBenefitThreshold": false
+    },
+    "Riverine": {
+      "uniqueSites": 2123,
+      "maskSitePairs": 28880,
+      "floodCount": 13,
+      "completeMaeFt": 4.814941862677486,
+      "withoutWaterbodyMatchMaeFt": 4.815271390150669,
+      "gainFt": 0.00032952747318315545,
+      "relativeGain": 6.8433831965771e-05,
+      "paired95IntervalFt": [
+        -0.03414003655997062,
+        0.0344323010710075
+      ],
+      "eventWins": 6,
+      "meetsBenefitThreshold": false
+    }
+  },
+  "eventMaeFt": {
+    "2015-16 Winter MO Flood": {
+      "complete": 3.234897203337532,
+      "without waterbody match": 3.2931688230912215
+    },
+    "2016 Jul WI Flood": {
+      "complete": 4.7268243363035065,
+      "without waterbody match": 4.65395510314014
+    },
+    "2021 Ida": {
+      "complete": 4.791638050348619,
+      "without waterbody match": 4.83750587531242
+    },
+    "2022 December - 2023 January CA Flood": {
+      "complete": 10.050388397998944,
+      "without waterbody match": 9.883274039598223
+    },
+    "2022 Ian": {
+      "complete": 1.1456035459656826,
+      "without waterbody match": 1.1712099630730455
+    },
+    "2022 June MT Flood": {
+      "complete": 5.473512266285149,
+      "without waterbody match": 5.48427069949024
+    },
+    "2023 December East Coast Cyclone": {
+      "complete": 5.311979740243907,
+      "without waterbody match": 5.306437973011442
+    },
+    "2024 Helene": {
+      "complete": 6.6535327559005495,
+      "without waterbody match": 6.568073917975755
+    },
+    "2024 Jan CA Flood": {
+      "complete": 4.53012340837927,
+      "without waterbody match": 4.448670974983146
+    },
+    "2024 June IA Flood": {
+      "complete": 3.067584987255725,
+      "without waterbody match": 3.090473233713053
+    },
+    "2025 December (WA, ID, OR, MT) Flood": {
+      "complete": 4.08454527390356,
+      "without waterbody match": 4.211224906888084
+    },
+    "2025 July TX Flood": {
+      "complete": 6.068065561181688,
+      "without waterbody match": 6.054428599360391
+    },
+    "Central US Spring 2019": {
+      "complete": 3.9489242838344842,
+      "without waterbody match": 3.9352837994822423
+    }
+  }
+}

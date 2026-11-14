@@ -1,0 +1,66 @@
+{
+  "freeze": {
+    "TERRAIN_ABLATION_PROTOCOL.md": "5d24ce2a0bd89af3cc024029ae90ab955b55d83729a0de0bdb9199c795313fe0",
+    "terrain_ablation.py": "c3059e4e836b434e027ce158fab2d5f81712dd63982e551d1eb33d5018ec3629",
+    "map_model.py": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+    "waterbody_ablation.py": "0aa0743787606cb87f8c0a934129d61dacc42d32056ce9cde08d6c588298d451",
+    "panel.csv": "a685755b4249b02c80b1bbfe01d48492dc1ff7a9f1bf05194a0538dea886cdfd",
+    "remote_panel.csv": "538e9b513b9ed9c608ec22202c9ea9f91c3521ac244642f80920235b341a34c9"
+  },
+  "primaryRiverine": {
+    "sites": 1365,
+    "maskSitePairs": 18560,
+    "completeMaeFt": 4.575636470520015,
+    "withoutTerrainMaeFt": 85.00106571218397,
+    "relativeGain": 0.9461696576133146,
+    "paired95IntervalFt": [
+      39.153819644630445,
+      196.4825920222498
+    ],
+    "meetsBenefitThreshold": true,
+    "events": {
+      "2015-16 Winter MO Flood": {
+        "complete": 3.234897203337532,
+        "without terrain": 5.506944312790716
+      },
+      "2016 Jul WI Flood": {
+        "complete": 4.7268243363035065,
+        "without terrain": 11.088978507351053
+      },
+      "2022 December - 2023 January CA Flood": {
+        "complete": 10.796156032012238,
+        "without terrain": 216.5980762868727
+      },
+      "2022 June MT Flood": {
+        "complete": 5.473512266285149,
+        "without terrain": 215.12840611883288
+      },
+      "2023 December East Coast Cyclone": {
+        "complete": 5.311979740243907,
+        "without terrain": 77.98838944157664
+      },
+      "2024 Jan CA Flood": {
+        "complete": 4.53012340837927,
+        "without terrain": 91.73377384303532
+      },
+      "2024 June IA Flood": {
+        "complete": 3.067584987255725,
+        "without terrain": 35.60175514934129
+      },
+      "Central US Spring 2019": {
+        "complete": 3.9489242838344842,
+        "without terrain": 59.24379666489839
+      }
+    }
+  },
+  "environments": {
+    "Coastal": {
+      "complete": 2.3441228465282293,
+      "without terrain": 3.3693122075510265
+    },
+    "Riverine": {
+      "complete": 4.575636470520016,
+      "without terrain": 85.00106571218397
+    }
+  }
+}

@@ -2,15 +2,15 @@
 
 **AI + Climate · Veritas AI International High School Hackathon 2026**
 
-After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay to compare the two estimates for a real USGS mark. Add the archived measurement and watch both methods recalculate.
+After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay at an Ian survey mark and reveal the crew’s recorded 12.30 ft. MarkRoute’s estimate missed by 0.21 ft and bounded regression missed by 1.85 ft. Add the reading to watch the same models recalculate the other 249 marks.
 
 **With the same initial surveys, MarkRoute reduced mean error in 13 of 13 archived floods against bounded terrain regression.** It cut error from **2.48 to 2.08 ft** on Ian and Helene and from **6.17 to 5.30 ft** on three additional floods. In a separate geographic test covering eight floods, error fell from **5.46 to 4.57 ft** across 1,371 sites more than 100 km from earlier study sites. It still struggled in Helene, where 49% of the estimates missed by more than five feet.
 
 [Open the live replay](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html) · [Download the offline replay](https://github.com/dariusvarvas100-bot/MarkRoute/archive/refs/heads/main.zip) · [One-page write-up](MarkRoute_Writeup.pdf) · [106-second walkthrough](MarkRoute_Demo.mp4)
 
-In the replay, choose **Worked example** to see an Ian site with a substantial gain. Choose **Measured miss** to see the baseline beat it. The point detail displays the local starting estimate and the model’s signed correction. Both methods use the same measured sites at every step.
+The opening replay shows the recalculation at the closest remaining mark in the same environment. Average error across the same 249 remaining marks falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In the map, choose **Measured miss** to inspect a separate site where bounded regression is closer. Each point shows the starting estimate and the model’s signed correction.
 
-**What we added.** Our own idea. MarkRoute starts with a terrain-based estimate and learns the correction from older floods. The replay exposes that calculation and lets a reviewer change which field measurements are available. The evaluation withholds actual measurements at the same survey budget and tests transfer across events.
+**What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. The crew’s measurement at the target remains hidden during the explanation.
 
 ## Held-out results
 
@@ -71,6 +71,31 @@ When the same initial readings were redistributed to leave an entire neighborhoo
 
 The replay can also highlight the approximately 20% of withheld marks where the two estimates disagree most. That rule flagged **1,148 of 3,798** errors larger than five feet across the five floods. Model disagreement was the strongest simple review rule on validation. A separate trained ranker and a rule based on rechecking neighboring measurements caught fewer large errors on the held-out floods. Many large errors remained outside the review queue. [Review replay and results](review_results.json) · [Evaluation script](review.py)
 
+## Which readings moved the estimate?
+
+The offline browser recomputes the live estimator for each of up to 16 subsets of the four closest surveyed readings in the same environment. All other surveyed readings are held fixed, including at least one from that environment. A reading's [Shapley value](https://doi.org/10.1515/9781400881970-018) is its average marginal change across all possible orders of adding those readings. For a subset of size `s` and `m` varied readings, the weight is `s! (m - s - 1)! / m!`. The signed values sum to the difference between the fixed-survey estimate and the full estimate. These values describe how the deployed model responds, given the chosen four nearby readings. They do not represent physical causation or an error bound.
+
+The browser test confirms that the attributions sum correctly in 32 archived replays, are unchanged if hidden answers are erased, and agree with an independent enumeration of all 24 orders in a four-reading example. [Related research on model attribution](https://proceedings.neurips.cc/paper_files/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html)
+
+## Does geographic structure transfer?
+
+We tested two hypotheses with otherwise identical booster fits and the same revealed marks. First, terrain should improve transfer to riverine sites located more than 100 km from the earlier study sites. Removing terrain from both the starting estimate and learned features raised MAE from **4.58 to 85.00 ft** across **1,365 riverine sites** in eight geographic holdout floods. The complete model had lower mean error in every flood. This is a data-removal experiment. Practical comparators retain terrain and score about **5.46 ft** in the larger geographic benchmark above. [Terrain experiment protocol](TERRAIN_ABLATION_PROTOCOL.md) · [Terrain results](terrain_ablation_results.json)
+
+Second, a named-waterbody match might help beyond terrain and distance. Blanking names at training and test changed riverine MAE from **4.8149 to 4.8153 ft** across 13 archived floods. The paired 95% interval for the benefit was **−0.034 to +0.034 ft**. The study found no measurable improvement from those tags. A shared name is only a proxy for connectivity between channel reaches. [Waterbody experiment protocol](WATERBODY_PROTOCOL.md) · [Waterbody results](waterbody_ablation_results.json) · [USGS stream-network data](https://www.usgs.gov/national-hydrography/nhdplus-high-resolution)
+
+## What to measure next
+
+An extra reading only helps if it improves estimates at the sites that are still unmeasured. In a separate replay of the 13 floods, we split flags into starting measurements, candidates for an extra survey, and a permanently hidden scoring set. The deployed model was refit on the original training floods. All policies then reused that frozen fit and received the same number of new readings.
+
+| Extra budget per eligible environment | No added readings (ft) | Random (ft) | Terrain coverage (ft) | Conditional variance (ft) |
+| --- | ---: | ---: | ---: | ---: |
+| One mark | 4.40 | 4.34 | 4.269 | 4.272 |
+| About 10% of flags | 4.40 | 4.03 | 3.67 | 3.69 |
+
+The research policy uses a terrain and waterbody Matérn kernel. It greedily chooses the mark whose measurement would reduce the sum of conditional variances most across the hidden locations. Each candidate’s score is the sum of squared conditional covariances with those locations, divided by the candidate’s conditional variance plus observation noise. A direct covariance recalculation agreed with the rank-one implementation in 81 archived cases and one synthetic case.
+
+The variance policy failed the predeclared superiority threshold. For one extra mark, its paired advantage over terrain coverage was **−0.003 ft**, with a 95% interval of **−0.045 to +0.041 ft**. Terrain coverage had lower observed error than random and farthest-first at both budgets. The released map keeps its existing review flags, which indicate disagreement about the current estimate. This experiment measures retrospective placement decisions and leaves travel effort and access unmodeled. [Protocol](SURVEY_PROTOCOL.md) · [Development lock](survey_selection.json) · [Full results](survey_decision_results.json) · [Spatial observation design research](https://jmlr.org/papers/v9/krause08a.html)
+
 ## Model and benchmark
 
 The model starts from a physical hypothesis. On the coast the nearby water surface provides the starting estimate. On rivers the nearby rise above terrain is a starting estimate, adjusted for differences in ground elevation. Histogram gradient boosting learns when to correct that estimate based on distance between marks, terrain shape and whether the waterbody matches. The fit uses Sandy, Matthew, Harvey and Irma. Florence and Michael select the method and its strongest transparent comparator. Ian and Helene hold out whole storms. Four site IDs recur across the older and held-out storms. The geographic split measures transfer to later events with some observations already available from them.
@@ -100,10 +125,18 @@ python kriging.py validation
 python kriging.py test
 python replay_remote.py evaluate
 python replay_remote.py kriging
+python survey_decision.py validation
+python survey_decision.py test
+python waterbody_ablation.py
+python terrain_ablation.py
 python demo_export.py
 ```
 
 These commands use the supplied processed [survey panel](panel.csv) and regenerate the validation selection, holdout metrics and browser demo. They fit fresh models. For tracing the upstream inputs, `python fetch_events.py` pulls the USGS event data and `python terrain.py` joins the public ground-elevation tiles. For the separate three-event benchmark, `python external_eval.py prepare` rebuilds its processed panel from the current catalog. Upstream services can revise the data. The supplied panels are the benchmark snapshots.
+
+## Regression tests
+
+With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. The suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 13 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders.
 
 ## Scope and data
 

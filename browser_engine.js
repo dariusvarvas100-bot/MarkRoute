@@ -56,18 +56,78 @@ const MarkRouteEngine = (() => {
     return {modelFt: base + residual, baselineFt: baseline, startingFt: base, correctionFt: residual};
   }
 
-  function recompute(sites, model = MARKROUTE_DATA.estimator) {
+  function projectSites(sites) {
     const midLat = sum(sites.map(site => site.lat)) / sites.length;
     const midLon = sum(sites.map(site => site.lon)) / sites.length;
     const horizontal = 111.2 * Math.cos(midLat * Math.PI / 180);
-    const points = sites.map(site => ({
+    return sites.map(site => ({
       ...site, x: horizontal * (site.lon - midLon), y: 111.2 * (site.lat - midLat)
     }));
+  }
+
+  function recompute(sites, model = MARKROUTE_DATA.estimator) {
+    const points = projectSites(sites);
     const known = points.filter(point => point.surveyed);
     if (known.length === 0) return sites;
     return sites.map((site, i) => site.surveyed ?
       {...site, modelFt: null, baselineFt: null, startingFt: null, correctionFt: null} : {...site, ...prediction(points[i], known, model)});
   }
 
-  return {recompute};
+  function explainSurveyInfluence(sites, model, targetIndex) {
+    const target = sites[targetIndex];
+    if (!target) return {available: false, reason: 'Select an unmeasured mark to explain its estimate.'};
+    if (target.surveyed) return {available: false, reason: 'This mark already has a survey reading.'};
+
+    const points = projectSites(sites);
+    const query = points[targetIndex];
+    const surveyed = points.map((point, index) => ({point, index})).filter(({point}) => point.surveyed);
+    const local = surveyed.filter(({point}) => point.environment === query.environment);
+    if (local.length < 2) {
+      return {available: false, reason: 'At least two surveyed marks of this environment are needed to compare their influence.'};
+    }
+    if (local.some(({point}) => !Number.isFinite(point.actualFt))) {
+      return {available: false, reason: 'A survey reading is missing from this replay.'};
+    }
+
+    // Keeping one local reading fixed makes every coalition use the same
+    // environment-specific estimator, including the empty coalition.
+    const varied = local.map(({point, index}) => ({
+      point, index, distanceKm: Math.hypot(query.x - point.x, query.y - point.y)
+    })).sort((a, b) => a.distanceKm - b.distanceKm || a.index - b.index)
+      .slice(0, Math.min(4, local.length - 1));
+    const position = new Map(varied.map(({index}, bit) => [index, bit]));
+    const count = varied.length;
+    const full = (1 << count) - 1;
+    const estimates = [];
+    const coalitionSizes = [];
+    for (let mask = 0; mask <= full; mask++) {
+      let size = 0;
+      const observed = surveyed.filter(({index}) => {
+        const bit = position.get(index);
+        if (bit === undefined) return true;
+        if (!(mask & (1 << bit))) return false;
+        size++;
+        return true;
+      }).map(({point}) => point);
+      coalitionSizes.push(size);
+      estimates.push(prediction(query, observed, model).modelFt);
+    }
+
+    const factorial = [1, 1, 2, 6, 24];
+    const contributions = varied.map(({point, index, distanceKm}, bit) => {
+      const add = 1 << bit;
+      let contributionFt = 0;
+      for (let mask = 0; mask <= full; mask++) {
+        if (mask & add) continue;
+        const size = coalitionSizes[mask];
+        const weight = factorial[size] * factorial[count - size - 1] / factorial[count];
+        contributionFt += weight * (estimates[mask | add] - estimates[mask]);
+      }
+      return {id: point.id, index, observedFt: point.actualFt, distanceKm, contributionFt};
+    });
+    return {available: true, startingFt: estimates[0], modelFt: estimates[full], contributions,
+      fixedCount: surveyed.length - count};
+  }
+
+  return {recompute, explainSurveyInfluence};
 })();
