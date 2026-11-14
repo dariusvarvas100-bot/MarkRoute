@@ -121,7 +121,7 @@
   </section>
   <section class="card bench" aria-labelledby="benchmark-heading">
     <h2 id="benchmark-heading">Held-out benchmark</h2><p id="bench-size" class="quiet"></p>
-    <div class="bench-grid"><div><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Cohort</th><th scope="col">Regression</th><th scope="col">MarkRoute</th></tr></thead><tbody id="benchmark"></tbody></table></div><div class="bench-text"><p id="interval"></p><p id="miss"></p><p id="external" hidden></p><p>Both methods received the same starting marks. Bounded local regression fits water elevation against nearby terrain. It was the strongest nonlearned method on the development storms.</p></div></div>
+    <div class="bench-grid"><div><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Cohort</th><th scope="col">Regression</th><th scope="col">MarkRoute</th></tr></thead><tbody id="benchmark"></tbody></table></div><div class="bench-text"><p id="interval"></p><p id="miss"></p><p id="external" hidden></p><p id="remote-evidence" hidden></p><p>Both methods received the same starting marks. Bounded local regression fits water elevation against nearby terrain. It was the strongest nonlearned method on the development storms.</p></div></div>
   </section>
   <section class="card bench" id="robustness" aria-labelledby="robustness-heading" hidden>
     <h2 id="robustness-heading">When starting surveys are sparse</h2>
@@ -263,6 +263,11 @@ function addRow(name,pair){
   add(line,'td',ft(pair[CANDIDATE].maeFt));
 }
 function benchmark(){
+  if(payload.remote){
+    const r=payload.remote;
+    node('remote-evidence').hidden=false;
+    node('remote-evidence').textContent=`Geographic test · ${r.eventCount} more floods · ${r.siteCount.toLocaleString()} sites over 100 km from earlier study sites. Mean error fell from ${r.baseline.toFixed(2)} to ${r.model.toFixed(2)} ft.`;
+  }
   const s=payload.summary;
   node('headline').textContent=pct(s.practicalComparison.relativeErrorReduction);
   node('headline-detail').textContent=`${ft(s.results.pooled[REF].maeFt)} → ${ft(s.results.pooled[CANDIDATE].maeFt)} across both storms`;

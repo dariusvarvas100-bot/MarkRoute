@@ -1,0 +1,358 @@
+{
+  "modelSha256": "2fdb26e170bd451ab1752a245f71e02d7fb6068d26fc2b4288b49b2f1d93faeb",
+  "sitesAndDistances": {
+    "2015-16 Winter MO Flood": {
+      "sites": 104,
+      "sitesFar": 104,
+      "medianKm": 782.5407265791471,
+      "maxKm": 828.7945428627156
+    },
+    "2016 Jul WI Flood": {
+      "sites": 48,
+      "sitesFar": 48,
+      "medianKm": 1176.1063431282719,
+      "maxKm": 1180.517194210317
+    },
+    "2022 December - 2023 January CA Flood": {
+      "sites": 42,
+      "sitesFar": 42,
+      "medianKm": 1362.2318783757414,
+      "maxKm": 1575.8881133940165
+    },
+    "2022 June MT Flood": {
+      "sites": 211,
+      "sitesFar": 211,
+      "medianKm": 483.854720994424,
+      "maxKm": 598.2182084036888
+    },
+    "2023 December East Coast Cyclone": {
+      "sites": 261,
+      "sitesFar": 261,
+      "medianKm": 185.14896171293913,
+      "maxKm": 315.2001034656254
+    },
+    "2024 Jan CA Flood": {
+      "sites": 31,
+      "sitesFar": 31,
+      "medianKm": 1571.0015846710892,
+      "maxKm": 1579.6207068422243
+    },
+    "2024 June IA Flood": {
+      "sites": 60,
+      "sitesFar": 60,
+      "medianKm": 1288.8812744547736,
+      "maxKm": 1350.1481078286238
+    },
+    "Central US Spring 2019": {
+      "sites": 614,
+      "sitesFar": 614,
+      "medianKm": 1035.2524645925587,
+      "maxKm": 1309.6417202151122
+    }
+  },
+  "all": {
+    "pooled": {
+      "maskSitePairs": 18608,
+      "bounded local regression": {
+        "maeFt": 5.462115412988871,
+        "gt5Ft": 6480,
+        "gt5FtRate": 0.3482373172828891,
+        "p99Ft": 42.94691064791577
+      },
+      "gradient boost": {
+        "maeFt": 4.569880201498541,
+        "gt5Ft": 5460,
+        "gt5FtRate": 0.29342218400687875,
+        "p99Ft": 30.82295459398048
+      },
+      "relativeMaeReduction": 0.16334975445019007
+    },
+    "events": {
+      "2015-16 Winter MO Flood": {
+        "maskSitePairs": 1408,
+        "bounded local regression": {
+          "maeFt": 4.109408740312191,
+          "gt5Ft": 392,
+          "gt5FtRate": 0.2784090909090909,
+          "p99Ft": 20.091859534977505
+        },
+        "gradient boost": {
+          "maeFt": 3.234897203337532,
+          "gt5Ft": 266,
+          "gt5FtRate": 0.18892045454545456,
+          "p99Ft": 18.844183489533126
+        },
+        "relativeMaeReduction": 0.2128071438589053
+      },
+      "2016 Jul WI Flood": {
+        "maskSitePairs": 656,
+        "bounded local regression": {
+          "maeFt": 5.00993315762756,
+          "gt5Ft": 193,
+          "gt5FtRate": 0.2942073170731707,
+          "p99Ft": 30.23688658918722
+        },
+        "gradient boost": {
+          "maeFt": 4.72682433630351,
+          "gt5Ft": 230,
+          "gt5FtRate": 0.35060975609756095,
+          "p99Ft": 27.0057111328259
+        },
+        "relativeMaeReduction": 0.056509500709210125
+      },
+      "2022 December - 2023 January CA Flood": {
+        "maskSitePairs": 544,
+        "bounded local regression": {
+          "maeFt": 11.938455444899361,
+          "gt5Ft": 254,
+          "gt5FtRate": 0.46691176470588236,
+          "p99Ft": 71.75869306546025
+        },
+        "gradient boost": {
+          "maeFt": 10.050388397998944,
+          "gt5Ft": 270,
+          "gt5FtRate": 0.4963235294117647,
+          "p99Ft": 63.97100936122718
+        },
+        "relativeMaeReduction": 0.15815002666086786
+      },
+      "2022 June MT Flood": {
+        "maskSitePairs": 2864,
+        "bounded local regression": {
+          "maeFt": 6.455098423927656,
+          "gt5Ft": 1170,
+          "gt5FtRate": 0.4085195530726257,
+          "p99Ft": 44.618099879965655
+        },
+        "gradient boost": {
+          "maeFt": 5.473512266285147,
+          "gt5Ft": 992,
+          "gt5FtRate": 0.3463687150837989,
+          "p99Ft": 39.08042516599921
+        },
+        "relativeMaeReduction": 0.15206370115194234
+      },
+      "2023 December East Coast Cyclone": {
+        "maskSitePairs": 3552,
+        "bounded local regression": {
+          "maeFt": 5.973924562202371,
+          "gt5Ft": 1579,
+          "gt5FtRate": 0.4445382882882883,
+          "p99Ft": 30.722451813291684
+        },
+        "gradient boost": {
+          "maeFt": 5.311979740243906,
+          "gt5Ft": 1447,
+          "gt5FtRate": 0.4073761261261261,
+          "p99Ft": 23.13637114756083
+        },
+        "relativeMaeReduction": 0.11080568813115876
+      },
+      "2024 Jan CA Flood": {
+        "maskSitePairs": 416,
+        "bounded local regression": {
+          "maeFt": 8.451804678048383,
+          "gt5Ft": 129,
+          "gt5FtRate": 0.31009615384615385,
+          "p99Ft": 127.85541888667694
+        },
+        "gradient boost": {
+          "maeFt": 4.53012340837927,
+          "gt5Ft": 128,
+          "gt5FtRate": 0.3076923076923077,
+          "p99Ft": 19.14062455637426
+        },
+        "relativeMaeReduction": 0.46400519404509877
+      },
+      "2024 June IA Flood": {
+        "maskSitePairs": 816,
+        "bounded local regression": {
+          "maeFt": 3.550616896336616,
+          "gt5Ft": 203,
+          "gt5FtRate": 0.24877450980392157,
+          "p99Ft": 13.20816075518421
+        },
+        "gradient boost": {
+          "maeFt": 3.067584987255726,
+          "gt5Ft": 138,
+          "gt5FtRate": 0.16911764705882354,
+          "p99Ft": 10.96141957362703
+        },
+        "relativeMaeReduction": 0.13604168604595512
+      },
+      "Central US Spring 2019": {
+        "maskSitePairs": 8352,
+        "bounded local regression": {
+          "maeFt": 4.783515819032325,
+          "gt5Ft": 2560,
+          "gt5FtRate": 0.3065134099616858,
+          "p99Ft": 39.13426048270626
+        },
+        "gradient boost": {
+          "maeFt": 3.9489242838344842,
+          "gt5Ft": 1989,
+          "gt5FtRate": 0.23814655172413793,
+          "p99Ft": 23.349020417013207
+        },
+        "relativeMaeReduction": 0.17447241041353412
+      }
+    },
+    "conditionalPairedSpatial95Ft": [
+      0.6826402996100007,
+      1.1284425658713675
+    ]
+  },
+  "beyond100Km": {
+    "pooled": {
+      "maskSitePairs": 18608,
+      "bounded local regression": {
+        "maeFt": 5.462115412988871,
+        "gt5Ft": 6480,
+        "gt5FtRate": 0.3482373172828891,
+        "p99Ft": 42.94691064791577
+      },
+      "gradient boost": {
+        "maeFt": 4.569880201498541,
+        "gt5Ft": 5460,
+        "gt5FtRate": 0.29342218400687875,
+        "p99Ft": 30.82295459398048
+      },
+      "relativeMaeReduction": 0.16334975445019007
+    },
+    "events": {
+      "2015-16 Winter MO Flood": {
+        "maskSitePairs": 1408,
+        "bounded local regression": {
+          "maeFt": 4.109408740312191,
+          "gt5Ft": 392,
+          "gt5FtRate": 0.2784090909090909,
+          "p99Ft": 20.091859534977505
+        },
+        "gradient boost": {
+          "maeFt": 3.234897203337532,
+          "gt5Ft": 266,
+          "gt5FtRate": 0.18892045454545456,
+          "p99Ft": 18.844183489533126
+        },
+        "relativeMaeReduction": 0.2128071438589053
+      },
+      "2016 Jul WI Flood": {
+        "maskSitePairs": 656,
+        "bounded local regression": {
+          "maeFt": 5.00993315762756,
+          "gt5Ft": 193,
+          "gt5FtRate": 0.2942073170731707,
+          "p99Ft": 30.23688658918722
+        },
+        "gradient boost": {
+          "maeFt": 4.72682433630351,
+          "gt5Ft": 230,
+          "gt5FtRate": 0.35060975609756095,
+          "p99Ft": 27.0057111328259
+        },
+        "relativeMaeReduction": 0.056509500709210125
+      },
+      "2022 December - 2023 January CA Flood": {
+        "maskSitePairs": 544,
+        "bounded local regression": {
+          "maeFt": 11.938455444899361,
+          "gt5Ft": 254,
+          "gt5FtRate": 0.46691176470588236,
+          "p99Ft": 71.75869306546025
+        },
+        "gradient boost": {
+          "maeFt": 10.050388397998944,
+          "gt5Ft": 270,
+          "gt5FtRate": 0.4963235294117647,
+          "p99Ft": 63.97100936122718
+        },
+        "relativeMaeReduction": 0.15815002666086786
+      },
+      "2022 June MT Flood": {
+        "maskSitePairs": 2864,
+        "bounded local regression": {
+          "maeFt": 6.455098423927656,
+          "gt5Ft": 1170,
+          "gt5FtRate": 0.4085195530726257,
+          "p99Ft": 44.618099879965655
+        },
+        "gradient boost": {
+          "maeFt": 5.473512266285147,
+          "gt5Ft": 992,
+          "gt5FtRate": 0.3463687150837989,
+          "p99Ft": 39.08042516599921
+        },
+        "relativeMaeReduction": 0.15206370115194234
+      },
+      "2023 December East Coast Cyclone": {
+        "maskSitePairs": 3552,
+        "bounded local regression": {
+          "maeFt": 5.973924562202371,
+          "gt5Ft": 1579,
+          "gt5FtRate": 0.4445382882882883,
+          "p99Ft": 30.722451813291684
+        },
+        "gradient boost": {
+          "maeFt": 5.311979740243906,
+          "gt5Ft": 1447,
+          "gt5FtRate": 0.4073761261261261,
+          "p99Ft": 23.13637114756083
+        },
+        "relativeMaeReduction": 0.11080568813115876
+      },
+      "2024 Jan CA Flood": {
+        "maskSitePairs": 416,
+        "bounded local regression": {
+          "maeFt": 8.451804678048383,
+          "gt5Ft": 129,
+          "gt5FtRate": 0.31009615384615385,
+          "p99Ft": 127.85541888667694
+        },
+        "gradient boost": {
+          "maeFt": 4.53012340837927,
+          "gt5Ft": 128,
+          "gt5FtRate": 0.3076923076923077,
+          "p99Ft": 19.14062455637426
+        },
+        "relativeMaeReduction": 0.46400519404509877
+      },
+      "2024 June IA Flood": {
+        "maskSitePairs": 816,
+        "bounded local regression": {
+          "maeFt": 3.550616896336616,
+          "gt5Ft": 203,
+          "gt5FtRate": 0.24877450980392157,
+          "p99Ft": 13.20816075518421
+        },
+        "gradient boost": {
+          "maeFt": 3.067584987255726,
+          "gt5Ft": 138,
+          "gt5FtRate": 0.16911764705882354,
+          "p99Ft": 10.96141957362703
+        },
+        "relativeMaeReduction": 0.13604168604595512
+      },
+      "Central US Spring 2019": {
+        "maskSitePairs": 8352,
+        "bounded local regression": {
+          "maeFt": 4.783515819032325,
+          "gt5Ft": 2560,
+          "gt5FtRate": 0.3065134099616858,
+          "p99Ft": 39.13426048270626
+        },
+        "gradient boost": {
+          "maeFt": 3.9489242838344842,
+          "gt5Ft": 1989,
+          "gt5FtRate": 0.23814655172413793,
+          "p99Ft": 23.349020417013207
+        },
+        "relativeMaeReduction": 0.17447241041353412
+      }
+    },
+    "conditionalPairedSpatial95Ft": [
+      0.6826402996100007,
+      1.1284425658713675
+    ]
+  },
+  "passed": true
+}

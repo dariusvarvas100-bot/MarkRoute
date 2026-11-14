@@ -70,6 +70,16 @@ def build():
     external = ROOT/'external_results.json'
     if external.is_file():
         payload['external'] = json.loads(external.read_text())
+    remote = ROOT/'remote_results.json'
+    if remote.is_file():
+        report = json.loads(remote.read_text())
+        values = report['all']['pooled']
+        payload['remote'] = {
+            'siteCount': sum(row['sites'] for row in report['sitesAndDistances'].values()),
+            'eventCount': len(report['all']['events']),
+            'baseline': values['bounded local regression']['maeFt'],
+            'model': values['gradient boost']['maeFt'],
+        }
     review = ROOT/'review_results.json'
     if review.is_file():
         report = json.loads(review.read_text())

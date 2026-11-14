@@ -1,0 +1,266 @@
+{
+  "catalogSha256": "dcc5867e9563118991bcd63e72f46cb6a56991b14d977ace0a8f6f7d2326ef9b",
+  "priorRawEventIds": [
+    24,
+    135,
+    180,
+    182,
+    189,
+    283,
+    287,
+    291,
+    311,
+    314,
+    325,
+    346,
+    347,
+    361
+  ],
+  "candidates": [
+    {
+      "id": 17,
+      "name": "2014 May PA Flood",
+      "start": "2014-05-20",
+      "end": "2014-05-30",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=17&format=json"
+    },
+    {
+      "id": 275,
+      "name": "2014 Jun Jul IA Flood",
+      "start": "2014-06-29",
+      "end": "2014-07-02",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=275&format=json"
+    },
+    {
+      "id": 279,
+      "name": "2014 June IA Flood",
+      "start": "2014-06-29",
+      "end": "2014-07-02",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=279&format=json"
+    },
+    {
+      "id": 30,
+      "name": "Floods of 2015",
+      "start": "2014-09-30",
+      "end": "2015-09-29",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=30&format=json"
+    },
+    {
+      "id": 120,
+      "name": "2015-16 Winter MO Flood",
+      "start": "2015-12-22",
+      "end": "2016-01-30",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=120&format=json"
+    },
+    {
+      "id": 122,
+      "name": "2016 Mar LA Flood",
+      "start": "2016-03-10",
+      "end": "2016-03-27",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=122&format=json"
+    },
+    {
+      "id": 125,
+      "name": "2016 Jun WV Flood",
+      "start": "2016-06-24",
+      "end": "2016-07-04",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=125&format=json"
+    },
+    {
+      "id": 134,
+      "name": "2016 Jul WI Flood",
+      "start": "2016-07-10",
+      "end": "2016-07-11",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=134&format=json"
+    },
+    {
+      "id": 129,
+      "name": "2016 Aug LA Flood",
+      "start": "2016-08-12",
+      "end": "2016-08-25",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=129&format=json"
+    },
+    {
+      "id": 216,
+      "name": "2016 August IA Flood",
+      "start": "2016-08-24",
+      "end": "2016-08-25",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=216&format=json"
+    },
+    {
+      "id": 217,
+      "name": "2016 August IA Flood",
+      "start": "2016-08-24",
+      "end": "2016-08-24",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=217&format=json"
+    },
+    {
+      "id": 139,
+      "name": "2016 Dec PA Flood",
+      "start": "2016-12-18",
+      "end": "2016-12-24",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=139&format=json"
+    },
+    {
+      "id": 140,
+      "name": "2017 Feb CA Flood",
+      "start": "2017-02-14",
+      "end": "2017-06-14",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=140&format=json"
+    },
+    {
+      "id": 153,
+      "name": "2017 Lake Ontario Flood",
+      "start": "2017-04-01",
+      "end": "2017-09-01",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=153&format=json"
+    },
+    {
+      "id": 142,
+      "name": "2017 May AR OK MO IL IN Flood",
+      "start": "2017-04-27",
+      "end": "2017-05-27",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=142&format=json"
+    },
+    {
+      "id": 152,
+      "name": "2017 June PA Flood",
+      "start": "2017-06-22",
+      "end": "2017-06-29",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=152&format=json"
+    },
+    {
+      "id": 280,
+      "name": "2018 June MT Flood",
+      "start": "2018-06-15",
+      "end": "2018-06-24",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=280&format=json"
+    },
+    {
+      "id": 307,
+      "name": "2018 June July IA Flood",
+      "start": "2018-06-21",
+      "end": "2018-07-01",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=307&format=json"
+    },
+    {
+      "id": 288,
+      "name": "Central US Spring 2019",
+      "start": "2019-03-01",
+      "end": "2019-05-31",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=288&format=json"
+    },
+    {
+      "id": 289,
+      "name": "Allegheny Kinzua Dam release Spring 2019",
+      "start": "2019-05-10",
+      "end": "2019-06-10",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=289&format=json"
+    },
+    {
+      "id": 308,
+      "name": "Oregon Coastal Winter 2020-2021",
+      "start": "2020-10-01",
+      "end": "2021-04-15",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=308&format=json"
+    },
+    {
+      "id": 309,
+      "name": "Washington Coastal Winter 2020-2021",
+      "start": "2020-10-01",
+      "end": "2021-04-15",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=309&format=json"
+    },
+    {
+      "id": 319,
+      "name": "2022 June MT Flood",
+      "start": "2022-06-13",
+      "end": "2022-06-16",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=319&format=json"
+    },
+    {
+      "id": 320,
+      "name": "2022 July VA Flood",
+      "start": "2022-07-11",
+      "end": "2022-07-15",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=320&format=json"
+    },
+    {
+      "id": 321,
+      "name": "2022 July KY Flood",
+      "start": "2022-07-25",
+      "end": "2022-08-06",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=321&format=json"
+    },
+    {
+      "id": 322,
+      "name": "2022 August PA Flood",
+      "start": "2022-08-02",
+      "end": "2022-08-08",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=322&format=json"
+    },
+    {
+      "id": 329,
+      "name": "Washington Coastal Winter 2022-2023",
+      "start": "2022-09-01",
+      "end": "2023-06-01",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=329&format=json"
+    },
+    {
+      "id": 327,
+      "name": "2022 December - 2023 January CA Flood",
+      "start": "2022-12-26",
+      "end": "2023-01-30",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=327&format=json"
+    },
+    {
+      "id": 328,
+      "name": "2023 March Atmospheric Rivers Flood",
+      "start": "2023-03-06",
+      "end": "2023-05-31",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=328&format=json"
+    },
+    {
+      "id": 341,
+      "name": "2023 June CA Flood",
+      "start": "2023-06-01",
+      "end": "2023-06-30",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=341&format=json"
+    },
+    {
+      "id": 334,
+      "name": "2023 July MA NY VT Flood",
+      "start": "2023-07-01",
+      "end": "2023-07-31",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=334&format=json"
+    },
+    {
+      "id": 350,
+      "name": "Washington Coastal Winter 2023-2024",
+      "start": "2023-09-01",
+      "end": "2024-12-31",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=350&format=json"
+    },
+    {
+      "id": 339,
+      "name": "2023 December East Coast Cyclone",
+      "start": "2023-12-15",
+      "end": "2023-12-25",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=339&format=json"
+    },
+    {
+      "id": 340,
+      "name": "2024 Jan CA Flood",
+      "start": "2024-01-21",
+      "end": "2024-01-25",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=340&format=json"
+    },
+    {
+      "id": 348,
+      "name": "2024 June IA Flood",
+      "start": "2024-06-18",
+      "end": "2024-07-02",
+      "url": "https://api.waterdata.usgs.gov/stnservices/hwms/filteredhwms/?event=348&format=json"
+    }
+  ]
+}

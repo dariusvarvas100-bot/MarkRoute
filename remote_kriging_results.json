@@ -1,0 +1,182 @@
+{
+  "selectedSetting": [
+    "bounded",
+    0.75,
+    45.0,
+    0.25
+  ],
+  "primaryResultSha256": "24a5761cc1b9a6d92a2604a1db1bb0daf80b432c475a1d9748f0edc6e67f3c5a",
+  "pooled": {
+    "bounded local regression": {
+      "maeFt": 5.462115412988871,
+      "missOver5FtRate": 0.3482373172828891
+    },
+    "gradient boost": {
+      "maeFt": 4.569880201498541,
+      "missOver5FtRate": 0.29342218400687875
+    },
+    "terrain-aware local kriging": {
+      "maeFt": 5.456075705272201,
+      "missOver5FtRate": 0.35264402407566636
+    }
+  },
+  "events": {
+    "2015-16 Winter MO Flood": {
+      "bounded local regression": {
+        "maeFt": 4.109408740312191,
+        "missOver5FtRate": 0.2784090909090909
+      },
+      "gradient boost": {
+        "maeFt": 3.234897203337532,
+        "missOver5FtRate": 0.18892045454545456
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 3.713262279722943,
+        "missOver5FtRate": 0.23579545454545456
+      }
+    },
+    "2016 Jul WI Flood": {
+      "bounded local regression": {
+        "maeFt": 5.00993315762756,
+        "missOver5FtRate": 0.2942073170731707
+      },
+      "gradient boost": {
+        "maeFt": 4.72682433630351,
+        "missOver5FtRate": 0.35060975609756095
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 4.92606764505073,
+        "missOver5FtRate": 0.2926829268292683
+      }
+    },
+    "2022 December - 2023 January CA Flood": {
+      "bounded local regression": {
+        "maeFt": 11.938455444899361,
+        "missOver5FtRate": 0.46691176470588236
+      },
+      "gradient boost": {
+        "maeFt": 10.050388397998944,
+        "missOver5FtRate": 0.4963235294117647
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 11.882535479070317,
+        "missOver5FtRate": 0.5514705882352942
+      }
+    },
+    "2022 June MT Flood": {
+      "bounded local regression": {
+        "maeFt": 6.455098423927656,
+        "missOver5FtRate": 0.4085195530726257
+      },
+      "gradient boost": {
+        "maeFt": 5.473512266285147,
+        "missOver5FtRate": 0.3463687150837989
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 6.659579971610584,
+        "missOver5FtRate": 0.42143854748603354
+      }
+    },
+    "2023 December East Coast Cyclone": {
+      "bounded local regression": {
+        "maeFt": 5.973924562202371,
+        "missOver5FtRate": 0.4445382882882883
+      },
+      "gradient boost": {
+        "maeFt": 5.311979740243906,
+        "missOver5FtRate": 0.4073761261261261
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 5.9546283069306245,
+        "missOver5FtRate": 0.44425675675675674
+      }
+    },
+    "2024 Jan CA Flood": {
+      "bounded local regression": {
+        "maeFt": 8.451804678048383,
+        "missOver5FtRate": 0.31009615384615385
+      },
+      "gradient boost": {
+        "maeFt": 4.53012340837927,
+        "missOver5FtRate": 0.3076923076923077
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 8.533016423250874,
+        "missOver5FtRate": 0.3173076923076923
+      }
+    },
+    "2024 June IA Flood": {
+      "bounded local regression": {
+        "maeFt": 3.550616896336616,
+        "missOver5FtRate": 0.24877450980392157
+      },
+      "gradient boost": {
+        "maeFt": 3.067584987255726,
+        "missOver5FtRate": 0.16911764705882354
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 3.502735936079131,
+        "missOver5FtRate": 0.24754901960784315
+      }
+    },
+    "Central US Spring 2019": {
+      "bounded local regression": {
+        "maeFt": 4.783515819032325,
+        "missOver5FtRate": 0.3065134099616858
+      },
+      "gradient boost": {
+        "maeFt": 3.9489242838344842,
+        "missOver5FtRate": 0.23814655172413793
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 4.785792578695458,
+        "missOver5FtRate": 0.3135775862068966
+      }
+    }
+  },
+  "environments": {
+    "Coastal": {
+      "bounded local regression": {
+        "maeFt": 2.1561419860099775,
+        "missOver5FtRate": 0.041666666666666664
+      },
+      "gradient boost": {
+        "maeFt": 2.3441228465282293,
+        "missOver5FtRate": 0.041666666666666664
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 2.189315780635291,
+        "missOver5FtRate": 0.041666666666666664
+      }
+    },
+    "Riverine": {
+      "bounded local regression": {
+        "maeFt": 5.470665344265541,
+        "missOver5FtRate": 0.3490301724137931
+      },
+      "gradient boost": {
+        "maeFt": 4.575636470520016,
+        "missOver5FtRate": 0.29407327586206894
+      },
+      "terrain-aware local kriging": {
+        "maeFt": 5.464524222318676,
+        "missOver5FtRate": 0.35344827586206895
+      }
+    }
+  },
+  "distinctSites": 1370,
+  "predictivePairs": 18608,
+  "macroAverageMaeFt": {
+    "bounded local regression": 6.284094715298307,
+    "gradient boost": 5.043029327954815,
+    "terrain-aware local kriging": 6.244702327551332
+  },
+  "markRouteGainOverKriging95Ft": [
+    0.6646918660667208,
+    1.1343690589409945
+  ],
+  "krigingGainOverBounded95Ft": [
+    -0.08091100012259266,
+    0.09302467034819203
+  ]
+}

@@ -4,7 +4,7 @@
 
 After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay to compare the two estimates for a real USGS mark. Add the archived measurement and watch both methods recalculate.
 
-**With the same initial surveys, MarkRoute reduced mean error on all five archived floods.** It cut error from **2.48 to 2.08 ft** on Ian and Helene, and from **6.17 to 5.30 ft** in a separate test on three additional floods. It still struggled in Helene, where 49% of the estimates missed by more than five feet.
+**With the same initial surveys, MarkRoute reduced mean error in 13 of 13 archived floods against bounded terrain regression.** It cut error from **2.48 to 2.08 ft** on Ian and Helene and from **6.17 to 5.30 ft** on three additional floods. In a separate geographic test covering eight floods, error fell from **5.46 to 4.57 ft** across 1,371 sites more than 100 km from earlier study sites. It still struggled in Helene, where 49% of the estimates missed by more than five feet.
 
 [Open the live replay](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html) · [Download the offline replay](https://github.com/dariusvarvas100-bot/MarkRoute/archive/refs/heads/main.zip) · [One-page write-up](MarkRoute_Writeup.pdf) · [106-second walkthrough](MarkRoute_Demo.mp4)
 
@@ -37,6 +37,12 @@ After the initial comparison, we kept the model and baseline fixed and recorded 
 
 The external check covers **659 archived sites** and 8,960 withheld location and mask pairs. Its paired 95% spatial interval was **0.61 to 1.15 ft** improvement within these events. The catalog screening included a 120-day archive lag and a minimum count of qualifying marks. The [selection protocol](EXTERNAL_PROTOCOL.md) and [full results](external_results.json) list the supported events and exclusions.
 
+## Eight floods far from the earlier study sites
+
+This separate test kept the point model and bounded regression fixed. We screened USGS events using archive completeness, eligible survey counts, and geographic distance before scoring. The eight qualifying floods contributed **1,371 actual sites**, each more than 100 km from the nearest site in the earlier panels. As in the original evaluation, each method started with the same roughly 15% survey sample in each replay.
+
+Mean error fell from **5.46 to 4.57 ft (16.3%)**. The mean improved in all eight floods. The paired spatial interval for the improvement was **0.68 to 1.13 ft** within these archives. Errors larger than five feet fell from **34.8% to 29.3%** across 18,608 withheld predictions. Storms contribute differing numbers of observations, and the same site may occur in several survey splits. [Geographic selection protocol](REMOTE_PROTOCOL.md) · [Event-level results](remote_results.json) · [Data manifest](remote_manifest.json)
+
 ## Comparison with spatial kriging
 
 Kriging predicts a location’s elevation using correlations between the surveyed points. The comparison fits a terrain trend, then solves a pooled covariance system for nearby survey residuals. Its correlation decays with geographic separation and incorporates differences in terrain elevation and waterbody. We chose the setting on Florence and Michael and evaluated it on the same initial surveys and withheld points used for the original five-storm test.
@@ -47,7 +53,7 @@ Kriging predicts a location’s elevation using correlations between the surveye
 | Three additional floods | 6.08 | 5.30 |
 | Combined | 4.89 | **4.17** |
 
-MarkRoute’s mean error was lower on all five events and **14.6% lower across the combined observations**. The paired spatial interval for the combined improvement was **0.49 to 0.99 ft** within these floods. Kriging was stronger than bounded regression on the three-event cohort. This additional comparator uses the existing archive and was added after the original benchmark. [Protocol](kriging_protocol.md) · [Selection](kriging_selection.json) · [Results](kriging_results.json)
+MarkRoute’s mean error was lower on all five events and **14.6% lower across the combined observations**. The same frozen kriging configuration also had higher mean error on each of the eight geographic holdout floods. On those sites, MarkRoute cut mean error from **5.46 to 4.57 ft** compared with kriging. [Geographic kriging results](remote_kriging_results.json) The paired spatial interval for the combined improvement was **0.49 to 0.99 ft** within these floods. Kriging was stronger than bounded regression on the three-event cohort. This additional comparator uses the existing archive and was added after the original benchmark. [Protocol](kriging_protocol.md) · [Selection](kriging_selection.json) · [Results](kriging_results.json)
 
 ## How the result changes with fewer surveys
 
@@ -87,12 +93,14 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python map_model.py validation
 python map_model.py test
-python demo_export.py
 python external_eval.py evaluate
 python sensitivity.py
 python review.py
 python kriging.py validation
 python kriging.py test
+python replay_remote.py evaluate
+python replay_remote.py kriging
+python demo_export.py
 ```
 
 These commands use the supplied processed [survey panel](panel.csv) and regenerate the validation selection, holdout metrics and browser demo. They fit fresh models. For tracing the upstream inputs, `python fetch_events.py` pulls the USGS event data and `python terrain.py` joins the public ground-elevation tiles. For the separate three-event benchmark, `python external_eval.py prepare` rebuilds its processed panel from the current catalog. Upstream services can revise the data. The supplied panels are the benchmark snapshots.
