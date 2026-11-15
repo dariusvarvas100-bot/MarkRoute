@@ -163,6 +163,30 @@
       }
     }
   }
+  const exercise = MARKROUTE_DATA.reviewExercise;
+  for (const expected of exercise.pythonChecks) {
+    const selected = new Set(expected.picks);
+    const previous = MarkRouteEngine.recompute;
+    let checked = false;
+    MarkRouteEngine.recompute = (sites, model) => {
+      if (sites.some((site, i) => {
+        const revealed = exercise.sites[i].surveyed || selected.has(i);
+        return site.surveyed !== revealed || (revealed ? site.actualFt !== exercise.sites[i].actualFt : site.actualFt !== null);
+      })) throw new Error('The exercise exposed a concealed reading to the estimator');
+      checked = true;
+      return previous(sites, model);
+    };
+    try {
+      const result = MarkRouteCrew.scoreExercise(exercise, expected.picks, MARKROUTE_DATA.estimator);
+      close(result.maeFt, expected.maeFt, 'Three-visit exercise against Python');
+      if (!checked || result.scored !== expected.scored || result.largeMisses !== expected.largeMisses) {
+        throw new Error('Exercise concealed-set totals differ');
+      }
+    } finally {
+      MarkRouteEngine.recompute = previous;
+    }
+  }
+  if (exercise.pythonChecks.length !== 2) throw new Error('Both exercise plans should match Python');
   if (!updatedScenarios) throw new Error('The new measurements never changed an estimate');
   if (!changedAttributions) throw new Error('The new measurements never changed an attribution');
   if (!changedCounterfactuals) throw new Error('Withholding a reading never changed the estimate');

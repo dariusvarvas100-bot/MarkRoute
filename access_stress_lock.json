@@ -1,0 +1,12 @@
+{
+  "protocolSha256": "8324f93fdfa137ffb255802f5d521df896df952e65d37b6d20067114dfc9bd10",
+  "codeSha256": "9013d94b048954d0400abfe64c79fffa96bbd4bc1ff8a6d9636456b9ab0b4d9d",
+  "originalCrewResultsSha256": "b3460cc08fece322e34e3664a85c5d73b9aa48f4411545c38d80b9247c0fd6e9",
+  "originalCrewInputLockSha256": "a139c98522e4b1a8912fbce09ef5177b4586e49ae35eb2e45387aeed94f4a8c9",
+  "blockedPercentTarget": 30,
+  "scenarios": [
+    "unrestricted",
+    "scattered 30%",
+    "clustered 30%"
+  ]
+}

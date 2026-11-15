@@ -119,6 +119,36 @@ def crew_summary():
     }
 
 
+def review_exercise():
+    results = ROOT / 'crew_results.json'
+    if not results.is_file():
+        return None
+    case = json.loads(results.read_text())['workedCase']
+    if len(case['cohorts']) != 1:
+        raise ValueError('The review exercise uses the single-environment Montana split')
+    cohort = case['cohorts'][0]
+    remote = pd.read_csv(ROOT / 'remote_panel.csv', keep_default_na=False)
+    points = remote.loc[remote.event_id.eq(case['eventId'])]
+    initial = set(cohort['initialSiteIds'])
+    sites = [{'id': str(row.site_id), 'lat': row.latitude, 'lon': row.longitude,
+              'environment': row.environment, 'waterbody': row.waterbody,
+              'groundFt': row.terrain_median_ft, 'pointFt': row.terrain_ft,
+              'reliefFt': row.relief_ft, 'actualFt': row.elev_ft,
+              'surveyed': str(row.site_id) in initial} for row in points.itertuples(index=False)]
+    by_id = {site['id']: index for index, site in enumerate(sites)}
+    if len(by_id) != case['siteCount']:
+        raise ValueError('The review exercise must match the locked Montana panel')
+    candidates = [by_id[site] for site in cohort['candidateSiteIds']]
+    targets = [by_id[site] for site in cohort['scoringSiteIds']]
+    model = [by_id[site] for site in case['methods']['terrain coverage']['chosenSiteIds'][:3]]
+    if set(candidates) & set(targets) or any(sites[i]['surveyed'] for i in candidates + targets):
+        raise ValueError('The review exercise cannot share measured, candidate, or scoring sites')
+    if len(model) != 3 or not set(model).issubset(candidates):
+        raise ValueError('The review exercise requires three locked eligible model picks')
+    return {'title': 'June 2022 Montana flood', 'budget': 3, 'sites': sites,
+            'candidateIndices': candidates, 'targetIndices': targets, 'modelIndices': model}
+
+
 def build():
     frame=pd.read_csv(ROOT/'panel.csv',keep_default_na=False)
     model=fit_boosted(sample(frame,TRAIN,18))
@@ -178,6 +208,9 @@ def build():
     crew = crew_summary()
     if crew is not None:
         payload['crew'] = crew
+    exercise = review_exercise()
+    if exercise is not None:
+        payload['reviewExercise'] = exercise
     return payload
 
 

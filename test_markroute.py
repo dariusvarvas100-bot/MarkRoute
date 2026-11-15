@@ -21,7 +21,7 @@ DEFAULT_ROOT = HERE if (HERE / 'panel.csv').is_file() else HERE.parent
 ROOT = Path(os.environ.get('MARKROUTE_ROOT', DEFAULT_ROOT)).resolve()
 sys.path.insert(0, str(ROOT))
 
-from demo_export import ARCHIVE_REPLAY_EVENT, ARCHIVE_REPLAY_MASKS, archival_summary, pack_trees, replay
+from demo_export import ARCHIVE_REPLAY_EVENT, ARCHIVE_REPLAY_MASKS, archival_summary, pack_trees, replay, review_exercise
 from map_model import (DEV, OBSERVED, PEERS, SEED, STATIC_NAMES, TEST, TRAIN, episode,
                        fit_boosted, observation_features, sample, split_points, xy_km)
 
@@ -205,6 +205,30 @@ class MarkRouteRegression(unittest.TestCase):
         self.assertEqual(data['summary'], read_json('holdout.json'))
         self.assertEqual(data['archive'], archival_summary())
         self.assertEqual(data['estimator'], pack_trees(self.model))
+        exercise = data['reviewExercise']
+        self.assertEqual(exercise, review_exercise())
+        case = read_json('crew_results.json')['workedCase']
+        montana = self.remote.loc[self.remote.event_id.eq(case['eventId'])].reset_index(drop=True)
+        self.assertEqual([site['id'] for site in exercise['sites']], montana.site_id.astype(str).tolist())
+        initial = [i for i, site in enumerate(exercise['sites']) if site['surveyed']]
+        by_id = {site['id']: i for i, site in enumerate(exercise['sites'])}
+        nearest = [by_id[site] for site in case['methods']['nearest']['chosenSiteIds'][:exercise['budget']]]
+        targets = np.asarray(exercise['targetIndices'])
+        xy = xy_km(montana)
+        distances = cdist(xy, xy)
+        checks = []
+        for picked in (exercise['modelIndices'], nearest):
+            anchors = np.asarray(sorted(initial + picked))
+            self.assertFalse(set(anchors) & set(targets))
+            blinded = montana.copy()
+            blinded.loc[~blinded.index.isin(anchors), 'elev_ft'] = np.nan
+            features = observation_features(blinded, xy, distances, anchors, targets)
+            self.assertTrue(np.isnan(features['actual']).all())
+            predicted = features['default'] + self.model.predict(features['features'])
+            error = np.abs(predicted - montana.elev_ft.to_numpy()[targets])
+            checks.append({'picks': picked, 'maeFt': float(error.mean()),
+                           'largeMisses': int((error > 5).sum()), 'scored': len(targets)})
+        exercise['pythonChecks'] = checks
         for event in data['events']:
             panel, count = (self.archival, ARCHIVE_REPLAY_MASKS) if event['id'] == ARCHIVE_REPLAY_EVENT else (self.panel, 16)
             frame = panel.loc[panel.event_id.eq(event['id'])].reset_index(drop=True)
@@ -228,9 +252,11 @@ class MarkRouteRegression(unittest.TestCase):
             self.skipTest('Install Node.js or set MARKROUTE_JS_RUNTIME to verify numerical browser parity.')
         encoded = json.dumps(data, allow_nan=False, separators=(',', ':'))
         js_checks = (HERE / 'test_browser_engine.js').read_text()
+        planner = (ROOT / 'crew_planner.js').read_text()
+        self.assertIn(planner, page)
         with tempfile.TemporaryDirectory() as tmp:
             script = Path(tmp) / 'check.js'
-            script.write_text(f'const MARKROUTE_DATA = {encoded};\n{engine}\n{js_checks}\n')
+            script.write_text(f'const MARKROUTE_DATA = {encoded};\n{engine}\n{planner}\n{js_checks}\n')
             result = subprocess.run([runtime, str(script)], capture_output=True, text=True, timeout=90)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         print(result.stdout.strip(), flush=True)

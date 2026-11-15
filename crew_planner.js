@@ -90,5 +90,28 @@ const MarkRouteCrew = (() => {
         site.groundFt, site.reliefFt, site.surveyed ? site.actualFt : '']));
   }
 
-  return {plan, queueCsv, surveyCsv};
+  function scoreExercise(exercise, indices, estimator) {
+    const selected = new Set(indices);
+    const eligible = new Set(exercise.candidateIndices);
+    if (indices.length !== exercise.budget || selected.size !== exercise.budget ||
+        indices.some(index => !eligible.has(index))) {
+      throw new Error('Choose exactly ' + exercise.budget + ' different eligible marks.');
+    }
+
+    const seen = exercise.sites.map((site, index) => {
+      const surveyed = site.surveyed || selected.has(index);
+      return {...site, surveyed, actualFt: surveyed ? site.actualFt : null};
+    });
+    const predictions = MarkRouteEngine.recompute(seen, estimator);
+    let total = 0;
+    let largeMisses = 0;
+    for (const index of exercise.targetIndices) {
+      const error = Math.abs(predictions[index].modelFt - exercise.sites[index].actualFt);
+      total += error;
+      if (error > 5) largeMisses++;
+    }
+    return {maeFt: total / exercise.targetIndices.length, scored: exercise.targetIndices.length, largeMisses};
+  }
+
+  return {plan, queueCsv, surveyCsv, scoreExercise};
 })();

@@ -12,6 +12,8 @@ The opening replay shows the recalculation at the closest remaining mark in the 
 
 **What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout. Use **Field measurements only** to view just the readings in the current survey, including any archived readings you add during the replay.
 
+[Try three visits](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html#visit-exercise) to compare your choices with the planner on the June 2022 Montana flood. Start with 32 surveyed flags and choose three of the 89 candidate visits. Both plans reveal exactly three readings and use the same estimator on 90 separate concealed scoring marks.
+
 ## What a crew would do differently
 
 1. Load a prepared list of flagged marks with coordinates, terrain and existing survey elevations. The CSV stays in the browser tab. The example file defines the nine required columns.
@@ -19,6 +21,16 @@ The opening replay shows the recalculation at the closest remaining mark in the 
 3. Enter each new field reading. MarkRoute updates the provisional estimates and the next visit list. **Field measurements only** shows recorded readings. **Download updated survey** saves the data for the next shift.
 
 This supports the return survey after crews have located and flagged the marks. Coverage gives priority to a site that would add a comparable reading for many poorly represented flags. It uses distance, ground elevation and named waterbody in a similarity score. It ranks readings by expected coverage and leaves road access and travel order to the crew. [USGS field manual](https://pubs.usgs.gov/publication/ofr20171105)
+
+### Prepare a survey CSV
+
+Install the dependencies in \`requirements.txt\`. Run this command with an official USGS Flood Event Viewer high-water-mark CSV. Then open \`prepared.csv\` in **Load your own survey**.
+
+\`\`\`sh
+python prepare_survey.py usgs_marks.csv prepared.csv --format fev --tile-cache terrain-tiles
+\`\`\`
+
+The same tool accepts a raw list with \`site_id\`, \`latitude\`, \`longitude\`, and \`environment\` plus optional \`waterbody\` and \`elev_ft\`. Use \`--format flags\` for this input. Leave \`elev_ft\` blank for unmeasured marks. Each environment with unmeasured flags needs a measured starting flag. If verified elevations have omitted datum metadata, \`--confirm-navd88-feet\` explicitly supplies that confirmation. The program derives the three terrain columns used by the published model. Terrain tiles come from the public Mapzen cache. Use \`--offline\` with the tile cache to skip network requests. [USGS data download portal](https://apps.usgs.gov/fev/data-download-portal) · [Mapzen terrain tiles](https://www.mapzen.com/blog/terrain-tile-service/)
 
 ### What changed at the same number of visits
 
@@ -36,6 +48,18 @@ Across 13 archived floods, terrain coverage reduced error **14.3% compared with 
 The fixed June 2022 Montana example starts at 32 surveyed flags. With 21 more readings, terrain coverage starts with marks **32316, 32093, and 32317**. It averages **4.72 ft** error on 90 untouched flags, compared with **5.65 ft** after nearest-first visits. Two additional floods from separately published Arkansas and New Hampshire field reports gave a similar direction across 79 scored sites, from 6.05 to 5.42 ft against nearest-first. The paired interval spans zero on this small cohort. The replay measures newly revealed readings. Travel time, access and crew outcomes need a field trial. [Protocol](CREW_REPLAY_PROTOCOL.md) · [Exact event and site results](crew_results.json)
 
 For a fixed set of target flags, the plan maximizes the sum of their best terrain similarities to a surveyed mark. Choosing another reading has diminishing marginal benefit as other comparable sites are selected. This makes the stated coverage objective a monotone submodular set function, with a classical greedy approximation for a fixed count. The approximation concerns the similarity score. The evidence above comes from comparing estimates after revealing real readings. For a live survey, each unmeasured mark is a coverage target and accessible marks are candidates. [Greedy coverage analysis](https://doi.org/10.1007/BF01588971)
+
+### How the plan changes when flags are inaccessible
+
+We simulated blocking 30% of the eligible candidates in each survey. The clustered case blocks neighboring flags around a randomly chosen candidate. The scattered case blocks a random sample. Every plan had the same available flags, successful-reading count and permanent scoring set.
+
+| Candidate access | Nearest-first mean error | Terrain coverage mean error |
+| --- | ---: | ---: |
+| All candidates available | 4.28 ft | 3.67 ft |
+| Scattered exclusions | 4.24 ft | 3.74 ft |
+| Clustered exclusions | 4.25 ft | 3.78 ft |
+
+Across the 13 floods, terrain coverage was **11.2% lower than nearest-first** under clustered exclusions. The paired within-event spatial interval was **0.39 to 0.58 ft**. Variability matters. In the fixed Montana replay, the clustered closure blocked 27 candidates and raised terrain-coverage error from **4.72 to 5.67 ft**. Farthest-first scored **5.37 ft** under the same closure and 21-visit budget. In the separate three-visit reviewer exercise, terrain coverage scored **5.84 ft** and nearest-first **5.74 ft** on the same 90 marks. The results depend on the reach and the number of visits. The closures simulate access loss from candidate coordinates and measure resulting elevation error. Road travel and completed field trips would need a field study. [Protocol](ACCESS_STRESS_PROTOCOL.md) · [Complete results](access_stress_results.json)
 
 ## Held-out results
 
@@ -206,7 +230,7 @@ python residual_formulation.py test
 python archival_replay.py evaluate
 python archive_review.py validation
 python archive_review.py test
-python crew_replay.py\npython steep_repair.py validation
+python crew_replay.py\npython access_stress.py\npython steep_repair.py validation
 python expanded_training.py validation
 python demo_export.py
 ```

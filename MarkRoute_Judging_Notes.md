@@ -22,3 +22,7 @@ Open **Plan the next survey visits**. Set a budget, exclude an inaccessible mark
 - **What does the equal-budget survey result establish?** The 13-flood experiment freezes the released gradient-boosted estimator, adds the same number of readings to each policy, and scores a separate hidden set. At one extra reading, conditional variance selection and simple terrain coverage both scored about 4.27 ft MAE. The paired interval spans zero. At about 10% extra marks, terrain coverage scored 3.67 ft versus random selection at 4.03 ft. Travel time and unsuccessful visits require a field test.
 
 For live finals, take the extra time to show one Helene miss and explain one MAE calculation in the interface. Credit the USGS records, Mapzen terrain tiles, scikit-learn, PyTorch and Codex. Use your own explanation of the replay and how the flags were hidden.
+
+## Run the reviewer exercise
+
+Send the reviewer [Try three visits](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html#visit-exercise). Ask them to make three choices before comparing. The archive compares their picks and MarkRoute's using the same concealed sites. On this specific small budget, nearest-first scores 5.74 ft and the planner scores 5.84 ft. Ask which sites they would prioritize after looking at the actual map and what would change if access were unclear.

@@ -155,6 +155,26 @@
 .crew-evidence p {margin:6px 0}
 @media(max-width:640px) {.crew-list {columns:1}}
 .crew-jump {display:inline-flex;font-weight:700;color:#e0f4ec;margin-top:10px;text-underline-offset:.2em}
+.hero-links {display:flex;flex-wrap:wrap;gap:0 14px}
+.practice-intro {margin:6px 0 11px;color:var(--muted);font-size:.84rem}
+.practice-grid {display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,1fr);gap:15px;align-items:start}
+.practice-plot {min-width:0}.practice-plot .chart {margin-top:0}.practice-point {stroke-width:1.2;vector-effect:non-scaling-stroke}
+.practice-point.candidate {fill:#fff;stroke:#476970;cursor:pointer}.practice-point.candidate:hover {fill:#d7ede4;stroke-width:2}
+.practice-point.anchor {fill:#197267;stroke:#16574f}.practice-point.scoring {fill:#9eb3ad;stroke:none}
+.practice-point.your-pick {fill:#2872a3;stroke:#174a71}.practice-point.model-pick {fill:none;stroke:#7c501c;stroke-width:2.1;pointer-events:none}
+.dot.practice-picked {background:#2872a3;border-color:#174a71}.dot.practice-model {background:transparent;border:2px solid #7c501c}.dot.practice-scoring {background:#9eb3ad;border:0;width:7px;height:7px}
+.practice-controls {min-width:0;padding:9px 11px;border:1px solid var(--line);border-radius:7px;background:#f5f8f4}
+.practice-controls h3 {margin-bottom:6px}.practice-chooser,.practice-actions{display:flex;align-items:end;gap:7px;flex-wrap:wrap}
+.practice-chooser>div{flex:1;min-width:150px}.practice-controls .outline{min-height:42px}.practice-controls button:disabled{cursor:default;opacity:.64}
+.practice-picks {margin:7px 0 9px;padding-left:18px;font-size:.81rem}.practice-picks li{padding:3px 0;min-height:25px}
+.practice-picks .remove-visit {font:inherit;margin-left:6px;background:transparent;color:var(--accent);border:0;text-decoration:underline;text-underline-offset:2px;min-height:34px}
+.practice-status {margin:6px 0;color:var(--muted);font-size:.77rem}
+.practice-results {margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}.practice-results h3{margin-bottom:3px}
+.practice-outcomes {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:8px}
+.practice-outcome {padding:8px 10px;border:1px solid var(--line);border-radius:6px;font-size:.8rem}.practice-outcome p {margin:3px 0}
+.practice-outcome .result-value {display:block;color:var(--ink);font-size:1.24rem;font-weight:760;font-variant-numeric:tabular-nums}
+.practice-outcome .visit-picks {overflow-wrap:anywhere;color:var(--muted)}
+@media(max-width:740px) {.practice-grid{grid-template-columns:minmax(0,1fr)}.practice-controls{grid-row:1}.practice-outcomes{grid-template-columns:minmax(0,1fr)}}
 .crew-benchmark {border-left:3px solid var(--accent);padding:7px 10px;background:#edf6f0;font-weight:680;margin:10px 0}
 .crew-save {margin:0 0 5px}
 </style>
@@ -168,7 +188,7 @@
       <h1 id="hero-title">Estimate elevations at unmeasured flood marks.</h1>
       <p>After a flood, crews flag where the water peaked. MarkRoute estimates the remaining elevations and helps choose where to measure next. Elevation uses the NAVD88 reference; depth uses local ground.</p>
       <div class="proof" data-research><strong id="headline">—</strong><span>lower mean absolute error</span><small id="headline-detail">Compared on two held-out storms</small></div>
-      <a class="crew-jump" href="#crew-planner">Plan the next visits</a>
+      <div class="hero-links"><a class="crew-jump" href="#visit-exercise" id="practice-link" data-research hidden>Try three visits</a><a class="crew-jump" href="#crew-planner">Plan the next visits</a></div>
     </div>
     <section class="opening" id="opening" aria-labelledby="opening-title" hidden>
       <h2 id="opening-title">Try one flood mark</h2>
@@ -231,8 +251,32 @@
       <div class="kbd-strip"><p class="micro" id="map-note">Points show recorded coordinates. Select a point to inspect its mark.</p><div class="strip-actions"><button type="button" class="outline" id="zoom" aria-pressed="false">Zoom near mark</button></div></div>
     </section>
   </section>
+  <section class="card bench practice" id="visit-exercise" aria-labelledby="practice-title" data-research hidden>
+    <h2 id="practice-title">You have three visits. Which marks do you measure?</h2>
+    <p class="practice-intro" id="practice-context"></p>
+    <div class="practice-grid">
+      <div class="practice-plot">
+        <div class="chart"><svg id="practice-map" viewBox="0 0 680 350" role="img" aria-label="Map of starting, candidate, and scoring marks. The candidate list offers the same selection controls."></svg></div>
+        <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> Starting measurement</span><span><i class="dot" aria-hidden="true"></i> Candidate visit</span><span><i class="dot practice-scoring" aria-hidden="true"></i> Scoring mark</span><span id="practice-yours-legend" hidden><i class="dot practice-picked" aria-hidden="true"></i> Your visit</span><span id="practice-model-legend" hidden><i class="dot practice-model" aria-hidden="true"></i> MarkRoute visit</span></div>
+      </div>
+      <div class="practice-controls">
+        <h3>Choose your visits</h3>
+        <p class="quiet">Pick a dot on the map or choose a mark from the list.</p>
+        <div class="practice-chooser"><div><label for="practice-mark">Candidate mark</label><select id="practice-mark"></select></div><button class="outline" id="practice-add" type="button">Add visit</button></div>
+        <p class="practice-status" id="practice-status" role="status"></p>
+        <ol id="practice-selected" class="practice-picks" aria-label="Your chosen visits"></ol>
+        <div class="practice-actions"><button class="outline primary" id="practice-compare" type="button" disabled>Compare plans</button><button class="outline" id="practice-reset" type="button" hidden>Start over</button></div>
+      </div>
+    </div>
+    <section class="practice-results" id="practice-results" aria-labelledby="practice-results-title" hidden>
+      <h3 id="practice-results-title" tabindex="-1">Two plans, the same scoring marks</h3><p class="quiet" id="practice-result-context"></p>
+      <div class="practice-outcomes" id="practice-outcomes"></div>
+      <p class="micro">This practice replays one archived case at a fixed reading budget. Field travel and site access are outside the exercise.</p>
+    </section>
+  </section>
   <section class="card bench crew" id="crew-planner" aria-labelledby="crew-heading">
     <div class="section-head"><h2 id="crew-heading">Plan the next survey visits</h2><button class="outline" type="button" id="crew-download" disabled>Download visit list</button></div>
+    <p class="micro" id="crew-current-survey"></p>
     <button class="outline crew-save" type="button" id="crew-save-survey" hidden>Download updated survey</button>
     <p class="quiet">Choose how many flagged marks the crew can measure next. The list prioritizes terrain and locations poorly covered by the current readings. Check site access before sending the crew.</p>
     <div class="crew-controls">
@@ -1077,6 +1121,7 @@ let crewPicks = [];
 function renderCrew() {
   const scenario = active();
   const survey = original();
+  node('crew-current-survey').textContent=`Active survey · ${replayEvents[state.event].name}`;
   if (crewSurvey !== survey) {
     crewSurvey = survey;
     crewExcluded.clear();
@@ -1151,7 +1196,7 @@ function setupCrew() {
   node('crew-benchmark').hidden = false;
   const proof = node('crew-proof');
   node('crew-benchmark').textContent = study.summary;
-  if (study.example) add(proof, 'p', study.example);
+  if (study.example) add(proof, 'p', study.example).id='crew-example';
   add(proof, 'p', 'The archived scoring marks stayed hidden. A visit means one successful reading. The study measures estimate error at a fixed reading budget.', 'micro');
 }
 
@@ -1162,6 +1207,141 @@ function downloadCrewCsv(filename, csv) {
   link.download = filename;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function paintPracticeMap(exercise, chosen, recommended, pick) {
+  const map=node('practice-map');
+  map.replaceChildren();
+  svg(map,'title',{},exercise.title||'Archived Montana survey');
+  const lats=exercise.sites.map(site=>site.lat),lons=exercise.sites.map(site=>site.lon);
+  const latitude=(Math.min(...lats)+Math.max(...lats))/2;
+  const longitude=(Math.min(...lons)+Math.max(...lons))/2;
+  const cos=Math.cos(latitude*Math.PI/180);
+  const scale=Math.min(595/Math.max((Math.max(...lons)-Math.min(...lons))*cos,.01),
+    266/Math.max(Math.max(...lats)-Math.min(...lats),.01));
+  const positions=exercise.sites.map(site=>[340+(site.lon-longitude)*cos*scale,173-(site.lat-latitude)*scale]);
+  const guide=svg(map,'g',{'aria-hidden':'true'});
+  for(const x of [43,191,340,489,637])svg(guide,'line',{x1:x,x2:x,y1:37,y2:309,class:'grid'});
+  for(const y of [37,105,173,241,309])svg(guide,'line',{x1:43,x2:637,y1:y,y2:y,class:'grid'});
+  svg(guide,'text',{x:655,y:49,class:'axis','text-anchor':'middle'},'N');
+  svg(guide,'path',{d:'M655 55v19 M651 59l4-4 4 4',stroke:'#48666e',fill:'none'});
+  function dot(index,type,radius) {
+    const [cx,cy]=positions[index];
+    return svg(map,'circle',{cx,cy,r:radius,class:`practice-point ${type}`});
+  }
+  exercise.targetIndices.forEach(index=>dot(index,'scoring',2.4));
+  exercise.sites.forEach((site,index)=>{if(site.surveyed)dot(index,'anchor',4.8);});
+  const candidateOrder=[...exercise.candidateIndices.filter(i=>!chosen.includes(i)),...chosen];
+  for(const index of candidateOrder){
+    const isChosen=chosen.includes(index);
+    const marker=dot(index,`candidate${isChosen?' your-pick':''}`,isChosen?6:4.6);
+    const {id,waterbody}=exercise.sites[index];
+    svg(marker,'title',{},`Mark ${id}${waterbody?' · '+waterbody:''}`);
+    marker.setAttribute('data-practice-candidate',String(index));
+    if(!recommended.length)marker.addEventListener('click',()=>pick(index));
+  }
+  recommended.forEach(index=>dot(index,'model-pick',8.6));
+}
+
+function setupPractice(){
+  const exercise=payload.reviewExercise;
+  if(!exercise||typeof MarkRouteCrew==='undefined'||typeof MarkRouteCrew.scoreExercise!=='function')return;
+  const {sites,candidateIndices,targetIndices,budget,modelIndices}=exercise;
+  const eligible=indices=>Array.isArray(indices)&&new Set(indices).size===indices.length&&
+    indices.every(index=>Number.isInteger(index)&&sites[index]&&!sites[index].surveyed);
+  if(budget!==3||!Array.isArray(sites)||![candidateIndices,targetIndices,modelIndices].every(eligible)||
+    candidateIndices.length<budget||modelIndices.length!==budget||!targetIndices.length||
+    !modelIndices.every(index=>candidateIndices.includes(index))||targetIndices.some(index=>candidateIndices.includes(index)))return;
+  node('visit-exercise').hidden=false;
+  node('practice-link').hidden=false;
+  if(location.hash==='#visit-exercise')requestAnimationFrame(()=>node('visit-exercise').scrollIntoView({block:'start'}));
+  const known=sites.filter(site=>site.surveyed).length;
+  node('practice-context').textContent=`${exercise.title||'June 2022 Montana flood'} · ${known} starting readings · ${candidateIndices.length} candidate visits`;
+  const select=node('practice-mark');
+  let chosen=[];
+  let committed=false;
+  const markName=index=>`Mark ${sites[index].id}`;
+
+  function render(){
+    const pending=select.value;
+    select.replaceChildren();
+    option(select,'','Choose a mark');
+    for(const index of candidateIndices){
+      if(chosen.includes(index))continue;
+      const {waterbody}=sites[index];
+      option(select,index,`${markName(index)}${waterbody?' · '+waterbody:''}`);
+    }
+    if([...select.options].some(item=>item.value===pending))select.value=pending;
+    select.disabled=committed||chosen.length===budget;
+    node('practice-add').disabled=select.disabled||!select.value;
+    node('practice-compare').disabled=committed||chosen.length!==budget;
+    node('practice-reset').hidden=chosen.length===0;
+    node('practice-yours-legend').hidden=chosen.length===0;
+    node('practice-model-legend').hidden=!committed;
+    const archiveExample=node('crew-example');
+    if(archiveExample)archiveExample.hidden=!committed;
+    node('practice-status').textContent=committed?`${chosen.length} visits entered. Compare both plans below.`:
+      `${chosen.length} of ${budget} visits chosen. ${chosen.length===budget?'Compare plans when you’re ready.':'Each visit adds one field reading.'}`;
+    const list=node('practice-selected');
+    list.replaceChildren();
+    for(const index of chosen){
+      const item=add(list,'li',markName(index));
+      if(committed)continue;
+      const remove=add(item,'button','Remove','remove-visit');
+      remove.type='button';
+      remove.setAttribute('aria-label',`Remove ${markName(index)} from your visits`);
+      remove.addEventListener('click',()=>{choose(index);select.focus();});
+    }
+    paintPracticeMap(exercise,chosen,committed?modelIndices:[],choose);
+  }
+
+  function choose(index){
+    if(committed||!candidateIndices.includes(index))return;
+    if(chosen.includes(index))chosen=chosen.filter(value=>value!==index);
+    else if(chosen.length<budget)chosen.push(index);
+    render();
+  }
+
+  select.addEventListener('change',()=>{node('practice-add').disabled=!select.value;});
+  node('practice-add').addEventListener('click',()=>{
+    if(!select.value)return;
+    choose(Number(select.value));
+    (chosen.length===budget?node('practice-compare'):select).focus();
+  });
+  node('practice-reset').addEventListener('click',()=>{
+    chosen=[];
+    committed=false;
+    node('practice-results').hidden=true;
+    clear('practice-outcomes');
+    select.value='';
+    render();
+    select.focus();
+  });
+  node('practice-compare').addEventListener('click',()=>{
+    if(committed||chosen.length!==budget)return;
+    try{
+      const yours=MarkRouteCrew.scoreExercise(exercise,chosen,payload.estimator);
+      const markroute=MarkRouteCrew.scoreExercise(exercise,modelIndices,payload.estimator);
+      if([yours,markroute].some(result=>!Number.isFinite(result?.maeFt)||result.scored!==targetIndices.length))throw new Error('invalid comparison');
+      committed=true;
+      render();
+      node('practice-results').hidden=false;
+      node('practice-result-context').textContent=`Both plans use the same MarkRoute estimator, starting readings, and ${budget} added observations. They are scored on the same ${yours.scored} untouched archive marks.`;
+      const outputs=node('practice-outcomes');
+      for(const [title,indices,result] of [['Your plan',chosen,yours],['MarkRoute plan',modelIndices,markroute]]){
+        const item=add(outputs,'section',undefined,'practice-outcome');
+        add(item,'h3',title);
+        add(item,'p',indices.map(markName).join(' · '),'visit-picks');
+        add(item,'strong',ft(result.maeFt),'result-value');
+        add(item,'p','Mean absolute elevation error');
+        add(item,'p',`${result.largeMisses} of ${result.scored} estimates missed by more than 5 ft.`);
+      }
+      node('practice-results-title').focus();
+    }catch(error){
+      node('practice-status').textContent='The exercise could not calculate that comparison. Try another set of three marks.';
+    }
+  });
+  render();
 }
 
 function draw(){
@@ -1235,6 +1415,7 @@ function setup(){
   node('zoom').addEventListener('click',()=>{state.zoom=!state.zoom;draw();});
   window.addEventListener('resize',()=>drawMap(active()));
   setupCrew();
+  setupPractice();
   benchmark();
   archiveEvidence();
   robustness();
