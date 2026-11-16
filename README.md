@@ -2,13 +2,13 @@
 
 **AI + Climate · Veritas AI International High School Hackathon 2026**
 
-After a flood, a survey coordinator can have a list of places where crews found high-water marks, with elevations for only some of them. The elevation is the height of the peak water surface relative to NAVD88. Flood depth is the height of that surface above the local ground. MarkRoute estimates the peak water-surface elevation at the remaining flags. Open the replay at an Ian survey mark and reveal the crew’s recorded 12.30 ft. MarkRoute’s estimate missed by 0.21 ft and bounded regression missed by 1.85 ft. Add the reading to watch the same models recalculate the other 249 marks.
+MarkRoute helps a post-flood survey coordinator choose which flagged high-water marks to measure next. Set the number of visits the crew can make, exclude inaccessible marks, and export a list of site IDs and coordinates. As readings arrive, MarkRoute updates both the estimates and the next visit list.
 
 **With the same starting measurements, MarkRoute reduced average error in all 22 held-out floods against both bounded terrain regression and terrain-aware kriging.** Nine newly tested inland floods contributed 2,560 event-site records. Mean error fell from **5.56 to 4.80 ft** compared with kriging. At the 1,199 riverine event-sites with higher local terrain relief, it went from **7.74 to 7.02 ft**. Large errors remained common in steep terrain.
 
-[Open the live replay](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html) · [Download the offline replay](https://github.com/dariusvarvas100-bot/MarkRoute/archive/refs/heads/main.zip) · [One-page write-up](MarkRoute_Writeup.pdf) · [106-second walkthrough](MarkRoute_Demo.mp4)
+[Open the live planner](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html) · [Try sample data or import a survey](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html#survey-import) · [See the evidence](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html#evidence) · [Download the offline program](https://github.com/dariusvarvas100-bot/MarkRoute/archive/refs/heads/main.zip) · [One-page write-up](MarkRoute_Writeup.pdf)
 
-The opening replay shows the recalculation at the closest remaining mark in the same environment. Average error across the same 249 remaining marks falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In the map, choose **Measured miss** to inspect a separate site where bounded regression is closer. Each point shows the starting estimate and the model’s signed correction.
+The [Hurricane Ian replay](https://dariusvarvas100-bot.github.io/MarkRoute/demo.html#opening) compares two estimates with a recorded elevation of 12.30 ft. MarkRoute missed by 0.21 ft and bounded regression by 1.85 ft. Adding the reading recalculates both methods on the same 249 remaining marks. Average error falls from 1.21 to 1.20 ft. At the closest mark, error rises from 0.69 to 0.72 ft. In **Map & readings → Archive replay controls**, choose **Measured miss** for a separate site where bounded regression is closer.
 
 **What we added.** Click **Explain this estimate** to see how the nearest readings changed a prediction, in feet. On Ian mark 32828, 40 fixed surveys give an 11.52 ft estimate. The four nearby readings move it to 12.51 ft. The strongest contribution is **+0.59 ft** from 6.14 km away, even though the nearest reading is 1.18 km away. Select a reading to preview the estimate without it. The crew’s measurement at the target remains hidden throughout. Use **Field measurements only** to view just the readings in the current survey, including any archived readings you add during the replay.
 
@@ -16,15 +16,15 @@ The opening replay shows the recalculation at the closest remaining mark in the 
 
 ## What a crew would do differently
 
-1. Load a prepared list of flagged marks with coordinates, terrain and existing survey elevations. The CSV stays in the browser tab. The example file defines the nine required columns.
-2. Go to **Plan the next survey visits**. Enter the number of additional readings the crew can take. Inspect proposed marks, exclude any sites the crew cannot reach, and download the visit list with site IDs and coordinates.
-3. Enter each new field reading. MarkRoute updates the provisional estimates and the next visit list. **Field measurements only** shows recorded readings. **Download updated survey** saves the data for the next shift.
+1. Choose **Import survey CSV** and load flagged marks with coordinates, terrain and existing elevations, or select **Try sample data** to explore the workflow. The CSV stays in the browser tab.
+2. In **Plan visits**, enter how many new readings the crew can take. Use **Inspect** to see a flag on the map or **Exclude** to replace it in the list. **Download visit list** exports site IDs and coordinates.
+3. In **Map & readings**, select an unmeasured mark and enter a field reading. MarkRoute updates the estimates and next visits. **Field measurements only** shows recorded readings. Under **Plan visits**, use **Download updated survey** to save readings for the next shift.
 
 This supports the return survey after crews have located and flagged the marks. Coverage gives priority to a site that would add a comparable reading for many poorly represented flags. It uses distance, ground elevation and named waterbody in a similarity score. It ranks readings by expected coverage and leaves road access and travel order to the crew. [USGS field manual](https://pubs.usgs.gov/publication/ofr20171105)
 
 ### Prepare a survey CSV
 
-Install the dependencies in `requirements.txt`. Run this command with an official USGS Flood Event Viewer high-water-mark CSV. Then open `prepared.csv` in **Load your own survey**.
+Install the dependencies in `requirements.txt`. Run this command with an official USGS Flood Event Viewer high-water-mark CSV. Then open `prepared.csv` in **Import survey CSV**.
 
 ```sh
 python prepare_survey.py usgs_marks.csv prepared.csv --format fev --tile-cache terrain-tiles

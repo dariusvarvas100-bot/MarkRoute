@@ -199,7 +199,10 @@ class MarkRouteRegression(unittest.TestCase):
         page = (ROOT / 'demo.html').read_text()
         engine = (ROOT / 'browser_engine.js').read_text()
         self.assertIn(engine, page)
-        self.assertIn('url=demo.html', (ROOT / 'index.html').read_text())
+        landing = (ROOT / 'index.html').read_text()
+        for fragment in ('crew-planner', 'survey-import', 'visit-exercise'):
+            self.assertIn(f'href="demo.html#{fragment}"', landing)
+            self.assertIn(f'id="{fragment}"', page)
         data, _ = json.JSONDecoder().raw_decode(page.split('const MARKROUTE_DATA = ', 1)[1])
         self.assertEqual([event['id'] for event in data['events']], [*TEST, ARCHIVE_REPLAY_EVENT])
         self.assertEqual(data['summary'], read_json('holdout.json'))

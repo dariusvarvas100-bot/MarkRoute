@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Revisit surveyed USGS high-water marks and compare post-flood elevation estimates">
-<title>MarkRoute · Post-flood survey replay</title>
+<meta name="description" content="Plan post-flood survey visits and update peak water elevations as field readings arrive.">
+<title>MarkRoute · Survey workspace</title>
 <style>
   :root{color-scheme:light;--ink:#172c32;--muted:#50646a;--paper:#f5f6f1;--line:#d9e1db;
     --night:#15373b;--dark:#102d31;--accent:#176859;--mint:#b9eccf;--tint:#e8f3ea;--red:#a1383d;
@@ -177,56 +177,163 @@
 @media(max-width:740px) {.practice-grid{grid-template-columns:minmax(0,1fr)}.practice-controls{grid-row:1}.practice-outcomes{grid-template-columns:minmax(0,1fr)}}
 .crew-benchmark {border-left:3px solid var(--accent);padding:7px 10px;background:#edf6f0;font-weight:680;margin:10px 0}
 .crew-save {margin:0 0 5px}
+
+  :root{--paper:#f3f5ee;--ink:#132e29;--accent:#1e6550;--line:#d4dfd6;
+    --font:"DM Sans",system-ui,-apple-system,sans-serif}
+  .wrap{max-width:1220px}
+  .workspace-header{background:#102d2a;border-bottom:1px solid #32514a}
+  .workspace-header .head{height:auto;min-height:68px;gap:18px}
+  .workspace-header .brand{color:#f5fbf4;text-decoration:none;font-size:1.3rem}
+  .workspace-header a:focus-visible{outline-color:#c8e9b6}
+  .workspace-nav{display:flex;gap:4px;align-items:center}
+  .workspace-nav a{padding:10px 13px;min-height:44px;display:flex;align-items:center;color:#d0e2d7;
+    font-size:.87rem;font-weight:650;text-decoration:none;border-radius:8px;white-space:nowrap}
+  .workspace-nav a:hover,.workspace-nav a[aria-current]{color:#12382a;background:#d5ebc9}
+  main.wrap{padding-top:20px;padding-bottom:25px}
+  .card{border-radius:14px;box-shadow:0 2px 3px #1c4a2910}
+  .source-card{padding:11px 14px;display:grid;gap:0 15px;grid-template-columns:minmax(170px,1fr) auto;align-items:end}
+  .source-picker{display:flex;gap:10px;align-items:center;min-width:0;max-width:590px}
+  .source-picker label{margin:0;white-space:nowrap;color:var(--ink)}
+  .source-picker select{font-weight:650;min-width:0;max-width:380px}
+  .source-card .survey-import{margin:0;border:0;min-width:0}
+  .source-card .survey-import[open]{grid-column:1/-1;margin-top:10px}
+  .source-card .survey-import summary{list-style:none;display:flex;align-items:center;
+    padding:8px 12px;margin:0;min-height:44px;border:1px solid #89ad98;border-radius:8px;color:#23543e;background:#f0f7ec}
+  .source-card .survey-import summary::after{content:'+';font-size:1.05rem;margin-left:9px}
+  .source-card .survey-import[open] summary::after{content:'−'}
+  .source-card .import-grid{margin-top:12px}
+  .import-grid #load-sample{margin:7px 10px 0 0}.import-grid .import-status{min-height:1.2em}
+  .workspace-intro{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 16px}
+  .workspace-intro h1{margin:0;font-family:"Bricolage Grotesque",system-ui,sans-serif;
+    font-size:clamp(1.84rem,4.9vw,3.18rem);line-height:1.08;letter-spacing:-.052em;font-weight:720}
+  .workspace-intro p{margin:7px 0 0;font-size:.95rem;color:var(--muted)}
+  .workspace-link{font-size:.85rem;font-weight:700;white-space:nowrap;text-underline-offset:.22em}
+  .planner-grid{display:grid;grid-template-columns:minmax(220px,.56fr) minmax(0,1.44fr);gap:15px;align-items:start}
+  .plan-settings,.plan-output{padding:19px 20px}
+  .plan-settings{background:#e9f1e6;border-color:#ccdccc}
+  .plan-settings h2,.plan-output h2{font-size:1.26rem;margin:0}
+  .plan-settings .quiet{margin-top:5px}.plan-settings .crew-controls{display:block;margin:14px 0 10px}
+  .budget-entry{display:grid;grid-template-columns:44px minmax(57px,84px) 44px;gap:6px}
+  .budget-entry input,.budget-entry button{width:100%;min-height:44px;text-align:center;font-weight:750;font-size:1rem}
+  .budget-entry input{font-variant-numeric:tabular-nums;appearance:textfield}
+  .budget-entry input::-webkit-inner-spin-button,.budget-entry input::-webkit-outer-spin-button{appearance:none;margin:0}
+  .budget-entry input:focus-visible{outline:3px solid #066b9a;outline-offset:2px}
+  .plan-actions{display:flex;flex-wrap:wrap;gap:5px}.plan-actions button{margin-top:8px}
+  .plan-output .section-head{align-items:center;gap:8px 13px;flex-wrap:wrap}
+  .plan-output .outline,.plan-settings .outline,.visit-actions button{min-height:43px}
+  button:disabled{opacity:.52;cursor:default}.plan-output .primary{background:#1e6550;border-color:#1e6550}
+  .plan-output .primary:hover:not(:disabled){background:#124738}
+  .crew-list{padding:0;margin:12px 0 0;columns:auto;list-style:none;counter-reset:visits}
+  .crew-list li{counter-increment:visits;display:grid;grid-template-columns:31px minmax(0,1fr) auto;align-items:center;
+    gap:10px;padding:8px 0;border-top:1px solid var(--line);margin:0}
+  .crew-list li::before{content:counter(visits,decimal-leading-zero);display:grid;place-items:center;width:30px;height:30px;
+    background:#e7f0e7;color:#35644f;border-radius:8px;font-size:.72rem;font-weight:750;font-variant-numeric:tabular-nums}
+  .crew-list .visit-label{color:var(--ink);font-size:.93rem;overflow-wrap:anywhere}
+  .crew-list .visit-detail{color:var(--muted);font-size:.76rem;overflow-wrap:anywhere}
+  .visit-actions{display:flex;gap:5px;align-items:center;justify-content:flex-end}
+  .visit-actions button{font:inherit;font-size:.78rem;font-weight:700;text-decoration:none;white-space:nowrap;
+    color:#22563e;border:1px solid #d4e0d6;background:#f3f8f2;border-radius:7px;padding:6px 9px;min-width:48px;text-align:center}
+  .visit-actions button:hover{background:#dbeedc;border-color:#88ab95}
+  .visit-actions [data-exclude-visit]{background:white;color:#46554d}
+  .visit-feedback{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;
+    background:#eff6eb;padding:6px 9px;border-radius:8px;font-size:.8rem;color:#2e5d43}
+  .visit-feedback p{margin:0}.visit-feedback .outline{min-height:37px}
+  .replay-settings{margin-top:14px;padding:12px 15px}.replay-settings summary{cursor:pointer;font-weight:700;color:var(--accent)}
+  .replay-settings:focus-within summary{outline-offset:3px}.replay-settings .examples{margin-top:12px}
+  .replay-settings .map-layer-actions{justify-content:start}.inspect #crew-exclude{margin-top:10px}
+  #evidence .opening{margin-top:16px}.workspace-footer{display:flex;justify-content:space-between;gap:8px 18px;flex-wrap:wrap}
+  @media(max-width:780px){.planner-grid{grid-template-columns:minmax(175px,.65fr) minmax(0,1.35fr)}.plan-settings,.plan-output{padding:14px}}
+  @media(max-width:620px){
+    .workspace-header .head{align-items:start;flex-direction:column;gap:5px;padding-top:10px;padding-bottom:7px}
+    .workspace-nav{width:100%;justify-content:space-between;gap:2px}
+    .workspace-nav a{padding:6px;min-height:41px;font-size:.74rem;justify-content:center}
+    .workspace-intro{margin:17px 0 12px;align-items:start;flex-direction:column;gap:6px}
+    .workspace-intro p{font-size:.83rem;margin-top:5px}.planner-grid{display:block}
+    .plan-settings{padding:11px 12px}.plan-settings .crew-controls{margin:9px 0 6px}
+    .plan-output{margin-top:10px;padding:11px 12px}.plan-output .primary{padding:6px 8px;font-size:.73rem}
+    .plan-settings .quiet{font-size:.76rem}.crew-list li{gap:5px;grid-template-columns:25px minmax(0,1fr) auto}
+    .crew-list li::before{width:24px;height:24px}.visit-actions{gap:3px}.visit-actions button{padding:4px 6px;font-size:.72rem}
+    .source-card{padding:8px;gap:0 7px}.source-picker{display:block}.source-picker label{font-size:.71rem;margin-bottom:2px}
+    .source-card .survey-import summary{font-size:.72rem;padding:5px 7px}.source-picker select{font-size:.8rem;padding-left:7px}
+    .source-card .survey-import summary::after{margin-left:4px}.source-card .import-grid{margin-top:8px}
+    .layout .map-card{margin-top:0}.layout .inspect{margin-top:10px}.map-card .section-head{flex-wrap:wrap}
+  }
+  @media(max-width:340px){.workspace-nav a{font-size:.70rem;padding-inline:4px}.visit-actions{flex-direction:column;align-items:stretch}}
 </style>
 </head>
 <body>
-<a class="skip" href="#replay">Skip to replay</a>
-<header><div class="wrap head"><div class="brand"><span class="mark" aria-hidden="true"></span>MarkRoute</div><span>Post-flood survey replay</span></div></header>
-<section class="hero" aria-labelledby="hero-title">
-  <div class="wrap hero-grid">
-    <div>
-      <h1 id="hero-title">Estimate elevations at unmeasured flood marks.</h1>
-      <p>After a flood, crews flag where the water peaked. MarkRoute estimates the remaining elevations and helps choose where to measure next. Elevation uses the NAVD88 reference; depth uses local ground.</p>
-      <div class="proof" data-research><strong id="headline">—</strong><span>lower mean absolute error</span><small id="headline-detail">Compared on two held-out storms</small></div>
-      <div class="hero-links"><a class="crew-jump" href="#visit-exercise" id="practice-link" data-research hidden>Try three visits</a><a class="crew-jump" href="#crew-planner">Plan the next visits</a></div>
-    </div>
-    <section class="opening" id="opening" aria-labelledby="opening-title" hidden>
-      <h2 id="opening-title">Try one flood mark</h2>
-      <p class="opening-meta" id="opening-meta"></p>
-      <dl class="opening-values" id="opening-values">
-        <div class="model"><dt>MarkRoute</dt><dd><span id="opening-model"></span><small class="opening-error" id="opening-model-error" hidden></small></dd></div>
-        <div class="baseline"><dt>Bounded regression</dt><dd><span id="opening-baseline"></span><small class="opening-error" id="opening-baseline-error" hidden></small></dd></div>
-        <div class="field"><dt>USGS reading</dt><dd id="opening-actual">Withheld</dd></div>
-      </dl>
-      <div class="track" aria-hidden="true"><i id="track-model"></i><i class="baseline" id="track-baseline"></i><i class="field" id="track-actual" hidden></i></div>
-      <div class="opening-actions"><button class="opening-action" id="opening-action" type="button" aria-controls="opening-values opening-feedback">Reveal the USGS reading</button><button class="opening-explain" id="opening-explain" type="button" aria-controls="influence" hidden>Explain this estimate</button></div>
-      <p id="opening-feedback" class="opening-feedback" role="status" aria-atomic="true"></p>
-    </section>
+<a class="skip" href="#crew-planner">Skip to the planner</a>
+<header class="workspace-header">
+  <div class="wrap head">
+    <a class="brand" href="#crew-planner"><span class="mark" aria-hidden="true"></span>MarkRoute</a>
+    <nav class="workspace-nav" aria-label="Workspace">
+      <a href="#crew-planner" data-workspace="plan" aria-current="page">Plan visits</a>
+      <a href="#map-and-readings" data-workspace="map">Map &amp; readings</a>
+      <a href="#visit-exercise" id="practice-link" data-workspace="practice" hidden>Practice</a>
+      <a href="#evidence" data-workspace="evidence">Evidence</a>
+    </nav>
   </div>
-</section>
+</header>
 <main id="replay" class="wrap">
-  <noscript><p>This replay needs JavaScript.</p></noscript>
-  <p id="no-data" hidden>Replay data are unavailable.</p>
+  <noscript><p>MarkRoute needs JavaScript to run the survey planner.</p></noscript>
+  <p id="no-data" hidden>Survey data are unavailable.</p>
   <div id="pages" hidden>
-  <section class="card workbench" aria-label="Replay controls">
-    <div class="examples" id="examples" hidden>
-      <div><h2 id="examples-heading">Try the Ian replay</h2><p class="quiet">Two selected marks from the same archived survey.</p></div>
-      <div class="segmented" role="group" aria-labelledby="examples-heading"><button id="worked-case" type="button" aria-pressed="false">Worked example</button><button id="miss-case" type="button" aria-pressed="false">Measured miss</button></div>
-    </div>
-    <div class="controls">
-      <div><label for="event">Replay flood</label><select id="event"></select></div>
-      <div id="scenario-control"><label for="scenario">Starting survey</label><select id="scenario"></select></div>
-      <div class="methods display-options"><div id="error-methods"><span class="switch-label" id="method-label">Map error layer</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">MarkRoute</button><button id="baseline" type="button">Bounded regression</button></div></div><button class="outline field-toggle" type="button" id="field-only" aria-pressed="false" aria-controls="map mark-select predictions">Field measurements only</button></div>
-    </div>
+    <section class="card source-card" aria-label="Survey source">
+      <div class="source-picker"><label for="event">Active survey</label><select id="event"></select></div>
     <details id="survey-import" class="survey-import" hidden>
-      <summary>Load your own survey</summary>
+      <summary>Import survey CSV</summary>
       <div class="import-grid">
-        <div><label for="survey-file">Prepared CSV</label><input type="file" id="survey-file" accept=".csv,text/csv" aria-describedby="survey-privacy survey-schema"><p id="survey-privacy">Your file stays in this browser tab. Keep a copy of any readings you need.</p><a id="survey-example" class="import-action" download="markroute_survey_example.csv">Download example CSV</a><p id="import-status" class="import-status" role="status" aria-atomic="true"></p></div>
+        <div><label for="survey-file">Prepared CSV</label><input type="file" id="survey-file" accept=".csv,text/csv" aria-describedby="survey-privacy survey-schema"><p id="survey-privacy">Your file stays in this browser tab. Keep a copy of any readings you need.</p><button class="outline" type="button" id="load-sample">Try sample data</button><a id="survey-example" class="import-action" download="markroute_survey_example.csv">Download example CSV</a><p id="import-status" class="import-status" role="status" aria-atomic="true"></p></div>
         <div class="import-guide" id="survey-schema"><strong>Required columns</strong><code>site_id,latitude,longitude,environment,waterbody,terrain_ft,terrain_median_ft,relief_ft,elev_ft</code><p>Use decimal-degree coordinates and one row per flagged mark. Enter <b>Coastal</b> or <b>Riverine</b>. Waterbody can be blank.</p><p>Use terrain point and local median elevations and surveyed peak water-surface elevation in NAVD88 feet. Relief is the local terrain elevation spread in feet. Blank <code>elev_ft</code> means unmeasured. Include at least one reading per environment.</p><p>Use up to 800 marks per file. The example contains illustrative readings. Local predictions are experimental.</p></div>
       </div>
     </details>
-  </section>
-  <section class="layout" aria-label="Archive replay">
+    </section>
+    <section id="crew-planner" aria-labelledby="crew-heading">
+      <div class="workspace-intro">
+        <div><h1 id="crew-heading" tabindex="-1">Plan the next survey visits</h1>
+          <p>Set your visit budget, check the suggested flags, and send the crew a list.</p></div>
+      </div>
+      <div class="planner-grid">
+        <section class="card plan-settings" aria-labelledby="plan-settings-title">
+          <h2 id="plan-settings-title">Visit budget</h2>
+          <p class="quiet" id="crew-current-survey"></p>
+          <div class="crew-controls">
+            <label for="crew-budget">New readings the crew can take</label>
+            <div class="budget-entry">
+              <button type="button" class="outline" id="crew-less" aria-label="Decrease visit budget">−</button>
+              <input id="crew-budget" type="number" min="1" max="50" value="3" inputmode="numeric">
+              <button type="button" class="outline" id="crew-more" aria-label="Increase visit budget">+</button>
+            </div>
+          </div>
+          <p class="quiet">Suggestions prioritize gaps in similar terrain. Check access before sending the crew.</p>
+          <div class="plan-actions">
+            <button type="button" class="outline" id="crew-reset" hidden>Restore all excluded marks</button>
+            <button type="button" class="outline" id="crew-save-survey" hidden>Download updated survey</button>
+          </div>
+        </section>
+        <section class="card plan-output" aria-labelledby="next-visits-title">
+          <div class="section-head">
+            <div><h2 id="next-visits-title" tabindex="-1">Suggested visits</h2><p id="crew-status" class="quiet" role="status"></p></div>
+            <button class="outline primary" type="button" id="crew-download" disabled>Download visit list</button>
+          </div>
+          <div class="visit-feedback" id="visit-feedback" hidden>
+            <p id="visit-feedback-message" role="status"></p>
+            <button id="crew-undo" class="outline" type="button" hidden>Undo exclusion</button>
+          </div>
+          <ol id="crew-list" class="crew-list"></ol>
+        </section>
+      </div>
+    </section>
+    <section id="map-and-readings" aria-labelledby="map-workspace-title" hidden>
+      <div class="workspace-intro"><div><h1 id="map-workspace-title" tabindex="-1">Map &amp; readings</h1><p>Select a flag to see its elevation or add a reading.</p></div><a class="workspace-link" href="#crew-planner">Back to visit list</a></div>
+      <div class="layout" aria-label="Map and selected survey mark">
+    <section class="card map-card" aria-labelledby="map-heading">
+      <div class="section-head"><div><h2 id="map-heading">Flagged high-water marks</h2><p class="quiet" id="map-counts" aria-live="polite"></p></div><button class="outline field-toggle" type="button" id="field-only" aria-pressed="false" aria-controls="map mark-select predictions">Field measurements only</button></div>
+      <div class="chart"><svg id="map" viewBox="0 0 760 412" role="img" aria-label="Geographic scatterplot of flagged high-water marks"><title>High-water mark coordinates</title></svg></div>
+      <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> <span id="field-legend">Available measurement</span></span><span id="withheld-legend"><i class="dot" aria-hidden="true"></i> Withheld mark</span><span id="added-legend" hidden><i class="dot field-added" aria-hidden="true"></i> Added measurement</span><span id="review-legend" hidden><i class="dot review" aria-hidden="true"></i> Review flag</span><span data-error hidden><i class="dot low" aria-hidden="true"></i> Error ≤1 ft</span><span data-error hidden><i class="dot mid" aria-hidden="true"></i> Error &gt;1 to 5 ft</span><span data-error hidden><i class="dot high" aria-hidden="true"></i> Error &gt;5 ft</span></div>
+      <div id="review-info" class="callout" hidden><strong id="review-current"></strong><p id="review-evidence" class="micro"></p><p class="micro">Flags use only the gap between both estimates. Verify flagged and unflagged estimates in the field.</p></div>
+      <div class="kbd-strip"><p class="micro" id="map-note">Points show recorded coordinates. Select a point to inspect its mark.</p><div class="strip-actions"><button type="button" class="outline" id="zoom" aria-pressed="false">Zoom near mark</button></div></div>
+    </section>
     <section class="card inspect" aria-labelledby="inspect-heading">
       <div class="section-head"><h2 id="inspect-heading" tabindex="-1">Inspect a mark</h2><span id="flag" class="flag"></span></div>
       <label for="mark-select">Survey mark</label><select id="mark-select"></select>
@@ -236,23 +343,31 @@
       <div class="truth" id="truth"><span id="reading-label">USGS field measurement</span><strong id="actual" aria-live="polite">Withheld</strong></div>
       <form class="record-reading" id="record-reading" hidden novalidate><label for="reading-value">Surveyed peak elevation (NAVD88 ft)</label><div class="entry"><input id="reading-value" type="number" step="any" inputmode="decimal" aria-describedby="reading-error"><button class="outline primary" type="submit">Add reading</button></div><p id="reading-error" class="micro reading-error" role="status"></p></form>
       <div class="survey-actions"><button class="outline primary" id="reveal" type="button" aria-expanded="false" aria-controls="actual">Reveal measurement</button><button class="outline primary" id="add-survey" type="button" hidden>Add to survey</button><button class="outline" id="reset-survey" type="button" hidden>Reset survey</button></div>
+      <button type="button" class="outline" id="crew-exclude">Exclude selected mark</button>
       <p class="micro hint" id="survey-hint" aria-live="polite"></p>
       <p class="micro status" id="recompute-status" role="status"></p>
       <details class="influence" id="influence" hidden><summary id="influence-toggle">Which survey readings moved the estimate?</summary><div class="influence-content" id="influence-content"></div></details>
       <details class="formula" id="formula" hidden><summary>How MarkRoute gets this estimate</summary><p class="equation" id="equation"></p><p id="equation-note"></p></details>
-      <div class="callout" id="scenario-mae"></div>
+      <details class="formula" data-research><summary>Survey comparison</summary><div class="callout" id="scenario-mae"></div></details>
       <p class="micro source-line" id="mark-source">USGS Flood Event Viewer · peak elevation in NAVD88 feet.</p>
     </section>
-    <section class="card map-card" aria-labelledby="map-heading">
-      <div class="section-head"><div><h2 id="map-heading">Flagged high-water marks</h2><p class="quiet" id="map-counts" aria-live="polite"></p></div><div class="map-layer-actions"><button class="outline" type="button" id="review-flags" aria-pressed="false" aria-controls="map review-info" hidden>Review flags</button><button class="outline" type="button" id="errors" aria-pressed="false">Reveal map errors</button></div></div>
-      <div class="chart"><svg id="map" viewBox="0 0 760 412" role="img" aria-label="Geographic scatterplot of flagged high-water marks"><title>High-water mark coordinates</title></svg></div>
-      <div class="legend"><span><i class="dot anchor" aria-hidden="true"></i> <span id="field-legend">Available measurement</span></span><span id="withheld-legend"><i class="dot" aria-hidden="true"></i> Withheld mark</span><span id="added-legend" hidden><i class="dot field-added" aria-hidden="true"></i> Added measurement</span><span id="review-legend" hidden><i class="dot review" aria-hidden="true"></i> Review flag</span><span data-error hidden><i class="dot low" aria-hidden="true"></i> Error ≤1 ft</span><span data-error hidden><i class="dot mid" aria-hidden="true"></i> Error &gt;1 to 5 ft</span><span data-error hidden><i class="dot high" aria-hidden="true"></i> Error &gt;5 ft</span></div>
-      <div id="review-info" class="callout" hidden><strong id="review-current"></strong><p id="review-evidence" class="micro"></p><p class="micro">Flags use only the gap between both estimates. Verify flagged and unflagged estimates in the field.</p></div>
-      <div class="kbd-strip"><p class="micro" id="map-note">Points show recorded coordinates. Select a point to inspect its mark.</p><div class="strip-actions"><button type="button" class="outline" id="zoom" aria-pressed="false">Zoom near mark</button></div></div>
+      </div>
+      <details class="card replay-settings" id="replay-settings" data-research>
+        <summary>Archive replay controls</summary>
+    <div class="examples" id="examples" hidden>
+      <div><h2 id="examples-heading">Try the Ian replay</h2><p class="quiet">Two selected marks from the same archived survey.</p></div>
+      <div class="segmented" role="group" aria-labelledby="examples-heading"><button id="worked-case" type="button" aria-pressed="false">Worked example</button><button id="miss-case" type="button" aria-pressed="false">Measured miss</button></div>
+    </div>
+        <div class="controls">
+          <div id="scenario-control"><label for="scenario">Starting survey</label><select id="scenario"></select></div>
+          <div id="error-methods"><span class="switch-label" id="method-label">Map error layer</span><div class="segmented" role="group" aria-labelledby="method-label"><button id="model" type="button">MarkRoute</button><button id="baseline" type="button">Bounded regression</button></div></div>
+          <div class="map-layer-actions"><button class="outline" type="button" id="review-flags" aria-pressed="false" aria-controls="map review-info" hidden>Review flags</button><button class="outline" type="button" id="errors" aria-pressed="false">Reveal map errors</button></div>
+        </div>
+      </details>
     </section>
-  </section>
-  <section class="card bench practice" id="visit-exercise" aria-labelledby="practice-title" data-research hidden>
-    <h2 id="practice-title">You have three visits. Which marks do you measure?</h2>
+    <div id="practice-panel" hidden>
+  <section class="card bench practice" id="visit-exercise" aria-labelledby="practice-title" hidden>
+    <h2 id="practice-title" tabindex="-1">You have three visits. Which marks do you measure?</h2>
     <p class="practice-intro" id="practice-context"></p>
     <div class="practice-grid">
       <div class="practice-plot">
@@ -274,26 +389,32 @@
       <p class="micro">This practice replays one archived case at a fixed reading budget. Field travel and site access are outside the exercise.</p>
     </section>
   </section>
-  <section class="card bench crew" id="crew-planner" aria-labelledby="crew-heading">
-    <div class="section-head"><h2 id="crew-heading">Plan the next survey visits</h2><button class="outline" type="button" id="crew-download" disabled>Download visit list</button></div>
-    <p class="micro" id="crew-current-survey"></p>
-    <button class="outline crew-save" type="button" id="crew-save-survey" hidden>Download updated survey</button>
-    <p class="quiet">Choose how many flagged marks the crew can measure next. The list prioritizes terrain and locations poorly covered by the current readings. Check site access before sending the crew.</p>
-    <div class="crew-controls">
-      <div><label for="crew-budget">Additional measurements</label><input id="crew-budget" type="number" min="1" max="50" value="3" inputmode="numeric"></div>
-      <button type="button" class="outline" id="crew-exclude">Exclude selected mark</button>
-      <button type="button" class="outline" id="crew-reset" hidden>Clear exclusions</button>
     </div>
-    <p id="crew-status" class="micro" role="status"></p>
-    <ol id="crew-list" class="crew-list"></ol>
-    <p id="crew-benchmark" class="crew-benchmark" data-research hidden></p>
-    <details class="crew-evidence" id="crew-evidence" data-research hidden><summary>What changed at the same survey budget?</summary><div id="crew-proof"></div></details>
-  </section>
-  <section class="card bench" aria-labelledby="benchmark-heading" data-research>
+    <section id="evidence" aria-labelledby="evidence-title" hidden>
+      <div class="workspace-intro"><div><h1 id="evidence-title" tabindex="-1">Evidence from archived floods</h1><p>Compare methods at the same survey budget and see where the estimates miss.</p></div></div>
+      <section class="card bench" aria-labelledby="visit-study-title">
+        <h2 id="visit-study-title">Visit selection at a fixed budget</h2>
+        <p id="crew-benchmark" class="crew-benchmark" hidden></p>
+        <details class="crew-evidence" id="crew-evidence" hidden><summary>Montana example and scoring</summary><div id="crew-proof"></div></details>
+      </section>
+    <section class="opening" id="opening" aria-labelledby="opening-title" hidden>
+      <h2 id="opening-title">Try one flood mark</h2>
+      <p class="opening-meta" id="opening-meta"></p>
+      <dl class="opening-values" id="opening-values">
+        <div class="model"><dt>MarkRoute</dt><dd><span id="opening-model"></span><small class="opening-error" id="opening-model-error" hidden></small></dd></div>
+        <div class="baseline"><dt>Bounded regression</dt><dd><span id="opening-baseline"></span><small class="opening-error" id="opening-baseline-error" hidden></small></dd></div>
+        <div class="field"><dt>USGS reading</dt><dd id="opening-actual">Withheld</dd></div>
+      </dl>
+      <div class="track" aria-hidden="true"><i id="track-model"></i><i class="baseline" id="track-baseline"></i><i class="field" id="track-actual" hidden></i></div>
+      <div class="opening-actions"><button class="opening-action" id="opening-action" type="button" aria-controls="opening-values opening-feedback">Reveal the USGS reading</button><button class="opening-explain" id="opening-explain" type="button" aria-controls="influence" hidden>Explain this estimate</button></div>
+      <p id="opening-feedback" class="opening-feedback" role="status" aria-atomic="true"></p>
+    </section>
+      <div class="proof" hidden><strong id="headline">—</strong><small id="headline-detail"></small></div>
+  <section class="card bench" aria-labelledby="benchmark-heading">
     <h2 id="benchmark-heading">Held-out benchmark</h2><p id="bench-size" class="quiet"></p>
     <div class="bench-grid"><div><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Cohort</th><th scope="col">Regression</th><th scope="col">MarkRoute</th></tr></thead><tbody id="benchmark"></tbody></table></div><div class="bench-text"><p id="interval"></p><p id="miss"></p><p id="external" hidden></p><p id="remote-evidence" hidden></p><p>Both methods received the same starting marks. Bounded local regression fits water elevation against nearby terrain. It was the strongest nonlearned method on the development storms.</p></div></div>
   </section>
-  <section class="card bench" id="archive-evidence" aria-labelledby="archive-heading" data-research hidden>
+  <section class="card bench" id="archive-evidence" aria-labelledby="archive-heading" hidden>
     <div class="section-head"><h2 id="archive-heading">Steep inland flood archives</h2><button class="outline" type="button" id="archive-replay" hidden>Replay West Virginia</button></div>
     <p class="archive-lead" id="archive-intro">Compare estimates against surveyed peak water-surface elevations at flagged locations.</p>
     <div class="archive-grid">
@@ -306,7 +427,7 @@
     </div>
     <p class="micro archive-scopes" id="archive-methods"></p>
   </section>
-  <section class="card bench" id="robustness" aria-labelledby="robustness-heading" data-research hidden>
+  <section class="card bench" id="robustness" aria-labelledby="robustness-heading" hidden>
     <h2 id="robustness-heading">When starting surveys are sparse</h2>
     <p class="quiet">Replays of the same five archived floods compare each measurement budget on the same withheld marks.</p>
     <div class="robust-grid">
@@ -315,9 +436,10 @@
     </div>
     <details class="robust-table"><summary>Read the exact values</summary><table><caption>Mean absolute elevation error in feet</caption><thead><tr><th scope="col">Starting share</th><th scope="col">Regression</th><th scope="col">MarkRoute</th></tr></thead><tbody id="robust-table-values"></tbody></table></details>
   </section>
+    </section>
   </div>
 </main>
-<footer class="wrap" data-research><p>Retrospective research for already flagged marks. Estimates need field verification. The replay shows survey locations after a flood.</p><p>Observations from the <a href="https://stn.wim.usgs.gov/fev/">USGS Flood Event Viewer</a>. Ground elevation features from <a href="https://www.mapzen.com/blog/terrain-tile-service/">Mapzen Terrain Tiles</a>.</p></footer>
+<footer class="wrap workspace-footer"><p>Post-flood survey prototype. Verify estimated elevations in the field.</p><p><a href="https://github.com/dariusvarvas100-bot/MarkRoute">Project and data sources</a> · <a href="https://www.usgs.gov/tools/flood-event-viewer">USGS Flood Event Viewer</a></p></footer>
 <script>
 /*__MARKROUTE_DATA__*/
 </script>
@@ -459,13 +581,40 @@ function prepareLocalSurvey(text){
 }
 function rebuildEventOptions(){
   clear('event');
-  replayEvents.forEach((event,i)=>option(node('event'),i,event.name));
+  replayEvents.forEach((event,i)=>option(node('event'),i,
+    String(event.id)===examples.eventId?'Hurricane Ian (2022)':event.name));
+}
+function loadLocalSurvey(text){
+  const scenario=prepareLocalSurvey(text);
+  const existing=replayEvents.findIndex(item=>item.id===localEventId);
+  const index=existing<0?replayEvents.length:existing;
+  replayEvents[index]={id:localEventId,name:'Your survey (local CSV)',scenarios:[scenario]};
+  localUpdates=null;
+  state.fieldOnly=false;
+  state.estimateSelection=null;
+  rebuildEventOptions();
+  selectEvent(index);
+  node('load-sample').hidden=true;
+  return `Loaded ${scenario.counts.sites} marks · ${scenario.counts.initial} measured · ${scenario.counts.unseen} awaiting a reading.`;
 }
 function bindLocalImport(){
   if(!engine)return;
   node('survey-import').hidden=false;
   node('survey-example').href=`data:text/csv;charset=utf-8,${encodeURIComponent(surveyExample)}`;
   let newest=0;
+  node('load-sample').addEventListener('click',()=>{
+    if(replayEvents.some(item=>item.id===localEventId))return;
+    newest++;
+    const status=node('import-status');
+    status.classList.remove('bad');
+    try{
+      status.textContent=`Sample survey. ${loadLocalSurvey(surveyExample)}`;
+      node('survey-file').focus();
+    }catch(error){
+      status.classList.add('bad');
+      status.textContent=error.message||'The sample could not be loaded.';
+    }
+  });
   node('survey-file').addEventListener('change',async event=>{
     const input=event.currentTarget;
     const file=input.files[0];
@@ -478,16 +627,7 @@ function bindLocalImport(){
       if(file.size>maxSurveyBytes)throw new Error('The CSV must be 2 MB or smaller.');
       const text=await file.text();
       if(request!==newest)return;
-      const scenario=prepareLocalSurvey(text);
-      const existing=replayEvents.findIndex(item=>item.id===localEventId);
-      const index=existing<0?replayEvents.length:existing;
-      replayEvents[index]={id:localEventId,name:'Your survey (local CSV)',scenarios:[scenario]};
-      localUpdates=null;
-      state.fieldOnly=false;
-      state.estimateSelection=null;
-      rebuildEventOptions();
-      selectEvent(index);
-      status.textContent=`Loaded ${scenario.counts.sites} marks · ${scenario.counts.initial} measured · ${scenario.counts.unseen} awaiting a reading.`;
+      status.textContent=loadLocalSurvey(text);
     }catch(error){
       if(request===newest){
         status.classList.add('bad');
@@ -667,6 +807,7 @@ function explainOpening(){
   const index=active().sites.findIndex(site=>site.id===examples.worked);
   if(state.site!==index)chooseSite(index,false);
   node('influence').open=true;
+  openSurveyMap();
   node('influence-toggle').focus();
 }
 function drawInfluence(scenario){
@@ -885,8 +1026,7 @@ function archiveEvidence(){
     action.hidden=false;
     action.addEventListener('click',()=>{
       selectEvent(westVirginia);
-      node('inspect-heading').focus();
-      node('inspect-heading').closest('.layout').scrollIntoView({block:'start'});
+      openSurveyMap('inspect-heading');
     });
   }
   const headings=add(node('archive-columns'),'tr');
@@ -1063,7 +1203,7 @@ function drawDetails(scenario,review=disagreement(scenario)){
   clear('predictions');
   node('predictions').hidden=state.fieldOnly;
   if(!state.fieldOnly&&!s.surveyed){
-    Object.entries(METHODS).forEach(([key,label])=>{
+    Object.entries(METHODS).filter(([key])=>!local||key==='model').forEach(([key,label])=>{
       const method=local?'model':state.method;
       const row=add(node('predictions'),'div',undefined,`reading${method===key?' active':''}`);
       const title=add(row,'div');
@@ -1117,17 +1257,46 @@ const crewExcluded = new Set();
 let crewActive = null;
 let crewPickKey = '';
 let crewPicks = [];
+let lastExclusion = null;
+
+function visitFeedback(message){
+  node('visit-feedback').hidden=!message;
+  node('visit-feedback-message').textContent=message;
+  node('crew-undo').hidden=lastExclusion===null;
+}
+
+function changeVisitAccess(index, excluded, returnFocus=false){
+  const site=active().sites[index];
+  if(!site||(excluded&&site.surveyed)||crewExcluded.has(index)===excluded)return;
+  if(excluded){
+    crewExcluded.add(index);
+    lastExclusion=index;
+  }else{
+    crewExcluded.delete(index);
+    lastExclusion=null;
+  }
+  renderCrew();
+  visitFeedback(`Mark ${site.id} ${excluded?'excluded':'restored'}. ${crewPicks.length} ${crewPicks.length===1?'visit':'visits'} ready.`);
+  if(returnFocus)node(excluded?'crew-undo':'next-visits-title').focus({preventScroll:true});
+}
 
 function renderCrew() {
   const scenario = active();
   const survey = original();
-  node('crew-current-survey').textContent=`Active survey · ${replayEvents[state.event].name}`;
+  node('crew-current-survey').textContent=`${scenario.counts.initial} measured · ${scenario.counts.unseen} unmeasured`;
   if (crewSurvey !== survey) {
     crewSurvey = survey;
     crewExcluded.clear();
     crewActive = null;
+    lastExclusion = null;
+    visitFeedback('');
+  }
+  if(lastExclusion!==null&&scenario.sites[lastExclusion].surveyed){
+    lastExclusion=null;
+    visitFeedback('');
   }
   const open = scenario.sites.flatMap((site, index) => site.surveyed ? [] : [index]);
+  for(const index of crewExcluded)if(scenario.sites[index].surveyed)crewExcluded.delete(index);
   const available = open.filter(index => !crewExcluded.has(index));
   const input = node('crew-budget');
   const max = Math.min(50, Math.max(1, available.length));
@@ -1135,6 +1304,8 @@ function renderCrew() {
   input.disabled = !available.length;
   const budget = Math.min(max, Math.max(1, Math.floor(Number(input.value) || 1)));
   if (input.value !== String(budget)) input.value = String(budget);
+  node('crew-less').disabled=!available.length||budget<=1;
+  node('crew-more').disabled=!available.length||budget>=max;
   const key = budget + ':' + [...crewExcluded].join(',');
   if (scenario !== crewActive || crewPickKey !== key) {
     crewPicks = MarkRouteCrew.plan(scenario.sites, budget, available, open);
@@ -1145,19 +1316,28 @@ function renderCrew() {
     for (const pick of crewPicks) {
       const site = scenario.sites[pick.index];
       const item = add(list, 'li');
-      const link = add(item, 'button', 'Mark ' + site.id);
+      item.dataset.siteId=site.id;
+      const labels=add(item,'div');
+      add(labels,'strong','Mark '+site.id,'visit-label');
+      const description=[site.environment,site.waterbody].filter(Boolean);
+      add(labels,'span',description.join(' · '),'visit-detail');
+      const actions=add(item,'div',undefined,'visit-actions');
+      const link=add(actions,'button','Inspect');
       link.type = 'button';
+      link.dataset.inspectVisit=site.id;
+      link.setAttribute('aria-label','Inspect mark '+site.id);
       link.addEventListener('click', () => {
         const index = pick.index;
         if (state.fieldOnly) toggleFieldOnly();
         state.zoom = true;
         chooseSite(index, false);
-        node('inspect-heading').focus();
-        node('inspect-heading').scrollIntoView({block: 'nearest'});
+        openSurveyMap('inspect-heading');
       });
-      const description = [site.environment, String(pick.reached) + ' other flags gain terrain coverage'];
-      if (site.waterbody) description.splice(1, 0, site.waterbody);
-      add(item, 'span', description.join(' · '));
+      const excludeItem=add(actions,'button','Exclude');
+      excludeItem.type='button';
+      excludeItem.dataset.excludeVisit=site.id;
+      excludeItem.setAttribute('aria-label','Exclude mark '+site.id);
+      excludeItem.addEventListener('click',()=>changeVisitAccess(pick.index,true,true));
     }
   }
   const selected = scenario.sites[state.site];
@@ -1175,14 +1355,26 @@ function renderCrew() {
 
 function setupCrew() {
   node('crew-budget').addEventListener('change', renderCrew);
+  for(const [id,change] of [['crew-less',-1],['crew-more',1]]){
+    node(id).addEventListener('click',()=>{
+      const budget=node('crew-budget');
+      budget.value=String(Number(budget.value)+change);
+      renderCrew();
+    });
+  }
   node('crew-exclude').addEventListener('click', () => {
-    if (crewExcluded.has(state.site)) crewExcluded.delete(state.site);
-    else if (!active().sites[state.site].surveyed) crewExcluded.add(state.site);
-    renderCrew();
+    changeVisitAccess(state.site,!crewExcluded.has(state.site));
+    node('recompute-status').textContent=node('visit-feedback-message').textContent;
+  });
+  node('crew-undo').addEventListener('click',()=>{
+    if(lastExclusion!==null)changeVisitAccess(lastExclusion,false,true);
   });
   node('crew-reset').addEventListener('click', () => {
     crewExcluded.clear();
+    lastExclusion=null;
     renderCrew();
+    visitFeedback('All excluded marks restored.');
+    node('next-visits-title').focus();
   });
   node('crew-download').addEventListener('click', () => {
     downloadCrewCsv('markroute-visit-list.csv', MarkRouteCrew.queueCsv(crewPicks, active().sites));
@@ -1254,7 +1446,6 @@ function setupPractice(){
     !modelIndices.every(index=>candidateIndices.includes(index))||targetIndices.some(index=>candidateIndices.includes(index)))return;
   node('visit-exercise').hidden=false;
   node('practice-link').hidden=false;
-  if(location.hash==='#visit-exercise')requestAnimationFrame(()=>node('visit-exercise').scrollIntoView({block:'start'}));
   const known=sites.filter(site=>site.surveyed).length;
   node('practice-context').textContent=`${exercise.title||'June 2022 Montana flood'} · ${known} starting readings · ${candidateIndices.length} candidate visits`;
   const select=node('practice-mark');
@@ -1382,6 +1573,55 @@ function draw(){
   drawMap(scenario,review);
   drawDetails(scenario,review);
 }
+
+const workspaceViews={plan:'crew-planner',map:'map-and-readings',practice:'practice-panel',evidence:'evidence'};
+const workspaceLinks={
+  '#crew-planner':'plan','#survey-import':'plan','#map-and-readings':'map',
+  '#visit-exercise':'practice','#evidence':'evidence','#opening':'evidence',
+  '#archive-evidence':'evidence','#crew-evidence':'evidence','#robustness':'evidence'
+};
+
+function showWorkspace(){
+  const hash=window.location.hash;
+  const activeView=workspaceLinks[hash]||'plan';
+  for(const [view,id] of Object.entries(workspaceViews))node(id).hidden=view!==activeView;
+  document.querySelectorAll('[data-workspace]').forEach(link=>{
+    if(link.dataset.workspace===activeView)link.setAttribute('aria-current','page');
+    else link.removeAttribute('aria-current');
+  });
+  if(hash==='#survey-import')node('survey-import').open=true;
+  if(hash==='#crew-evidence')node('crew-evidence').open=true;
+  if(activeView==='map')drawMap(active());
+}
+
+function navigateWorkspace(hash,focusId){
+  if(window.location.hash!==hash)window.location.hash=hash;
+  showWorkspace();
+  if(focusId)node(focusId).focus({preventScroll:true});
+  if(focusId==='inspect-heading'&&window.matchMedia('(max-width: 660px)').matches){
+    node(focusId).scrollIntoView({block:'start'});
+  }else{
+    window.scrollTo(0,0);
+  }
+}
+
+function openSurveyMap(focusId){navigateWorkspace('#map-and-readings',focusId);}
+
+function setupWorkspace(){
+  document.querySelectorAll('.workspace-nav a,.workspace-header .brand,.workspace-link,.skip').forEach(link=>{
+    link.addEventListener('click',event=>{
+      if(event.button>0||event.altKey||event.ctrlKey||event.metaKey||event.shiftKey)return;
+      const hash=link.getAttribute('href');
+      if(!workspaceLinks[hash])return;
+      event.preventDefault();
+      const headings={plan:'crew-heading',map:'map-workspace-title',practice:'practice-title',evidence:'evidence-title'};
+      navigateWorkspace(hash,headings[workspaceLinks[hash]]);
+    });
+  });
+  window.addEventListener('hashchange',showWorkspace);
+  showWorkspace();
+}
+
 function setup(){
   if(!payload?.events?.length){node('no-data').hidden=false;return;}
   node('pages').hidden=false;
@@ -1433,6 +1673,7 @@ function setup(){
   }else{
     selectEvent(0);
   }
+  setupWorkspace();
 }
 setup();
 </script>
