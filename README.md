@@ -24,13 +24,13 @@ This supports the return survey after crews have located and flagged the marks. 
 
 ### Prepare a survey CSV
 
-Install the dependencies in \`requirements.txt\`. Run this command with an official USGS Flood Event Viewer high-water-mark CSV. Then open \`prepared.csv\` in **Load your own survey**.
+Install the dependencies in `requirements.txt`. Run this command with an official USGS Flood Event Viewer high-water-mark CSV. Then open `prepared.csv` in **Load your own survey**.
 
-\`\`\`sh
+```sh
 python prepare_survey.py usgs_marks.csv prepared.csv --format fev --tile-cache terrain-tiles
-\`\`\`
+```
 
-The same tool accepts a raw list with \`site_id\`, \`latitude\`, \`longitude\`, and \`environment\` plus optional \`waterbody\` and \`elev_ft\`. Use \`--format flags\` for this input. Leave \`elev_ft\` blank for unmeasured marks. Each environment with unmeasured flags needs a measured starting flag. If verified elevations have omitted datum metadata, \`--confirm-navd88-feet\` explicitly supplies that confirmation. The program derives the three terrain columns used by the published model. Terrain tiles come from the public Mapzen cache. Use \`--offline\` with the tile cache to skip network requests. [USGS data download portal](https://apps.usgs.gov/fev/data-download-portal) · [Mapzen terrain tiles](https://www.mapzen.com/blog/terrain-tile-service/)
+The same tool accepts a raw list with `site_id`, `latitude`, `longitude`, and `environment` plus optional `waterbody` and `elev_ft`. Use `--format flags` for this input. Leave `elev_ft` blank for unmeasured marks. Each environment with unmeasured flags needs a measured starting flag. If verified elevations have omitted datum metadata, `--confirm-navd88-feet` explicitly supplies that confirmation. The program derives the three terrain columns used by the published model. Terrain tiles come from the public Mapzen cache. Use `--offline` with the tile cache to skip network requests. [USGS data download portal](https://apps.usgs.gov/fev/data-download-portal) · [Mapzen terrain tiles](https://www.mapzen.com/blog/terrain-tile-service/)
 
 ### What changed at the same number of visits
 
@@ -230,7 +230,9 @@ python residual_formulation.py test
 python archival_replay.py evaluate
 python archive_review.py validation
 python archive_review.py test
-python crew_replay.py\npython access_stress.py\npython steep_repair.py validation
+python crew_replay.py
+python access_stress.py
+python steep_repair.py validation
 python expanded_training.py validation
 python demo_export.py
 ```
@@ -239,7 +241,7 @@ These commands use the supplied processed [survey panel](panel.csv) and regenera
 
 ## Regression tests
 
-With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. Run \`node test_crew_planner.cjs\` to verify all 21 browser picks against Python on the fixed Montana assignment and to verify the ranking does not use hidden elevations. The replay suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 22 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
+With Node.js 18 or later on your PATH, run `python -m unittest -v test_markroute` from the repository root. Run `node test_crew_planner.cjs` to verify all 21 browser picks against Python on the fixed Montana assignment and to verify the ranking does not use hidden elevations. The replay suite checks that the event splits and manifests agree, that hidden elevations cannot influence model inputs, and that a review prediction excludes its own observed elevation. It refits the frozen model, reproduces archived errors on all 22 evaluation floods, and compares thousands of predictions from the offline JavaScript engine to Python before and after adding an archived survey. It checks the signed survey contributions against a separate enumeration of insertion orders and verifies the removal preview against independent Python predictions.
 
 ## Scope and data
 
